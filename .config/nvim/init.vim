@@ -55,22 +55,18 @@ Plug 'skwp/greplace.vim'
 Plug 'millermedeiros/vim-esformatter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/vim-js-pretty-template'
 Plug 'leafgarland/typescript-vim'
+Plug 'jason0x43/vim-js-indent'
 Plug 'Shougo/vimproc.vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'neomake/neomake'
 Plug 'mxw/vim-jsx'
-Plug 'skwp/greplace.vim'
+Plug 'kassio/neoterm'
 Plug 'jaawerth/neomake-local-eslint-first'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'lambdatoast/elm.vim'
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'othree/javascript-libraries-syntax.vim'
-" Plug 'burnettk/vim-angular'
-Plug 'elmcast/elm-vim'
-" Plug 'mhartington/deoplete-typescript'
-" Plug 'mhartington/deoplete-typescript'
-
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'will133/vim-dirdiff'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -159,7 +155,7 @@ set linebreak
 "Folding
 " =======
 set foldmethod=indent
-" set foldnestmax=3
+set foldnestmax=3
 set nofoldenable
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
@@ -218,9 +214,9 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -272,60 +268,60 @@ map <leader>s? z=
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+  exe "menu Foo.Bar :" . a:str
+  emenu Foo.Bar
+  unmenu Foo
 endfunction 
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+  let l:saved_reg = @"
+  execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("Ack \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("Ack \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+  let @/ = l:pattern
+  let @" = l:saved_reg
 endfunction
 
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
+  if &paste
+    return 'PASTE MODE  '
+  endif
+  return ''
 endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+  let l:currentBufNum = bufnr("%")
+  let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+  if buflisted(l:alternateBufNum)
+    buffer #
+  else
+    bnext
+  endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+  if bufnr("%") == l:currentBufNum
+    new
+  endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+  if buflisted(l:currentBufNum)
+    execute("bdelete! ".l:currentBufNum)
+  endif
 endfunction
 
 
@@ -334,8 +330,8 @@ endfunction
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
-    set undofile
+  set undodir=~/.vim_runtime/temp_dirs/undodir
+  set undofile
 catch
 endtry
 
@@ -470,47 +466,47 @@ set autoread
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
 if exists("+showtabline")
-    function! MyTabLine()
-        let s = ''
-        let wn = ''
-        let t = tabpagenr()
-        let i = 1
-        while i <= tabpagenr('$')
-            let buflist = tabpagebuflist(i)
-            let winnr = tabpagewinnr(i)
-            let s .= '%' . i . 'T'
-            let s .= (i == t ? '%1*' : '%2*')
-            let s .= ' '
-            let wn = tabpagewinnr(i,'$')
+  function! MyTabLine()
+    let s = ''
+    let wn = ''
+    let t = tabpagenr()
+    let i = 1
+    while i <= tabpagenr('$')
+      let buflist = tabpagebuflist(i)
+      let winnr = tabpagewinnr(i)
+      let s .= '%' . i . 'T'
+      let s .= (i == t ? '%1*' : '%2*')
+      let s .= ' '
+      let wn = tabpagewinnr(i,'$')
 
-            let s .= '%#TabNum#'
-            let s .= i
-            " let s .= '%*'
-            let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-            let bufnr = buflist[winnr - 1]
-            let file = bufname(bufnr)
-            let buftype = getbufvar(bufnr, 'buftype')
-            if buftype == 'nofile'
-                if file =~ '\/.'
-                    let file = substitute(file, '.*\/\ze.', '', '')
-                endif
-            else
-                let file = fnamemodify(file, ':p:t')
-            endif
-            if file == ''
-                let file = '[No Name]'
-            endif
-            let s .= ' ' . file . ' '
-            let i = i + 1
-        endwhile
-        let s .= '%T%#TabLineFill#%='
-        let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-        return s
-    endfunction
-    set stal=2
-    set tabline=%!MyTabLine()
-    set showtabline=1
-    highlight link TabNum Special
+      let s .= '%#TabNum#'
+      let s .= i
+      " let s .= '%*'
+      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+      let bufnr = buflist[winnr - 1]
+      let file = bufname(bufnr)
+      let buftype = getbufvar(bufnr, 'buftype')
+      if buftype == 'nofile'
+        if file =~ '\/.'
+          let file = substitute(file, '.*\/\ze.', '', '')
+        endif
+      else
+        let file = fnamemodify(file, ':p:t')
+      endif
+      if file == ''
+        let file = '[No Name]'
+      endif
+      let s .= ' ' . file . ' '
+      let i = i + 1
+    endwhile
+    let s .= '%T%#TabLineFill#%='
+    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+    return s
+  endfunction
+  set stal=2
+  set tabline=%!MyTabLine()
+  set showtabline=1
+  highlight link TabNum Special
 endif
 
 "Saner command line history
@@ -622,6 +618,8 @@ endif
 " let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:neomake_typescript_enabled_makers = ['tslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
+let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
+let g:neomake_scss_enabled_makers = ['stylelint']
 
 let g:neomake_error_symbol = '❌'
 let g:neomake_style_error_symbol = '⁉️'
@@ -650,26 +648,50 @@ imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --sho
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1 
+"
+" use tab to forward cycle
+inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" use tab to backward cycle
+inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
+
+autocmd! BufWritePost * Neomake
+
+
+let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" omnifuncs
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
-  " tern
-  if exists('g:plugs["tern_for_vim"]')
-    let g:tern_show_argument_hints = 'on_hold'
-    let g:tern_show_signature_in_pum = 1
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-  endif
+"
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" tern
+autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+function s:formatJSON()
+  execute "%!python -m json.tool"
+  set syntax=json
+endfunction
+
+command FormatJSON call s:formatJSON()
+
+if executable('rg')
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+endif
+
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -685,3 +707,6 @@ autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 "
 let g:used_javascript_libs = 'angularjs,react,flux,jasmine,ramda'
 let g:elm_format_autosave = 1
+
+"Calculation
+ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
