@@ -1,6 +1,7 @@
 source ~/antigen/antigen.zsh
 
-export NVM_LAZY_LOAD=true
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
