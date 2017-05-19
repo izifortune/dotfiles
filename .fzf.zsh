@@ -1,12 +1,12 @@
 # Setup fzf
 # ---------
-export PATH="$PATH:.fzf/bin"
+export PATH="$PATH:$HOME/.fzf/bin"
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source ".fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source ".fzf/shell/key-bindings.zsh"
+source "$HOME/.fzf/shell/key-bindings.zsh"
 
