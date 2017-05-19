@@ -31,12 +31,12 @@ antigen bundle sindresorhus/pure
 
 # User configuration
 
-  export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
-  export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/bin
 
 # You may need to manually set your language environment
-  export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -58,7 +58,7 @@ bindkey '^N' down-history
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
-# bindkey '^R' fzf-history
+bindkey '^r' history-incremental-search-backward
 
 function pythonserve() {
   if [ "$1" != "" ]
@@ -75,7 +75,7 @@ function jira() {
   open "https://jira.ryanair.com:8443/browse/$1?filter=12755"
 }
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias vim="nvim"
 
 #Neovim true color support
@@ -85,11 +85,11 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export TERM='xterm-256color'
 
 source ~/.local.zshrc
-export TERMINFO="$HOME/.terminfo"
+  export TERMINFO="$HOME/.terminfo"
 eval $(thefuck --alias)
 
-antigen apply
-export PATH="/usr/local/sbin:$PATH"
+  antigen apply
+  export PATH="/usr/local/sbin:$PATH"
 
 #Fix ctrl h
 #infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
