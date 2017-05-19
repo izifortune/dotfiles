@@ -17,7 +17,7 @@ antigen bundle command-not-found
 antigen bundle andrewferrier/fzf-z
 
 antigen bundle osx
-antigen-bundle vi-mode
+antigen bundle vi-mode
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
