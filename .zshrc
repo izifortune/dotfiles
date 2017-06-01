@@ -100,3 +100,6 @@ eval $(thefuck --alias)
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$HOME/.yarn/bin:$PATH"
+function topdf() {
+  pandoc --variable mainfont="Charter" --variable monofont="DejaVu Sans Mono" --variable fontsize=14pt --variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" --variable geometry:a4paper -f markdown $1  -o $(echo $1 | sed 's/\.md/\.pdf/g')
+}
