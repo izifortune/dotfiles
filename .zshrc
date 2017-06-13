@@ -15,7 +15,7 @@ antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
 # antigen bundle lukechilds/zsh-nvm
-antigen bundle andrewferrier/fzf-z
+# antigen bundle andrewferrier/fzf-z
 
 antigen bundle osx
 antigen bundle vi-mode
@@ -95,8 +95,5 @@ eval $(thefuck --alias)
 #Fix ctrl h
 #infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 #tic $TERM.ti
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$HOME/.yarn/bin:$PATH"
