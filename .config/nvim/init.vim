@@ -692,4 +692,4 @@ let g:elm_format_autosave = 1
 "Calculation
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 let g:neoformat_enabled_javascript = ['prettier']
-autocmd BufWritePre *.js Neoformat
+" autocmd BufWritePre *.js Neoformat
