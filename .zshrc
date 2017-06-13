@@ -86,7 +86,7 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export TERM='xterm-256color'
 
 source ~/.local.zshrc
-  export TERMINFO="$HOME/.terminfo"
+export TERMINFO="$HOME/.terminfo"
 eval $(thefuck --alias)
 
   antigen apply
@@ -97,3 +97,4 @@ eval $(thefuck --alias)
 #tic $TERM.ti
 
 export PATH="$HOME/.yarn/bin:$PATH"
+fpath=(~/.functions $fpath)
