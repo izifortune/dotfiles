@@ -68,6 +68,8 @@ Plug 'neomake/neomake'
 Plug 'will133/vim-dirdiff'
 Plug 'sbdchd/neoformat'
 Plug 'jaawerth/nrun.vim'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -337,9 +339,10 @@ set backspace=2
 
 
 ""PLUGINS
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
-map <leader>nf :NERDTreeFind<cr>
+map <leader>nn :Explore<cr>
+" map <leader>nb :NERDTreeFromBookmark 
+map <leader>nf :Vexplore<cr>
+nnoremap <leader>cd :cd %:p:h<CR>
 
 
 

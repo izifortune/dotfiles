@@ -1,7 +1,7 @@
 source ~/antigen/antigen.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -19,9 +19,6 @@ antigen bundle command-not-found
 
 antigen bundle osx
 antigen bundle vi-mode
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 antigen bundle mafredri/zsh-async
@@ -97,4 +94,13 @@ eval $(thefuck --alias)
 #tic $TERM.ti
 
 export PATH="$HOME/.yarn/bin:$PATH"
+function topdf() {
+  pandoc --variable mainfont="Charter" --variable monofont="DejaVu Sans Mono" --variable fontsize=14pt --variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" --variable geometry:a4paper -f markdown $1  -o $(echo $1 | sed 's/\.md/\.pdf/g')
+}
 fpath=(~/.functions $fpath)
+
+# Move next only if `homebrew` is installed
+if command -v brew >/dev/null 2>&1; then
+  # Load rupa's z if installed
+  [ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+fi
