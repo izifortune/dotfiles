@@ -337,9 +337,10 @@ set backspace=2
 
 
 ""PLUGINS
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
-map <leader>nf :NERDTreeFind<cr>
+" map <leader>nn :NERDTreeToggle<cr>
+" map <leader>nb :NERDTreeFromBookmark 
+map <leader>nf :Vexplore<cr>
+nnoremap <leader>cd :cd %:p:h<CR>
 
 
 
