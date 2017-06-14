@@ -7,7 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-fugitive'
 "Plug 'wincent/command-t'
 "Plug 'ctrlpvim/ctrlp.vim' " Fast file opening
@@ -356,6 +356,9 @@ nnoremap <leader>cd :cd %:p:h<CR>
 " ===========
 set background=dark
 "colorscheme monokai
+" colorscheme jellybeans
+colorscheme base16-default-dark
+let base16colorspace=256
 
 "Remove visual delay
 set timeoutlen=1000 ttimeoutlen=0
@@ -512,7 +515,6 @@ cnoremap <c-p>  <up>
 xnoremap <  <gv
 xnoremap >  >gv
 
-colorscheme jellybeans
 
 if !exists('g:loaded_matchit')
   runtime macros/matchit.vim

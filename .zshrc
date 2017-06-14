@@ -97,10 +97,14 @@ export PATH="$HOME/.yarn/bin:$PATH"
 function topdf() {
   pandoc --variable mainfont="Charter" --variable monofont="DejaVu Sans Mono" --variable fontsize=14pt --variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" --variable geometry:a4paper -f markdown $1  -o $(echo $1 | sed 's/\.md/\.pdf/g')
 }
-fpath=(~/.functions $fpath)
+source ~/.functions
 
 # Move next only if `homebrew` is installed
 if command -v brew >/dev/null 2>&1; then
   # Load rupa's z if installed
   [ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
 fi
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
