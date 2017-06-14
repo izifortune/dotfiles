@@ -15,7 +15,7 @@ antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
 # antigen bundle lukechilds/zsh-nvm
-antigen bundle andrewferrier/fzf-z
+# antigen bundle andrewferrier/fzf-z
 
 antigen bundle osx
 antigen bundle vi-mode
@@ -86,7 +86,7 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 export TERM='xterm-256color'
 
 source ~/.local.zshrc
-  export TERMINFO="$HOME/.terminfo"
+export TERMINFO="$HOME/.terminfo"
 eval $(thefuck --alias)
 
   antigen apply
@@ -96,10 +96,8 @@ eval $(thefuck --alias)
 #infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 #tic $TERM.ti
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 export PATH="$HOME/.yarn/bin:$PATH"
 function topdf() {
   pandoc --variable mainfont="Charter" --variable monofont="DejaVu Sans Mono" --variable fontsize=14pt --variable geometry:"top=1.5cm, bottom=2.5cm, left=1.5cm, right=1.5cm" --variable geometry:a4paper -f markdown $1  -o $(echo $1 | sed 's/\.md/\.pdf/g')
 }
+fpath=(~/.functions $fpath)

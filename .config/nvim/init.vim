@@ -1,33 +1,32 @@
 set nocompatible " No VI compatibility
 set autoread " Detect file changes outside vim
 "
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
+" call plug#begin('~/.vim/plugged')
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-fugitive'
 "Plug 'wincent/command-t'
 "Plug 'ctrlpvim/ctrlp.vim' " Fast file opening
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 " Plug 'Raimondi/delimitMate' " Auto insert paired characters
 Plug 'jiangmiao/auto-pairs'
-Plug 'rking/ag.vim'
+"Plug 'rking/ag.vim'
 Plug 'bling/vim-airline'
 "Plug 'unblevable/quick-scope'
 "Plug 'ervandew/supertab'
 Plug 'nathanaelkane/vim-indent-guides'
 "Plun 'pangloss/vim-javascript'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'jlanzarotta/bufexplorer'
+" Plug 'maksimr/vim-jsbeautify'
+"Plug 'jlanzarotta/bufexplorer'
 " Plug 'jwhitley/vim-matchit', {'for': 'html'}
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 "Plug '0x0dea/vim-molasses'
 Plug 'tpope/vim-repeat' " Repeat last command with .
 Plug 'tpope/vim-unimpaired' " Additional paired mappings
@@ -39,15 +38,15 @@ Plug 'groenewege/vim-less', { 'for': 'less'  }
 Plug 'ap/vim-css-color', { 'for': 'css'  }
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css'  }
 "Plug 'https://github.com/gorodinskiy/vim-coloresque.git'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-notes'
 "Plug 'sickill/vim-monokai'
-Plug 'ConradIrwin/vim-bracketed-paste'
+"Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'nanotech/jellybeans.vim'
 "Plug 'tomasr/molokai'
-Plug 'groenewege/vim-less'
-Plug 'itchyny/calendar.vim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'groenewege/vim-less'
+" Plug 'itchyny/calendar.vim'
+"Plug 'easymotion/vim-easymotion'
 Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
@@ -56,17 +55,19 @@ Plug 'millermedeiros/vim-esformatter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Quramy/tsuquyomi'
-Plug 'Quramy/vim-js-pretty-template'
+" Plug 'Quramy/vim-js-pretty-template'
 Plug 'leafgarland/typescript-vim'
-Plug 'jason0x43/vim-js-indent'
-Plug 'Shougo/vimproc.vim'
-Plug 'Quramy/tsuquyomi'
+" Plug 'jason0x43/vim-js-indent'
+" Plug 'Shougo/vimproc.vim'
+" Plug 'Quramy/tsuquyomi'
 Plug 'neomake/neomake'
-Plug 'mxw/vim-jsx'
-Plug 'kassio/neoterm'
-Plug 'jaawerth/neomake-local-eslint-first'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+" Plug 'mxw/vim-jsx'
+" Plug 'kassio/neoterm'
+" Plug 'jaawerth/neomake-local-eslint-first'
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'will133/vim-dirdiff'
+Plug 'sbdchd/neoformat'
+Plug 'jaawerth/nrun.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -243,15 +244,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -367,37 +359,37 @@ set timeoutlen=1000 ttimeoutlen=0
 
 
 "sintastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
+" " let g:syntastic_always_populate_loc_list = 1
+" " let g:syntastic_auto_loc_list = 1
+" " let g:syntastic_check_on_open = 1
+" " let g:syntastic_check_on_wq = 0
+" " let g:syntastic_aggregate_errors = 1
 " let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 1
 
-"syntastic ignore
-let g:syntastic_html_checkers=['']
-let g:syntastic_less_checkers=['']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers=['tsc', 'tslint']
-let g:syntastic_typescript_tsc_fname = ''
+" "syntastic ignore
+" let g:syntastic_html_checkers=['']
+" let g:syntastic_less_checkers=['']
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_typescript_checkers=['tsc', 'tslint']
+" let g:syntastic_typescript_tsc_fname = ''
 
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
+" let g:syntastic_error_symbol = '❌'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '⚠️'
+" let g:syntastic_style_warning_symbol = '💩'
 
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+" highlight link SyntasticErrorSign SignColumn
+" highlight link SyntasticWarningSign SignColumn
+" highlight link SyntasticStyleErrorSign SignColumn
+" highlight link SyntasticStyleWarningSign SignColumn
 
 
 " let g:syntastic_enable_signs=1     " enables error reporting in the gutter
@@ -459,9 +451,9 @@ set listchars=tab:▸\ ,eol:¬"
 nmap <leader>cs :let @*=expand("%")<CR>
 nmap <leader>cl :let @*=expand("%:p")<CR>)
 
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nnoremap <leader>sc :SyntasticCheck<CR>
-set autoread
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+" nnoremap <leader>sc :SyntasticCheck<CR>
+" set autoread
 
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
@@ -518,9 +510,6 @@ xnoremap <  <gv
 xnoremap >  >gv
 
 colorscheme jellybeans
-
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
 
 if !exists('g:loaded_matchit')
   runtime macros/matchit.vim
@@ -612,21 +601,22 @@ vnoremap <silent> <leader>es :EsformatterVisual<CR>
 nmap <C-p> :FZF<CR>
 nmap <C-g> :GitFiles<CR>
 
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
+" if !exists("g:ycm_semantic_triggers")
+"   let g:ycm_semantic_triggers = {}
+" endif
 " let g:ycm_semantic_triggers['typescript'] = ['.']
+let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
+let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
 let g:neomake_typescript_enabled_makers = ['tslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
 let g:neomake_scss_enabled_makers = ['stylelint']
+
+autocmd BufWritePost *.js Neomake
 
 let g:neomake_error_symbol = '❌'
 let g:neomake_style_error_symbol = '⁉️'
 let g:neomake_warning_symbol = '⚠️'
 let g:neomake_style_warning_symbol = '💩'
-
-autocmd! BufWritePost * Neomake
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -655,8 +645,6 @@ inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 " use tab to backward cycle
 inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
-autocmd! BufWritePost * Neomake
-
 
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
@@ -667,8 +655,6 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" tern
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -695,18 +681,15 @@ endif
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" tern
-let g:tern_map_keys=1
 
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-"
 " " use tab to forward cycle
 " inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " " use tab to backward cycle
 " inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 "
-let g:used_javascript_libs = 'angularjs,react,flux,jasmine,ramda'
 let g:elm_format_autosave = 1
 
 "Calculation
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+let g:neoformat_enabled_javascript = ['prettier']
+" autocmd BufWritePre *.js Neoformat
