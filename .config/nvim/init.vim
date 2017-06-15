@@ -70,6 +70,7 @@ Plug 'sbdchd/neoformat'
 Plug 'jaawerth/nrun.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'tpope/vim-obsession'
 
 " All of your Plugins must be added before the following line
 call plug#end()
