@@ -612,11 +612,13 @@ nmap <C-g> :GitFiles<CR>
 " let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
 let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
+let g:neomake_typescript_tslint_exe = nrun#Which('tslint')
 let g:neomake_typescript_enabled_makers = ['tslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_scss_enabled_makers = ['stylelint']
 
 autocmd BufWritePost *.js Neomake
+autocmd BufWritePost *.ts Neomake
 
 let g:neomake_error_symbol = '❌'
 let g:neomake_style_error_symbol = '⁉️'
