@@ -11,7 +11,8 @@ module.exports = {
     "plugin:promise/recommended",
     "xo/esnext",
     "plugin:unicorn/recommended",
-    "google"
+    "google",
+    "prettier"
   ],
   "plugins": [
     "unicorn",
@@ -34,7 +35,7 @@ module.exports = {
       "SwitchCase": 1,
       "VariableDeclarator": 2
     }],
-    "max-len": ["error", 120, {
+    "max-len": ["error", 80, {
       "ignoreComments": true,
       "ignoreUrls": true,
       "tabWidth": 2
