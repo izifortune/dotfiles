@@ -65,6 +65,5 @@ module.exports = {
     "require-jsdoc": "off",
     "no-implicit-coercion": "off",
     "capitalized-comments": "warn"
-
   }
 };

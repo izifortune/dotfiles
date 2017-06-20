@@ -1,6 +1,7 @@
 {
   "//": "    ln -sf $HOME/code/dotfiles/node_modules $HOME/.node_libraries     ",
   "devDependencies": {
+    "angular-playground": "^1.6.0",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1",
     "eslint-config-kentcdodds": "^12.2.1",
