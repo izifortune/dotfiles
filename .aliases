@@ -1,2 +1,4 @@
 alias t="todolist"
 alias v="vim"
+
+#dig +recurse +trace www.example.com any
