@@ -355,7 +355,7 @@ nnoremap <leader>cd :cd %:p:h<CR>
 
 " Colorscheme
 " ===========
-set background=dark
+" set background=dark
 "colorscheme monokai
 " colorscheme jellybeans
 colorscheme base16-default-dark
@@ -701,3 +701,4 @@ let g:elm_format_autosave = 1
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 let g:neoformat_enabled_javascript = ['prettier']
 " autocmd BufWritePre *.js Neoformat
+colorscheme base16-default-dark
