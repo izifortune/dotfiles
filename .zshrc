@@ -46,7 +46,7 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 COMPLETION_WAITING_DOTS="true"
 

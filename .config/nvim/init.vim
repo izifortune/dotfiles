@@ -673,10 +673,10 @@ endfunction
 
 command FormatJSON call s:formatJSON()
 
-if executable('rg')
-  set grepprg=rg\ --no-heading\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
+" if executable('rg')
+"   set grepprg=rg\ --no-heading\ --vimgrep
+"   set grepformat=%f:%l:%c:%m
+" endif
 
 :tnoremap <A-h> <C-\><C-n><C-w>h
 :tnoremap <A-j> <C-\><C-n><C-w>j
@@ -699,6 +699,10 @@ let g:elm_format_autosave = 1
 
 "Calculation
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_javascript_singlepretty = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--single-quote'],
+      \ }
+let g:neoformat_enabled_javascript = ['singlepretty']
 " autocmd BufWritePre *.js Neoformat
 colorscheme base16-default-dark
