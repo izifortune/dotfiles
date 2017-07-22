@@ -58,7 +58,7 @@ Plug 'Quramy/tsuquyomi'
 " Plug 'Quramy/vim-js-pretty-template'
 Plug 'leafgarland/typescript-vim'
 " Plug 'jason0x43/vim-js-indent'
-" Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Quramy/tsuquyomi'
 Plug 'neomake/neomake'
 " Plug 'mxw/vim-jsx'
@@ -673,10 +673,10 @@ endfunction
 
 command FormatJSON call s:formatJSON()
 
-if executable('rg')
-  set grepprg=rg\ --no-heading\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
+" if executable('rg')
+"   set grepprg=rg\ --no-heading\ --vimgrep
+"   set grepformat=%f:%l:%c:%m
+" endif
 
 :tnoremap <A-h> <C-\><C-n><C-w>h
 :tnoremap <A-j> <C-\><C-n><C-w>j
@@ -699,5 +699,10 @@ let g:elm_format_autosave = 1
 
 "Calculation
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_javascript_nprettier = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--single-quote'],
+      \ 'replace': 1,
+      \ }
+let g:neoformat_enabled_javascript = ['nprettier']
 " autocmd BufWritePre *.js Neoformat
