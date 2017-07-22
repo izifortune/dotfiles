@@ -21,6 +21,9 @@ antigen bundle osx
 antigen bundle vi-mode
 
 # Load the theme.
+#
+ZSH_THEME="powerlevel9k/powerlevel9k".
+
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 # antigen theme https://gist.github.com/3750104.git agnoster
@@ -74,7 +77,7 @@ function jira() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias vim="nvim"
+# alias vim="nvim"
 
 #Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -84,10 +87,9 @@ export TERM='xterm-256color'
 
 source ~/.local.zshrc
 export TERMINFO="$HOME/.terminfo"
-eval $(thefuck --alias)
 
-  antigen apply
-  export PATH="/usr/local/sbin:$PATH"
+antigen apply
+export PATH="/usr/local/sbin:$PATH"
 
 #Fix ctrl h
 #infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti

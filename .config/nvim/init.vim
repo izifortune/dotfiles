@@ -9,9 +9,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 " plugin on GitHub repo
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-fugitive'
-"Plug 'wincent/command-t'
-"Plug 'ctrlpvim/ctrlp.vim' " Fast file opening
-" Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
@@ -19,15 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'rking/ag.vim'
 Plug 'bling/vim-airline'
-"Plug 'unblevable/quick-scope'
-"Plug 'ervandew/supertab'
 Plug 'nathanaelkane/vim-indent-guides'
-"Plun 'pangloss/vim-javascript'
-" Plug 'maksimr/vim-jsbeautify'
-"Plug 'jlanzarotta/bufexplorer'
-" Plug 'jwhitley/vim-matchit', {'for': 'html'}
-"Plug 'terryma/vim-multiple-cursors'
-"Plug '0x0dea/vim-molasses'
 Plug 'tpope/vim-repeat' " Repeat last command with .
 Plug 'tpope/vim-unimpaired' " Additional paired mappings
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
@@ -37,16 +26,7 @@ Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript'  }
 Plug 'groenewege/vim-less', { 'for': 'less'  }
 Plug 'ap/vim-css-color', { 'for': 'css'  }
 Plug 'hail2u/vim-css3-syntax', { 'for': 'css'  }
-"Plug 'https://github.com/gorodinskiy/vim-coloresque.git'
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-notes'
-"Plug 'sickill/vim-monokai'
-"Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'nanotech/jellybeans.vim'
-"Plug 'tomasr/molokai'
-" Plug 'groenewege/vim-less'
-" Plug 'itchyny/calendar.vim'
-"Plug 'easymotion/vim-easymotion'
 Plug 'sjl/gundo.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
@@ -55,22 +35,16 @@ Plug 'millermedeiros/vim-esformatter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Quramy/tsuquyomi'
-" Plug 'Quramy/vim-js-pretty-template'
 Plug 'leafgarland/typescript-vim'
-" Plug 'jason0x43/vim-js-indent'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'Quramy/tsuquyomi'
 Plug 'neomake/neomake'
-" Plug 'mxw/vim-jsx'
-" Plug 'kassio/neoterm'
-" Plug 'jaawerth/neomake-local-eslint-first'
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'will133/vim-dirdiff'
 Plug 'sbdchd/neoformat'
 Plug 'jaawerth/nrun.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-obsession'
+Plug 'jason0x43/vim-tss', { 'for': [ 'typescript', 'javascript' ], 'do': 'npm install' }
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -355,57 +329,17 @@ nnoremap <leader>cd :cd %:p:h<CR>
 
 " Colorscheme
 " ===========
-set background=dark
+" set background=dark
 "colorscheme monokai
 " colorscheme jellybeans
-colorscheme base16-default-dark
 let base16colorspace=256
 
 "Remove visual delay
 set timeoutlen=1000 ttimeoutlen=0
 
 
-"sintastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
 
-" " let g:syntastic_always_populate_loc_list = 1
-" " let g:syntastic_auto_loc_list = 1
-" " let g:syntastic_check_on_open = 1
-" " let g:syntastic_check_on_wq = 0
-" " let g:syntastic_aggregate_errors = 1
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_loc_list_height = 5
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 1
-
-" "syntastic ignore
-" let g:syntastic_html_checkers=['']
-" let g:syntastic_less_checkers=['']
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_typescript_checkers=['tsc', 'tslint']
-" let g:syntastic_typescript_tsc_fname = ''
-
-" let g:syntastic_error_symbol = '❌'
-" let g:syntastic_style_error_symbol = '⁉️'
-" let g:syntastic_warning_symbol = '⚠️'
-" let g:syntastic_style_warning_symbol = '💩'
-
-" highlight link SyntasticErrorSign SignColumn
-" highlight link SyntasticWarningSign SignColumn
-" highlight link SyntasticStyleErrorSign SignColumn
-" highlight link SyntasticStyleWarningSign SignColumn
-
-
-" let g:syntastic_enable_signs=1     " enables error reporting in the gutter
-" let g:syntastic_auto_loc_list=1    " when there are errors, show the quickfix window that lists those errors
-
-
-"command-t
-"let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor|bower_components|build|reports)|(\.(swp|ico|git|svn))$'
-
+" Shortcuts
 map <leader>ff :Ag 
 set pastetoggle=<leader>sp
 set expandtab
@@ -451,16 +385,12 @@ set listchars=tab:▸\ ,eol:¬"
 :set diffopt+=vertical
 
 " Enable the list of buffers
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 "
 " " Show just the filename
-" let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#fnamemod = ':t'
 nmap <leader>cs :let @*=expand("%")<CR>
 nmap <leader>cl :let @*=expand("%:p")<CR>)
-
-" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-" nnoremap <leader>sc :SyntasticCheck<CR>
-" set autoread
 
 " Rename tabs to show tab number.
 " (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
@@ -607,19 +537,20 @@ vnoremap <silent> <leader>es :EsformatterVisual<CR>
 nmap <C-p> :FZF<CR>
 nmap <C-g> :GitFiles<CR>
 
+" Neomake
 " if !exists("g:ycm_semantic_triggers")
 "   let g:ycm_semantic_triggers = {}
 " endif
 " let g:ycm_semantic_triggers['typescript'] = ['.']
-let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
-let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
-let g:neomake_typescript_tslint_exe = nrun#Which('tslint')
-let g:neomake_typescript_enabled_makers = ['tslint']
+" let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
+" let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
+" let g:neomake_typescript_tslint_exe = nrun#Which('tslint')
+" let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_scss_enabled_makers = ['stylelint']
 
-autocmd BufWritePost *.js Neomake
-autocmd BufWritePost *.ts Neomake
+autocmd! BufWritePost * Neomake
+
 
 let g:neomake_error_symbol = '❌'
 let g:neomake_style_error_symbol = '⁉️'
@@ -699,10 +630,15 @@ let g:elm_format_autosave = 1
 
 "Calculation
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-let g:neoformat_javascript_nprettier = {
+let g:neoformat_javascript_singlepretty = {
       \ 'exe': 'prettier',
       \ 'args': ['--single-quote'],
-      \ 'replace': 1,
       \ }
-let g:neoformat_enabled_javascript = ['nprettier']
-" autocmd BufWritePre *.js Neoformat
+let g:neoformat_typescript_singlepretty = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--single-quote'],
+      \ }
+let g:neoformat_enabled_javascript = ['singlepretty']
+let g:neoformat_enabled_typescript = ['singlepretty']
+
+colorscheme base16-default-dark

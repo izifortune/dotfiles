@@ -19,7 +19,6 @@ gawk
 git
 gpg-agent
 gpgme
-gradle
 graphicsmagick
 highlight
 htop-osx
@@ -43,14 +42,12 @@ md5sha1sum
 media-info
 mtr
 ncdu
-neovim/neovim/neovim
 ntfs-3g
 pandoc
 perl
 pidcat
 poppler
 pv
-python3
 ranger
 reattach-to-user-namespace
 rename
@@ -74,10 +71,8 @@ vim
 w3m
 watchman
 wget
-wine
 yadm
 yarn
 youtube-dl
 z
 zopfli
-zsh
