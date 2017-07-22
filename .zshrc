@@ -46,7 +46,7 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR='nvim'
+export EDITOR='vim'
 
 COMPLETION_WAITING_DOTS="true"
 
@@ -77,7 +77,7 @@ function jira() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias vim="nvim"
+# alias vim="nvim"
 
 #Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
