@@ -34,7 +34,7 @@ Plug 'skwp/greplace.vim'
 Plug 'millermedeiros/vim-esformatter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Quramy/tsuquyomi'
+" Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'neomake/neomake'
@@ -44,7 +44,10 @@ Plug 'jaawerth/nrun.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tpope/vim-obsession'
-Plug 'jason0x43/vim-tss', { 'for': [ 'typescript', 'javascript' ], 'do': 'npm install' }
+" Plug 'jason0x43/vim-tss', { 'for': [ 'typescript', 'javascript' ], 'do': 'npm install' }
+Plug 'benmills/vimux'
+Plug 'mhartington/nvim-typescript'
+Plug 'takac/vim-hardtime'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -542,11 +545,11 @@ nmap <C-g> :GitFiles<CR>
 "   let g:ycm_semantic_triggers = {}
 " endif
 " let g:ycm_semantic_triggers['typescript'] = ['.']
-" let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
+let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
 " let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
 " let g:neomake_typescript_tslint_exe = nrun#Which('tslint')
 " let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint' ]
 let g:neomake_scss_enabled_makers = ['stylelint']
 
 autocmd! BufWritePost * Neomake
@@ -577,7 +580,7 @@ imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --sho
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1 
+" let g:deoplete#file#enable_buffer_path = 1 
 "
 " use tab to forward cycle
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
@@ -585,15 +588,11 @@ inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
 
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
 " let g:deoplete#disable_auto_complete = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
@@ -619,7 +618,7 @@ command FormatJSON call s:formatJSON()
 :nnoremap <A-l> <C-w>l
 
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " " use tab to forward cycle
 " inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -640,5 +639,13 @@ let g:neoformat_typescript_singlepretty = {
       \ }
 let g:neoformat_enabled_javascript = ['singlepretty']
 let g:neoformat_enabled_typescript = ['singlepretty']
+
+" let g:tsuquyomi_completion_detail = 1
+" autocmd FileType typescript setlocal completeopt+=menu,preview
+" autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+"
+let g:hardtime_default_on = 1
+" let g:hardtime_showmsg = 1
+let g:hardtime_maxcount = 2
 
 colorscheme base16-default-dark
