@@ -47,7 +47,13 @@ Plug 'tpope/vim-obsession'
 " Plug 'jason0x43/vim-tss', { 'for': [ 'typescript', 'javascript' ], 'do': 'npm install' }
 Plug 'benmills/vimux'
 Plug 'mhartington/nvim-typescript'
+" Plug 'Quramy/tsuquyomi'
 Plug 'takac/vim-hardtime'
+Plug 'Shougo/echodoc.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'othree/jspc.vim'
+Plug 'elzr/vim-json'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -649,3 +655,5 @@ let g:hardtime_default_on = 1
 let g:hardtime_maxcount = 2
 
 colorscheme base16-default-dark
+
+" autocmd FileType typescript setlocal completeopt+=menu,preview
