@@ -76,7 +76,6 @@ function jira() {
   open "https://jira.ryanair.com:8443/browse/$1?filter=12755"
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # alias vim="nvim"
 
 #Neovim true color support
@@ -111,3 +110,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 source ~/.aliases
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -61,3 +61,19 @@ git clone https://github.com/dsanson/hs.tiling $HOME/.hammerspoon/hs/tiling
 
 cat brew.list | xargs brew install
 brew cleanup
+
+#Fish shell
+brew install fontconfig
+cp /usr/local/etc/fonts/fonts.conf.bak /usr/local/etc/fonts/fonts.conf
+git clone https://github.com/powerline/fonts.git
+./fonts/install.sh
+brew install fish --HEAD
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
+brew install --with-default-names gnu-sed
+fisher z
+fisher edc/bass
+fisher cprintf
+fisher fzf
+brew install grc; fisher grc

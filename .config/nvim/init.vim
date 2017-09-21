@@ -4,59 +4,66 @@ set autoread " Detect file changes outside vim
 call plug#begin('~/.local/share/nvim/plugged')
 " call plug#begin('~/.vim/plugged')
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+Plug 'tomtom/tcomment_vim'
 Plug 'chriskempson/base16-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-commentary'
-" Plug 'Raimondi/delimitMate' " Auto insert paired characters
 Plug 'jiangmiao/auto-pairs'
-"Plug 'rking/ag.vim'
-Plug 'bling/vim-airline'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tpope/vim-repeat' " Repeat last command with .
-Plug 'tpope/vim-unimpaired' " Additional paired mappings
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript'  }
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript'  }
-Plug 'groenewege/vim-less', { 'for': 'less'  }
-Plug 'ap/vim-css-color', { 'for': 'css'  }
-Plug 'hail2u/vim-css3-syntax', { 'for': 'css'  }
-Plug 'nanotech/jellybeans.vim'
-Plug 'sjl/gundo.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neoinclude.vim'
 Plug 'skwp/greplace.vim'
-Plug 'millermedeiros/vim-esformatter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'Quramy/tsuquyomi'
-Plug 'leafgarland/typescript-vim'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'neomake/neomake'
-Plug 'will133/vim-dirdiff'
-Plug 'sbdchd/neoformat'
-Plug 'jaawerth/nrun.vim'
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'tpope/vim-obsession'
-" Plug 'jason0x43/vim-tss', { 'for': [ 'typescript', 'javascript' ], 'do': 'npm install' }
-Plug 'benmills/vimux'
+Plug 'ternjs/tern_for_vim', { 'for': 'js' }
+Plug 'Shougo/deoplete.nvim'
 Plug 'mhartington/nvim-typescript'
-" Plug 'Quramy/tsuquyomi'
-Plug 'takac/vim-hardtime'
-Plug 'Shougo/echodoc.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'othree/jspc.vim'
-Plug 'elzr/vim-json'
+Plug 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call plug#end()
+
+" absolute width of netrw window
+let g:netrw_winsize = -28
+
+" tree-view
+let g:netrw_liststyle = 3
+
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+
+" Leader C is the prefix for code related mappîngs 
+noremap <silent> <Leader>cc :Tcomment<CR>
+
+set background=dark
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lightline
+
+" let g:lightline = { 'colorscheme': 'base16-default-dark', }               "vim-lightline
+set laststatus=2                                                "vim-lightline
+set noshowmode                                                  "vim-lightline
+
+"Tabularize
+vnoremap <silent> <Leader>cee    :Tabularize /=<CR>              "tabular
+vnoremap <silent> <Leader>cet    :Tabularize /#<CR>              "tabular
+vnoremap <silent> <Leader>ce     :Tabularize /
+"
+" make backspaces delete sensibly
+set backspace=indent,eol,start
+
+set autowrite
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set smartcase
+set ignorecase
+set backupdir=~/.vim/tmp/                   " for the backup files
+set directory=~/.vim/tmp/                   " for the swap files
+
+inoremap jj <ESC>
 
 set hidden " Some kind of buffer tweak
 set history=1000
@@ -65,7 +72,6 @@ set title " Set title of the window
 set clipboard=unnamed " Use OS clipboard
 set encoding=utf-8
 set mouse=a
-set backspace=indent,eol,start
 set lazyredraw
 set ttyfast
 set showmatch " Highlight matching pair
@@ -74,51 +80,27 @@ set nowritebackup
 set noswapfile
 set listchars=eol:¬
 set visualbell " No noise just flash
-
-" Syntax highlighting
-" ===================
-" filetype on
-" filetype plugin on
-" filetype indent on
-" set t_Co=256"
-
-" let mapleader = ","
-" let g:mapleader = ","
-
-set so=7
+set hlsearch
+set incsearch
+set magic
+set showmatch
+"Remove visual delay
+set timeoutlen=1000 ttimeoutlen=0
 
 set wildmenu
 set ruler
-
-set cmdheight=2
-
-set hid
-
-set ignorecase
-set hlsearch
-set incsearch
-set lazyredraw
-set magic
-set showmatch
-
+set ai "Auto indent
+set si "Smart indent
 set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
 
-set foldcolumn=1
-
 syntax enable
 
-set background=dark
-
-set encoding=utf8
 set ffs=unix,dos,mac
 
-set nobackup
-set nowb
-set noswapfile
-
+"To check
 set expandtab
 set smarttab
 set shiftwidth=2
@@ -128,8 +110,10 @@ set lbr
 set tw=500
 set ai "Auto indent
 set si "Smart indent
-set nowrap "Wrap lines
 
+set pastetoggle=<leader>sp
+set shiftwidth=2
+set softtabstop=2
 
 " Visual tweaks
 " =============
@@ -138,19 +122,16 @@ set relativenumber
 set colorcolumn=80
 set nowrap
 set linebreak
+set diffopt+=vertical
 
-"Folding
-" =======
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+vnoremap > ><CR>gv 
+vnoremap < <<CR>gv 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
@@ -192,13 +173,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
-
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -207,28 +181,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -243,67 +195,6 @@ map <leader>sa zg
 map <leader>s? z=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CmdLine(str)
-  exe "menu Foo.Bar :" . a:str
-  emenu Foo.Bar
-  unmenu Foo
-endfunction 
-
-function! VisualSelection(direction, extra_filter) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-
-  let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-  if a:direction == 'b'
-    execute "normal ?" . l:pattern . "^M"
-  elseif a:direction == 'gv'
-    call CmdLine("Ack \"" . l:pattern . "\" " )
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  elseif a:direction == 'f'
-    execute "normal /" . l:pattern . "^M"
-  endif
-
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
-
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-  if &paste
-    return 'PASTE MODE  '
-  endif
-  return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
-
-  if buflisted(l:alternateBufNum)
-    buffer #
-  else
-    bnext
-  endif
-
-  if bufnr("%") == l:currentBufNum
-    new
-  endif
-
-  if buflisted(l:currentBufNum)
-    execute("bdelete! ".l:currentBufNum)
-  endif
-endfunction
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on 
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -313,47 +204,17 @@ try
 catch
 endtry
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"backspace
-set backspace=2
-
-
 ""PLUGINS
 map <leader>nn :Explore<cr>
-" map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :Vexplore<cr>
 nnoremap <leader>cd :cd %:p:h<CR>
 
-
-
-""MINE
-"colorscheme monokai
-" Base16
-" ======
-"let g:base16colorspace=256
-
-" Colorscheme
-" ===========
-" set background=dark
-"colorscheme monokai
-" colorscheme jellybeans
 let base16colorspace=256
-
-"Remove visual delay
-set timeoutlen=1000 ttimeoutlen=0
-
-
+colorscheme base16-default-dark
 
 " Shortcuts
 map <leader>ff :Ag 
-set pastetoggle=<leader>sp
-set expandtab
-set shiftwidth=2
-set softtabstop=2
+map <leader>ff :grep 
 map <leader>ch :lclose<CR>
 map <leader>oh :lopen<CR>
 nnoremap <leader>gs :Gstatus<CR>
@@ -372,199 +233,20 @@ nnoremap <leader>go :Git checkout<Space>
 nnoremap <leader>gps :Dispatch! git push<CR>
 nnoremap <leader>gpl :Dispatch! git pull<CR>
 
-"Indent guide
-hi IndentGuidesOdd  ctermbg=gray
-
-"markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-"
-" " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬"
-
 "keep indend on paste
 ":nnoremap p p`[v`]=`]`
-:nnoremap <leader>np p
-:nnoremap p p=`]
-"
-:let g:notes_directories = ['~/Google Drive/VimNotes']
-:let g:notes_suffix = '.txt'
-:set diffopt+=vertical
+nnoremap <leader>np p
+nnoremap p p=`]
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-"
-" " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-nmap <leader>cs :let @*=expand("%")<CR>
-nmap <leader>cl :let @*=expand("%:p")<CR>)
-
-" Rename tabs to show tab number.
-" (Based on http://stackoverflow.com/questions/5927952/whats-implementation-of-vims-default-tabline-function)
-if exists("+showtabline")
-  function! MyTabLine()
-    let s = ''
-    let wn = ''
-    let t = tabpagenr()
-    let i = 1
-    while i <= tabpagenr('$')
-      let buflist = tabpagebuflist(i)
-      let winnr = tabpagewinnr(i)
-      let s .= '%' . i . 'T'
-      let s .= (i == t ? '%1*' : '%2*')
-      let s .= ' '
-      let wn = tabpagewinnr(i,'$')
-
-      let s .= '%#TabNum#'
-      let s .= i
-      " let s .= '%*'
-      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-      let bufnr = buflist[winnr - 1]
-      let file = bufname(bufnr)
-      let buftype = getbufvar(bufnr, 'buftype')
-      if buftype == 'nofile'
-        if file =~ '\/.'
-          let file = substitute(file, '.*\/\ze.', '', '')
-        endif
-      else
-        let file = fnamemodify(file, ':p:t')
-      endif
-      if file == ''
-        let file = '[No Name]'
-      endif
-      let s .= ' ' . file . ' '
-      let i = i + 1
-    endwhile
-    let s .= '%T%#TabLineFill#%='
-    let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-    return s
-  endfunction
-  set stal=2
-  set tabline=%!MyTabLine()
-  set showtabline=1
-  highlight link TabNum Special
-endif
-
-"Saner command line history
-cnoremap <c-n>  <down>
-cnoremap <c-p>  <up>
-
-"Don't lose selection
-xnoremap <  <gv
-xnoremap >  >gv
-
-
-if !exists('g:loaded_matchit')
-  runtime macros/matchit.vim
-endif
 
 nnoremap <F6> :GundoToggle<CR>
 nmap <silent> <c-w>> :vertical resize +10<CR>
 nmap <silent> <c-w>< :vertical resize -10<CR>
 
-:set wrap
-:set linebreak
-:set nolist  " list disables linebreak
-:set textwidth=0
-:set wrapmargin=0
-
-
-" .vim/plugin/qfdo.vim
-" Run a command on each line in the Quickfix buffer.
-" Qfdo! uses the location list instead.
-" Author: Christian Brabandt
-" Author: Douglas
-" See: http://vim.1045645.n5.nabble.com/execute-command-in-vim-grep-results-td3236900.html
-" See: http://efiquest.org/2009-02-19/32/
-" Usage:
-"     :Qfdo s#this#that#
-"     :Qfdo! s#this#that#
-"     :Qfdofile %s#this#that#
-"     :Qfdofile! %s#this#that#
-
-" Christian Brabandt runs the command on each *file*
-" I have mapped Qfdo to line-by-line below
-function! QFDo(bang, command)
-  let qflist={}
-  if a:bang
-    let tlist=map(getloclist(0), 'get(v:val, ''bufnr'')')
-  else
-    let tlist=map(getqflist(), 'get(v:val, ''bufnr'')')
-  endif
-  if empty(tlist)
-    echomsg "Empty Quickfixlist. Aborting"
-    return
-  endif
-  for nr in tlist
-    let item=fnameescape(bufname(nr))
-    if !get(qflist, item,0)
-      let qflist[item]=1
-    endif
-  endfor
-  execute 'argl ' .join(keys(qflist))
-  execute 'argdo ' . a:command
-endfunction
-
-" Run the command on each *line* in the Quickfix buffer (or location list)
-" My own crack at it, based on Pavel Shevaev on efiquest
-function! QFDo_each_line(bang, command)
-  try
-    if a:bang
-      silent lrewind
-    else
-      silent crewind
-    endif
-    while 1
-      echo bufname("%") line(".")
-      execute a:command
-      if a:bang
-        silent lnext
-      else
-        silent cnext
-      endif
-    endwhile
-  catch /^Vim\%((\a\+)\)\=:E\%(553\|42\):/
-  endtry
-endfunction
-
-command! -nargs=1 -bang Qfdo :call QFDo_each_line(<bang>0,<q-args>)
-command! -nargs=1 -bang Qfdofile :call QFDo(<bang>0,<q-args>)
-
-map <leader>sr :Qfdo
-
 set grepprg=ag
-
-let g:grep_cmd_opts = '--line-numbers --noheading'
-"":%!python -m json.tool
-map <leader>jb :call JsBeautify()<cr>
-" will run esformatter after pressing <leader> followed by the 'e' and 's' keys
-nnoremap <silent> <leader>es :Esformatter<CR>
-vnoremap <silent> <leader>es :EsformatterVisual<CR>
 
 nmap <C-p> :FZF<CR>
 nmap <C-g> :GitFiles<CR>
-
-" Neomake
-" if !exists("g:ycm_semantic_triggers")
-"   let g:ycm_semantic_triggers = {}
-" endif
-" let g:ycm_semantic_triggers['typescript'] = ['.']
-let g:neomake_javascript_eslint_exe = nrun#Which('eslint')
-" let b:neomake_scss_stylelint_exe = nrun#Which('stylelint')
-" let g:neomake_typescript_tslint_exe = nrun#Which('tslint')
-" let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
-let g:neomake_javascript_enabled_makers = ['eslint' ]
-let g:neomake_scss_enabled_makers = ['stylelint']
-
-autocmd! BufWritePost * Neomake
-
-
-let g:neomake_error_symbol = '❌'
-let g:neomake_style_error_symbol = '⁉️'
-let g:neomake_warning_symbol = '⚠️'
-let g:neomake_style_warning_symbol = '💩'
 
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -583,25 +265,6 @@ nnoremap <silent> <leader>p :Buffers<cr>
 nnoremap <silent> <leader>Sp :History<cr>
 imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-let g:deoplete#enable_at_startup = 1
-" let g:deoplete#file#enable_buffer_path = 1 
-"
-" use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-" use tab to backward cycle
-inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-
-
-" let g:deoplete#disable_auto_complete = 1
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-"
-" deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
 function s:formatJSON()
   execute "%!python -m json.tool"
   set syntax=json
@@ -609,51 +272,58 @@ endfunction
 
 command FormatJSON call s:formatJSON()
 
-" if executable('rg')
-"   set grepprg=rg\ --no-heading\ --vimgrep
-"   set grepformat=%f:%l:%c:%m
-" endif
+autocmd FileType typescript setlocal completeopt+=menu,preview
 
-:tnoremap <A-h> <C-\><C-n><C-w>h
-:tnoremap <A-j> <C-\><C-n><C-w>j
-:tnoremap <A-k> <C-\><C-n><C-w>k
-:tnoremap <A-l> <C-\><C-n><C-w>l
+"Cursor
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+
+"""""""""""""""""
+" Tern settings
+"""""""""""""""""
+let g:tern_show_argument_hints='on_hold'
+" and 
+let g:tern_map_keys=1
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
 :nnoremap <A-h> <C-w>h
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
 
-" deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" use tab to forward cycle
+inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" use tab to backward cycle
+inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
-" " use tab to forward cycle
-" inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" " use tab to backward cycle
-" inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-"
-let g:elm_format_autosave = 1
+" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
+let g:ale_linters = {
+\    'typescript': ['tslint', 'tsserver'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'remove_trailing_lines'],
+\   'typescript': ['remove_trailing_lines']
+\}
 
-"Calculation
-ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-let g:neoformat_javascript_singlepretty = {
-      \ 'exe': 'prettier',
-      \ 'args': ['--single-quote'],
-      \ }
-let g:neoformat_typescript_singlepretty = {
-      \ 'exe': 'prettier',
-      \ 'args': ['--single-quote'],
-      \ }
-let g:neoformat_enabled_javascript = ['singlepretty']
-let g:neoformat_enabled_typescript = ['singlepretty']
-
-" let g:tsuquyomi_completion_detail = 1
-" autocmd FileType typescript setlocal completeopt+=menu,preview
-" autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
-"
-let g:hardtime_default_on = 1
-" let g:hardtime_showmsg = 1
-let g:hardtime_maxcount = 2
-
-colorscheme base16-default-dark
-
-" autocmd FileType typescript setlocal completeopt+=menu,preview
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+let g:ale_fix_on_save = 1
