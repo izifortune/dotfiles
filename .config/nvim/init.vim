@@ -104,7 +104,7 @@ set ffs=unix,dos,mac
 set expandtab
 set smarttab
 set shiftwidth=2
-set tabstop=4
+set tabstop=2
 
 set lbr
 set tw=500
@@ -327,3 +327,8 @@ let g:ale_fixers = {
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
 let g:ale_fix_on_save = 1
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
