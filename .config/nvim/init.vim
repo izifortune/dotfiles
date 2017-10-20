@@ -1,5 +1,16 @@
 set nocompatible " No VI compatibility
 set autoread " Detect file changes outside vim
+
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
 "
 call plug#begin('~/.local/share/nvim/plugged')
 " call plug#begin('~/.vim/plugged')
@@ -22,6 +33,10 @@ Plug 'ternjs/tern_for_vim', { 'for': 'js' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'mhartington/nvim-typescript'
 Plug 'w0rp/ale'
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -338,3 +353,15 @@ inoremap . .<c-g>u
 inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 inoremap , ,<c-g>u
+
+" Fzf preview window ?
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger = "<leader>s"
+let g:UltiSnipsJumpForwardTrigger = "<leader>sn"
+let g:UltiSnipsJumpBackwardTrigger="<leader>sb"
