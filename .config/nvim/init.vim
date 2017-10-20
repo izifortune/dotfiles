@@ -229,7 +229,7 @@ colorscheme base16-default-dark
 
 " Shortcuts
 map <leader>ff :Ag 
-map <leader>ff :grep 
+" map <leader>ff :grep 
 map <leader>ch :lclose<CR>
 map <leader>oh :lopen<CR>
 nnoremap <leader>gs :Gstatus<CR>
@@ -333,6 +333,7 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 let g:deoplete#enable_at_startup = 1
 let g:ale_linters = {
 \    'typescript': ['tslint', 'tsserver'],
+\    'html': []
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'remove_trailing_lines'],
