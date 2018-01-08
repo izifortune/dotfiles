@@ -37,6 +37,7 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
+Plug 'christoomey/vim-tmux-navigator'
 
 
 " All of your Plugins must be added before the following line
