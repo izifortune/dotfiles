@@ -1,4 +1,3 @@
-set nocompatible " No VI compatibility
 set autoread " Detect file changes outside vim
 
 function! BuildComposer(info)
@@ -29,7 +28,7 @@ Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ternjs/tern_for_vim', { 'for': 'js' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'mhartington/nvim-typescript'
 Plug 'w0rp/ale'
@@ -37,6 +36,7 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
+Plug 'ujihisa/neco-look'
 
 
 " All of your Plugins must be added before the following line
@@ -95,7 +95,6 @@ set nobackup " Disable swapfiles
 set nowritebackup
 set noswapfile
 set listchars=eol:¬
-set visualbell " No noise just flash
 set hlsearch
 set incsearch
 set magic
@@ -105,14 +104,12 @@ set timeoutlen=1000 ttimeoutlen=0
 
 set wildmenu
 set ruler
-set ai "Auto indent
-set si "Smart indent
+set autoindent "Auto indent
+filetype plugin indent on
 set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-syntax enable
 
 set ffs=unix,dos,mac
 
@@ -120,7 +117,6 @@ set ffs=unix,dos,mac
 set expandtab
 set smarttab
 set shiftwidth=2
-set tabstop=2
 
 set lbr
 set tw=500
@@ -128,7 +124,6 @@ set ai "Auto indent
 set si "Smart indent
 
 set pastetoggle=<leader>sp
-set shiftwidth=2
 set softtabstop=2
 
 " Visual tweaks
@@ -150,31 +145,31 @@ vnoremap > ><CR>gv
 vnoremap < <<CR>gv 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+noremap <space> /
+noremap <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+noremap <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+noremap <leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+noremap <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove
+noremap <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -184,10 +179,10 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -202,13 +197,13 @@ set viminfo^=%
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+noremap <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on 
@@ -229,10 +224,10 @@ let base16colorspace=256
 colorscheme base16-default-dark
 
 " Shortcuts
-map <leader>ff :Ag 
+noremap <leader>ff :Ag 
 " map <leader>ff :grep 
-map <leader>ch :lclose<CR>
-map <leader>oh :lopen<CR>
+noremap <leader>ch :lclose<CR>
+noremap <leader>oh :lopen<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>ga :Gcommit --amend<CR>
@@ -290,20 +285,6 @@ command FormatJSON call s:formatJSON()
 
 autocmd FileType typescript setlocal completeopt+=menu,preview
 
-"Cursor
-
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-
 """""""""""""""""
 " Tern settings
 """""""""""""""""
@@ -312,22 +293,22 @@ let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove
+noremap <leader>t<leader> :tabnext
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
 
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 " use tab to forward cycle
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
@@ -348,11 +329,6 @@ let g:ale_fixers = {
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
 let g:ale_fix_on_save = 1
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set shiftwidth=2
-set softtabstop=2
 
 " Smaller undo
 inoremap . .<c-g>u
@@ -374,3 +350,11 @@ let g:UltiSnipsJumpBackwardTrigger="<leader>sb"
 
 set synmaxcol=128
 syntax sync minlines=256
+let g:deoplete#auto_complete_delay=150
+set foldmethod=indent
+set foldlevel=99
+" Max width md files
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+nnoremap n nzz
+nnoremap N Nzz

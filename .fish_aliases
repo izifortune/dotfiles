@@ -184,6 +184,6 @@ alias gunwip='git log -n 1 | grep -q -c wip; and git reset HEAD~1'
 
 alias gollum="sudo docker run -d -p 80:4567 -e USERNAME=$USERNAME_GOLLUM -e PASSWORD=$PASSWORD_GOLLUM -v ~/OneDrive\ -\ Ryanair\ Ltd/wiki/:/root/wikidata test"
 alias gollum2="sudo docker run -d -p 80:4567 -e USERNAME=$USERNAME_GOLLUM -e PASSWORD=$PASSWORD_GOLLUM -v ~/OneDrive\ -\ Ryanair\ Ltd/wiki/:/root/wikidata suttang/gollum --allow-uploads --live-preview --config ./auth.rb"
-alias gollum3="sudo docker run -d -p 80:4567 -e USERNAME=admin -e PASSWORD=corto -v ~/OneDrive\ -\ Ryanair\ Ltd/wiki/:/root/wikidata test --allow-uploads --live-preview"
+alias gollum3="sudo docker run -d -p 80:4567 -e USERNAME=admin -e PASSWORD=corto -v ~/OneDrive\ -\ Ryanair\ Ltd/wiki/:/root/wikidata izifortune/docker-gollum-basic-auth --allow-uploads --live-preview"
 alias spotlight_stop="sudo mdutil -a -i off"
 alias spotlight_start="sudo mdutil -a -i on"
