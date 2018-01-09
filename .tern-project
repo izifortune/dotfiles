@@ -1,0 +1,16 @@
+ {
+   "libs": [
+     "browser",
+     "jquery",
+     "react",
+     "ecma5",
+     "ecma6"
+   ],
+   "plugins": {
+       "doc_comment": null,
+       "angular": {},
+       "node": {},
+       "es_modules": {}
+   },
+   "ecmaVersion": 6
+ }
