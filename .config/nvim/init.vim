@@ -32,13 +32,14 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'mhartington/nvim-typescript'
 Plug 'w0rp/ale'
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+" Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'ujihisa/neco-look'
 Plug 'christoomey/vim-tmux-navigator'
-
+Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -376,3 +377,10 @@ function! LoadMainNodeModule(fname)
 endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
+
+au! BufRead,BufNewFile *.markdown set filetype=mkd
+au! BufRead,BufNewFile *.md       set filetype=mkd
+
+autocmd VimEnter *
+      \ command! -bang -nargs=* Ag
+      \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-a:select-all,ctrl-d:deselect-all' }, <bang>0)
