@@ -28,7 +28,7 @@ Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'mhartington/nvim-typescript'
 Plug 'w0rp/ale'
