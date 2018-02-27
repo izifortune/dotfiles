@@ -40,6 +40,8 @@ Plug 'ujihisa/neco-look'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
+Plug 'airblade/vim-gitgutter'
+Plug 'jparise/vim-graphql'
 
 " All of your Plugins must be added before the following line
 call plug#end()
