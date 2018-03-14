@@ -42,6 +42,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
 Plug 'airblade/vim-gitgutter'
 Plug 'jparise/vim-graphql'
+Plug 'aquach/vim-http-client'
 
 " All of your Plugins must be added before the following line
 call plug#end()
