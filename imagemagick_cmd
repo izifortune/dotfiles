@@ -1,0 +1,4 @@
+// crop
+mogrify -resize 2280x734^ -gravity center -crop 2280x734+0+0 chulann@2.jpg
+
+

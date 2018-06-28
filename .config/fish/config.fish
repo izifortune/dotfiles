@@ -26,6 +26,7 @@ function toggle_proxy
 end
 
 set -gx PATH ~/Library/Python/2.7/bin $PATH
+set -gx PATH ~/Library/Python/3.6/bin $PATH
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -38,17 +39,26 @@ set -g fish_user_paths "/usr/local/opt/mozjpeg/bin" $fish_user_paths
 
 function img_size_folder
   mkdir $argv[1]
-  cp *.$argv[3] $argv[1]
+  cp $argv[2] $argv[1]
   cd $argv[1]
-  mogrify -resize $argv[2] *.$argv[3]
-  imageOptim --directory ./
+  # mogrify -resize $argv[1]x$argv[2]^ -gravity $argv[4] -crop $argv[1]x$argv[2]+0+600 $argv[3]
+  mogrify -resize $argv[1] $argv[2]
+  # imageOptim --directory ./
   cd ..
 end
 
 function create_image_sizes
-  img_size_folder 1920 1920 $argv[1]
-  img_size_folder 1440 1440 $argv[1]
-  img_size_folder 1024 1024 $argv[1]
-  img_size_folder 450 450 $argv[1]
-  img_size_folder 42 42 $argv[1]
+  img_size_folder 1920 367 $argv[1] $argv[2]
+  img_size_folder 1440 367 $argv[1] $argv[2]
+  img_size_folder 1024 367 $argv[1] $argv[2]
+  img_size_folder 450 210 $argv[1] $argv[2]
+  img_size_folder 42 42 $argv[1] $argv[2]
+end
+
+function create_image_sizes_2
+  img_size_folder 1140 $argv[1]
+  img_size_folder 2280 $argv[1]
+  img_size_folder 1024 $argv[1]
+  img_size_folder 450 $argv[1]
+  img_size_folder 42 $argv[1]
 end
