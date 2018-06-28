@@ -32,7 +32,7 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/deoplete.nvim'
 Plug 'mhartington/nvim-typescript'
 Plug 'w0rp/ale'
-" Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -328,12 +328,13 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'remove_trailing_lines'],
-\   'typescript': ['remove_trailing_lines']
+\   'typescript': ['tslint', 'remove_trailing_lines']
 \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'normal'
 
 " Smaller undo
 inoremap . .<c-g>u
@@ -386,4 +387,4 @@ au! BufRead,BufNewFile *.md       set filetype=mkd
 
 autocmd VimEnter *
       \ command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-a:select-all,ctrl-d:deselect-all' }, <bang>0)
+      \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-s:select-all,ctrl-d:deselect-all' }, <bang>0)
