@@ -43,6 +43,7 @@ Plug 'reedes/vim-pencil'
 Plug 'airblade/vim-gitgutter'
 Plug 'jparise/vim-graphql'
 Plug 'aquach/vim-http-client'
+Plug 'https://github.com/Alok/notational-fzf-vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -322,13 +323,19 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
+
+let g:ale_javascript_prettier_use_global = 1
+let g:ale_javascript_prettier_options = '--single-quote'
+
+let g:ale_javascript_prettier_eslint_use_global = 1
+let g:ale_javascript_prettier_eslint_options = '--single-quote'
 let g:ale_linters = {
 \    'typescript': ['tslint', 'tsserver'],
 \    'html': []
 \}
 let g:ale_fixers = {
-\   'javascript': ['eslint', 'remove_trailing_lines'],
-\   'typescript': ['tslint', 'remove_trailing_lines']
+\   'javascript': ['eslint', 'prettier-eslint', 'remove_trailing_lines'],
+\   'typescript': ['tslint', 'prettier', 'remove_trailing_lines']
 \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
@@ -388,3 +395,9 @@ au! BufRead,BufNewFile *.md       set filetype=mkd
 autocmd VimEnter *
       \ command! -bang -nargs=* Ag
       \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-s:select-all,ctrl-d:deselect-all' }, <bang>0)
+
+
+" NV search paths for note taking
+let g:nv_search_paths = ['~/wiki', '~/writing', 'docs.md' , './notes.md', '~/OneDrive - Ryanair Ltd/wiki']
+
+let vim_markdown_preview_hotkey='<C-m>'
