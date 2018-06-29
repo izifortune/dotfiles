@@ -28,9 +28,9 @@ Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/deoplete.nvim'
-Plug 'mhartington/nvim-typescript'
 Plug 'w0rp/ale'
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'SirVer/ultisnips'
