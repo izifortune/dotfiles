@@ -30,7 +30,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': 'npm i -g neovim eslint prettier prettier-eslint' }
 Plug 'w0rp/ale'
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'SirVer/ultisnips'
@@ -44,6 +44,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jparise/vim-graphql'
 Plug 'aquach/vim-http-client'
 Plug 'https://github.com/Alok/notational-fzf-vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'janko-m/vim-test'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -401,3 +403,14 @@ autocmd VimEnter *
 let g:nv_search_paths = ['~/wiki', '~/writing', 'docs.md' , './notes.md', '~/OneDrive - Ryanair Ltd/wiki']
 
 let vim_markdown_preview_hotkey='<C-m>'
+
+" Pyenv
+" let g:python_host_prog = '/Users/fortune/.pyenv/versions/2.7.11/bin/python'
+" let g:python3_host_prog = '/Users/fortune/.pyenv/versions/3.6.6/bin/python'
+"
+" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>

@@ -64,3 +64,5 @@ function create_image_sizes_2
   img_size_folder 450 $argv[1]
   img_size_folder 42 $argv[1]
 end
+
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
