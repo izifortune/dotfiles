@@ -327,19 +327,19 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 
-let g:ale_javascript_prettier_use_global = 1
-let g:ale_javascript_prettier_options = '--single-quote'
-
-let g:ale_javascript_prettier_eslint_use_global = 1
-let g:ale_javascript_prettier_eslint_options = '--single-quote'
-let g:ale_linters = {
-\    'typescript': ['tslint', 'tsserver'],
-\    'html': []
-\}
-let g:ale_fixers = {
-\   'javascript': ['eslint', 'prettier-eslint', 'remove_trailing_lines'],
-\   'typescript': ['tslint', 'prettier', 'remove_trailing_lines']
-\}
+" let g:ale_javascript_prettier_use_global = 1
+" let g:ale_javascript_prettier_options = '--single-quote'
+"
+" let g:ale_javascript_prettier_eslint_use_global = 1
+" let g:ale_javascript_prettier_eslint_options = '--single-quote'
+" let g:ale_linters = {
+" \    'typescript': ['tslint', 'tsserver'],
+" \    'html': []
+" \}
+" let g:ale_fixers = {
+" \   'javascript': ['eslint', 'prettier-eslint', 'remove_trailing_lines'],
+" \   'typescript': ['tslint', 'prettier', 'remove_trailing_lines']
+" \}
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
