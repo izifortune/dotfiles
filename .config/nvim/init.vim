@@ -33,6 +33,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': 'npm i -g neovim eslint prettier prettier-eslint' }
 " Plug 'w0rp/ale'
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -47,6 +48,7 @@ Plug 'https://github.com/Alok/notational-fzf-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'janko-m/vim-test'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'sodapopcan/vim-twiggy'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -553,3 +555,26 @@ let g:lightline = {
       \ },
       \ }
 
+" Markdown preview
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+
+" Twiggy conf
+let g:twiggy_group_locals_by_slash = 0
+let g:twiggy_local_branch_sort = 'mru'
+let g:twiggy_remote_branch_sort = 'date'
+
+" Formatlist https://vimways.org/2018/formatting-lists-with-vim/
+set formatlistpat=^\\s*                     " Optional leading whitespace
+set formatlistpat+=[                        " Start character class
+set formatlistpat+=\\[({]\\?                " |  Optionally match opening punctuation
+set formatlistpat+=\\(                      " |  Start group
+set formatlistpat+=[0-9]\\+                 " |  |  Numbers
+set formatlistpat+=\\\|                     " |  |  or
+set formatlistpat+=[a-zA-Z]\\+              " |  |  Letters
+set formatlistpat+=\\)                      " |  End group
+set formatlistpat+=[\\]:.)}                 " |  Closing punctuation
+set formatlistpat+=]                        " End character class
+set formatlistpat+=\\s\\+                   " One or more spaces
+set formatlistpat+=\\\|                     " or
+set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points

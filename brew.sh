@@ -38,12 +38,6 @@ brew install ncdu # find where your diskspace went
 
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
-brew install zsh
-
-
-curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-# Remove outdated versions from the cellar
-
 brew install python3
 
 pip3 install neovim
@@ -51,8 +45,6 @@ pip3 install neovim
 brew tap neovim/neovim
 
 brew install neovim
-
-brew cask install iterm2
 
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
@@ -77,3 +69,6 @@ fisher edc/bass
 fisher cprintf
 fisher fzf
 brew install grc; fisher grc
+
+brew tap caskroom/fonts
+brew install font-firacode-nerd-font
