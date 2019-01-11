@@ -49,6 +49,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'janko-m/vim-test'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'sodapopcan/vim-twiggy'
+Plug 'mhinz/vim-startify'
+Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -379,7 +381,7 @@ nnoremap N Nzz
 
 " Follow paths js imports
 set path=.,src
-set suffixesadd=.js,.jsx
+set suffixesadd=.js,.jsx,.ts
 
 function! LoadMainNodeModule(fname)
   let nodeModules = "./node_modules/"
@@ -578,3 +580,5 @@ set formatlistpat+=]                        " End character class
 set formatlistpat+=\\s\\+                   " One or more spaces
 set formatlistpat+=\\\|                     " or
 set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
+
+nnoremap ,f :find **/*<C-z><S-Tab>
