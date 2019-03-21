@@ -54,6 +54,11 @@ Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
 Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim'
+Plug 'rbong/vim-flog'
+Plug 'junegunn/limelight.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'reedes/vim-colors-pencil'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -214,6 +219,14 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<cr>
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline 
 
 " Shortcuts using <leader>
 noremap <leader>sn ]s
@@ -563,6 +576,8 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_toggle=1
 
+let g:vim_markdown_new_list_item_indent = 0
+
 " Twiggy conf
 let g:twiggy_group_locals_by_slash = 0
 let g:twiggy_local_branch_sort = 'mru'
@@ -707,3 +722,7 @@ let g:lightline = {
 "
 "CSV
 let b:csv_arrange_align = 'l*'
+
+"Goyo integration limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
