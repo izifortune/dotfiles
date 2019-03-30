@@ -34,7 +34,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'w0rp/ale'
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -54,11 +54,12 @@ Plug 'mhinz/vim-startify'
 Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
 Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'rhysd/vim-grammarous'
-Plug 'Ron89/thesaurus_query.vim'
+Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
+Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 
 " All of your Plugins must be added before the following line
 call plug#end()
