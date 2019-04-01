@@ -20,6 +20,8 @@ chunkc core::hotload 1
 # ====== Tiling settings =======================
 
 chunkc set global_desktop_mode           bsp
+# chunkc set 2_desktop_mode                monocle
+# chunkc set 5_desktop_mode                float
 
 chunkc set global_desktop_offset_top     "${gaps_top}"
 chunkc set global_desktop_offset_bottom  "${gaps_bottom}"
@@ -38,12 +40,14 @@ chunkc set bsp_split_ratio               0.5
 chunkc set monitor_focus_cycle           1
 chunkc set window_focus_cycle            monitor
 
-chunkc set mouse_follows_focus           1
+chunkc set mouse_follows_focus           instrinsic
 chunkc set window_float_next             0
 chunkc set window_float_center           1
 chunkc set window_region_locked          1
 
-chunkc set mouse_modifier                \"ctrl shift\"
+# chunkc set mouse_modifier              \"cmd shift\"
+chunkc set mouse_move_window             cmd shift 1
+chunkc set mouse_resize_window           alt 1
 
 chunkc set preselect_border_color        "0xE0${preselect_border_color}"
 chunkc set preselect_border_width        5
