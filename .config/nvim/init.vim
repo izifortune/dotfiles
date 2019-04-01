@@ -33,7 +33,8 @@ Plug 'junegunn/fzf.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': 'npm i -g neovim eslint prettier prettier-eslint' }
 " Plug 'w0rp/ale'
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-Plug 'JamshedVesuna/vim-markdown-preview'
+" Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -54,11 +55,14 @@ Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
 Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'rbong/vim-flog'
 Plug 'junegunn/limelight.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-colors-pencil'
+Plug 'rhysd/vim-grammarous'
+Plug 'Ron89/thesaurus_query.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -726,3 +730,8 @@ let b:csv_arrange_align = 'l*'
 "Goyo integration limelight
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" wild options
+" set wildoptions=pum
+"
+" set pumblend=20

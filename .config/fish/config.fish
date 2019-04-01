@@ -13,10 +13,11 @@ end
 function toggle_proxy
   if [ -z "$http_proxy" ]
     echo "setting up proxy";
-    set -g -x http_proxy 'http://proxy01:8080'
-    set -g -x https_proxy 'http://proxy01:8080'
-    set -g -x HTTP_PROXY 'http://proxy01:8080'
-    set -g -x HTTPS_PROXY 'http://proxy01:8080'
+    set -g -x http_proxy '10.11.19.40:8080'
+    set -g -x https_proxy '10.11.19.40:8080'
+    set -g -x HTTP_PROXY '10.11.19.40:8080'
+    set -g -x HTTPS_PROXY '10.11.19.40:8080'
+
   else
     echo "removing up proxy";
     set -g -x http_proxy ''
@@ -72,8 +73,3 @@ if status --is-interactive
   set BASE16_SHELL "$HOME/.config/base16-shell/"
   source "$BASE16_SHELL/profile_helper.fish"
 end
-
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish
