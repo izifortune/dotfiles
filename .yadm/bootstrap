@@ -22,7 +22,7 @@ fi
 echo "Install brew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-sh ~/.osx
+sudo sh ~/.osx
 sh ~/brew.sh
 
 echo "Installing tpm"

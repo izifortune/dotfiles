@@ -72,3 +72,14 @@ brew install grc; fisher grc
 
 brew tap caskroom/fonts
 brew install font-firacode-nerd-font
+brew install ripgrep
+brew install tmux
+
+brew tap koekeishiya/formulae
+brew install chunkwm
+brew install koekeishiya/formulae/skhd
+brew install ranger
+
+curl -L https://get.oh-my.fish | fish
+omf install bobthefish
+
