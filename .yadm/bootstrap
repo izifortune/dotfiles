@@ -25,6 +25,8 @@ echo "Install brew"
 sudo sh ~/.osx
 
 # Recover from Brewfile
+## eg: brew bundle dump -> Create Brewfile
+## brew bundle -> Recover it
 brew bundle
 
 # install additional
