@@ -291,6 +291,8 @@ nmap <silent> <c-w>< :vertical resize -10<CR>
 
 set grepprg=ag
 
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
 " nmap <C-p> :FZF<CR>
 nmap <C-g> :GitFiles<CR>
 

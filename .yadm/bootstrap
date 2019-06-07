@@ -22,7 +22,14 @@ fi
 echo "Install brew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-sh ~/.osx
+sudo sh ~/.osx
+
+# Recover from Brewfile
+## eg: brew bundle dump -> Create Brewfile
+## brew bundle -> Recover it
+brew bundle
+
+# install additional
 sh ~/brew.sh
 
 echo "Installing tpm"
