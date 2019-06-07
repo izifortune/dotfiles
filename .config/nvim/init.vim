@@ -64,6 +64,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
+Plug 'jreybert/vimagit'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -581,7 +582,7 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_toggle=1
 
-let g:vim_markdown_new_list_item_indent = 0
+" let g:vim_markdown_new_list_item_indent = 0
 
 " Twiggy conf
 let g:twiggy_group_locals_by_slash = 0
@@ -736,3 +737,15 @@ autocmd! User GoyoLeave Limelight!
 " set wildoptions=pum
 "
 " set pumblend=20
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+
+" Jump between hunks
+nmap <Leader>gn <Plug>GitGutterNextHunk  " git next
+nmap <Leader>gp <Plug>GitGutterPrevHunk  " git previous
+" Hunk-add and hunk-revert for chunk staging
+nmap <Leader>ga <Plug>GitGutterStageHunk  " git add (chunk)
+nmap <Leader>gu <Plug>GitGutterUndoHunk   " git undo (chunk)
