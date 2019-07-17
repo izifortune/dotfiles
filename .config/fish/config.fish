@@ -29,6 +29,7 @@ end
 
 set -gx PATH ~/Library/Python/2.7/bin $PATH
 set -gx PATH ~/Library/Python/3.6/bin $PATH
+set -gx PATH ~/Library/Python/3.7/bin $PATH
 
 set -gx PATH ~/.config/bin $PATH
 
@@ -73,3 +74,7 @@ if status --is-interactive
   set BASE16_SHELL "$HOME/.config/base16-shell/"
   source "$BASE16_SHELL/profile_helper.fish"
 end
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish

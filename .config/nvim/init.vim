@@ -64,6 +64,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
+Plug 'junegunn/vim-easy-align'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -738,3 +739,6 @@ autocmd! User GoyoLeave Limelight!
 " set wildoptions=pum
 "
 " set pumblend=20
+
+" Align GitHub-flavored Markdown tables
+au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
