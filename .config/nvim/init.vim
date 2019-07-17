@@ -35,7 +35,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'ujihisa/neco-look'
@@ -52,7 +52,7 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'sodapopcan/vim-twiggy'
 Plug 'mhinz/vim-startify'
 Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
-Plug 'unblevable/quick-scope' 
+" Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'junegunn/goyo.vim'
@@ -65,6 +65,12 @@ Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'jreybert/vimagit'
+Plug 'junegunn/gv.vim'
+Plug 'johngrib/vim-game-code-break'
+Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -388,9 +394,9 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = "<leader>s"
-let g:UltiSnipsJumpForwardTrigger = "<leader>sn"
-let g:UltiSnipsJumpBackwardTrigger="<leader>sb"
+" let g:UltiSnipsExpandTrigger = "<leader>s"
+" let g:UltiSnipsJumpForwardTrigger = "<leader>sn"
+" let g:UltiSnipsJumpBackwardTrigger="<leader>sb"
 
 set synmaxcol=128
 syntax sync minlines=256
@@ -751,3 +757,50 @@ nmap <Leader>gp <Plug>GitGutterPrevHunk  " git previous
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>GitGutterStageHunk  " git add (chunk)
 nmap <Leader>gu <Plug>GitGutterUndoHunk   " git undo (chunk)
+
+" " Quick-scope lazy highlight
+" let g:qs_lazy_highlight = 1
+" let g:qs_max_chars=80
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+
+" press <esc> to cancel.
+nmap f <Plug>(coc-smartf-forward)
+nmap F <Plug>(coc-smartf-backward)
+nmap ; <Plug>(coc-smartf-repeat)
+nmap , <Plug>(coc-smartf-repeat-opposite)
+
+augroup Smartf
+  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
+  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+augroup end
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
