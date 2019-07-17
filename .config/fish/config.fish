@@ -17,6 +17,7 @@ function toggle_proxy
     set -g -x https_proxy '10.11.19.40:8080'
     set -g -x HTTP_PROXY '10.11.19.40:8080'
     set -g -x HTTPS_PROXY '10.11.19.40:8080'
+    # set -g -x NO_PROXY 'assets.ryanair.com'
 
   else
     echo "removing up proxy";
