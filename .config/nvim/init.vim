@@ -72,6 +72,7 @@ Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -355,9 +356,14 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-" use tab to backward cycle
-inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
+" inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" " use tab to backward cycle
+" inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
