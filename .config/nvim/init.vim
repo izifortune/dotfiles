@@ -804,3 +804,4 @@ let g:coc_snippet_next = '<tab>'
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command StartDay !sh ~/scripts/start-day.sh
