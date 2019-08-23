@@ -809,3 +809,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Indent list
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 0
+
+" Start a new day by copying last day todo
+command StartDay !sh ~/scripts/start-day.sh
