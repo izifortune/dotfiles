@@ -73,6 +73,7 @@ Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'chrisbra/Colorizer'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -804,3 +805,7 @@ let g:coc_snippet_next = '<tab>'
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Indent list
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_auto_insert_bullets = 0
