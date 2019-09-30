@@ -28,14 +28,7 @@ Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" Plug 'Shougo/deoplete.nvim', { 'do': 'npm i -g neovim eslint prettier prettier-eslint' }
-" Plug 'w0rp/ale'
-" Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-" Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'ujihisa/neco-look'
@@ -58,7 +51,6 @@ Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'junegunn/goyo.vim'
 Plug 'rbong/vim-flog'
 Plug 'junegunn/limelight.vim'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
@@ -74,6 +66,8 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/Colorizer'
+Plug 'dense-analysis/ale'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -101,8 +95,8 @@ set laststatus=2                                                "vim-lightline
 set noshowmode                                                  "vim-lightline
 
 "Tabularize
-vnoremap <silent> <Leader>cee    :Tabularize /=<CR>              "tabular
-vnoremap <silent> <Leader>cet    :Tabularize /#<CR>              "tabular
+vnoremap <silent> <Leader>cee    :Tabularize /=<CR>         
+vnoremap <silent> <Leader>cet    :Tabularize /#<CR>          
 vnoremap <silent> <Leader>ce     :Tabularize /
 "
 " make backspaces delete sensibly
@@ -218,7 +212,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
-noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+" noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -309,18 +303,19 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
+
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
-" imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
 
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 nnoremap <silent> <leader>p :Buffers<cr>
 nnoremap <silent> <leader>Sp :History<cr>
-imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
 
 function s:formatJSON()
   execute "%!python -m json.tool"
@@ -355,38 +350,6 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
-" use tab to forward cycle
-" inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-" " use tab to backward cycle
-" inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Enable deoplete at startup
-let g:deoplete#enable_at_startup = 1
-
-" let g:ale_javascript_prettier_use_global = 1
-" let g:ale_javascript_prettier_options = '--single-quote'
-"
-" let g:ale_javascript_prettier_eslint_use_global = 1
-" let g:ale_javascript_prettier_eslint_options = '--single-quote'
-" let g:ale_linters = {
-" \    'typescript': ['tslint', 'tsserver'],
-" \    'html': []
-" \}
-" let g:ale_fixers = {
-" \   'javascript': ['eslint', 'prettier-eslint', 'remove_trailing_lines'],
-" \   'typescript': ['tslint', 'prettier', 'remove_trailing_lines']
-" \}
-
-" Set this setting in vimrc if you want to fix files automatically on save.
-" This is off by default.
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 'normal'
 
 " Smaller undo
 inoremap . .<c-g>u
@@ -574,6 +537,9 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
 
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -622,69 +588,7 @@ set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 
 nnoremap ,f :find **/*<C-z><S-Tab>
 
-"COC COMMANDS
-"Better display for messages
-set cmdheight=2
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -693,35 +597,6 @@ augroup mygroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
-
 
 
 " Using CocList
@@ -775,7 +650,7 @@ let g:qs_lazy_highlight = 1
 let g:qs_max_chars=80
 
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+" imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
@@ -788,19 +663,6 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
 
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
@@ -812,3 +674,69 @@ let g:vim_markdown_auto_insert_bullets = 0
 
 " Start a new day by copying last day todo
 command StartDay !sh ~/scripts/start-day.sh
+
+" paste image
+" nnoremap <silent> <leader>m :call MarkdownClipboardImage()<cr>
+
+" function! MarkdownClipboardImage() abort
+"   " Create `img` directory if it doesn't exist
+"   let img_dir = expand("%:.:h") . '/img'
+"   " if !isdirectory(img_dir)
+"   "   silent call mkdir(img_dir)
+"   " endif
+"
+"   " First find out what filename to use
+"   let index = 1
+"   let file_path = img_dir . "/image" . index . ".png"
+"   while filereadable(file_path)
+"     let index = index + 1
+"     let file_path = img_dir . "/image" . index . ".png"
+"   endwhile
+"
+"   let clip_command = 'osascript'
+"   let clip_command .= ' -e "set png_data to the clipboard as «class PNGf»"'
+"   let clip_command .= ' -e "set referenceNumber to open for access POSIX path of'
+"   let clip_command .= ' (POSIX file \"' . file_path . '\") with write permission"'
+"   let clip_command .= ' -e "write png_data to referenceNumber"'
+"
+"   silent call system(clip_command)
+"   if v:shell_error == 1
+"     normal! p
+"   else
+"     execute "normal! i![](" . file_path . ")"
+"   endif
+" endfunction
+"
+" command MarkdownClipboardImage :call MarkdownClipboardImage()
+
+command MarkdownClipboardImage :call MarkdownClipboardImage()
+
+function! MarkdownClipboardImage() abort
+  " Create `img` directory if it doesn't exist
+  let img_dir = expand("%:p:h")  . '/img'
+  echo img_dir
+  if !isdirectory(img_dir)
+    silent call mkdir(img_dir)
+  endif
+
+  " First find out what filename to use
+  let index = 1
+  let file_path = img_dir . "/image" . index . ".png"
+  while filereadable(file_path)
+    let index = index + 1
+    let file_path = img_dir . "/image" . index . ".png"
+  endwhile
+
+  let clip_command = 'osascript'
+  let clip_command .= ' -e "set png_data to the clipboard as «class PNGf»"'
+  let clip_command .= ' -e "set referenceNumber to open for access POSIX path of'
+  let clip_command .= ' (POSIX file \"' . file_path . '\") with write permission"'
+  let clip_command .= ' -e "write png_data to referenceNumber"'
+
+  silent call system(clip_command)
+  if v:shell_error == 1
+    normal! p
+  else
+    execute "normal! i[](" . file_path . ")"
+  endif
+endfunction
