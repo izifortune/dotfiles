@@ -73,6 +73,7 @@ Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'benmills/vimux'
 
 " All of your Plugins must be added before the following line
 call plug#end()
