@@ -51,7 +51,7 @@ Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'junegunn/goyo.vim'
 Plug 'rbong/vim-flog'
 Plug 'junegunn/limelight.vim'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
@@ -68,6 +68,9 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Colorizer'
 Plug 'dense-analysis/ale'
+Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -175,8 +178,8 @@ vnoremap > ><CR>gv
 vnoremap < <<CR>gv 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-noremap <space> /
-noremap <c-space> ?
+" noremap <space> /
+" noremap <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 noremap <silent> <leader><cr> :noh<cr>
@@ -397,8 +400,8 @@ endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
 
-au! BufRead,BufNewFile *.markdown set filetype=mkd
-au! BufRead,BufNewFile *.md       set filetype=mkd
+" au! BufRead,BufNewFile *.markdown set filetype=mkd
+" au! BufRead,BufNewFile *.md       set filetype=mkd
 
 autocmd VimEnter *
       \ command! -bang -nargs=* Ag
@@ -478,15 +481,17 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -711,6 +716,12 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Indent list
 let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_auto_insert_bullets = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal_code_blocks = 0
+set conceallevel=2
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'javascript=javascript', 'typescript=typescript']
+
 
 " Start a new day by copying last day todo
 command StartDay !sh ~/scripts/start-day.sh
@@ -780,3 +791,6 @@ function! MarkdownClipboardImage() abort
     execute "normal! i[](" . file_path . ")"
   endif
 endfunction
+
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "~/.config/nvim/snippets"]
