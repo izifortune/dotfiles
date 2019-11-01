@@ -570,6 +570,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Quick fix
+nnoremap <silent> <space>f  <Plug>(coc-fix-current)
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -762,6 +764,7 @@ function! MarkdownClipboardImage() abort
   " First find out what filename to use
   let index = 1
   let file_path = img_dir . "/image" . index . ".png"
+  let vim_file_path = "img/image" . index . ".png"
   while filereadable(file_path)
     let index = index + 1
     let file_path = img_dir . "/image" . index . ".png"
@@ -777,6 +780,6 @@ function! MarkdownClipboardImage() abort
   if v:shell_error == 1
     normal! p
   else
-    execute "normal! i[](" . file_path . ")"
+    execute "normal! i![](" . vim_file_path . ")"
   endif
 endfunction
