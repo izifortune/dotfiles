@@ -779,6 +779,7 @@ function! MarkdownClipboardImage() abort
   while filereadable(file_path)
     let index = index + 1
     let file_path = img_dir . "/image" . index . ".png"
+    let vim_file_path = "img/image" . index . ".png"
   endwhile
 
   let clip_command = 'osascript'
@@ -794,6 +795,3 @@ function! MarkdownClipboardImage() abort
     execute "normal! i![](" . vim_file_path . ")"
   endif
 endfunction
-
-
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "~/.config/nvim/snippets"]
