@@ -76,6 +76,11 @@ if status --is-interactive
   source "$BASE16_SHELL/profile_helper.fish"
 end
 
+set -g _Z_CMD "j"
+
+set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish
