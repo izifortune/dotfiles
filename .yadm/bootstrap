@@ -14,11 +14,6 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 echo "Setup nvim for git"
 git config --global core.editor "nvim"
 
-if command -v nvim >/dev/null 2>&1; then
-  echo "Bootstraping NeoVim"
-  nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
-fi
-
 echo "Install brew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -31,6 +26,11 @@ brew bundle
 
 # install additional
 sh ~/brew.sh
+
+if command -v nvim >/dev/null 2>&1; then
+  echo "Bootstraping NeoVim"
+  nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
 
 echo "Installing tpm"
 if "test ! -d ~/.tmux/plugins/tpm" \
