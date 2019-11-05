@@ -28,7 +28,7 @@ Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'ujihisa/neco-look'
