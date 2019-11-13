@@ -80,6 +80,7 @@ set -g _Z_CMD "j"
 
 set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
+set -g fish_key_bindings fish_vi_key_bindings
 
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`

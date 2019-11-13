@@ -67,7 +67,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Colorizer'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 

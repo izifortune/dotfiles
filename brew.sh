@@ -4,7 +4,7 @@ sudo chown root $mtrlocation/sbin/mtr
 
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 pip3 install neovim
-npm install -g neovim typescript eslint tslint http-server
+npm install -g neovim typescript eslint tslint http-server postcss-syntax
 
 # Hammerspoon
 mkdir -p $HOME/.hammerspoon/hs
@@ -19,14 +19,18 @@ git clone https://github.com/powerline/fonts.git
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
-fisher z
-fisher edc/bass
-fisher cprintf
-fisher fzf
-fisher grc
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+
+fisher add z
+fisher add edc/bass
+fisher add cprintf
+fisher add fzf
+fisher add grc
 
 curl -L https://get.oh-my.fish | fish
 omf install bobthefish
+set -g theme_powerline_fonts no
+set -g theme_nerd_fonts yes
+
 
 brew cleanup
