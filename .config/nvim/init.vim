@@ -368,7 +368,7 @@ command! -bang -nargs=* Ag
   \                 <bang>0)
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = "<leader>s"
+" let g:UltiSnipsExpandTrigger = "<leader>s"
 " let g:UltiSnipsJumpForwardTrigger = "<leader>sn"
 " let g:UltiSnipsJumpBackwardTrigger="<leader>sb"
 
@@ -558,8 +558,8 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+" nmap <silent> <C-d> <Plug>(coc-range-select)
+" xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -609,6 +609,7 @@ let g:lightline = {
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_toggle=1
+let g:mkdp_page_title = '${name}'
 
 " let g:vim_markdown_new_list_item_indent = 0
 
@@ -794,3 +795,5 @@ function! MarkdownClipboardImage() abort
     execute "normal! i![](" . vim_file_path . ")"
   endif
 endfunction
+
+:tnoremap <Esc> <C-\><C-n>
