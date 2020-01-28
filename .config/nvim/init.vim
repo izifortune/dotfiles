@@ -26,7 +26,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
@@ -70,6 +70,7 @@ Plug 'chrisbra/Colorizer'
 " Plug 'dense-analysis/ale'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 
 " All of your Plugins must be added before the following line
@@ -422,8 +423,10 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
 "AWESOME PREVIEW FZF
-nnoremap <silent> <C-p> :call Fzf_dev()<CR>
+nnoremap <silent> <C-p> :Files<CR>
 
 " ripgrep
 if executable('rg')
@@ -797,3 +800,19 @@ function! MarkdownClipboardImage() abort
 endfunction
 
 :tnoremap <Esc> <C-\><C-n>
+
+" Firenvim
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
