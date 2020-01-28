@@ -26,7 +26,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
@@ -70,6 +70,7 @@ Plug 'chrisbra/Colorizer'
 " Plug 'dense-analysis/ale'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 
 " All of your Plugins must be added before the following line
@@ -422,8 +423,10 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
 "AWESOME PREVIEW FZF
-nnoremap <silent> <C-p> :call Fzf_dev()<CR>
+nnoremap <silent> <C-p> :Files<CR>
 
 " ripgrep
 if executable('rg')
@@ -478,6 +481,7 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -486,12 +490,12 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+let g:coc_snippet_next = '<tab>'
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-let g:coc_snippet_next = '<tab>'
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -575,8 +579,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Quick fix
-nnoremap <silent> <space>f  <Plug>(coc-fix-current)
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
@@ -610,6 +612,7 @@ let g:lightline = {
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_toggle=1
+let g:mkdp_page_title = '${name}'
 
 " let g:vim_markdown_new_list_item_indent = 0
 
@@ -697,7 +700,7 @@ let g:qs_lazy_highlight = 1
 let g:qs_max_chars=80
 
 " Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
@@ -795,3 +798,21 @@ function! MarkdownClipboardImage() abort
     execute "normal! i![](" . vim_file_path . ")"
   endif
 endfunction
+
+:tnoremap <Esc> <C-\><C-n>
+
+" Firenvim
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+

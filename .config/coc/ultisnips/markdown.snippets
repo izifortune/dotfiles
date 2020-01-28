@@ -2,6 +2,66 @@ snippet \frac "fraction" iA
 \frac{$1}{$2}$0
 endsnippet
 
+snippet cab "CAB" i
+
+### ${1:Title}
+Release contains: 
+
+* ${2:Item}
+
+#### SCOPE: 
+
+* ${3:ScopeItem}
+
+#### EVIDENCE OF TEST:
+
+* ${4:Testinfo}
+
+#### CONTACT:
+
+* ${5:Contactinfo}
+
+endsnippet	
+
+snippet cabcookie "CAB COOKIE" i
+
+Adding cookies for ${1:website}
+
+Name | Host | Description | Lifespan
+--- | --- | --- | --- |
+
+endsnippet	
+
 snippet \* "cdot" iA
 \cdot
 endsnippet
+
+snippet perfreport "Performance Report" i
+
+### Performance KPI +%d-%m-%y
+
+* ${1: Notes}
+
+#### Page size: 
+
+${2:Page size}
+
+#### First Meaningful Paint
+
+${3:FirstMeaningfulPaint}
+
+### Interactive:
+
+${4:Interactive}
+
+### Bootup time:
+
+${5:Bootup}
+
+### Synthetic metrics:
+
+<div style="font-size:11px">
+${6:Synthetic metrics}
+</div>
+
+endsnippet	
