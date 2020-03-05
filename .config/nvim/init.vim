@@ -731,6 +731,16 @@ let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=do
 " Start a new day by copying last day todo
 command StartDay !sh ~/scripts/start-day.sh
 
+" Start zettelkasten
+command -nargs=1 Zettelkasten :call Zettelkasten(<f-args>)
+
+function Zettelkasten(title)
+  let date = strftime('+%Y%m%d%H%M')
+  echo date
+  execute "edit ~/Google Drive/Zettelkasten/" . date . " " . a:title . ".md"
+endfunction
+
+
 " paste image
 " nnoremap <silent> <leader>m :call MarkdownClipboardImage()<cr>
 
