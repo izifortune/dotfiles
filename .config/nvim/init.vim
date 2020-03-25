@@ -741,6 +741,15 @@ command WebLink :call WebLink()
 
 command FullPath :echo @% 
 
+" Start zettelkasten
+command -nargs=1 Zettelkasten :call Zettelkasten(<f-args>)
+
+function Zettelkasten(title)
+  let date = strftime('+%Y%m%d%H%M')
+  echo date
+  execute "edit ~/Google Drive/Zettelkasten/" . date . " " . a:title . ".md"
+endfunction
+
 " paste image
 " nnoremap <silent> <leader>m :call MarkdownClipboardImage()<cr>
 
