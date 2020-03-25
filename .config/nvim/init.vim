@@ -71,6 +71,9 @@ Plug 'chrisbra/Colorizer'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+" Plug 'jceb/vim-orgmode'
+Plug 'vimwiki/vimwiki'
+
 
 
 " All of your Plugins must be added before the following line
@@ -336,13 +339,6 @@ autocmd FileType typescript setlocal completeopt+=menu,preview
 let g:tern_show_argument_hints='on_hold'
 " and 
 let g:tern_map_keys=1
-
-" Useful mappings for managing tabs
-noremap <leader>tn :tabnew<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tc :tabclose<cr>
-noremap <leader>tm :tabmove
-noremap <leader>t<leader> :tabnext
 
 " Shortcuts using <leader>
 noremap <leader>sn ]s
@@ -734,6 +730,14 @@ command StartDay !sh ~/scripts/start-day.sh
 " Start zettelkasten
 command -nargs=1 Zettelkasten :call Zettelkasten(<f-args>)
 
+command -nargs=1 WorkZettelkasten :call Zettelkasten(<f-args>)
+
+function WorkZettelkasten(title)
+  let date = strftime('+%Y%m%d%H%M')
+  echo date
+  execute "edit ~/OneDrive/notes/Zettelkasten/" . date . " " . a:title . ".md"
+endfunction
+
 function Zettelkasten(title)
   let date = strftime('+%Y%m%d%H%M')
   echo date
@@ -826,3 +830,15 @@ let g:firenvim_config = {
     \ }
 \ }
 
+let g:vimwiki_list = [{'path': '~/Google Drive/wiki',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+                        \ 'map': { 'prefix': '<leader>' },
+                        \ 'enter': { 'shift': 1 },
+                        \ 'links': { 'external': { 'enable': 1 } },
+                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+                        \ 'fold': { 'enable': 1 } }
+
+let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
+                                       " plugin which unfortunately interferes with mkdx list indentation.
