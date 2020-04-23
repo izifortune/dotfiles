@@ -14,9 +14,13 @@ endfunction
 call plug#begin('~/.local/share/nvim/plugged')
 " call plug#begin('~/.vim/plugged')
 
+" Comment easy
 Plug 'tomtom/tcomment_vim'
+" Theme
 Plug 'chriskempson/base16-vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
@@ -26,22 +30,21 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
-Plug 'ujihisa/neco-look'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
 Plug 'airblade/vim-gitgutter'
 Plug 'jparise/vim-graphql'
-Plug 'aquach/vim-http-client'
-Plug 'https://github.com/Alok/notational-fzf-vim'
+" Plug 'https://github.com/Alok/notational-fzf-vim'
 Plug 'ryanoasis/vim-devicons'
+" Running your test easily https://github.com/janko/vim-test
 Plug 'janko-m/vim-test'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sodapopcan/vim-twiggy'
 Plug 'mhinz/vim-startify'
 Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
@@ -71,10 +74,11 @@ Plug 'chrisbra/Colorizer'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-" Plug 'jceb/vim-orgmode'
 Plug 'vimwiki/vimwiki'
-
-
+Plug 'blindFS/vim-taskwarrior'
+Plug 'mattn/calendar-vim'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -172,9 +176,30 @@ set nowrap
 set linebreak
 set diffopt+=vertical
 
+
+"
+" SPLITS
+"
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+
+" Smart way to move between windows
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+
+" Swap splits
+map <leader>th <C-w>t<C-w>H
+map <leader>tk <C-w>t<C-w>K
+
+" Resize splits
+noremap <silent> <C-M-l> :vertical resize +3<CR>
+noremap <silent> <C-M-h> :vertical resize -3<CR>
+noremap <silent> <C-M-k> :resize +3<CR>
+noremap <silent> <C-M-j> :resize -3<CR>
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
@@ -187,12 +212,6 @@ vnoremap < <<CR>gv
 
 " Disable highlight when <leader><cr> is pressed
 noremap <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
 
 
 " Close the current buffer
@@ -357,12 +376,12 @@ inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 inoremap , ,<c-g>u
 
-" Fzf preview window ?
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
+" " Fzf preview window ?
+" command! -bang -nargs=* Ag
+"   \ call fzf#vim#ag(<q-args>,
+"   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \                 <bang>0)
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger = "<leader>s"
@@ -400,9 +419,9 @@ set includeexpr=LoadMainNodeModule(v:fname)
 " au! BufRead,BufNewFile *.markdown set filetype=mkd
 " au! BufRead,BufNewFile *.md       set filetype=mkd
 
-autocmd VimEnter *
-      \ command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-s:select-all,ctrl-d:deselect-all' }, <bang>0)
+" autocmd VimEnter *
+"       \ command! -bang -nargs=* Ag
+"       \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-s:select-all,ctrl-d:deselect-all' }, <bang>0)
 
 
 " NV search paths for note taking
@@ -425,44 +444,44 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 nnoremap <silent> <C-p> :Files<CR>
 
 " ripgrep
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-endif
+" if executable('rg')
+"   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+"   set grepprg=rg\ --vimgrep
+"   command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+" endif
 
 " Files + devicons
-function! Fzf_dev()
-  let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
-
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
-
-    return l:result
-  endfunction
-
-  function! s:edit_file(item)
-    let l:pos = stridx(a:item, ' ')
-    let l:file_path = a:item[pos+1:-1]
-    execute 'silent e' l:file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'down':    '40%' })
-endfunction
+" function! Fzf_dev()
+"   let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
+"
+"   function! s:files()
+"     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+"     return s:prepend_icon(l:files)
+"   endfunction
+"
+"   function! s:prepend_icon(candidates)
+"     let l:result = []
+"     for l:candidate in a:candidates
+"       let l:filename = fnamemodify(l:candidate, ':p:t')
+"       let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+"       call add(l:result, printf('%s %s', l:icon, l:candidate))
+"     endfor
+"
+"     return l:result
+"   endfunction
+"
+"   function! s:edit_file(item)
+"     let l:pos = stridx(a:item, ' ')
+"     let l:file_path = a:item[pos+1:-1]
+"     execute 'silent e' l:file_path
+"   endfunction
+"
+"   call fzf#run({
+"         \ 'source': <sid>files(),
+"         \ 'sink':   function('s:edit_file'),
+"         \ 'options': '-m ' . l:fzf_files_options,
+"         \ 'down':    '40%' })
+" endfunction
 
 
 " Better display for messages
@@ -727,6 +746,14 @@ let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=do
 " Start a new day by copying last day todo
 command StartDay !sh ~/scripts/start-day.sh
 
+function! WebLink() abort
+  let @+ = "https://stash.ryanair.com:8443/projects/RA/repos/" . split(expand("%:p:h"), "/")[3] . "/browse/" . @%
+endfunction
+
+command WebLink :call WebLink()
+
+command FullPath :echo @% 
+
 " Start zettelkasten
 command -nargs=1 Zettelkasten :call Zettelkasten(<f-args>)
 
@@ -743,7 +770,6 @@ function Zettelkasten(title)
   echo date
   execute "edit ~/Google Drive/Zettelkasten/" . date . " " . a:title . ".md"
 endfunction
-
 
 " paste image
 " nnoremap <silent> <leader>m :call MarkdownClipboardImage()<cr>
@@ -818,7 +844,12 @@ endfunction
 " Firenvim
 let g:firenvim_config = { 
     \ 'globalSettings': {
-        \ 'alt': 'all',
+        \ '.*': {
+        \ 'cmdline': 'neovim',
+        \ 'priority': 0,
+        \ 'selector': 'textarea',
+        \ 'takeover': 'never',
+        \ },
     \  },
     \ 'localSettings': {
         \ '.*': {
@@ -830,7 +861,9 @@ let g:firenvim_config = {
     \ }
 \ }
 
-let g:vimwiki_list = [{'path': '~/Google Drive/wiki',
+let g:vimwiki_list = [{'path': '~/OneDrive - Ryanair Ltd/wiki/',
+      \ 'syntax': 'markdown', 'ext': '.md'}, 
+      \{'path': '~/Google Drive/wiki',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
@@ -842,3 +875,33 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
 
 let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
                                        " plugin which unfortunately interferes with mkdx list indentation.
+" vimwiki stuff "
+" Run multiple wikis "
+" let g:vimwiki_list = [
+"       \{'path': '~/Documents/VimWiki/personal.wiki'},
+"       \{'path': '~/Documents/VimWiki/tech.wiki'}
+"       \]
+
+" au BufRead,BufNewFile ~/OneDrive - Ryanair Ltd/wiki/* set filetype=vimwiki
+
+" :autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+function! ToggleCalendar()
+  execute ":Calendar"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+
+:command ToggleCalendar call ToggleCalendar()
+
+" airline
+"
+let g:airline#extensions#tabline#enabled = 1
+
