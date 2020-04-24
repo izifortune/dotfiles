@@ -14,9 +14,13 @@ endfunction
 call plug#begin('~/.local/share/nvim/plugged')
 " call plug#begin('~/.vim/plugged')
 
+" Comment easy
 Plug 'tomtom/tcomment_vim'
+" Theme
 Plug 'chriskempson/base16-vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
@@ -26,22 +30,21 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
-Plug 'ujihisa/neco-look'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
 Plug 'airblade/vim-gitgutter'
 Plug 'jparise/vim-graphql'
-Plug 'aquach/vim-http-client'
-Plug 'https://github.com/Alok/notational-fzf-vim'
+" Plug 'https://github.com/Alok/notational-fzf-vim'
 Plug 'ryanoasis/vim-devicons'
+" Running your test easily https://github.com/janko/vim-test
 Plug 'janko-m/vim-test'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sodapopcan/vim-twiggy'
 Plug 'mhinz/vim-startify'
 Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
@@ -71,9 +74,11 @@ Plug 'chrisbra/Colorizer'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'blindFS/vim-taskwarrior'
 Plug 'vimwiki/vimwiki'
+Plug 'blindFS/vim-taskwarrior'
 Plug 'mattn/calendar-vim'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -171,9 +176,30 @@ set nowrap
 set linebreak
 set diffopt+=vertical
 
+
+"
+" SPLITS
+"
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+
+" Smart way to move between windows
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+
+" Swap splits
+map <leader>th <C-w>t<C-w>H
+map <leader>tk <C-w>t<C-w>K
+
+" Resize splits
+noremap <silent> <C-M-l> :vertical resize +3<CR>
+noremap <silent> <C-M-h> :vertical resize -3<CR>
+noremap <silent> <C-M-k> :resize +3<CR>
+noremap <silent> <C-M-j> :resize -3<CR>
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
@@ -186,12 +212,6 @@ vnoremap < <<CR>gv
 
 " Disable highlight when <leader><cr> is pressed
 noremap <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
 
 
 " Close the current buffer
@@ -338,13 +358,6 @@ autocmd FileType typescript setlocal completeopt+=menu,preview
 let g:tern_show_argument_hints='on_hold'
 " and 
 let g:tern_map_keys=1
-
-" Useful mappings for managing tabs
-noremap <leader>tn :tabnew<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tc :tabclose<cr>
-noremap <leader>tm :tabmove
-noremap <leader>t<leader> :tabnext
 
 " Shortcuts using <leader>
 noremap <leader>sn ]s
@@ -744,6 +757,14 @@ command FullPath :echo @%
 " Start zettelkasten
 command -nargs=1 Zettelkasten :call Zettelkasten(<f-args>)
 
+command -nargs=1 WorkZettelkasten :call Zettelkasten(<f-args>)
+
+function WorkZettelkasten(title)
+  let date = strftime('+%Y%m%d%H%M')
+  echo date
+  execute "edit ~/OneDrive/notes/Zettelkasten/" . date . " " . a:title . ".md"
+endfunction
+
 function Zettelkasten(title)
   let date = strftime('+%Y%m%d%H%M')
   echo date
@@ -840,6 +861,20 @@ let g:firenvim_config = {
     \ }
 \ }
 
+let g:vimwiki_list = [{'path': '~/OneDrive - Ryanair Ltd/wiki/',
+      \ 'syntax': 'markdown', 'ext': '.md'}, 
+      \{'path': '~/Google Drive/wiki',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+                        \ 'map': { 'prefix': '<leader>' },
+                        \ 'enter': { 'shift': 1 },
+                        \ 'links': { 'external': { 'enable': 1 } },
+                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+                        \ 'fold': { 'enable': 1 } }
+
+let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
+                                       " plugin which unfortunately interferes with mkdx list indentation.
 " vimwiki stuff "
 " Run multiple wikis "
 " let g:vimwiki_list = [
@@ -881,3 +916,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
 nnoremap = :FormatXML<Cr>
+" airline
+"
+let g:airline#extensions#tabline#enabled = 1
