@@ -71,7 +71,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'benmills/vimux'
 Plug 'chrisbra/Colorizer'
 " Plug 'dense-analysis/ale'
-Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'vimwiki/vimwiki'
@@ -79,6 +78,7 @@ Plug 'blindFS/vim-taskwarrior'
 Plug 'mattn/calendar-vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'lervag/vimtex'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -254,6 +254,8 @@ set viminfo^=%
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<cr>
+set spelllang=en_gb,it
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 highlight clear SpellCap
@@ -874,6 +876,7 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ 'fold': { 'enable': 1 } }
 
 let g:polyglot_disabled = ['markdown'] " for vim-polyglot users, it loads Plasticboy's markdown
+let g:vimwiki_global_ext = 0
                                        " plugin which unfortunately interferes with mkdx list indentation.
 " vimwiki stuff "
 " Run multiple wikis "
@@ -905,3 +908,28 @@ endfunction
 "
 let g:airline#extensions#tabline#enabled = 1
 
+
+
+
+" Customize fzf colors to match your color scheme
+" - fzf#wrap translates this to a set of `--color` options
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history
+" - History files will be stored in the specified directory
+" - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
+"   'previous-history' instead of 'down' and 'up'.
+let g:fzf_history_dir = '~/.local/share/fzf-history'

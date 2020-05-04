@@ -82,6 +82,13 @@ set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 set -g fish_key_bindings fish_vi_key_bindings
 
+set -g FZF_DEFAULT_COMMAND 'fd --type f'
+
+
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish
+
+# MAN Page nvim
+set MANPAGER 'nvim +Man!'
+set MANWIDTH 999
