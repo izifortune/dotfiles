@@ -904,12 +904,24 @@ endfunction
 
 :command ToggleCalendar call ToggleCalendar()
 
+function! FormatForm()
+  execute ':%s/\\n//g'
+  execute ':%s/\\"/"/g'
+  execute ":FormatJSON"
+endfunction
+
+:command FormatForm call FormatForm()
+
+let g:vimwiki_list = [{'path': '~/OneDrive - Ryanair Ltd/wiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+nnoremap = :FormatXML<Cr>
 " airline
 "
 let g:airline#extensions#tabline#enabled = 1
-
-
-
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
