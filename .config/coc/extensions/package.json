@@ -6,7 +6,7 @@
     "coc-emmet": ">=1.1.4",
     "coc-emoji": ">=1.2.3",
     "coc-eslint": ">=1.2.6",
-    "coc-git": ">=1.7.11",
+    "coc-git": ">=1.7.12",
     "coc-gitignore": ">=0.0.4",
     "coc-highlight": ">=1.2.5",
     "coc-html": ">=1.2.4",
