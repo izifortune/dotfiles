@@ -79,6 +79,8 @@ Plug 'mattn/calendar-vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'lervag/vimtex'
+" Smooth scrolling
+Plug 'psliwka/vim-smoothie'
 
 " All of your Plugins must be added before the following line
 call plug#end()
