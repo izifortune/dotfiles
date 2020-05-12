@@ -15,7 +15,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 " call plug#begin('~/.vim/plugged')
 
 " Comment easy
-Plug 'tomtom/tcomment_vim'
+Plug 'preservim/nerdcommenter'
+" Have the file system follow you around
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'alvan/vim-closetag'
+Plug 'liuchengxu/vim-which-key'
+Plug 'jbgutierrez/vim-better-comments'
 " Theme
 Plug 'chriskempson/base16-vim'
 " Plug 'itchyny/lightline.vim'
@@ -958,3 +964,7 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Which key
+nnoremap <silent> <leader> :WhichKey '\'<CR>
+

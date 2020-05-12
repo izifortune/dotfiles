@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "coc-angular": ">=0.901.0",
+    "coc-angular": ">=0.901.6",
     "coc-css": ">=1.2.3",
     "coc-dictionary": ">=1.2.2",
     "coc-emmet": ">=1.1.4",
     "coc-emoji": ">=1.2.3",
     "coc-eslint": ">=1.2.6",
-    "coc-git": ">=1.7.11",
+    "coc-git": ">=1.7.12",
     "coc-gitignore": ">=0.0.4",
     "coc-highlight": ">=1.2.5",
     "coc-html": ">=1.2.4",
@@ -19,7 +19,7 @@
     "coc-prettier": ">=1.1.12",
     "coc-snippets": ">=2.1.26",
     "coc-tabnine": ">=1.2.2",
-    "coc-todolist": ">=1.2.6",
+    "coc-todolist": ">=1.2.7",
     "coc-tslint": ">=1.0.17",
     "coc-vimtex": ">=1.0.3",
     "coc-word": ">=1.2.2",

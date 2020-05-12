@@ -161,6 +161,7 @@ set ref (git symbolic-ref HEAD 2> /dev/null); or \
         alias ggpur='git pull --rebase origin (current_branch)'
 #compdef ggpur=git
         alias ggpush='git push origin (current_branch)'
+        alias ggpushpr='git push origin (current_branch) 2>&1 | grep "https://s" | sed "s/[^ ]* *//" | pbcopy'
 #compdef ggpush=git
         alias ggpnp='git pull origin (current_branch); and git push origin (current_branch)'
 #compdef ggpnp=git
