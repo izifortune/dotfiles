@@ -113,6 +113,10 @@ Plug 'junegunn/vim-peekaboo'
 " All of your Plugins must be added before the following line
 call plug#end()
 
+source $HOME/.config/nvim/settings.vim
+source $HOME/.config/nvim/functions.vim
+source $HOME/.config/nvim/mappings.vim
+
 " absolute width of netrw window
 let g:netrw_winsize = -28
 
@@ -123,22 +127,6 @@ let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*'
 
 
-" Leader C is the prefix for code related mappîngs 
-noremap <silent> <Leader>cc :Tcomment<CR>
-
-set background=dark
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lightline
-
-" let g:lightline = { 'colorscheme': 'base16-default-dark', }               "vim-lightline
-set laststatus=2                                                "vim-lightline
-set noshowmode                                                  "vim-lightline
-
-"Tabularize
-vnoremap <silent> <Leader>cee    :Tabularize /=<CR>         
-vnoremap <silent> <Leader>cet    :Tabularize /#<CR>          
-vnoremap <silent> <Leader>ce     :Tabularize /
 "
 " make backspaces delete sensibly
 set backspace=indent,eol,start
@@ -150,31 +138,20 @@ set ignorecase
 set backupdir=~/.vim/tmp/                   " for the backup files
 set directory=~/.vim/tmp/                   " for the swap files
 
-inoremap jj <ESC>
 
-set hidden " Some kind of buffer tweak
 set history=1000
 set undolevels=1000
 set title " Set title of the window
-set clipboard=unnamed " Use OS clipboard
-set encoding=UTF-8
-set mouse=a
 set lazyredraw
 set ttyfast
 set showmatch " Highlight matching pair
-set nobackup " Disable swapfiles
-set nowritebackup
 set noswapfile
 set listchars=eol:¬
 set hlsearch
-set incsearch
 set magic
 set showmatch
-"Remove visual delay
-set timeoutlen=1000 ttimeoutlen=0
 
 set wildmenu
-set ruler
 set autoindent "Auto indent
 filetype plugin indent on
 set noerrorbells
@@ -184,97 +161,33 @@ set tm=500
 
 set ffs=unix,dos,mac
 
-"To check
-set expandtab
-set smarttab
-set shiftwidth=2
-
 set lbr
 set tw=500
-set ai "Auto indent
-set si "Smart indent
 
 set pastetoggle=<leader>sp
-set softtabstop=2
 
 " Visual tweaks
 " =============
-set number " Display number on the sidebar
-set relativenumber
-set colorcolumn=80
-set nowrap
 set linebreak
 set diffopt+=vertical
 
 
-"
-" SPLITS
-"
 
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" Smart way to move between windows
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
-
-" Swap splits
-map <leader>th <C-w>t<C-w>H
-map <leader>tk <C-w>t<C-w>K
-
-" Resize splits
-noremap <silent> <C-M-l> :vertical resize +3<CR>
-noremap <silent> <C-M-h> :vertical resize -3<CR>
-noremap <silent> <C-M-k> :resize +3<CR>
-noremap <silent> <C-M-j> :resize -3<CR>
-
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
-vnoremap > ><CR>gv 
-vnoremap < <<CR>gv 
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " noremap <space> /
 " noremap <c-space> ?
 
-" Disable highlight when <leader><cr> is pressed
-noremap <silent> <leader><cr> :noh<cr>
-
-
-" Close the current buffer
-noremap <leader>bd :Bclose<cr>
-
-" Close all the buffers
-noremap <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-noremap <leader>tn :tabnew<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tc :tabclose<cr>
-noremap <leader>tm :tabmove
-noremap <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 " noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -283,9 +196,7 @@ set viminfo^=%
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-noremap <leader>ss :setlocal spell!<cr>
 set spelllang=en_gb,it
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 highlight clear SpellCap
@@ -295,11 +206,6 @@ highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline 
 
-" Shortcuts using <leader>
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>s? z=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on 
@@ -311,76 +217,14 @@ try
 catch
 endtry
 
-""PLUGINS
-map <leader>nn :Explore<cr>
-map <leader>nf :Vexplore<cr>
-nnoremap <leader>cd :cd %:p:h<CR>
 
 let base16colorspace=256
 colorscheme base16-default-dark
-
-" Shortcuts
-noremap <leader>ff :Ag 
-" map <leader>ff :grep 
-noremap <leader>ch :lclose<CR>
-noremap <leader>oh :lopen<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>ga :Gcommit --amend<CR>
-nnoremap <leader>gt :Gcommit -v -q %<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>
-nnoremap <leader>gp :Ggrep<Space>
-nnoremap <leader>gm :Gmove<Space>
-nnoremap <leader>gb :Git branch<Space>
-nnoremap <leader>go :Git checkout<Space>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-"keep indend on paste
-":nnoremap p p`[v`]=`]`
-nnoremap <leader>np p
-nnoremap p p=`]
-
-
-nnoremap <F6> :GundoToggle<CR>
-nmap <silent> <c-w>> :vertical resize +10<CR>
-nmap <silent> <c-w>< :vertical resize -10<CR>
 
 set grepprg=ag
 
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
-" nmap <C-p> :FZF<CR>
-nmap <C-g> :GitFiles<CR>
-
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-nnoremap <silent> <leader>p :Buffers<cr>
-nnoremap <silent> <leader>Sp :History<cr>
-
-function s:formatJSON()
-  execute "%!python -m json.tool"
-  set syntax=json
-endfunction
-
-command FormatJSON call s:formatJSON()
 
 autocmd FileType typescript setlocal completeopt+=menu,preview
 
@@ -391,22 +235,11 @@ let g:tern_show_argument_hints='on_hold'
 " and 
 let g:tern_map_keys=1
 
-" Shortcuts using <leader>
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>s? z=
+"nnoremap <A-h> <C-w>h
+"nnoremap <A-j> <C-w>j
+"nnoremap <A-k> <C-w>k
+"nnoremap <A-l> <C-w>l
 
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-" Smaller undo
-inoremap . .<c-g>u
-inoremap ? ?<c-g>u
-inoremap ! !<c-g>u
-inoremap , ,<c-g>u
 
 " " Fzf preview window ?
 " command! -bang -nargs=* Ag
@@ -428,25 +261,6 @@ set foldlevel=99
 " Max width md files
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
-nnoremap n nzz
-nnoremap N Nzz
-
-" Follow paths js imports
-set path=.,src
-set suffixesadd=.js,.jsx,.ts
-
-function! LoadMainNodeModule(fname)
-  let nodeModules = "./node_modules/"
-  let packageJsonPath = nodeModules . a:fname . "/package.json"
-
-  if filereadable(packageJsonPath)
-    return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
-  else
-    return nodeModules . a:fname
-  endif
-endfunction
-
-set includeexpr=LoadMainNodeModule(v:fname)
 
 " au! BufRead,BufNewFile *.markdown set filetype=mkd
 " au! BufRead,BufNewFile *.md       set filetype=mkd
@@ -459,21 +273,10 @@ set includeexpr=LoadMainNodeModule(v:fname)
 " NV search paths for note taking
 let g:nv_search_paths = ['~/wiki', '~/writing', 'docs.md' , './notes.md', '~/OneDrive - Ryanair Ltd/wiki']
 
-" Pyenv
-" let g:python_host_prog = '/Users/fortune/.pyenv/versions/2.7.11/bin/python'
-" let g:python3_host_prog = '/Users/fortune/.pyenv/versions/3.6.6/bin/python'
-"
-" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
 
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 "AWESOME PREVIEW FZF
-nnoremap <silent> <C-p> :Files<CR>
 
 " ripgrep
 " if executable('rg')
@@ -520,19 +323,7 @@ nnoremap <silent> <C-p> :Files<CR>
 "" COC Settings
 ""
 
-" Give more space for displaying messages.
-set cmdheight=2
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -619,8 +410,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -696,10 +487,6 @@ set formatlistpat+=\\s\\+                   " One or more spaces
 set formatlistpat+=\\\|                     " or
 set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 
-nnoremap ,f :find **/*<C-z><S-Tab>
-
-
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -709,24 +496,6 @@ augroup mygroup
 augroup end
 
 
-" Using CocList
-" Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document
-" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols
-" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" " Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" " Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" " Resume latest coc list
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-"
 "CSV
 let b:csv_arrange_align = 'l*'
 
@@ -748,12 +517,6 @@ let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = '<'
 
-" Jump between hunks
-nmap <Leader>gn <Plug>GitGutterNextHunk  " git next
-nmap <Leader>gp <Plug>GitGutterPrevHunk  " git previous
-" Hunk-add and hunk-revert for chunk staging
-nmap <Leader>ga <Plug>GitGutterStageHunk  " git add (chunk)
-nmap <Leader>gu <Plug>GitGutterUndoHunk   " git undo (chunk)
 
 " Quick-scope lazy highlight
 let g:qs_lazy_highlight = 1
@@ -784,37 +547,11 @@ let g:vim_markdown_auto_insert_bullets = 0
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_conceal_code_blocks = 0
-set conceallevel=2
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'javascript=javascript', 'typescript=typescript']
 
 
 " Start a new day by copying last day todo
 command StartDay !sh ~/scripts/start-day.sh
-
-function! WebLink() abort
-  let @+ = "https://stash.ryanair.com:8443/projects/RA/repos/" . split(expand("%:p:h"), "/")[3] . "/browse/" . @%
-endfunction
-
-command WebLink :call WebLink()
-
-command FullPath :echo @% 
-
-" Start zettelkasten
-command -nargs=1 Zettelkasten :call Zettelkasten(<f-args>)
-
-command -nargs=1 WorkZettelkasten :call Zettelkasten(<f-args>)
-
-function WorkZettelkasten(title)
-  let date = strftime('+%Y%m%d%H%M')
-  echo date
-  execute "edit ~/OneDrive/notes/Zettelkasten/" . date . " " . a:title . ".md"
-endfunction
-
-function Zettelkasten(title)
-  let date = strftime('+%Y%m%d%H%M')
-  echo date
-  execute "edit ~/Google Drive/Zettelkasten/" . date . " " . a:title . ".md"
-endfunction
 
 " paste image
 " nnoremap <silent> <leader>m :call MarkdownClipboardImage()<cr>
@@ -850,41 +587,6 @@ endfunction
 "
 " command MarkdownClipboardImage :call MarkdownClipboardImage()
 
-command MarkdownClipboardImage :call MarkdownClipboardImage()
-
-function! MarkdownClipboardImage() abort
-  " Create `img` directory if it doesn't exist
-  let img_dir = expand("%:p:h")  . '/img'
-  echo img_dir
-  if !isdirectory(img_dir)
-    silent call mkdir(img_dir)
-  endif
-
-  " First find out what filename to use
-  let index = 1
-  let file_path = img_dir . "/image" . index . ".png"
-  let vim_file_path = "img/image" . index . ".png"
-  while filereadable(file_path)
-    let index = index + 1
-    let file_path = img_dir . "/image" . index . ".png"
-    let vim_file_path = "img/image" . index . ".png"
-  endwhile
-
-  let clip_command = 'osascript'
-  let clip_command .= ' -e "set png_data to the clipboard as «class PNGf»"'
-  let clip_command .= ' -e "set referenceNumber to open for access POSIX path of'
-  let clip_command .= ' (POSIX file \"' . file_path . '\") with write permission"'
-  let clip_command .= ' -e "write png_data to referenceNumber"'
-
-  silent call system(clip_command)
-  if v:shell_error == 1
-    normal! p
-  else
-    execute "normal! i![](" . vim_file_path . ")"
-  endif
-endfunction
-
-:tnoremap <Esc> <C-\><C-n>
 
 " Firenvim
 let g:firenvim_config = { 
@@ -930,38 +632,6 @@ let g:vimwiki_global_ext = 0
 
 " au BufRead,BufNewFile ~/OneDrive - Ryanair Ltd/wiki/* set filetype=vimwiki
 
-" :autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
-function! ToggleCalendar()
-  execute ":Calendar"
-  if exists("g:calendar_open")
-    if g:calendar_open == 1
-      execute "q"
-      unlet g:calendar_open
-    else
-      g:calendar_open = 1
-    end
-  else
-    let g:calendar_open = 1
-  end
-endfunction
-
-:command ToggleCalendar call ToggleCalendar()
-
-function! FormatForm()
-  execute ':%s/\\n//g'
-  execute ':%s/\\"/"/g'
-  execute ":FormatJSON"
-endfunction
-
-:command FormatForm call FormatForm()
-
-let g:vimwiki_list = [{'path': '~/OneDrive - Ryanair Ltd/wiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
-nnoremap = :FormatXML<Cr>
 " airline
 "
 let g:airline#extensions#tabline#enabled = 1
@@ -990,5 +660,4 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Which key
-nnoremap <silent> <leader> :WhichKey '\'<CR>
 
