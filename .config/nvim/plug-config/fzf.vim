@@ -46,8 +46,7 @@ let g:fzf_colors =
 
 "Get Files
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " Get text in files with Rg
 " command! -bang -nargs=* Rg
