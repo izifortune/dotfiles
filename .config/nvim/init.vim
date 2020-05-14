@@ -116,6 +116,7 @@ call plug#end()
 source $HOME/.config/nvim/settings.vim
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/mappings.vim
+source $HOME/.config/nvim/colors.vim
 
 " absolute width of netrw window
 let g:netrw_winsize = -28
@@ -218,8 +219,6 @@ catch
 endtry
 
 
-let base16colorspace=256
-colorscheme base16-default-dark
 
 set grepprg=ag
 
