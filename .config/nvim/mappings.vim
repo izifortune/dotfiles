@@ -145,4 +145,3 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 nnoremap <silent> <leader>p :Buffers<cr>
 nnoremap <silent> <leader>Sp :History<cr>
-
