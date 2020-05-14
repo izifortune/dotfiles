@@ -121,27 +121,3 @@ vnoremap <silent> <Leader>cee    :Tabularize /=<CR>
 vnoremap <silent> <Leader>cet    :Tabularize /#<CR>          
 vnoremap <silent> <Leader>ce     :Tabularize /
 
-""" FZF
-" Silver searcher
-noremap <leader>ff :Ag 
-
-" nmap <C-p> :FZF<CR>
-nmap <C-g> :GitFiles<CR>
-
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-
-nnoremap <silent> <leader>p :Buffers<cr>
-nnoremap <silent> <leader>Sp :History<cr>
