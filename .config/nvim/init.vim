@@ -103,7 +103,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 ""Misc
 " Smooth scrolling
-Plug 'psliwka/vim-smoothie'
+"Plug 'psliwka/vim-smoothie'
 " Run commmand to tmux :Vimux...
 Plug 'benmills/vimux'
 " extend " to dispaly the numbered registers
