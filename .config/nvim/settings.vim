@@ -41,11 +41,27 @@ set smartcase                           " Override the 'ignorecase' option if th
 set title                               " Set title of the window
 set lazyredraw                          " Screen does not redraw when executing macros/registers"
 set autoread                            " Detect file changes outside vim
+set noswapfile                          " Do not create swap file for buffers
+set hlsearch
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+set diffopt+=vertical
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set mmp=1300
 " set autochdir                           " Your working directory will always be the same as your working directory
 " set foldcolumn=2                        " Folding abilities
 
+set backspace=indent,eol,start           " make backspaces delete sensibly
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=eol:¬
+
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
+" absolute width of netrw window
+let g:netrw_winsize = -28
+" tree-view
+let g:netrw_liststyle = 3
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
