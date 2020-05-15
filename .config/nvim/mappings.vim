@@ -68,9 +68,7 @@ nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB will go back
 nnoremap <silent> <S-TAB> :bprevious<CR>
 
-
 "" Buffers
-
 " Close the current buffer
 noremap <leader>bd :Bclose<cr>
 
@@ -84,40 +82,3 @@ noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove
 noremap <leader>t<leader> :tabnext
-
-
-"" Plugins
-
-"""  GitGutter
-" Jump between hunks
-nmap <Leader>gn <Plug>GitGutterNextHunk  " git next
-nmap <Leader>gp <Plug>GitGutterPrevHunk  " git previous
-" Hunk-add and hunk-revert for chunk staging
-nmap <Leader>ga <Plug>GitGutterStageHunk  " git add (chunk)
-nmap <Leader>gu <Plug>GitGutterUndoHunk   " git undo (chunk)
-
-""" WhichKey
-nnoremap <silent> <leader> :WhichKey '\'<CR>
-
-""" Fugitive
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>ga :Gcommit --amend<CR>
-nnoremap <leader>gt :Gcommit -v -q %<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>
-nnoremap <leader>gp :Ggrep<Space>
-nnoremap <leader>gm :Gmove<Space>
-nnoremap <leader>gb :Git branch<Space>
-nnoremap <leader>go :Git checkout<Space>
-nnoremap <leader>gps :Dispatch! git push<CR>
-nnoremap <leader>gpl :Dispatch! git pull<CR>
-
-""" Tabularize
-vnoremap <silent> <Leader>cee    :Tabularize /=<CR>         
-vnoremap <silent> <Leader>cet    :Tabularize /#<CR>          
-vnoremap <silent> <Leader>ce     :Tabularize /
-
