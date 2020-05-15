@@ -70,10 +70,10 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 
 "" Buffers
 " Close the current buffer
-noremap <leader>bd :Bclose<cr>
+noremap <leader>dd :Bclose<cr>
 
 " Close all the buffers
-noremap <leader>ba :1,1000 bd!<cr>
+noremap <leader>da :1,1000 bd!<cr>
 
 "" Tabs
 " Useful mappings for managing tabs

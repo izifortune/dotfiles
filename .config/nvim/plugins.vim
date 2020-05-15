@@ -94,6 +94,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'benmills/vimux'
 " extend " to dispaly the numbered registers
 Plug 'junegunn/vim-peekaboo'
+Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
 
 " All of your Plugins must be added before the following line
 call plug#end()
