@@ -19,7 +19,6 @@
   // list
   "list.indicator": ">",
   "list.selectedSignText": " ",
-
   // autoformat
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
@@ -29,7 +28,6 @@
     "scss",
     "graphql",
     "html",
-    "yaml",
     "json",
     "python"
   ],
@@ -51,7 +49,6 @@
   //  "<cr>": ["expandable?", "expand", "open"],
   //  "v": "open:vsplit"
   //},
-
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
