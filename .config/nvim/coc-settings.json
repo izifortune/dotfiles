@@ -1,7 +1,7 @@
 {
   // EMOJI
   "coc.source.emoji.filetypes": null,
-  "coc.source.emoji.triggerCharacters": [":", "·", "ø", "µ"],
+  "coc.source.emoji.triggerCharacters": [":", "·"],
 
   // suggestions
   // "suggest.echodocSupport": true,
@@ -25,6 +25,8 @@
     "css",
     "markdown",
     "javascript",
+    "typescript",
+    "scss",
     "graphql",
     "html",
     "yaml",
@@ -44,20 +46,20 @@
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
-  "explorer.icon.enableVimDevicons": true
+  "explorer.icon.enableVimDevicons": true,
   //"explorer.keyMappings": {
   //  "<cr>": ["expandable?", "expand", "open"],
   //  "v": "open:vsplit"
   //},
 
-  //"languageserver":{
-  //  "bash": {
-  //    "command": "bash-language-server",
-  //    "args": ["start"],
-  //    "filetypes": ["sh"],
-  //    "ignoredRootPaths": ["~"]
-  //  }
-  //}
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  }
 
   // TODO language servers
   // TODO g:coc_global_extensions
