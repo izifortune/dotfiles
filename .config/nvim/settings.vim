@@ -49,6 +49,7 @@ set tm=500
 set diffopt+=vertical
 set ignorecase
 set smartcase                           " Override the 'ignorecase' option if the search pattern contains upper case characters.
+set mmp=5000 " Issue with E363 pattern uses more memory than maxmempattern
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set mmp=1300
 " set autochdir                           " Your working directory will always be the same as your working directory
@@ -66,3 +67,4 @@ let g:netrw_winsize = -28
 let g:netrw_liststyle = 3
 " sort is affecting only: directories on the top, files below
 let g:netrw_sort_sequence = '[\/]$,*'
+
