@@ -31,6 +31,9 @@
     "json",
     "python"
   ],
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.eslintIntegration": true,
   "coc.preferences.hoverTarget": "float",
 
   // snippets
