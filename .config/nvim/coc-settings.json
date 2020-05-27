@@ -38,10 +38,7 @@
 
   // snippets
 
-  //[
-  //  "UltiSnips",
-  //  "~/.config/nvim/utils/snips"
-  //],
+  "snippets.ultisnips.directories": ["~/.config/coc/ultisnips"],
 
   // explorer
   "explorer.width": 30,
