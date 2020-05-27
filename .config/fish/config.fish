@@ -1,15 +1,6 @@
 source ~/.fish_aliases
 source ~/.local.fish
 
-function pythonserve
-  if [ "$1" != "" ]
-    then
-      python -m SimpleHTTPServer $1
-  else
-    python -m SimpleHTTPServer 8000
-  end
-end
-
 function toggle_proxy
   if [ -z "$http_proxy" ]
     echo "setting up proxy";
