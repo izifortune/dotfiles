@@ -110,4 +110,19 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Format XML files
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
-nnoremap = :FormatXML<Cr>
+
+" Open a syntax-colored version of the current file
+" suitable for copy-pasting into a presentation.
+function! functions#keynote() abort
+  if has('gui')
+    setlocal nonumber
+    setlocal norelativenumber
+    TOhtml
+    let l:tempfile=system('mktemp')
+    execute 'saveas! ' . l:tempfile
+    execute '!open -b com.google.Chrome ' . l:tempfile
+    quit
+  else
+    echoerr 'functions#keynote() should be run from within a GUI instance of Vim'
+  endif
+endfunction
