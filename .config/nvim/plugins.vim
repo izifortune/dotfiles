@@ -61,7 +61,6 @@ Plug 'junegunn/gv.vim'
 "" Relax
 " :VimGameCodeBreak
 Plug 'johngrib/vim-game-code-break'
-Plug 'scrooloose/vim-slumlord'
 "" UML
 Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
