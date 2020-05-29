@@ -39,7 +39,7 @@ const getOpenTasks = async (date) => {
 };
 
 const main = async () => {
-  const weekDays = getWeekDays("2020-05-25");
+  const weekDays = getWeekDays(process.argv[2]);
   const openTasks = await Promise.all(
     weekDays.map((el) => {
       return getOpenTasks(el);

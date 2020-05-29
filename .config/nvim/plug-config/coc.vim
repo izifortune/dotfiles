@@ -1,5 +1,9 @@
 let g:coc_global_extensions = [
     \ 'coc-angular',
+    \ 'coc-actions',
+    \ 'coc-calc',
+    \ 'coc-explorer',
+    \ 'coc-markdownlint',
     \ 'coc-css',
     \ 'coc-dictionary',
     \ 'coc-emmet',
@@ -20,6 +24,7 @@ let g:coc_global_extensions = [
     \ 'coc-tabnine',
     \ 'coc-todolist',
     \ 'coc-tslint',
+    \ 'coc-tsserver',
     \ 'coc-vimtex',
     \ 'coc-word',
     \ 'coc-yaml',

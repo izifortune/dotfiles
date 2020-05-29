@@ -10,7 +10,6 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'jbgutierrez/vim-better-comments'
 " Theme
 Plug 'chriskempson/base16-vim'
-" Plug 'itchyny/lightline.vim'
 " Airline stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -30,16 +29,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn in
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'reedes/vim-pencil'
 Plug 'jparise/vim-graphql'
 " Plug 'https://github.com/Alok/notational-fzf-vim'
 Plug 'ryanoasis/vim-devicons'
 " Running your test easily https://github.com/janko/vim-test
 Plug 'janko-m/vim-test'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sodapopcan/vim-twiggy'
 Plug 'mhinz/vim-startify'
-Plug 'shime/vim-livedown', { 'do': 'npm install -g livedown'}
 Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
@@ -65,13 +61,15 @@ Plug 'junegunn/gv.vim'
 "" Relax
 " :VimGameCodeBreak
 Plug 'johngrib/vim-game-code-break'
-Plug 'scrooloose/vim-slumlord'
+"" UML
 Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
+
 Plug 'chrisbra/Colorizer'
 Plug 'SirVer/ultisnips'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 ""Language utils
 Plug 'lervag/vimtex'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
