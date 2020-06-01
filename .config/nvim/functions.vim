@@ -126,3 +126,16 @@ function! functions#keynote() abort
     echoerr 'functions#keynote() should be run from within a GUI instance of Vim'
   endif
 endfunction
+
+
+    " redirect command's output to the current line
+function! RED(command)
+    redir => output
+    silent exec a:command
+    redir END
+    let @z = substitute(output, '^\n', '', '')
+    execute "put z"
+    return ''
+endfunction
+
+command! -nargs=1 RE call RED('<args>')
