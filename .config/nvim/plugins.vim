@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Comment easy
-Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-commentary'
 " Have the file system follow you around
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -72,7 +72,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 ""Language utils
 Plug 'lervag/vimtex'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+"Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 
 ""Tasks and notes""

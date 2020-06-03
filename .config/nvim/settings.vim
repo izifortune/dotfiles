@@ -54,6 +54,7 @@ set mmp=5000 " Issue with E363 pattern uses more memory than maxmempattern
 " set mmp=1300
 " set autochdir                           " Your working directory will always be the same as your working directory
 " set foldcolumn=2                        " Folding abilities
+set foldmethod=manual
 
 set backspace=indent,eol,start           " make backspaces delete sensibly
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
