@@ -56,7 +56,8 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     }
-  }
+  },
+  "git.enableGutters": true
 
   // TODO language servers
   // TODO g:coc_global_extensions

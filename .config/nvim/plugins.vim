@@ -46,7 +46,7 @@ Plug 'tpope/vim-fugitive'
 " Git branch viewer :Flog :FlogSplit
 Plug 'rbong/vim-flog'
 " Fancy gutters display
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 ""Focus ""
 Plug 'junegunn/limelight.vim'

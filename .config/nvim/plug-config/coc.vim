@@ -154,3 +154,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Coc-Explorer
+:nmap <space>e :CocCommand explorer<CR>
