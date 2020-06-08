@@ -212,13 +212,6 @@ hs.window.animationDuration = 0
 --hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
 --hs.alert.show("Config loaded")
 
--------------------------------------------------
----- Hyper i to show window hints
--------------------------------------------------
-
--- hs.hotkey.bind(cmd, 'e', function()
---     hs.hints.windowHints()
--- end)
 
 -------------------------------------------------
 ---- Hyper hjkl to switch window focus
@@ -753,6 +746,14 @@ hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'f9', (function()
   end
   hs.openConsole()
 end))
+
+-------------------------------------------------
+---- Hyper i to show window hints
+-------------------------------------------------
+
+hs.hotkey.bind({'ctrl'}, 'e', function()
+  hs.hints.windowHints()
+end)
 
 --
 -- Auto-reload config on change.
