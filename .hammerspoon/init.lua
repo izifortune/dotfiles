@@ -298,11 +298,13 @@ hs.window.animationDuration = 0
 
 
 hs.grid.setGrid('12x12') -- allows us to place on quarters, thirds and halves
+hs.grid.setMargins({16, 16})
 hs.window.animationDuration = 0 -- disable animations
 
 local screenCount = #hs.screen.allScreens()
 local logLevel = 'info' -- generally want 'debug' or 'info'
 local log = hs.logger.new('wincent', logLevel)
+local layoutType = 1
 
 local grid = {
   topHalf = '0,0 12x6',
@@ -335,19 +337,19 @@ local layoutConfig = {
     -- Make sure Textual appears in front of Skype, and iTerm in front of
     -- others.
     activate('com.codeux.irc.textual5')
-    activate('io.alacritty')
+    -- activate('io.alacritty')
   end),
 
-  ['com.codeux.irc.textual5'] = (function(window)
-    hs.grid.set(window, grid.fullScreen, internalDisplay())
-  end),
+  -- ['com.codeux.irc.textual5'] = (function(window)
+  --   hs.grid.set(window, grid.fullScreen, internalDisplay())
+  -- end),
 
-  ['com.flexibits.fantastical2.mac'] = (function(window)
-    hs.grid.set(window, grid.fullScreen, internalDisplay())
-  end),
+  -- ['com.flexibits.fantastical2.mac'] = (function(window)
+  --   hs.grid.set(window, grid.fullScreen, internalDisplay())
+  -- end),
 
   ['com.google.Chrome'] = (function(window, forceScreenCount)
-    local count = forceScreenCount or screenCount
+    local count = forceScreenCount or layoutType or screenCount
     if count == 1 then
       hs.grid.set(window, grid.fullScreen)
     else
@@ -360,8 +362,22 @@ local layoutConfig = {
     end
   end),
 
+  ['com.apple.Preview'] = (function(window, forceScreenCount)
+    local count = forceScreenCount or layoutType or screenCount
+    if count == 1 then
+      hs.grid.set(window, grid.fullScreen)
+    else
+      -- First/odd windows go on the RIGHT side of the screen.
+      -- Second/even windows go on the LEFT side.
+      -- (Note this is the opposite of what we do with Canary.)
+        local windows = windowCount(window:application())
+        local side = grid.leftHalf
+        hs.grid.set(window, side, hs.screen.primaryScreen())
+      end
+    end),
+
   ['org.mozilla.firefox'] = (function(window, forceScreenCount)
-    local count = forceScreenCount or screenCount
+    local count = forceScreenCount or layoutType or screenCount
     if count == 1 then
       hs.grid.set(window, grid.fullScreen)
     else
@@ -369,13 +385,32 @@ local layoutConfig = {
       -- Second/even windows go on the LEFT side.
       -- (Note this is the opposite of what we do with Canary.)
       local windows = windowCount(window:application())
-      local side = grid.rightHalf
+      local windowPosition = windowPosition(window:application(), window)
+      log.wf(windows)
+      log.wf(windowPosition)
+      -- local map = {}
+      -- table.insert(map[window:id()], window)
+      -- for _, w in pairs(map) do
+      --   log.wf('FIREFOX')
+      --   log.wf(w:id())
+      --   log.wf(w:title())
+      --   if w:isStandard() and not window:isMinimized() then
+      --     count = count + 1
+      --   end
+      -- end
+      local side
+      if windows > 1 then
+        side = windowPosition == 0 and grid.topRight or grid.bottomRight
+      else 
+        side = grid.rightHalf
+      end
+      -- local side = grid.rightHalf
       hs.grid.set(window, side, hs.screen.primaryScreen())
-    end
-  end),
+      end
+    end),
 
   ['com.microsoft.teams'] = (function(window, forceScreenCount)
-    local count = forceScreenCount or screenCount
+    local count = forceScreenCount or layoutType or screenCount
     if count == 1 then
       hs.grid.set(window, grid.fullScreen)
     else
@@ -389,7 +424,7 @@ local layoutConfig = {
     end),
 
   ['com.google.Chrome.canary'] = (function(window, forceScreenCount)
-    local count = forceScreenCount or screenCount
+    local count = forceScreenCount or layoutType or screenCount
     if count == 1 then
       hs.grid.set(window, grid.fullScreen)
     else
@@ -403,7 +438,7 @@ local layoutConfig = {
   end),
 
   ['io.alacritty'] = (function(window, forceScreenCount)
-    local count = forceScreenCount or screenCount
+    local count = forceScreenCount or layoutType or screenCount
     if count == 1 then
       hs.grid.set(window, grid.fullScreen)
     else
@@ -436,6 +471,19 @@ function windowCount(app)
   return count
 end
 
+function windowPosition(app, window)
+  local id = window:id()
+  local count = 0
+  if app then
+    for _, w in pairs(app:allWindows()) do
+      if w:isStandard() and not w:isMinimized() and id > w:id() then
+        count = 1
+      end
+    end
+  end
+  return count
+end
+
 function hide(bundleID)
   local app = hs.application.get(bundleID)
   if app then
@@ -462,8 +510,7 @@ function canManageWindow(window)
 
   -- Special handling for iTerm: windows without title bars are
   -- non-standard.
-  return window:isStandard() or
-    bundleID == 'com.googlecode.iterm2'
+  return window:isStandard()
 end
 
 function internalDisplay()
@@ -473,6 +520,7 @@ function internalDisplay()
 end
 
 function activateLayout(forceScreenCount)
+  layoutType = forceScreenCount
   layoutConfig._before_()
 
   for bundleID, callback in pairs(layoutConfig) do
@@ -528,12 +576,26 @@ function handleAppEvent(element, event)
 end
 
 function handleWindowEvent(window, event, watcher, info)
+  log.wf('delete', event)
   if event == events.elementDestroyed then
+    repositionAppWindows(window)
     log.df('[event] window %s destroyed', info.id)
     watcher:stop()
     watchers[info.pid].windows[info.id] = nil
   else
     log.wf('unexpected window event %d received', event)
+  end
+end
+
+function repositionAppWindows(window) 
+  local bundleID = window:application():bundleID()
+  if layoutConfig[bundleID] then
+    log.wf(window:application():bundleID())
+    for _, w in pairs(window:application():allWindows()) do
+      if w:isStandard() and not w:isMinimized() then
+        layoutConfig[bundleID](w)
+      end
+    end
   end
 end
 
@@ -594,6 +656,8 @@ function watchWindow(window)
     if layoutConfig[bundleID] then
       layoutConfig[bundleID](window)
     end
+
+    repositionAppWindows(window)
 
     -- Watch for window-closed events.
     local id = window:id()
