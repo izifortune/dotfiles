@@ -17,7 +17,10 @@ end
 
 termBinds = {
   termMetaCombo('c'),
-  termMetaCombo('v')
+  termMetaCombo('v'),
+  termMetaCombo('w'),
+  termMetaCombo('t'),
+  termMetaCombo('r')
 }
 
 function enableBinds()
