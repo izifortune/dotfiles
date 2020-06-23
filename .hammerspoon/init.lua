@@ -1,5 +1,23 @@
+-- setup push to talk
+
+--- move to config
+
+
+local ptt = require 'pushToTalk'
+ptt.start()
+
 local hyper = {"cmd", "alt", "ctrl"}
 local cmd = {'cmd'}
+
+hs.loadSpoon('HSearch')
+
+----------------------------------------------------------------------------------------------------
+-- Register Hammerspoon Search
+if spoon.HSearch then
+  hs.hotkey.bind({ 'alt'}, 'g' , function()
+       spoon.HSearch:toggleShow()
+  end)
+end
 
 hs.window.animationDuration = 0
 
