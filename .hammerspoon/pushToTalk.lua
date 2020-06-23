@@ -12,7 +12,7 @@ local template = require('ext.template')
 module.defaultState = 'push-to-talk'
 
 module.state = module.defaultState
-module.defaultInputVolume = 50
+module.defaultInputVolume = 100
 module.pushed = false
 
 module.states = function ()
