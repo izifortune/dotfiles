@@ -66,6 +66,10 @@ wf_chrome = wf.new{'Chrome'}
 wf_chrome:subscribe(wf.windowFocused, enableBinds)
 wf_chrome:subscribe(wf.windowUnfocused, disableBinds)
 
+wf_chrome = wf.new{'Microsoft Teams'}
+wf_chrome:subscribe(wf.windowFocused, enableBinds)
+wf_chrome:subscribe(wf.windowUnfocused, disableBinds)
+
 ---- hs.hotkey.bind(hyper, 'h', function()
 ----     if hs.window.focusedWindow() then
 ----         hs.window.focusedWindow():focusWindowWest()

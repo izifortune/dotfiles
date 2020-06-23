@@ -71,7 +71,7 @@ local showState = function()
     end
   end
 
-  device:setMuted(muted)
+  -- device:setMuted(muted)
   device:setInputVolume(inputVolume)
   hs.applescript('set volume input volume ' ..inputVolume)
 end
