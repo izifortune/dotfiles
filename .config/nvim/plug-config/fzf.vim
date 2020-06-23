@@ -101,5 +101,5 @@ imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --sho
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-nnoremap <silent> <leader>p :Buffers<cr>
+nnoremap <silent> <leader>bl :Buffers<cr>
 nnoremap <silent> <leader>Sp :History<cr>

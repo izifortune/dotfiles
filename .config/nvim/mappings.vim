@@ -74,6 +74,7 @@ noremap <leader>dd :Bclose<cr>
 
 " Close all the buffers
 noremap <leader>da :%bd\|e#<cr>
+noremap <leader>bo :%bd\|e#<cr>
 
 "" Tabs
 " Useful mappings for managing tabs
