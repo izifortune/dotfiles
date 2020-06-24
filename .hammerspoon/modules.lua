@@ -20,4 +20,8 @@ if spoon.HSearch then
   end)
 end
 
+hs.loadSpoon('UnsplashRandom')
+
+spoon.UnsplashRandom:init()
+
 --- End Modules
