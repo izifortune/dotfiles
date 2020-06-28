@@ -7,6 +7,7 @@ pip3 install neovim
 npm install -g neovim typescript eslint tslint http-server postcss-syntax bash-language-server
 
 # Hammerspoon
+# TODO Review if necessary
 mkdir -p $HOME/.hammerspoon/hs
 git clone https://github.com/dsanson/hs.tiling $HOME/.hammerspoon/hs/tiling
 
