@@ -103,4 +103,6 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 nnoremap <silent> <leader>bl :Buffers<cr>
 nnoremap <silent> <leader>Sp :History<cr>
-nnoremap <silent> <leader>sl :Ag \[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)<cr>
+" command! -bang -nargs=+ Kagl call fzf#vim#ag_raw("'\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)' " . <q-args> . ' ~/code/knowledge/', fzf#vim#with_preview(), <bang>0)
+command! -bang Kagl call fzf#vim#ag_raw("'\\[([\\w\\s\\d]+)\\]\\((https?:\\/\\/[\\w\\d./?=#]+)\\)'" . ' ~/code/knowledge/', <bang>0)
+command! -bang -nargs=+ Kag call fzf#vim#ag_raw(<q-args> . ' ~/code/knowledge/', <bang>0)
