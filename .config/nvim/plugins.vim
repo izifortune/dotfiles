@@ -9,7 +9,8 @@ Plug 'alvan/vim-closetag'
 Plug 'liuchengxu/vim-which-key'
 Plug 'jbgutierrez/vim-better-comments'
 " Theme
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'gruvbox-community/gruvbox'
 " Airline stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

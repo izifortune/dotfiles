@@ -1,5 +1,5 @@
 let base16colorspace=256
-colorscheme base16-default-dark
+colorscheme gruvbox
 
 " Transparency background for vim session
 hi Normal guibg=NONE ctermbg=NONE
