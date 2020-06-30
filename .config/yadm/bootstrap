@@ -26,6 +26,7 @@ brew bundle
 
 # install additional
 sh ~/brew.sh
+sh ~/npm.sh
 
 if command -v nvim >/dev/null 2>&1; then
   echo "Bootstraping NeoVim"
