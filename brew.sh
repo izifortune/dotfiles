@@ -3,7 +3,7 @@ sudo chmod 4755 $mtrlocation/sbin/mtr
 sudo chown root $mtrlocation/sbin/mtr
 
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-pip3 install neovim
+pip3 install neovim howdoi --user
 npm install -g neovim typescript eslint tslint http-server postcss-syntax bash-language-server
 
 # Hammerspoon

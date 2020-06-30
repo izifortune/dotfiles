@@ -17,7 +17,7 @@ git config --global core.editor "nvim"
 echo "Install brew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-#sudo sh ~/.osx
+sudo sh ~/.osx
 
 # Recover from Brewfile
 ## eg: brew bundle dump -> Create Brewfile
