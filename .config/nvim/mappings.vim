@@ -83,3 +83,5 @@ noremap <leader>to :tabonly<cr>
 noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove
 noremap <leader>t<leader> :tabnext
+
+noremap <leader>kk :cd ~/code/knowledge<cr>

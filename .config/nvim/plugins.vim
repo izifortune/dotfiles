@@ -75,6 +75,7 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'lervag/vimtex'
 "Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
+Plug 'izifortune/follow-markdown-links', { 'branch': 'feature/external-links' }
 
 ""Tasks and notes""
 "\ww or \w\w

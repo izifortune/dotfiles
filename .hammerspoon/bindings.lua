@@ -83,3 +83,5 @@ wf_chrome:subscribe(wf.windowUnfocused, disableBinds)
 
 
 hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
+hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
+hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus("Firefox") end)
