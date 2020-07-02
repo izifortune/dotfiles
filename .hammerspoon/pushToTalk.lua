@@ -74,6 +74,7 @@ local showState = function()
   -- device:setMuted(muted)
   device:setInputVolume(inputVolume)
   hs.applescript('set volume input volume ' ..inputVolume)
+  os.execute("osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-data-jsx\"'")
 end
 
 local buildMenu = function()

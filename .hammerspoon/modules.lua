@@ -20,8 +20,8 @@ if spoon.HSearch then
   end)
 end
 
-hs.loadSpoon('UnsplashRandom')
+-- hs.loadSpoon('UnsplashRandom')
 
-spoon.UnsplashRandom:init()
+-- spoon.UnsplashRandom:init()
 
 --- End Modules

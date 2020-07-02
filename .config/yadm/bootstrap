@@ -40,3 +40,7 @@ fi
 
 # intall simple menubar
 git clone git@github.com:izifortune/simple-bar.git $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
+# wal colors alacritty
+git clone https://github.com/egeesin/alacritty-color-export $HOME/code
+chmod +x $HOME/code/alacritty-color-export/script.sh
+./$HOME/code/alacritty-color-export/script.sh
