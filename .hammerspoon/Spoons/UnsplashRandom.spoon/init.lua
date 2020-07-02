@@ -32,7 +32,7 @@ local function unsplashRequest()
     local screen_data = hs.screen.mainScreen():currentMode()
     local width = string.format("%0.f", screen_data.w * screen_data.scale)
     local height = string.format("%0.f", screen_data.h * screen_data.scale)
-    local image_url = "https://source.unsplash.com/" .. width .. "x" .. height .. "/?art"
+    local image_url = "https://source.unsplash.com/" .. width .. "x" .. height .. "/?texture-patterns"
     obj.task = hs.task.new("/usr/bin/curl", curl_callback, {"-k", "-L", image_url, "-o", obj.localpath})
     obj.task:start()
 end
