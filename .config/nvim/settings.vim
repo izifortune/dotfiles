@@ -69,3 +69,4 @@ let g:netrw_liststyle = 3
 " sort is affecting only: directories on the top, files below
 let g:netrw_sort_sequence = '[\/]$,*'
 
+set inccommand=nosplit " Live substitution

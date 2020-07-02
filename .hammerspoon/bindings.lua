@@ -1,3 +1,5 @@
+local logLevel = 'info' -- generally want 'debug' or 'info'
+local log = hs.logger.new('wincent', logLevel)
 -- CTRL TAB requires less effort
 hs.hotkey.bind({"ctrl"}, "tab", function()
   hs.eventtap.keyStroke({"cmd"}, "tab")
@@ -86,9 +88,32 @@ hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pastebo
 hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
 hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus("Firefox") end)
 
-hs.hotkey.bind({"alt"}, "1", function () hs.execute('/usr/local/bin/yabai -m space --focus 1') end )
-hs.hotkey.bind({"alt"}, "2", function () hs.execute('/usr/local/bin/yabai -m space --focus 2') end )
-hs.hotkey.bind({"alt"}, "3", function () hs.execute('/usr/local/bin/yabai -m space --focus 3') end )
-hs.hotkey.bind({"alt"}, "4", function () hs.execute('/usr/local/bin/yabai -m space --focus 4') end )
-hs.hotkey.bind({"alt"}, "5", function () hs.execute('/usr/local/bin/yabai -m space --focus 5') end )
-hs.hotkey.bind({"alt"}, "6", function () hs.execute('/usr/local/bin/yabai -m space --focus 6') end )
+-- /usr/local/bin/yabai -m window --focus "$(/usr/local/bin/yabai -m query --spaces --space 1 | jq -r '."last-window"')" || /usr/local/bin/yabai -m space --focus 1
+-- hs.hotkey.bind({"alt"}, "1", function () 
+--   output, status, termType  = hs.execute('/usr/local/bin/yabai -m query --spaces --space 1 | jq -r \'."last-window"\'')
+--   log.wf(output)
+--   log.wf(status)
+-- end )
+
+-- hs.hotkey.bind({"alt"}, "h", function () os.execute('/usr/local/bin/yabai -m window --focus west') end )
+-- hs.hotkey.bind({"alt"}, "j", function () os.execute('/usr/local/bin/yabai -m window --focus south') end )
+-- hs.hotkey.bind({"alt"}, "k", function () os.execute('/usr/local/bin/yabai -m window --focus north') end )
+-- hs.hotkey.bind({"alt"}, "l", function () os.execute('/usr/local/bin/yabai -m window --focus east') end )
+-- hs.hotkey.bind({"alt"}, "1", function () hs.execute('/usr/local/bin/yabai -m space --focus 1') end )
+-- package.json jq --arg b "$BOO" '. + { foo: $b }'
+-- hs.hotkey.bind({"alt"}, "1", function () 
+--   log.wf('test')
+--   -- yabai -m query --spaces --space 1 | jq -r '."first-window"' | xargs yabai -m window --focus 
+--   -- s = [[He said "It's a boy"; sure]]
+--   -- os.execute(("echo %q"):format(s))
+--   jq = [[."first-window"]]
+--   output, test, t = os.execute(("yabai -m query --spaces --space 1 | jq -r '%q' | xargs yabai -m window --focus "):format(jq))
+--   log.wf(tostring(output))
+--   log.wf(test.."")
+--   log.wf(t.."")
+-- end )
+-- hs.hotkey.bind({"alt"}, "2", function () os.execute('/usr/local/bin/yabai -m space --focus 2') end )
+-- hs.hotkey.bind({"alt"}, "3", function () os.execute('/usr/local/bin/yabai -m space --focus 3') end )
+-- hs.hotkey.bind({"alt"}, "4", function () os.execute('/usr/local/bin/yabai -m space --focus 4') end )
+-- hs.hotkey.bind({"alt"}, "5", function () os.execute('/usr/local/bin/yabai -m space --focus 5') end )
+-- hs.hotkey.bind({"alt"}, "6", function () os.execute('/usr/local/bin/yabai -m space --focus 6') end )

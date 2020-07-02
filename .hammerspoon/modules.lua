@@ -4,9 +4,8 @@ local ptt = require 'pushToTalk'
 
 ptt.start()
 
-require 'window'
+-- require 'window'
 require 'bindings'
-require 'menubar'
 
 --- Spons
 

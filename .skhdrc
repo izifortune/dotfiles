@@ -1,40 +1,39 @@
-# enter fullscreen mode for the focused container
-alt - f : chunkc tiling::window --toggle fullscreen
+# Focus windows
 
-# change focus between tiling / floating windows
-shift + alt - space : chunkc tiling::window --toggle float
+ctrl + shift - h : yabai -m window --focus west
+ctrl + shift - j : yabai -m window --focus south
+ctrl + shift - k : yabai -m window --focus north
+ctrl + shift - l : yabai -m window --focus east
 
-# change layout of desktop
-alt - e : chunkc tiling::desktop --layout bsp
-alt - s : chunkc tiling::desktop --layout monocle
+# Move space and focus
 
-# kill focused window
-shift + alt - q : chunkc tiling::window --close
+alt - 1 : yabai -m space --focus 1 | yabai -m query --spaces --space 1 | jq -r '."first-window"' | xargs yabai -m window --focus 
+alt - 2 : yabai -m space --focus 2 | yabai -m query --spaces --space 2 | jq -r '."last-window"' | xargs yabai -m window --focus 
+alt - 3 : yabai -m space --focus 3 | yabai -m query --spaces --space 3 | jq -r '."first-window"' | xargs yabai -m window --focus 
+alt - 4 : yabai -m space --focus 4 | yabai -m query --spaces --space 4 | jq -r '."first-window"' | xargs yabai -m window --focus 
+alt - 5 : yabai -m space --focus 5 | yabai -m query --spaces --space 5 | jq -r '."first-window"' | xargs yabai -m window --focus 
+alt - 6 : yabai -m space --focus 6 | yabai -m query --spaces --space 6 | jq -r '."first-window"' | xargs yabai -m window --focus 
 
-# change focus
-alt - h : chunkc tiling::window --focus west
-alt - j : chunkc tiling::window --focus south
-alt - k : chunkc tiling::window --focus north
-alt - l : chunkc tiling::window --focus east
+# Move windows to space
 
-alt - p : chunkc tiling::window --focus prev
-alt - n : chunkc tiling::window --focus next
+alt + shift - 1: yabai -m window --space  1; yabai -m space --focus 1
+alt + shift - 2: yabai -m window --space  2; yabai -m space --focus 2
+alt + shift- 3: yabai -m window --space  3; yabai -m space --focus 3
+alt + shift- 4: yabai -m window --space  4; yabai -m space --focus 4
+alt + shift- 5: yabai -m window --space  5; yabai -m space --focus 5
+alt + shift- 6: yabai -m window --space  6; yabai -m space --focus 6
 
-# move focused window
-shift + alt - h : chunkc tiling::window --warp west
-shift + alt - j : chunkc tiling::window --warp south
-shift + alt - k : chunkc tiling::window --warp north
-shift + alt - l : chunkc tiling::window --warp east
+# balance size of windows
+shift + alt - 0 : yabai -m space --balance
 
-alt - r : chunkc tiling::desktop --rotate 90
+# toggle window fullscreen zoom
+alt - f : yabai -m window --toggle zoom-fullscreen
 
-# move focused container to workspace
-shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
-shift + alt - p : chunkc tiling::window --send-to-desktop prev
-shift + alt - n : chunkc tiling::window --send-to-desktop next
-shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
-shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
-shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
-shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
-shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
-shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+# toggle window native fullscreen
+shift + alt - f : yabai -m window --toggle native-fullscreen
+
+# toggle border
+shift + alt - b : yabai -m window --toggle border
+
+# rotate
+ctrl + shift - r : yabai -m space --rotate 90
