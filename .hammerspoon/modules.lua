@@ -6,6 +6,7 @@ ptt.start()
 
 require 'window'
 require 'bindings'
+require 'menubar'
 
 --- Spons
 
