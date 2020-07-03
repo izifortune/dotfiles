@@ -32,6 +32,9 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
+# toggle float
+ctrl + shift - f : yabai -m window --toggle float
+
 # toggle border
 shift + alt - b : yabai -m window --toggle border
 
