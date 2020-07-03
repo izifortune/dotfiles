@@ -69,6 +69,7 @@ yabai -m rule --add app=Dashlane manage=off
 yabai -m rule --add app=Übersicht manage=off
 yabai -m rule --add app=Firefox space=2
 yabai -m rule --add app="Microsoft Teams" space=3
+yabai -m rule --add app="^BIG-IP" manage=off
 
 yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 yabai -m signal --add event=display_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"

@@ -18,7 +18,8 @@ termBinds = {
   termMetaCombo('w'),
   termMetaCombo('t'),
   termMetaCombo('r'),
-  termMetaCombo('a')
+  termMetaCombo('a'),
+  termMetaCombo('e')
 }
 
 function enableBinds()
