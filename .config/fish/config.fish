@@ -63,8 +63,8 @@ end
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 if status --is-interactive
-  set BASE16_SHELL "$HOME/.config/base16-shell/"
-  source "$BASE16_SHELL/profile_helper.fish"
+  # set BASE16_SHELL "$HOME/.config/base16-shell/"
+  # source "$BASE16_SHELL/profile_helper.fish"
 end
 
 set -g _Z_CMD "j"

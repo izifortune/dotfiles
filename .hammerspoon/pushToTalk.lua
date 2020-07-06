@@ -164,6 +164,7 @@ end
 module.stop = function()
   if module.eventTapWatcher then module.eventTapWatcher:stop() end
   if module.menubar then module.menubar:delete() end
+  if module.inputDevice then module.inputDevice:watcherStop() end
 end
 
 return module

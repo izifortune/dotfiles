@@ -106,3 +106,72 @@ nnoremap <silent> <leader>Sp :History<cr>
 " command! -bang -nargs=+ Kagl call fzf#vim#ag_raw("'\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)' " . <q-args> . ' ~/code/knowledge/', fzf#vim#with_preview(), <bang>0)
 command! -bang Links call fzf#vim#ag_raw("'\\[([\\w\\s\\d]+)\\]\\((https?:\\/\\/[\\w\\d./?=#]+)\\)'" . ' ~/code/knowledge/', <bang>0)
 command! -bang -nargs=+ Wiki call fzf#vim#ag_raw(<q-args> . ' ~/code/knowledge/', <bang>0)
+
+function Test()
+  call vim#function()
+  " call fzf#run({ 'source': call function})
+  " call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')),
+  "       \               'fnamemodify(v:val, ":t:r")'),
+  "       \ 'sink': 'colo', 'left': '25%'})
+endfunction
+
+function! Redir(command) abort
+  if exists('*execute')
+    return execute(a:command)
+  endif
+
+  redir => r
+  execute 'silent!' a:command
+  redir END
+
+  return r
+endfunction
+
+function! Selection(value)
+  call value()
+endfunction
+
+function! Get_functionlist() abort
+  let keyword_dict = {}
+  let keyword_list = []
+  let function_prototypes = {}
+  for line in split(Redir('function'), '\n')
+    let line = line[9:]
+    if line =~ '^<SNR>'
+      continue
+    endif
+    let orig_line = line
+
+    let word = matchstr(line, '\h[[:alnum:]_:#.]*()\?')
+    let fn = matchstr(line, '\h[[:alnum:]_:#.]*(-\?')
+    if word != ''
+      call add(keyword_list, fn)
+      let keyword_dict[word] = {
+            \ 'word' : word, 'abbr' : line,
+            \}
+
+      let function_prototypes[word] = orig_line[len(word):]
+    endif
+  endfor
+
+  " echo keyword_dict
+  " return values(keyword_dict)
+
+  " let idct = map(keyword_dict, { key, val -> 'test' . val['word'] });
+
+  call fzf#run({'source': keyword_list,
+  \ 'sink': function('Selection')})
+endfunction
+
+function MarkLink()
+  let line = getline('.')
+  let pos = getpos(".")[2]
+  let regex = '\v\[([^\[]+)\](\(.*\))'
+  let isLink = matchstrpos(line, regex)
+  echo 'link'. isLink
+  if pos >= isLink[1]
+    if  pos <= isLink[2]
+      echo 'inside the link'
+    endif
+  endif
+endfunction
