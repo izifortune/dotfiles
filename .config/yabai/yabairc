@@ -67,7 +67,7 @@ yabai -m rule --add app=Alacritty space=1
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app=Dashlane manage=off
 yabai -m rule --add app=Übersicht manage=off
-yabai -m rule --add app=Firefox space=2
+# yabai -m rule --add app=Firefox space=2
 yabai -m rule --add app="Microsoft Teams" space=3
 yabai -m rule --add app="^BIG-IP" manage=off
 

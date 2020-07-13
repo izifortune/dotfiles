@@ -36,7 +36,7 @@ set updatetime=300                      " Faster completion
 set timeoutlen=100                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set incsearch
-set guifont=Fira\ Mono\ for\ Powerline
+" set guifont=Fira\ Mono\ for\ Powerline
 set title                               " Set title of the window
 set lazyredraw                          " Screen does not redraw when executing macros/registers"
 set autoread                            " Detect file changes outside vim
@@ -70,3 +70,4 @@ let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*'
 
 set inccommand=nosplit " Live substitution
+let g:node_host_prog = expand('~/.nvm/versions/node/v14.5.0/bin/neovim-node-host')

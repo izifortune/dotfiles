@@ -83,3 +83,8 @@ set -g FZF_DEFAULT_COMMAND 'fd --type f'
 # MAN Page nvim
 set MANPAGER 'nvim +Man!'
 set MANWIDTH 999
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
