@@ -20,8 +20,8 @@ yabai -m config status_bar                   on
 yabai -m config status_bar_background_color  0xff$CBACK
 yabai -m config status_bar_foreground_color  0xff$CFORE
 
-yabai -m config window_border                on
-yabai -m config window_border_width          4
+yabai -m config window_border                off
+yabai -m config window_border_width          10
 yabai -m config active_window_border_color   0xff$CACTV
 yabai -m config normal_window_border_color   0xff$CNORM
 yabai -m config insert_window_border_color   0xff$CINSE

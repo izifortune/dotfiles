@@ -1,3 +1,12 @@
 snippet ltodo "List TODO" bA
-* [ ] $0
+- [ ] $0
+endsnippet
+
+snippet cz "Standard commitizen commit" bA
+${1:type}(${2:scope}): ${3:shortdescription}
+
+${4:longdescription}
+
+re #${5:ticket}
+
 endsnippet

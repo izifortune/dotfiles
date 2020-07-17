@@ -82,6 +82,7 @@ command! -bang -nargs=* GGrep
 """ Mappings
 " Silver searcher
 noremap <leader>ff :Ag 
+nnoremap <silent> <Leader>sw :Ag <C-R><C-W><CR>
 
 " nmap <C-p> :FZF<CR>
 nmap <C-g> :GitFiles<CR>
