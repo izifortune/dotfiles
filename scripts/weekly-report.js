@@ -23,7 +23,7 @@ const getWeekDays = (date) => {
 const getOpenTasks = async (date) => {
   try {
     const diary = await pRead(
-      `../OneDrive - Ryanair Ltd/wiki/diary/${date}` + ".md",
+      `../code/knowledge/content/diary/${date}` + ".md",
       "utf-8"
     );
     return diary

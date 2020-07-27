@@ -79,7 +79,7 @@ Plug 'izifortune/follow-markdown-links'
 
 ""Tasks and notes""
 "\ww or \w\w
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
 " :TW
 Plug 'blindFS/vim-taskwarrior'

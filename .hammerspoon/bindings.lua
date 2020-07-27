@@ -86,8 +86,8 @@ wf_chrome:subscribe(wf.windowUnfocused, disableBinds)
 
 
 hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
-hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
-hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus("Firefox") end)
+-- hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
+-- hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus("Firefox") end)
 
 -- /usr/local/bin/yabai -m window --focus "$(/usr/local/bin/yabai -m query --spaces --space 1 | jq -r '."last-window"')" || /usr/local/bin/yabai -m space --focus 1
 -- hs.hotkey.bind({"alt"}, "1", function () 
@@ -118,3 +118,11 @@ hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus(
 -- hs.hotkey.bind({"alt"}, "4", function () os.execute('/usr/local/bin/yabai -m space --focus 4') end )
 -- hs.hotkey.bind({"alt"}, "5", function () os.execute('/usr/local/bin/yabai -m space --focus 5') end )
 -- hs.hotkey.bind({"alt"}, "6", function () os.execute('/usr/local/bin/yabai -m space --focus 6') end )
+
+-------------------------------------------------
+---- Hyper i to show window hints
+-------------------------------------------------
+
+hs.hotkey.bind({'ctrl'}, 'e', function()
+  hs.hints.windowHints()
+end)

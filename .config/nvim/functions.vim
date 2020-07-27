@@ -168,3 +168,22 @@ endfunction
 
 " Make a keybinding (mnemonic: "mark down paste")
 nmap <Leader>mdp :call PasteMDLink()<cr>
+
+function DiaryEntry()
+    let date = strftime('%Y-%m-%d')
+    execute "e ~/code/knowledge/content/diary/" . date . ".md"
+
+endfunction
+nmap <Leader>wi :call DiaryEntry()<cr>
+
+" TODO finish off this function
+function UpdateDiary()
+  let lines = [];
+  let files = split(globpath('~/code/knowledge/content/diary/', '*.md'), '\n')
+  call sort(files)
+  let linkTitle, file
+  call add(lines, '- ['. entry)
+  echo files
+endfunction
+
+

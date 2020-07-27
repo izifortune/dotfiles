@@ -512,10 +512,3 @@ local layoutConfig = {
           hs.openConsole()
         end))
 
-        -------------------------------------------------
-        ---- Hyper i to show window hints
-        -------------------------------------------------
-
-        hs.hotkey.bind({'ctrl'}, 'e', function()
-          hs.hints.windowHints()
-        end)
