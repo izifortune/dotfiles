@@ -29,6 +29,7 @@ fisher add grc
 
 curl -L https://get.oh-my.fish | fish
 omf install bobthefish
+omf install pyenv
 set -g theme_powerline_fonts no
 set -g theme_nerd_fonts yes
 

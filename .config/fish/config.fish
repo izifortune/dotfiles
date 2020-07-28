@@ -19,11 +19,11 @@ function toggle_proxy
   end
 end
 
-set -gx PATH ~/Library/Python/2.7/bin $PATH
-set -gx PATH ~/Library/Python/3.6/bin $PATH
-set -gx PATH ~/Library/Python/3.7/bin $PATH
-
 set -gx PATH ~/.config/bin $PATH
+
+#pyenv
+status --is-interactive; and source (pyenv init -|psub)
+
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
