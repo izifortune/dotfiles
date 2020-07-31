@@ -96,6 +96,7 @@ Plug 'benmills/vimux'
 Plug 'junegunn/vim-peekaboo'
 Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
 Plug 'kkoomen/vim-doge' " Documentation generator
+Plug 'wellle/context.vim' " Add context base inline
 
 " All of your Plugins must be added before the following line
 call plug#end()

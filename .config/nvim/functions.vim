@@ -178,12 +178,33 @@ nmap <Leader>wi :call DiaryEntry()<cr>
 
 " TODO finish off this function
 function UpdateDiary()
-  let lines = [];
+  let lines = []
   let files = split(globpath('~/code/knowledge/content/diary/', '*.md'), '\n')
-  call sort(files)
-  let linkTitle, file
-  call add(lines, '- ['. entry)
-  echo files
+  call sort(files, 'N')
+  call reverse(files)
+  call remove(files, 'diary.md')
+  execute "e ~/code/knowledge/content/diary/diary.md"
+  execute "normal gg dG"
+  let lineNumber = 0
+  call append(lineNumber, '# Diary')
+  let lineNumber += 2
+  for file in files
+    let markdownFile = split(file, '/')[-1]
+    let linkName = split(markdownFile, '.md')[0]
+    let firstLine = readfile(file, '',  1)[0]
+    " TODO Check the month
+    " Making sure that the line has a header
+    if firstLine =~ '#'
+      let title = trim(split(firstLine, '#')[-1])
+      let entry = '- [' . title . '](' . markdownFile . ')'
+      " call add(lines, )
+      call append(lineNumber, entry)
+      let lineNumber +=1
+    endif
+  endfor
+  echo lines
 endfunction
 
-
+" Get the visual selection block and pass it to substitute
+" Use this function when you want to use a star emoji
+command! -range=% -nargs=0 StarIt '<,'>s/*/⭐/g

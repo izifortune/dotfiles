@@ -8,6 +8,7 @@ source $HOME/.config/nvim/colors.vim
 
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/context.vim
 source $HOME/.config/nvim/plug-config/easy-align.vim
 source $HOME/.config/nvim/plug-config/firenvim.vim
 source $HOME/.config/nvim/plug-config/fugitive.vim
