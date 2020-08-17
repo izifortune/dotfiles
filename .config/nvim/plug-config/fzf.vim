@@ -102,19 +102,11 @@ imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --sho
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-nnoremap <silent> <leader>bl :Buffers<cr>
+nnoremap <silent> <leader>p :Buffers<cr>
 nnoremap <silent> <leader>Sp :History<cr>
 " command! -bang -nargs=+ Kagl call fzf#vim#ag_raw("'\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)' " . <q-args> . ' ~/code/knowledge/', fzf#vim#with_preview(), <bang>0)
 command! -bang Links call fzf#vim#ag_raw("'\\[([\\w\\s\\d]+)\\]\\((https?:\\/\\/[\\w\\d./?=#]+)\\)'" . ' ~/code/knowledge/', <bang>0)
 command! -bang -nargs=+ Wiki call fzf#vim#ag_raw(<q-args> . ' ~/code/knowledge/', <bang>0)
-
-function Test()
-  call vim#function()
-  " call fzf#run({ 'source': call function})
-  " call fzf#run({'source': map(split(globpath(&rtp, 'colors/*.vim')),
-  "       \               'fnamemodify(v:val, ":t:r")'),
-  "       \ 'sink': 'colo', 'left': '25%'})
-endfunction
 
 function! Redir(command) abort
   if exists('*execute')
@@ -131,7 +123,6 @@ endfunction
 function! Selection(value)
   call value()
 endfunction
-
 function! Get_functionlist() abort
   let keyword_dict = {}
   let keyword_list = []

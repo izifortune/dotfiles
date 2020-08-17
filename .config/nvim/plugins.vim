@@ -1,7 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Comment easy
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
 " Have the file system follow you around
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -11,6 +11,7 @@ Plug 'jbgutierrez/vim-better-comments'
 " Theme
 " Plug 'chriskempson/base16-vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 " Airline stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -26,6 +27,8 @@ Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+" Plug 'antoinemadec/coc-fzf'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
@@ -40,12 +43,23 @@ Plug 'mhinz/vim-startify'
 Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'tpope/vim-repeat'
+
+" Quickfix helpers
+" :Reject :Restore
+" :help vim-qf
+Plug 'romainl/vim-qf'
+
+" Split or join line
+" gS or gJ
+Plug 'AndrewRadev/splitjoin.vim'
 
 ""GIT STUFF""
 " :G goodies
 Plug 'tpope/vim-fugitive'
 " Git branch viewer :Flog :FlogSplit
 Plug 'rbong/vim-flog'
+Plug 'lambdalisue/gina.vim'
 " Fancy gutters display
 " Plug 'airblade/vim-gitgutter'
 
@@ -68,11 +82,11 @@ Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'tyru/open-browser.vim'
 
 Plug 'chrisbra/Colorizer'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 ""Language utils
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'latex' }
 "Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'izifortune/follow-markdown-links'
@@ -95,8 +109,10 @@ Plug 'benmills/vimux'
 " extend " to dispaly the numbered registers
 Plug 'junegunn/vim-peekaboo'
 Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
-Plug 'kkoomen/vim-doge' " Documentation generator
+" Plug 'kkoomen/vim-doge' " Documentation generator
+Plug 'tyru/caw.vim'  " Better documentation
 Plug 'wellle/context.vim' " Add context base inline
+Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 
 " All of your Plugins must be added before the following line
 call plug#end()

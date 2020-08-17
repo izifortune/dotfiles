@@ -175,6 +175,7 @@ function DiaryEntry()
 
 endfunction
 nmap <Leader>wi :call DiaryEntry()<cr>
+nmap <Leader>w<leader>w :e ~/code/knowledge/content/diary/diary.md<cr>
 
 " TODO finish off this function
 function UpdateDiary()
@@ -208,3 +209,5 @@ endfunction
 " Get the visual selection block and pass it to substitute
 " Use this function when you want to use a star emoji
 command! -range=% -nargs=0 StarIt '<,'>s/*/⭐/g
+
+command! Scratch lua require'tools'.makeScratch()

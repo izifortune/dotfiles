@@ -32,7 +32,7 @@ set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
-set updatetime=300                      " Faster completion
+set updatetime=50                      " Faster completion
 set timeoutlen=100                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set incsearch
@@ -55,10 +55,14 @@ set mmp=5000 " Issue with E363 pattern uses more memory than maxmempattern
 " set autochdir                           " Your working directory will always be the same as your working directory
 " set foldcolumn=2                        " Folding abilities
 set foldmethod=manual
+set termguicolors
 
 set backspace=indent,eol,start           " make backspaces delete sensibly
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set listchars=eol:¬
+
+set undodir=~/.vim/undodir
+set undofile
 
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -70,4 +74,4 @@ let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*'
 
 set inccommand=nosplit " Live substitution
-let g:node_host_prog = expand('~/.nvm/versions/node/v14.5.0/bin/neovim-node-host')
+let g:node_host_prog = expand('~/.nvm/versions/node/v12.18.3/bin/neovim-node-host')

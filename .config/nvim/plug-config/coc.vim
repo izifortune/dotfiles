@@ -2,6 +2,8 @@ let g:coc_global_extensions = [
     \ 'coc-angular',
     \ 'coc-actions',
     \ 'coc-calc',
+    \ 'coc-lua',
+    \ 'coc-bookmark',
     \ 'coc-explorer',
     \ 'coc-markdownlint',
     \ 'coc-css',
