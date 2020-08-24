@@ -1,4 +1,6 @@
 inoremap jj <ESC>
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 " Disable highlight when <leader><cr> is pressed
 noremap <silent> <leader><cr> :noh<cr>

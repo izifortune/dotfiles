@@ -28,6 +28,10 @@ Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+" alt-enter to track remote branch
+" ctrl-n to create a branch
+" ctrl-d to delete a branch
+Plug 'stsewd/fzf-checkout.vim'
 " Plug 'antoinemadec/coc-fzf'
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'honza/vim-snippets'
@@ -113,6 +117,8 @@ Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
 Plug 'tyru/caw.vim'  " Better documentation
 Plug 'wellle/context.vim' " Add context base inline
 Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
+
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 " All of your Plugins must be added before the following line
 call plug#end()

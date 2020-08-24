@@ -206,8 +206,11 @@ function UpdateDiary()
   echo lines
 endfunction
 
+command -nargs=0 ItalianE %s/e'/è/g
+
 " Get the visual selection block and pass it to substitute
 " Use this function when you want to use a star emoji
 command! -range=% -nargs=0 StarIt '<,'>s/*/⭐/g
 
 command! Scratch lua require'tools'.makeScratch()
+command! Exec lua require'tools'.Exec()
