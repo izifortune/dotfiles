@@ -22,9 +22,12 @@ let g:fzf_buffers_jump = 1
 
 let g:fzf_tags_command = 'ctags -R'
 " Border color
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 1, 'height': 1, 'yoffset':0.5, 'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+" let g:fzf_layout = {'up':'~90%', 'window': { 'width': 1, 'height': 1, 'yoffset':0.5, 'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
-let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+
+" let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 "-g '!{node_modules,.git}'
 
@@ -81,7 +84,6 @@ command! -bang -nargs=* GGrep
 
 """ Mappings
 " Silver searcher
-noremap <leader>ff :Ag 
 nnoremap <silent> <Leader>sw :Ag <C-R><C-W><CR>
 
 " nmap <C-p> :FZF<CR>

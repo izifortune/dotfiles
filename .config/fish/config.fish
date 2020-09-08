@@ -21,6 +21,7 @@ end
 
 set -gx PATH ~/.config/bin $PATH
 set -gx PATH ~/.local/bin $PATH
+set -gx PATH ~/.gem/ruby/2.6.0/bin $PATH
 
 #pyenv
 status --is-interactive; and source (pyenv init -|psub)

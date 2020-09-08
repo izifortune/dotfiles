@@ -167,15 +167,15 @@ function PasteMDLink()
 endfunction
 
 " Make a keybinding (mnemonic: "mark down paste")
-nmap <Leader>mdp :call PasteMDLink()<cr>
+nnoremap <leader>mdp :call PasteMDLink()<cr>
 
 function DiaryEntry()
     let date = strftime('%Y-%m-%d')
     execute "e ~/code/knowledge/content/diary/" . date . ".md"
 
 endfunction
-nmap <Leader>wi :call DiaryEntry()<cr>
-nmap <Leader>w<leader>w :e ~/code/knowledge/content/diary/diary.md<cr>
+nnoremap <leader>wi :call DiaryEntry()<cr>
+nnoremap <leader>w<leader>w :e ~/code/knowledge/content/diary/diary.md<cr>
 
 " TODO finish off this function
 function UpdateDiary()
@@ -213,4 +213,6 @@ command -nargs=0 ItalianE %s/e'/è/g
 command! -range=% -nargs=0 StarIt '<,'>s/*/⭐/g
 
 command! Scratch lua require'tools'.makeScratch()
+command! Todos lua require'tools'.Todos()
 command! Exec lua require'tools'.Exec()
+command! Free set virtualedit=all

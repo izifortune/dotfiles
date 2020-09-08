@@ -1,8 +1,8 @@
 source $HOME/.config/nvim/plugins.vim
 
-source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/settings.vim
+source $HOME/.config/nvim/functions.vim
 
 source $HOME/.config/nvim/colors.vim
 
@@ -33,14 +33,14 @@ source $HOME/.config/nvim/plug-config/which-key.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
 set spelllang=en_gb,it
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline 
+" highlight clear SpellBad
+" highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+" highlight clear SpellCap
+" highlight SpellCap term=underline cterm=underline
+" highlight clear SpellRare
+" highlight SpellRare term=underline cterm=underline
+" highlight clear SpellLocal
+" highlight SpellLocal term=underline cterm=underline 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
