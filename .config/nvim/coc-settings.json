@@ -58,10 +58,11 @@
       "ignoredRootPaths": ["~"]
     }
   },
-  "git.enableGutters": true
+  "git.enableGutters": true,
 
   // TODO language servers
   // TODO g:coc_global_extensions
   // TODO b:coc_suggest_disable=1 GOYO
   // TODO add to paths.vim g:coc_node_path
+  "yaml.validate": false
 }

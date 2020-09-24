@@ -119,6 +119,24 @@ hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pastebo
 -- hs.hotkey.bind({"alt"}, "5", function () os.execute('/usr/local/bin/yabai -m space --focus 5') end )
 -- hs.hotkey.bind({"alt"}, "6", function () os.execute('/usr/local/bin/yabai -m space --focus 6') end )
 
+hs.hotkey.bind({'cmd', 'alt'}, 'p', function() 
+  hs.execute('networksetup -setwebproxy "Wi-fi" 10.1.2.102 8080')
+  hs.execute('networksetup -setsecurewebproxy "Wi-fi" 10.1.2.102 8080')
+  t = hs.execute('networksetup -getwebproxy wi-fi')
+  print(t)
+  proxyEnabled = t:find('Enabled: Yes')
+  print(proxyEnabled)
+  if proxyEnabled then
+    print('Proxy Off')
+    hs.execute('networksetup -setwebproxystate "Wi-fi" off')
+    hs.execute('networksetup -setsecurewebproxystate "Wi-fi" off')
+  else
+    print('Proxy On')
+    hs.execute('networksetup -setwebproxystate "Wi-fi" on')
+    hs.execute('networksetup -setsecurewebproxystate "Wi-fi" on')
+  end
+end)
+
 -------------------------------------------------
 ---- Hyper i to show window hints
 -------------------------------------------------

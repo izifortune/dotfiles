@@ -1,3 +1,6 @@
+source $HOME/.config/nvim/plug-config/polyglot.vim
+source $HOME/.config/nvim/plug-config/mkdx.vim
+
 source $HOME/.config/nvim/plugins.vim
 
 source $HOME/.config/nvim/mappings.vim
@@ -5,6 +8,9 @@ source $HOME/.config/nvim/settings.vim
 source $HOME/.config/nvim/functions.vim
 
 source $HOME/.config/nvim/colors.vim
+
+" source $HOME/.config/nvim/plug-config/nvim-lsputils.vim
+" source $HOME/.config/nvim/lsp.vim
 
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/coc.vim
@@ -16,8 +22,6 @@ source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/fzf-checkout.vim
 source $HOME/.config/nvim/plug-config/git-gutter.vim
 source $HOME/.config/nvim/plug-config/goyo.vim
-source $HOME/.config/nvim/plug-config/mkdx.vim
-source $HOME/.config/nvim/plug-config/polyglot.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
 source $HOME/.config/nvim/plug-config/rainbow.vim
 source $HOME/.config/nvim/plug-config/tabularize.vim
@@ -26,6 +30,11 @@ source $HOME/.config/nvim/plug-config/vim-markdown.vim
 source $HOME/.config/nvim/plug-config/vim-rooter.vim
 source $HOME/.config/nvim/plug-config/vimwiki.vim
 source $HOME/.config/nvim/plug-config/which-key.vim
+source $HOME/.config/nvim/plug-config/completion-nvim.vim
+source $HOME/.config/nvim/plug-config/csv.vim
+source $HOME/.config/nvim/plug-config/vim-floaterm.vim
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

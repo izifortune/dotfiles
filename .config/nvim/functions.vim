@@ -36,11 +36,23 @@ endfunction
 set includeexpr=LoadMainNodeModule(v:fname)
 
 " Get a weblink of the current file in our company stash
-function! WebLink() abort
-  let @+ = "https://stash.ryanair.com:8443/projects/RA/repos/" . split(expand("%:p:h"), "/")[3] . "/browse/" . @%
+" Useful for sharing snippets and code with collegues
+" Passing an argument will also append the current line in the url
+function! WebLink(...) abort
+  let l:urlList = split(system("git config --get remote.origin.url"), '/')
+  let l:project = l:urlList[3]
+  let l:repo = substitute(split(system("git config --get remote.origin.url"), '/')[4], '\.git.*', '', '')
+  let l:filepath = split(expand('%:p:h'), l:repo)[1]
+  let l:filename = expand('%:t')
+
+  if a:0
+    let @+ = "https://stash.ryanair.com:8443/projects/" . l:project .  "/repos/" . l:repo . "/browse" . l:filepath . "/" . l:filename . '#'. getcurpos()[1]
+  else
+    let @+ = "https://stash.ryanair.com:8443/projects/" . l:project .  "/repos/" . l:repo . "/browse" . l:filepath . "/" . l:filename
+  endif
 endfunction
 
-command WebLink :call WebLink()
+command! -nargs=? WebLink call WebLink(<f-args>)
 
 command FullPath :echo @% 
 
@@ -147,7 +159,11 @@ function GetURLTitle(url)
   endif
 
   " Use Python/BeautifulSoup to get link's page title.
-  let title = system("python3 -c \"import bs4, requests; print(bs4.BeautifulSoup(requests.get('" . a:url . "').content, 'lxml').title.text.strip())\"")
+  let title = system('curl -s -L "' . a:url . '" | tr "\n" " "')
+  let test = matchstr(title, '\ca <title>.*</title>')
+  echo test
+
+  
 
   " Echo the error if getting title failed.
   if v:shell_error != 0
@@ -176,6 +192,7 @@ function DiaryEntry()
 endfunction
 nnoremap <leader>wi :call DiaryEntry()<cr>
 nnoremap <leader>w<leader>w :e ~/code/knowledge/content/diary/diary.md<cr>
+nnoremap <leader>wv :e ~/code/knowledge/content/text-editors/vim/vim-journal.md<cr>
 
 " TODO finish off this function
 function UpdateDiary()
@@ -213,6 +230,19 @@ command -nargs=0 ItalianE %s/e'/è/g
 command! -range=% -nargs=0 StarIt '<,'>s/*/⭐/g
 
 command! Scratch lua require'tools'.makeScratch()
-command! Todos lua require'tools'.Todos()
+" command! Todos lua require'tools'.Todos()
 command! Exec lua require'tools'.Exec()
 command! Free set virtualedit=all
+
+
+function! Tdd() abort
+  let dir = getcwd()
+  echo dir
+  execute 'cd ~/code/knowledge/content/diary'
+  call fzf#vim#grep(
+        \   'rg --sortr modified --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
+        \   fzf#vim#with_preview({ 'options': '--reverse' }), 0)
+  execute 'cd ' . dir
+endfunction
+
+command! -bang Todos call Tdd()

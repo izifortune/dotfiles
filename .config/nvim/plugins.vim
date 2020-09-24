@@ -42,11 +42,18 @@ Plug 'jparise/vim-graphql'
 Plug 'ryanoasis/vim-devicons'
 " Running your test easily https://github.com/janko/vim-test
 Plug 'janko-m/vim-test'
+
+"LSP
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'RishabhRD/popfix'
+" Plug 'RishabhRD/nvim-lsputils'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 Plug 'unblevable/quick-scope' 
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-repeat'
 
 " Quickfix helpers
@@ -57,6 +64,8 @@ Plug 'romainl/vim-qf'
 " Split or join line
 " gS or gJ
 Plug 'AndrewRadev/splitjoin.vim'
+
+Plug 'voldikss/vim-floaterm'
 
 ""GIT STUFF""
 " :G goodies
@@ -99,11 +108,13 @@ Plug 'izifortune/follow-markdown-links'
 "\ww or \w\w
 " Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
+Plug 'sedm0784/vim-you-autocorrect'
+
 " :TW
 Plug 'blindFS/vim-taskwarrior'
 ""File manager""
 "\f
-Plug 'francoiscabrol/ranger.vim'
+" Plug 'francoiscabrol/ranger.vim' using floatterm
 Plug 'rbgrouleff/bclose.vim'
 ""Misc
 " Smooth scrolling
@@ -116,7 +127,7 @@ Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
 " Plug 'kkoomen/vim-doge' " Documentation generator
 Plug 'tyru/caw.vim'  " Better documentation
 Plug 'wellle/context.vim' " Add context base inline
-Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
+"Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 

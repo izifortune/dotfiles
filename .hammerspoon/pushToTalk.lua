@@ -55,14 +55,14 @@ local showState = function()
       module.menubar:setIcon(mutedIcon)
 
       muted = true
-      inputVolume = 0
+      inputVolume = 1
     end
   elseif module.state == 'push-to-mute' then
     if module.pushed then
       module.menubar:setIcon(mutedIcon)
 
       muted = true
-      inputVolume = 0
+      inputVolume = 1
     else
       module.menubar:setIcon(speakIcon)
 

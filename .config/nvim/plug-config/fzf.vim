@@ -156,16 +156,3 @@ function! Get_functionlist() abort
   call fzf#run({'source': keyword_list,
   \ 'sink': function('Selection')})
 endfunction
-
-function MarkLink()
-  let line = getline('.')
-  let pos = getpos(".")[2]
-  let regex = '\v\[([^\[]+)\](\(.*\))'
-  let isLink = matchstrpos(line, regex)
-  echo 'link'. isLink
-  if pos >= isLink[1]
-    if  pos <= isLink[2]
-      echo 'inside the link'
-    endif
-  endif
-endfunction
