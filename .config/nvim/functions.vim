@@ -240,7 +240,7 @@ function! Tdd() abort
   echo dir
   execute 'cd ~/code/knowledge/content/diary'
   call fzf#vim#grep(
-        \   'rg --sortr modified --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
+        \   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
         \   fzf#vim#with_preview({ 'options': '--reverse' }), 0)
   execute 'cd ' . dir
 endfunction

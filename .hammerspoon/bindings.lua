@@ -19,7 +19,8 @@ termBinds = {
   termMetaCombo('t'),
   termMetaCombo('r'),
   termMetaCombo('a'),
-  termMetaCombo('e')
+  termMetaCombo('e'),
+  termMetaCombo('g')
 }
 
 function enableBinds()
@@ -86,8 +87,8 @@ wf_chrome:subscribe(wf.windowUnfocused, disableBinds)
 
 
 hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pasteboard.getContents()) end)
--- hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
--- hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus("Firefox") end)
+hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
+hs.hotkey.bind({"ctrl", "shift"}, 'f', function () hs.application.launchOrFocus("Firefox") end)
 
 -- /usr/local/bin/yabai -m window --focus "$(/usr/local/bin/yabai -m query --spaces --space 1 | jq -r '."last-window"')" || /usr/local/bin/yabai -m space --focus 1
 -- hs.hotkey.bind({"alt"}, "1", function () 
@@ -119,28 +120,28 @@ hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pastebo
 -- hs.hotkey.bind({"alt"}, "5", function () os.execute('/usr/local/bin/yabai -m space --focus 5') end )
 -- hs.hotkey.bind({"alt"}, "6", function () os.execute('/usr/local/bin/yabai -m space --focus 6') end )
 
-hs.hotkey.bind({'cmd', 'alt'}, 'p', function() 
-  hs.execute('networksetup -setwebproxy "Wi-fi" 10.1.2.102 8080')
-  hs.execute('networksetup -setsecurewebproxy "Wi-fi" 10.1.2.102 8080')
-  t = hs.execute('networksetup -getwebproxy wi-fi')
-  print(t)
-  proxyEnabled = t:find('Enabled: Yes')
-  print(proxyEnabled)
-  if proxyEnabled then
-    print('Proxy Off')
-    hs.execute('networksetup -setwebproxystate "Wi-fi" off')
-    hs.execute('networksetup -setsecurewebproxystate "Wi-fi" off')
-  else
-    print('Proxy On')
-    hs.execute('networksetup -setwebproxystate "Wi-fi" on')
-    hs.execute('networksetup -setsecurewebproxystate "Wi-fi" on')
-  end
-end)
+-- hs.hotkey.bind({'cmd', 'alt'}, 'p', function() 
+--   hs.execute('networksetup -setwebproxy "Wi-fi" 10.1.2.102 8080')
+--   hs.execute('networksetup -setsecurewebproxy "Wi-fi" 10.1.2.102 8080')
+--   t = hs.execute('networksetup -getwebproxy wi-fi')
+--   print(t)
+--   proxyEnabled = t:find('Enabled: Yes')
+--   print(proxyEnabled)
+--   if proxyEnabled then
+--     print('Proxy Off')
+--     hs.execute('networksetup -setwebproxystate "Wi-fi" off')
+--     hs.execute('networksetup -setsecurewebproxystate "Wi-fi" off')
+--   else
+--     print('Proxy On')
+--     hs.execute('networksetup -setwebproxystate "Wi-fi" on')
+--     hs.execute('networksetup -setsecurewebproxystate "Wi-fi" on')
+--   end
+-- end)
 
 -------------------------------------------------
 ---- Hyper i to show window hints
 -------------------------------------------------
 
-hs.hotkey.bind({'ctrl'}, 'e', function()
-  hs.hints.windowHints()
-end)
+-- hs.hotkey.bind({'ctrl'}, 'e', function()
+--   hs.hints.windowHints()
+-- end)

@@ -9,19 +9,19 @@ local cmd = {'cmd'}
 
 
 
-hs.window.animationDuration = 0
+-- hs.window.animationDuration = 0
 
 --
 -- Auto-reload config on change.
 --
 
-function reloadConfig(files)
-  for _, file in pairs(files) do
-    if file:sub(-4) == '.lua' then
-      tearDownEventHandling()
-      hs.reload()
-    end
-  end
-end
-
-hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+-- function reloadConfig(files)
+--   for _, file in pairs(files) do
+--     if file:sub(-4) == '.lua' then
+--       tearDownEventHandling()
+--       hs.reload()
+--     end
+--   end
+-- end
+-- 
+-- hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()

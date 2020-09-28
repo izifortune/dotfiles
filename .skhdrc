@@ -59,7 +59,7 @@ shift + alt - 0 : yabai -m space --balance
 lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # toggle window fullscreen zoom
-ctrl + shift - f : yabai -m window --toggle zoom-fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
@@ -78,7 +78,7 @@ ctrl + shift - y : yabai -m space --mirror y-axis
 alt - e : yabai -m window --toggle split
 
 # toggle float
-ctrl + shift - t : yabai -m window --toggle float
+cmd + shift - t : yabai -m window --toggle float
 
 # float / unfloat window and center on screen
 shift + alt - t : yabai -m window --toggle float;\

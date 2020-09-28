@@ -10,15 +10,15 @@ require 'bindings'
 --- Spons
 
 
-hs.loadSpoon('HSearch')
+-- hs.loadSpoon('HSearch')
 
 ----------------------------------------------------------------------------------------------------
 -- Register Hammerspoon Search
-if spoon.HSearch then
-  hs.hotkey.bind({ 'alt'}, 'g' , function()
-    spoon.HSearch:toggleShow()
-  end)
-end
+-- if spoon.HSearch then
+--   hs.hotkey.bind({ 'alt'}, 'g' , function()
+--     spoon.HSearch:toggleShow()
+--   end)
+-- end
 
 -- hs.loadSpoon('UnsplashRandom')
 
