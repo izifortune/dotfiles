@@ -8,7 +8,6 @@ pip3 install neovim howdoi --user
 # Hammerspoon
 # TODO Review if necessary
 mkdir -p $HOME/.hammerspoon/hs
-git clone https://github.com/dsanson/hs.tiling $HOME/.hammerspoon/hs/tiling
 
 # Fonts
 cp /usr/local/etc/fonts/fonts.conf.bak /usr/local/etc/fonts/fonts.conf
