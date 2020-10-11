@@ -23,14 +23,21 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 fisher add z
 fisher add edc/bass
 fisher add cprintf
-fisher add fzf
+fisher add patrickf3139/fzf.fish
 fisher add grc
+fisher add jorgebucaran/nvm.fish
 
 curl -L https://get.oh-my.fish | fish
-omf install bobthefish
-omf install pyenv
 set -g theme_powerline_fonts no
 set -g theme_nerd_fonts yes
+omf install bobthefish
+omf install pyenv
 
+git config --global push.default current
 
+brew link imagemagick 
+# pywal
+git clone https://github.com/robwaz/pywal ~/code/pywal
+cd pywal
+sudo pip3 install -e ./
 brew cleanup

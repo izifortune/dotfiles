@@ -19,9 +19,9 @@ function toggle_proxy
   end
 end
 
-set -gx PATH ~/.config/bin $PATH
-set -gx PATH ~/.local/bin $PATH
-set -gx PATH ~/.gem/ruby/2.6.0/bin $PATH
+contains $fish_user_paths "~/.config/bin"; or set -Ua fish_user_paths "~/.config/bin"
+contains $fish_user_paths "~/.local/bin"; or set -Ua fish_user_paths "~/.local/bin"
+contains $fish_user_paths "~/.gem/ruby/2.6.0/bin"; or set -Ua fish_user_paths "~/.gem/ruby/2.6.0/bin"
 
 #pyenv
 status --is-interactive; and source (pyenv init -|psub)
@@ -34,7 +34,7 @@ status --is-interactive; and source (pyenv init -|psub)
 # uninstall by removing these lines or running `tabtab uninstall sls`
 #[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.fishset -g fish_user_paths "/usr/local/opt/gettext/bin" $fish_user_paths
 set -gx EDITOR nvim
-set -g fish_user_paths "/usr/local/opt/mozjpeg/bin" $fish_user_paths
+contains $fish_user_paths "/usr/local/opt/mozjpeg/bin"; or set -Ua fish_user_paths "/usr/local/opt/mozjpeg/bin"
 
 function img_size_folder
   mkdir $argv[1]
@@ -62,32 +62,25 @@ function create_image_sizes_2
   img_size_folder 42 $argv[1]
 end
 
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+contains $fish_user_paths "/usr/local/sbin"; or set -Ua fish_user_paths "/usr/local/sbin"
 
 if status --is-interactive
   # set BASE16_SHELL "$HOME/.config/base16-shell/"
   # source "$BASE16_SHELL/profile_helper.fish"
+  set -g _Z_CMD "j"
+
+  set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+  set -g fish_key_bindings fish_vi_key_bindings
+
+  set -g FZF_DEFAULT_COMMAND 'fd --type f'
+
+  # MAN Page nvim
+  set MANPAGER 'nvim +Man!'
+  set MANWIDTH 999
+
+  thefuck --alias | source
 end
 
-set -g _Z_CMD "j"
 
-set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
-
-set -g fish_key_bindings fish_vi_key_bindings
-
-set -g FZF_DEFAULT_COMMAND 'fd --type f'
-
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish
-
-# MAN Page nvim
-set MANPAGER 'nvim +Man!'
-set MANWIDTH 999
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-thefuck --alias | source
+contains $fish_user_paths "/usr/local/opt/libxslt/bin"; or set -Ua fish_user_paths "/usr/local/opt/libxslt/bin"

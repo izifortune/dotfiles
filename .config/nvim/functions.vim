@@ -35,25 +35,6 @@ endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
 
-" Get a weblink of the current file in our company stash
-" Useful for sharing snippets and code with collegues
-" Passing an argument will also append the current line in the url
-function! WebLink(...) abort
-  let l:urlList = split(system("git config --get remote.origin.url"), '/')
-  let l:project = l:urlList[3]
-  let l:repo = substitute(split(system("git config --get remote.origin.url"), '/')[4], '\.git.*', '', '')
-  let l:filepath = split(expand('%:p:h'), l:repo)[1]
-  let l:filename = expand('%:t')
-
-  if a:0
-    let @+ = "https://stash.ryanair.com:8443/projects/" . l:project .  "/repos/" . l:repo . "/browse" . l:filepath . "/" . l:filename . '#'. getcurpos()[1]
-  else
-    let @+ = "https://stash.ryanair.com:8443/projects/" . l:project .  "/repos/" . l:repo . "/browse" . l:filepath . "/" . l:filename
-  endif
-endfunction
-
-command! -nargs=? WebLink call WebLink(<f-args>)
-
 command FullPath :echo @% 
 
 " Save a image from the clipboard to markdown
@@ -188,7 +169,6 @@ nnoremap <leader>mdp :call PasteMDLink()<cr>
 function DiaryEntry()
     let date = strftime('%Y-%m-%d')
     execute "e ~/code/knowledge/content/diary/" . date . ".md"
-
 endfunction
 nnoremap <leader>wi :call DiaryEntry()<cr>
 nnoremap <leader>w<leader>w :e ~/code/knowledge/content/diary/diary.md<cr>
@@ -231,7 +211,7 @@ command! -range=% -nargs=0 StarIt '<,'>s/*/⭐/g
 
 command! Scratch lua require'tools'.makeScratch()
 " command! Todos lua require'tools'.Todos()
-command! Exec lua require'tools'.Exec()
+command! -nargs=? Exec lua require'tools'.Exec(<f-args>)
 command! Free set virtualedit=all
 
 

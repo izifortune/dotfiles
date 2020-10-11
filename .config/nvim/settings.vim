@@ -74,4 +74,4 @@ let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = '[\/]$,*'
 
 set inccommand=nosplit " Live substitution
-let g:node_host_prog = expand('~/.nvm/versions/node/v12.18.3/bin/neovim-node-host')
+" let g:node_host_prog = expand('~/.nvm/versions/node/v12.18.3/bin/neovim-node-host')

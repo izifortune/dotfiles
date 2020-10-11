@@ -151,7 +151,7 @@ debug:
 #
 # To completely disable the visual bell, set its duration to 0.
 #
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -336,28 +336,28 @@ key_bindings:
 # BEGIN ACE
 colors:
   primary:
-    background: '0x0B1521'
-    foreground: '0xf6eedd'
+    background: '0x0a1118'
+    foreground: '0xa5c8d6'
   cursor:
-    text:       '0x0B1521'
-    cursor:     '0xf6eedd'
+    text:       '0x0a1118'
+    cursor:     '0xa5c8d6'
   normal:
-    black:      '0x0B1521'
-    red:        '0x817C85'
-    green:      '0x6398BC'
-    yellow:     '0xFBB194'
-    blue:       '0xFED2B0'
-    magenta:    '0xFEDEB4'
-    cyan:       '0x8CB3CD'
-    white:      '0xf6eedd'
+    black:      '0x0a1118'
+    red:        '0x646465'
+    green:      '0xCF7035'
+    yellow:     '0xA66A4F'
+    blue:       '0x798979'
+    magenta:    '0xD99A68'
+    cyan:       '0x577897'
+    white:      '0xa5c8d6'
   bright:
-    black:      '0xaca69a'
-    red:        '0x817C85'
-    green:      '0x6398BC'
-    yellow:     '0xFBB194'
-    blue:       '0xFED2B0'
-    magenta:    '0xFEDEB4'
-    cyan:       '0x8CB3CD'
-    white:      '0xf6eedd'
+    black:      '0x738c95'
+    red:        '0x646465'
+    green:      '0xCF7035'
+    yellow:     '0xA66A4F'
+    blue:       '0x798979'
+    magenta:    '0xD99A68'
+    cyan:       '0x577897'
+    white:      '0xa5c8d6'
 
 # END ACE

@@ -33,6 +33,8 @@ source $HOME/.config/nvim/plug-config/which-key.vim
 source $HOME/.config/nvim/plug-config/completion-nvim.vim
 source $HOME/.config/nvim/plug-config/csv.vim
 source $HOME/.config/nvim/plug-config/vim-floaterm.vim
+source $HOME/.config/nvim/plug-config/weblink.vim
+
 
 
 

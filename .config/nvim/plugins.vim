@@ -130,6 +130,9 @@ Plug 'wellle/context.vim' " Add context base inline
 "Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+Plug 'izifortune/weblink.vim'
+
+Plug 'tpope/vim-scriptease'
 
 " All of your Plugins must be added before the following line
 call plug#end()
