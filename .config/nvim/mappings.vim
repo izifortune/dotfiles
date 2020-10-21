@@ -65,7 +65,10 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 vnoremap > ><CR>gv 
 vnoremap < <<CR>gv 
 
-" TAB in general mode will move to text buffer
+" remap paste in visual mode to send the deleted lines to void
+vnoremap <leader>p "_dP
+
+"TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " nnoremap <expr> <TAB> &buftype ==# 'quickfix' ? ':bnext<CR>' : "\<TAB>"
 " SHIFT-TAB will go back
@@ -73,7 +76,7 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 
 "" Buffers
 " Close the current buffer
-noremap <leader>dd :Bclose<cr>
+noremap <leader>dd :bdelete<cr>
 
 " Close all the buffers
 noremap <leader>da :%bd\|e#<cr>
@@ -88,3 +91,10 @@ noremap <leader>tm :tabmove
 noremap <leader>t<leader> :tabnext
 
 noremap <leader>kk :cd ~/code/knowledge<cr>
+
+
+"teeetsing
+" nmap <leader>F :.!toilet -w 200 -f standard<CR>
+" nmap <leader>f :.!toilet -w 200 -f small<CR>
+" makes Ascii border
+nmap <leader>1 :.!toilet -w 200 -f term -F border<CR>

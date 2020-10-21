@@ -66,6 +66,7 @@ set undofile
 
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " absolute width of netrw window
 let g:netrw_winsize = -28
 " tree-view

@@ -5,7 +5,7 @@ ctrl + shift - k : yabai -m window --focus north
 ctrl + shift - l : yabai -m window --focus east
 
 ctrl + shift - t : open /Applications/Alacritty.app
-ctrl + shift - f : open /Applications/Firefox.app
+ctrl + shift - e : open /Applications/Firefox.app
 ctrl + shift - c : open /Applications/Microsoft\ Teams.app/
 
 
@@ -64,7 +64,7 @@ shift + alt - 0 : yabai -m space --balance
 lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # toggle window fullscreen zoom
-cmd + shift - f : yabai -m window --toggle zoom-fullscreen
+lctrl + shift - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen

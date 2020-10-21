@@ -183,9 +183,9 @@ function UpdateDiary()
   call remove(files, 'diary.md')
   execute "e ~/code/knowledge/content/diary/diary.md"
   execute "normal gg dG"
-  let lineNumber = 0
+  let lineNumber = -1
   call append(lineNumber, '# Diary')
-  let lineNumber += 2
+  let lineNumber = 2
   for file in files
     let markdownFile = split(file, '/')[-1]
     let linkName = split(markdownFile, '.md')[0]
