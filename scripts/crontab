@@ -1,0 +1,2 @@
+25 17 * * * /users/fortunatof/scripts/auto-commit.sh
+25 17 * * * crontab -l > /users/fortunatof/scripts/crontab

@@ -37,7 +37,7 @@ inoremap , ,<c-g>u
 
 nnoremap <silent> <C-p> :Files<CR>
 
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <Esc> <C-\><C-n>
 
 nnoremap n nzz
 nnoremap N Nzz
