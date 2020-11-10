@@ -8,4 +8,4 @@ else
   set volume input volume 0
 end if
 
-tell application "Übersicht" to refresh widget id "simple-bar-data-jsx"
+tell application "/Applications/Übersicht.app" to refresh widget id "simple-bar-data-jsx"
