@@ -36,6 +36,10 @@ source $HOME/.config/nvim/plug-config/completion-nvim.vim
 source $HOME/.config/nvim/plug-config/vim-floaterm.vim
 source $HOME/.config/nvim/plug-config/weblink.vim
 source $HOME/.config/nvim/plug-config/gina.vim
+source $HOME/.config/nvim/plug-config/barbar.vim
+source $HOME/.config/nvim/plug-config/vimspector.vim
+source $HOME/.config/nvim/plug-config/vim-indent-guides.vim
+
 
 
 

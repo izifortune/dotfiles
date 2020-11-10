@@ -69,14 +69,14 @@ vnoremap < <<CR>gv
 vnoremap <leader>p "_dP
 
 "TAB in general mode will move to text buffer
-nnoremap <silent> <TAB> :bnext<CR>
-" nnoremap <expr> <TAB> &buftype ==# 'quickfix' ? ':bnext<CR>' : "\<TAB>"
-" SHIFT-TAB will go back
-nnoremap <silent> <S-TAB> :bprevious<CR>
+" nnoremap <silent> <TAB> :bnext<CR>
+" " nnoremap <expr> <TAB> &buftype ==# 'quickfix' ? ':bnext<CR>' : "\<TAB>"
+" " SHIFT-TAB will go back
+" nnoremap <silent> <S-TAB> :bprevious<CR>
 
 "" Buffers
 " Close the current buffer
-noremap <leader>dd :bdelete<cr>
+" noremap <leader>dd :bdelete<cr>
 
 " Close all the buffers
 noremap <leader>da :%bd\|e#<cr>

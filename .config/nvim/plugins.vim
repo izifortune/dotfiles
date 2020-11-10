@@ -13,6 +13,8 @@ Plug 'sainnhe/gruvbox-material'
 " Airline stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Buffer bar in LUA
+Plug 'romgrk/barbar.nvim'
 " Syntax highlight
 Plug 'sheerun/vim-polyglot'
 " Respect editorconfig
@@ -26,12 +28,16 @@ Plug 'skwp/greplace.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " alt-enter to track remote branch
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
+Plug 'szymonmaszke/vimpyter' "vim-plug
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'jparise/vim-graphql'
 Plug 'ryanoasis/vim-devicons'
+Plug 'puremourning/vimspector'
+Plug 'unblevable/quick-scope' 
 
 "LSP
 " Plug 'neovim/nvim-lspconfig'
@@ -64,7 +70,7 @@ Plug 'rbong/vim-flog'
 Plug 'lambdalisue/gina.vim'
 Plug 'izifortune/weblink.vim'
 " Fancy gutters display
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 ""Focus ""
 Plug 'junegunn/limelight.vim'
@@ -106,6 +112,9 @@ Plug 'wellle/context.vim' " Add context base inline
 "Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-scriptease'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nathanaelkane/vim-indent-guides'
+" Plug '~/code/rich-markdown.nvim'
 
 " All of your Plugins must be added before the following line
 call plug#end()

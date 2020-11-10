@@ -77,3 +77,8 @@ prompt_context() {}
 [[ -f /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/sls.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
+
+alias sonarrun=docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
+alias ggpushpr='git push origin (current_branch) 2>&1 | grep "https://s" | sed "s/[^ ]* *//" | pbcopy'

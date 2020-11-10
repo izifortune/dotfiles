@@ -2,10 +2,10 @@
 
 --- move to config
 
-require 'modules'
-
-local hyper = {"cmd", "alt", "ctrl"}
-local cmd = {'cmd'}
+-- require 'modules'
+-- 
+-- local hyper = {"cmd", "alt", "ctrl"}
+-- local cmd = {'cmd'}
 
 
 
@@ -25,3 +25,5 @@ local cmd = {'cmd'}
 -- end
 -- 
 -- hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+stackline = require "stackline.stackline.stackline"
+stackline:init()

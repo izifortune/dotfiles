@@ -71,8 +71,8 @@ yabai -m rule --add app=Übersicht manage=off
 yabai -m rule --add app="Microsoft Teams" space=3
 yabai -m rule --add app="^BIG-IP" manage=off
 
-yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
-yabai -m signal --add event=display_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
-yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"simple-bar-processes-jsx\"'"
+yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=display_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-processes-jsx\"'"
 
 echo "yabai configuration loaded.."

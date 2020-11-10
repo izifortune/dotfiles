@@ -59,6 +59,7 @@
     }
   },
   "git.enableGutters": true,
+  "python.jediEnabled": false,
 
   // TODO language servers
   // TODO g:coc_global_extensions
