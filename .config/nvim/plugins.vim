@@ -15,9 +15,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Buffer bar in LUA
 Plug 'romgrk/barbar.nvim'
+" Buffer commands 
+Plug 'moll/vim-bbye'
+" Split resie
+Plug 'simeji/winresizer'
 " Syntax highlight
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 " Respect editorconfig
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'szw/vim-maximizer'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
@@ -44,6 +50,9 @@ Plug 'unblevable/quick-scope'
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'RishabhRD/popfix'
 " Plug 'RishabhRD/nvim-lsputils'
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
@@ -96,12 +105,15 @@ Plug 'lervag/vimtex', { 'for': 'latex' }
 Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'izifortune/follow-markdown-links'
 Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
+Plug 'dpelle/vim-LanguageTool'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-cheat.sh'
 
 ""Tasks and notes""
 Plug 'mattn/calendar-vim'
 Plug 'sedm0784/vim-you-autocorrect'
 " :TW
-Plug 'blindFS/vim-taskwarrior'
+" Plug 'blindFS/vim-taskwarrior'
 
 ""Misc
 " Smooth scrolling
@@ -113,8 +125,9 @@ Plug 'wellle/context.vim' " Add context base inline
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-scriptease'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 " Plug '~/code/rich-markdown.nvim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " All of your Plugins must be added before the following line
 call plug#end()

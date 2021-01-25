@@ -9,14 +9,17 @@ pip3 install neovim howdoi --user
 # TODO Review if necessary
 mkdir -p $HOME/.hammerspoon/hs
 
+# Added TPM
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Fonts
 cp /usr/local/etc/fonts/fonts.conf.bak /usr/local/etc/fonts/fonts.conf
 git clone https://github.com/powerline/fonts.git
 ./fonts/install.sh
 
 #Fish shell
-echo /usr/local/bin/fish | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/fish
+# echo /usr/local/bin/fish | sudo tee -a /etc/shells
+chsh -s /bin/zsh
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
@@ -35,9 +38,14 @@ omf install pyenv
 
 git config --global push.default current
 
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
 brew link imagemagick 
 # pywal
 git clone https://github.com/robwaz/pywal ~/code/pywal
 cd pywal
 sudo pip3 install -e ./
 brew cleanup
+
+

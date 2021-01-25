@@ -222,7 +222,32 @@ function! Tdd() abort
   call fzf#vim#grep(
         \   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
         \   fzf#vim#with_preview({ 'options': '--reverse' }), 0)
+  " call fzf#run(
+  "      \   fzf#wrap({'source': 'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]')}, 0))
+  " call fzf#run({'source': fzf#vim#grep(
+  "\   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
+  "\   fzf#vim#with_preview({ 'options': '--reverse' }), 0), 'sink': 'tabedit'})
   execute 'cd ' . dir
 endfunction
 
 command! -bang Todos call Tdd()
+
+function! NewDiarySection(title) abort
+  exe 'norm! gg'
+  if (strpart(getline('.'), 0, 1) ==? '#')
+    exe 'norm! A' . ', ' .. a:title
+  else
+    exe 'norm! A' . '# ' .. a:title
+  endif
+  exe 'norm! oo## ' .. a:title
+  exe 'norm! oo---O'
+endfunction
+
+command! -nargs=1 NewSection call NewDiarySection('<args>')
+
+function! NewDocumentFun(title) abort
+  exe 'norm! I- [' .. a:title .. '](' ..a:title .. '.md)'
+endfunction
+
+command! -nargs=1 NewDocument call NewDocumentFun('<args>')
+

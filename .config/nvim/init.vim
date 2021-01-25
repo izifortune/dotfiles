@@ -1,6 +1,6 @@
 source $HOME/.config/nvim/plug-config/csv.vim
 
-source $HOME/.config/nvim/plug-config/polyglot.vim
+" source $HOME/.config/nvim/plug-config/polyglot.vim
 source $HOME/.config/nvim/plug-config/mkdx.vim
 
 source $HOME/.config/nvim/plugins.vim
@@ -10,6 +10,7 @@ source $HOME/.config/nvim/settings.vim
 source $HOME/.config/nvim/functions.vim
 
 source $HOME/.config/nvim/colors.vim
+source $HOME/.config/nvim/zettel.vim
 
 " source $HOME/.config/nvim/plug-config/nvim-lsputils.vim
 " source $HOME/.config/nvim/lsp.vim
@@ -18,7 +19,6 @@ source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/context.vim
 source $HOME/.config/nvim/plug-config/easy-align.vim
-source $HOME/.config/nvim/plug-config/firenvim.vim
 source $HOME/.config/nvim/plug-config/fugitive.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/fzf-checkout.vim
@@ -39,6 +39,9 @@ source $HOME/.config/nvim/plug-config/gina.vim
 source $HOME/.config/nvim/plug-config/barbar.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/vim-indent-guides.vim
+source $HOME/.config/nvim/plug-config/vim-bbye.vim
+source $HOME/.config/nvim/plug-config/vim-languagetool.vim
+source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
 
 
 

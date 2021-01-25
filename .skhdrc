@@ -4,9 +4,12 @@ ctrl + shift - j : yabai -m window --focus south
 ctrl + shift - k : yabai -m window --focus north
 ctrl + shift - l : yabai -m window --focus east
 
-ctrl + shift - t : open /Applications/Alacritty.app
-ctrl + shift - e : open /Applications/Firefox.app
+ctrl + shift - t : open /Applications/iTerm.app
+ctrl + shift - e : open /Applications/Firefox\ Developer\ Edition.app
 ctrl + shift - c : open /Applications/Microsoft\ Teams.app/
+
+ctrl + shift - m : yabai -m window --minimize
+ctrl + shift - n : yabai -m window --maximize
 
 
 cmd + alt - j : osascript ~/scripts/toggle-mic.scpt

@@ -1,4 +1,4 @@
-let g:mkdx#settings = { 'highlight': { 'enable': 1 },
+let g:mkdx#settings = { 'highlight': { 'enable': 0 },
       \ 'map': { 'prefix': '<leader>' },
       \ 'enter': { 'shift': 1 },
       \ 'links': { 'external': { 'enable': 1 } },

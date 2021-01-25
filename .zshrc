@@ -10,7 +10,7 @@ export ZSH="/Users/fortunatof/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
 
-plugins=(git fzf nvm brew httpie vi-mode z)
+plugins=(git fzf nvm brew httpie vi-mode z zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,3 +82,8 @@ export PATH="/Library/TeX/texbin:$PATH"
 
 alias sonarrun=docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
 alias ggpushpr='git push origin (current_branch) 2>&1 | grep "https://s" | sed "s/[^ ]* *//" | pbcopy'
+alias lg='lazygit'
+
+# Kill the lag for vi mode
+export KEYTIMEOUT=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
