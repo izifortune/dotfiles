@@ -14,11 +14,12 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>s? z=
 
-map <leader>nn :Explore<cr>
-map <leader>nf :Vexplore<cr>
+" map <leader>nn :Explore<cr>
+" map <leader>nf :Vexplore<cr>
+" Switching to nerdtree
 nnoremap <leader>cd :cd %:p:h<CR>
 
-" map <leader>ff :grep 
+" map <leader>ff :grep
 noremap <leader>ch :lclose<CR>
 noremap <leader>oh :lopen<CR>
 "keep indend on paste
@@ -62,8 +63,8 @@ noremap <silent> <C-M-j> :resize -3<CR>
 
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
-vnoremap > ><CR>gv 
-vnoremap < <<CR>gv 
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
 
 " remap paste in visual mode to send the deleted lines to void
 vnoremap <leader>p "_dP

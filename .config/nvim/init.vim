@@ -13,15 +13,15 @@ source $HOME/.config/nvim/colors.vim
 source $HOME/.config/nvim/zettel.vim
 
 " source $HOME/.config/nvim/plug-config/nvim-lsputils.vim
-" source $HOME/.config/nvim/lsp.vim
 
 source $HOME/.config/nvim/plug-config/airline.vim
-source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/ale.vim
+" source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/context.vim
 source $HOME/.config/nvim/plug-config/easy-align.vim
 source $HOME/.config/nvim/plug-config/fugitive.vim
-source $HOME/.config/nvim/plug-config/fzf.vim
-source $HOME/.config/nvim/plug-config/fzf-checkout.vim
+" source $HOME/.config/nvim/plug-config/fzf.vim
+" source $HOME/.config/nvim/plug-config/fzf-checkout.vim
 source $HOME/.config/nvim/plug-config/git-gutter.vim
 source $HOME/.config/nvim/plug-config/goyo.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
@@ -42,6 +42,11 @@ source $HOME/.config/nvim/plug-config/vim-indent-guides.vim
 source $HOME/.config/nvim/plug-config/vim-bbye.vim
 source $HOME/.config/nvim/plug-config/vim-languagetool.vim
 source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
+source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
+source $HOME/.config/nvim/plug-config/telescope.vim
+source $HOME/.config/nvim/plug-config/nerdtree.vim
+" source $HOME/.config/nvim/plug-config/nvim-compe.vim
+" source $HOME/.config/nvim/plug-config/nvim-lightbulb.vim
 
 
 
@@ -60,11 +65,11 @@ set spelllang=en_gb,it
 " highlight clear SpellRare
 " highlight SpellRare term=underline cterm=underline
 " highlight clear SpellLocal
-" highlight SpellLocal term=underline cterm=underline 
+" highlight SpellLocal term=underline cterm=underline
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on 
+" => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
@@ -113,3 +118,9 @@ set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 
 "" Use <C-j> for both expand and jump (make expand higher priority.)
 "imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+
+lua require('globals')
+lua require('izifortune.telescope')
+lua require('izifortune.telescope.mappings')
+lua require('izifortune.lsp')

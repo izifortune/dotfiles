@@ -4,6 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Have the file system follow you around
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/rainbow_parentheses.vim'
+"Plug 'p00f/nvim-ts-rainbow'
 Plug 'alvan/vim-closetag'
 Plug 'liuchengxu/vim-which-key'
 Plug 'jbgutierrez/vim-better-comments'
@@ -11,11 +12,11 @@ Plug 'jbgutierrez/vim-better-comments'
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 " Airline stuff
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " Buffer bar in LUA
 Plug 'romgrk/barbar.nvim'
-" Buffer commands 
+" Buffer commands
 Plug 'moll/vim-bbye'
 " Split resie
 Plug 'simeji/winresizer'
@@ -28,33 +29,51 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+" Plug 'Raimondi/delimitMate'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
+" Testing telescope
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " alt-enter to track remote branch
 Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn install' }
 Plug 'szymonmaszke/vimpyter' "vim-plug
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-unimpaired'
 Plug 'jparise/vim-graphql'
 Plug 'ryanoasis/vim-devicons'
 Plug 'puremourning/vimspector'
-Plug 'unblevable/quick-scope' 
+Plug 'unblevable/quick-scope'
+Plug 'sbdchd/neoformat'
 
 "LSP
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'RishabhRD/popfix'
-" Plug 'RishabhRD/nvim-lsputils'
-" Plug 'nvim-lua/popup.nvim'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'RishabhRD/popfix'
+" Plug 'anott03/nvim-lspinstall'
+Plug 'RishabhRD/nvim-lsputils'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+Plug 'preservim/nerdtree'
+Plug 'steelsojka/completion-buffers'
+Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+Plug 'nvim-treesitter/completion-treesitter'
+Plug 'dense-analysis/ale'
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" Plug 'kyazdani42/nvim-tree.lua'
+" Need to figure out how to work
+" Plug 'kosayoda/nvim-lightbulb'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" autocomplete
+" Plug 'hrsh7th/nvim-compe'
+
+" COC related plugins
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim'
@@ -111,7 +130,6 @@ Plug 'RishabhRD/nvim-cheat.sh'
 
 ""Tasks and notes""
 Plug 'mattn/calendar-vim'
-Plug 'sedm0784/vim-you-autocorrect'
 " :TW
 " Plug 'blindFS/vim-taskwarrior'
 
@@ -121,6 +139,7 @@ Plug 'sedm0784/vim-you-autocorrect'
 Plug 'tyru/caw.vim'  " Better documentation
 " Plug 'kkoomen/vim-doge' " Documentation generator
 Plug 'wellle/context.vim' " Add context base inline
+" Plug 'romgrk/nvim-treesitter-context'
 "Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-scriptease'
@@ -137,4 +156,3 @@ autocmd VimEnter *
       \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       \|   PlugInstall --sync | q
       \| endif
-

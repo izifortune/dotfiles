@@ -42,7 +42,7 @@ yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
-# Boarders 
+# Boarders
 # yabai -m config window_border on
 # yabai -m config window_border_width 10
 # yabai -m config active_window_border_color 0xff$c4
@@ -74,5 +74,8 @@ yabai -m rule --add app="^BIG-IP" manage=off
 yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 yabai -m signal --add event=display_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-processes-jsx\"'"
+
+yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '.first-window')"
+yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '.first-window')"
 
 echo "yabai configuration loaded.."

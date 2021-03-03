@@ -219,14 +219,15 @@ function! Tdd() abort
   let dir = getcwd()
   echo dir
   execute 'cd ~/code/knowledge/content/diary'
-  call fzf#vim#grep(
-        \   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
-        \   fzf#vim#with_preview({ 'options': '--reverse' }), 0)
+  " lua require 'izifortune.telescope'.todos()
+  " call fzf#vim#grep(
+  "     \   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
+  "     \   fzf#vim#with_preview({ 'options': '--reverse' }), 0)
   " call fzf#run(
-  "      \   fzf#wrap({'source': 'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]')}, 0))
-  " call fzf#run({'source': fzf#vim#grep(
-  "\   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
-  "\   fzf#vim#with_preview({ 'options': '--reverse' }), 0), 'sink': 'tabedit'})
+  "     \   fzf#wrap({'source': 'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]')}, 0))
+  call fzf#run({'source': fzf#vim#grep(
+  \   'rg --sortr created --column --line-number --no-heading --color=always --smart-case -- '.shellescape('\[ \]'), 1,
+  \   fzf#vim#with_preview({ 'options': '--reverse' }), 0), 'sink': 'tabedit'})
   execute 'cd ' . dir
 endfunction
 
@@ -251,3 +252,10 @@ endfunction
 
 command! -nargs=1 NewDocument call NewDocumentFun('<args>')
 
+" Go back to last misspelled word and pick first suggestion.
+inoremap <C-L> <C-G>u<Esc>[s1z=`]a<C-G>u
+
+" Select last misspelled word (typing will edit).
+nnoremap <C-K> <Esc>[sve<C-G>
+inoremap <C-K> <Esc>[sve<C-G>
+snoremap <C-K> <Esc>b[sviw<C-G>

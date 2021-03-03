@@ -6,7 +6,6 @@ let g:coc_global_extensions = [
     \ 'coc-lua',
     \ 'coc-bookmark',
     \ 'coc-explorer',
-    \ 'coc-markdownlint',
     \ 'coc-css',
     \ 'coc-dictionary',
     \ 'coc-emmet',
@@ -35,8 +34,14 @@ let g:coc_global_extensions = [
     \ 'coc-yaml',
     \ 'coc-yank',
     \ 'coc-xml',
-    \ 'coc-python'
+    \ 'coc-python',
+    \ 'coc-webpack',
+    \ 'https://github.com/andys8/vscode-jest-snippets',
+    "\ 'https://github.com/johnpapa/vscode-angular-snippets'
       \]
+
+      "\ 'coc-markdownlint',
+    "  \ 'coc-grammarly'
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -65,12 +70,12 @@ endif
 " endfunction
 
 " Use <c-space> to trigger completion.
-" inoremap <silent><expr> <leader>r coc#refresh()
+" inoremap <silent><expr> <c-r> coc#refresh()
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.

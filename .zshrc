@@ -10,7 +10,7 @@ export ZSH="/Users/fortunatof/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
 
-plugins=(git fzf nvm brew httpie vi-mode z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git fzf nvm brew httpie vi-mode z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,4 +86,5 @@ alias lg='lazygit'
 
 # Kill the lag for vi mode
 export KEYTIMEOUT=1
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export DISABLE_MAGIC_FUNCTIONS=true
