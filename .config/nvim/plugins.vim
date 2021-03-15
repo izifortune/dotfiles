@@ -4,16 +4,21 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Have the file system follow you around
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/rainbow_parentheses.vim'
-"Plug 'p00f/nvim-ts-rainbow'
+
 Plug 'alvan/vim-closetag'
 Plug 'liuchengxu/vim-which-key'
 Plug 'jbgutierrez/vim-better-comments'
+
 " Theme
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
-" Airline stuff
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+
+" tabline
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+
+" autopairs
+Plug 'windwp/nvim-autopairs'
+
 " Buffer bar in LUA
 Plug 'romgrk/barbar.nvim'
 " Buffer commands
@@ -21,14 +26,13 @@ Plug 'moll/vim-bbye'
 " Split resie
 Plug 'simeji/winresizer'
 " Syntax highlight
-" Plug 'sheerun/vim-polyglot'
-" Respect editorconfig
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" MaximazeToggle
 Plug 'szw/vim-maximizer'
+" Respect editorconfig
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
 " Plug 'Raimondi/delimitMate'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
@@ -42,16 +46,27 @@ Plug 'iamcco/markdown-preview.nvim', { 'for': 'markdown','do': 'cd app & yarn in
 Plug 'szymonmaszke/vimpyter' "vim-plug
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-unimpaired'
 Plug 'jparise/vim-graphql'
 Plug 'ryanoasis/vim-devicons'
+" Icons on complention
+Plug 'onsails/lspkind-nvim'
 Plug 'puremourning/vimspector'
 Plug 'unblevable/quick-scope'
 Plug 'sbdchd/neoformat'
 
 "LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+
+" complention nvim
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+" Plug 'steelsojka/completion-buffers'
+" Plug 'nvim-treesitter/completion-treesitter'
+
+Plug 'hrsh7th/nvim-compe'
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
+
+
 Plug 'RishabhRD/popfix'
 " Plug 'anott03/nvim-lspinstall'
 Plug 'RishabhRD/nvim-lsputils'
@@ -59,10 +74,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
-Plug 'preservim/nerdtree'
-Plug 'steelsojka/completion-buffers'
-Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-Plug 'nvim-treesitter/completion-treesitter'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'dense-analysis/ale'
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
 " Plug 'kyazdani42/nvim-tree.lua'
@@ -147,6 +160,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'nathanaelkane/vim-indent-guides'
 " Plug '~/code/rich-markdown.nvim'
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'jbyuki/instant.nvim'
 
 " All of your Plugins must be added before the following line
 call plug#end()

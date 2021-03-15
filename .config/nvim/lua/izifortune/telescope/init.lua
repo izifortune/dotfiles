@@ -112,8 +112,8 @@ function M.search_todos(opts)
 
   require('telescope.builtin').grep_string {
     shorten_path = true,
-    -- cwd='~/code/knowledge/content/diary',
-    search_dirs = { '~/code/knowledge/content/diary' },
+    cwd='/Users/fortunatof/code/knowledge/content/diary',
+    -- search_dirs = { '~/code/knowledge/content/diary' },
     sorting_strategy = 'ascending',
     vimgrep_arguments = {  'rg',
     '--sortr=created',
@@ -124,7 +124,18 @@ function M.search_todos(opts)
     '--column',
     '--smart-case' },
     -- vimgrep_arguments = { '--sortr created' },
-    search = '[ ]'
+    search = '[ ]',
+    attach_mappings = function(prompt_bufnr, map)
+      map('i', '<C-t>', function(bufnr, test)
+        local content = require('telescope.actions.state').get_selected_entry(bufnr)
+        -- print(vim.inspect(content))
+        print(content['col'])
+        print(content['filename'])
+        -- vim.api.execute('e ' .. content['filename'])
+
+      end)
+      return true
+    end
   }
 
 end
@@ -134,7 +145,8 @@ function M.search_zettel(opts)
   require('telescope.builtin').grep_string {
     shorten_path = true,
     -- cwd='diary',
-    search_dirs = {'~/code/knowledge/content/zettelkasten'},
+    cwd='/Users/fortunatof/code/knowledge/content/zettelkasten',
+    -- search_dirs = {'~/code/knowledge/content/zettelkasten'},
     sorting_strategy = 'ascending',
     vimgrep_arguments = {  'rg',
     '--sortr=created',

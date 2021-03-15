@@ -1,15 +1,6 @@
-#!/usr/bin/env sh
-source ~/.cache/wal/colors.sh
+source ~/.cache/wal/colors.sh # pywal scheme - update if needed
 
-##Passive colors
-#p1="${color8:1}"
-
-##active colors - (same as position on bar)
-#c1="${color2:1}"
-#c2="${color4:1}"
-#c3="${color3:1}"
-#c4="${color9:1}"
-#c5="${color5:1}"
+# yabai template colours
 CBACK=$(echo $background | sed 's/#//')
 CFORE=$(echo $foreground | sed 's/#//')
 CACTV=$(echo $color3 | sed 's/#//')
@@ -20,8 +11,8 @@ yabai -m config status_bar                   on
 yabai -m config status_bar_background_color  0xff$CBACK
 yabai -m config status_bar_foreground_color  0xff$CFORE
 
-yabai -m config window_border                off
-yabai -m config window_border_width          10
+yabai -m config window_border                on
+yabai -m config window_border_width          4
 yabai -m config active_window_border_color   0xff$CACTV
 yabai -m config normal_window_border_color   0xff$CNORM
 yabai -m config insert_window_border_color   0xff$CINSE
@@ -73,9 +64,13 @@ yabai -m rule --add app="^BIG-IP" manage=off
 
 yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 yabai -m signal --add event=display_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
-yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-processes-jsx\"'"
 
-yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '.first-window')"
-yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '.first-window')"
+# yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '."irst-window"')"
+# yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '."irst-window"')"
+
+# focus window after active space changes
+# yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --windows --space | jq -r '.[] | select (.sticky == 0) | .id')"
+# # focus window after active display changes
+# yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --windows --space | jq -r '.[] | select (.sticky == 0) | .id')"
 
 echo "yabai configuration loaded.."

@@ -32,7 +32,7 @@ source $HOME/.config/nvim/plug-config/vim-markdown.vim
 source $HOME/.config/nvim/plug-config/vim-rooter.vim
 source $HOME/.config/nvim/plug-config/vimwiki.vim
 source $HOME/.config/nvim/plug-config/which-key.vim
-source $HOME/.config/nvim/plug-config/completion-nvim.vim
+" source $HOME/.config/nvim/plug-config/completion-nvim.vim
 source $HOME/.config/nvim/plug-config/vim-floaterm.vim
 source $HOME/.config/nvim/plug-config/weblink.vim
 source $HOME/.config/nvim/plug-config/gina.vim
@@ -43,8 +43,8 @@ source $HOME/.config/nvim/plug-config/vim-bbye.vim
 source $HOME/.config/nvim/plug-config/vim-languagetool.vim
 source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
 source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
-source $HOME/.config/nvim/plug-config/telescope.vim
-source $HOME/.config/nvim/plug-config/nerdtree.vim
+source $HOME/.config/nvim/plug-config/nvim-tree.vim
+" source $HOME/.config/nvim/plug-config/nerdtree.vim
 " source $HOME/.config/nvim/plug-config/nvim-compe.vim
 " source $HOME/.config/nvim/plug-config/nvim-lightbulb.vim
 
@@ -94,33 +94,11 @@ set formatlistpat+=\\s\\+                   " One or more spaces
 set formatlistpat+=\\\|                     " or
 set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 
-"CSV
-"let b:csv_arrange_align = 'l*'
-
-"let g:gitgutter_sign_added = '+'
-"let g:gitgutter_sign_modified = '>'
-"let g:gitgutter_sign_removed = '-'
-"let g:gitgutter_sign_removed_first_line = '^'
-"let g:gitgutter_sign_modified_removed = '<'
-
-
-"" Use <C-l> for trigger snippet expand.
-"imap <C-l> <Plug>(coc-snippets-expand)
-
-"" Use <C-j> for select text for visual placeholder of snippet.
-"vmap <C-j> <Plug>(coc-snippets-select)
-
-"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-"let g:coc_snippet_next = '<c-j>'
-
-"" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-"let g:coc_snippet_prev = '<c-k>'
-
-"" Use <C-j> for both expand and jump (make expand higher priority.)
-"imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-
 lua require('globals')
 lua require('izifortune.telescope')
 lua require('izifortune.telescope.mappings')
 lua require('izifortune.lsp')
+lua require('lspkind').init()
+lua require('statusline')
+lua require('izifortune.nvim-compe')
+lua require('izifortune.nvim-autopairs')

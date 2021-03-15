@@ -334,28 +334,29 @@ key_bindings:
   - { key: F11, mods: Command, chars: "\x1b[23;3~" }
   - { key: F12, mods: Command, chars: "\x1b[24;3~" }
 # BEGIN ACE
-# colors:
-#   primary:
-#     background: '0x0a0c0a'
-#     foreground: '0xece8e2'
-#   cursor:
-#     text:       '0x0a0c0a'
-#     cursor:     '0xece8e2'
-#   normal:
-#     black:      '0x0a0c0a'
-#     red:        '0x87827F'
-#     green:      '0x8D8D92'
-#     yellow:     '0xA4A4AC'
-#     blue:       '0xC9BFB5'
-#     magenta:    '0xADB3C4'
-#     cyan:       '0xD1CECB'
-#     white:      '0xece8e2'
-#   bright:
-#     black:      '0xa5a29e'
-#     red:        '0x87827F'
-#     green:      '0x8D8D92'
-#     yellow:     '0xA4A4AC'
-#     blue:       '0xC9BFB5'
-#     magenta:    '0xADB3C4'
-#     cyan:       '0xD1CECB'
-#     white:      '0xece8e2'
+colors:
+  primary:
+    background: '0x0B0D0D'
+    foreground: '0xc3c2be'
+  cursor:
+    text:       '0x0B0D0D'
+    cursor:     '0xc3c2be'
+  normal:
+    black:      '0x0B0D0D'
+    red:        '0x4B535A'
+    green:      '0x4A5767'
+    yellow:     '0x57656E'
+    blue:       '0x696F70'
+    magenta:    '0x6D7A83'
+    cyan:       '0x8B8E82'
+    white:      '0xc3c2be'
+  bright:
+    black:      '0x888785'
+    red:        '0x4B535A'
+    green:      '0x4A5767'
+    yellow:     '0x57656E'
+    blue:       '0x696F70'
+    magenta:    '0x6D7A83'
+    cyan:       '0x8B8E82'
+    white:      '0xc3c2be'
+

@@ -77,14 +77,16 @@ prompt_context() {}
 [[ -f /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/sls.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="/Library/TeX/texbin:$PATH"
 
 alias sonarrun=docker run -d --name sonarqube -p 9000:9000 sonarqube:latest
 alias ggpushpr='git push origin (current_branch) 2>&1 | grep "https://s" | sed "s/[^ ]* *//" | pbcopy'
 alias lg='lazygit'
 
-# Kill the lag for vi mode
-export KEYTIMEOUT=1
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-export DISABLE_MAGIC_FUNCTIONS=true
+autoload -U compinit; compinit
+
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"

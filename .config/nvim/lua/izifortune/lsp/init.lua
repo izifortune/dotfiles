@@ -1,113 +1,12 @@
 local nvim_lsp = require('lspconfig')
 
--- local custom_attach = function(client)
---   print("'" .. client.name .. "' language server started" );
---
---   require'completion'.on_attach(client)
---   require'diagnostic'.on_attach(client)
---
---   -- key bindings ommitted
--- end
---
--- nvim_lsp.diagnosticls.setup{
---   on_attach=custom_attach,
---   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'css', 'scss', 'markdown', 'pandoc' },
---   init_options = {
---     linters = {
---       tslint = {
---         command = 'tslint',
---         rootPatterns = { '.git' },
---         debounce = 100,
---         args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
---         sourceName = 'tslint',
---         parseJson = {
---           errorsRoot = '[0].messages',
---           line = 'line',
---           column = 'column',
---           endLine = 'endLine',
---           endColumn = 'endColumn',
---           message = '[eslint] ${message} [${ruleId}]',
---           security = 'severity'
---         },
---         securities = {
---           [2] = 'error',
---           [1] = 'warning'
---         }
---       },
---       eslint = {
---         command = 'eslint',
---         rootPatterns = { '.git' },
---         debounce = 100,
---         args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
---         sourceName = 'eslint',
---         parseJson = {
---           errorsRoot = '[0].messages',
---           line = 'line',
---           column = 'column',
---           endLine = 'endLine',
---           endColumn = 'endColumn',
---           message = '[eslint] ${message} [${ruleId}]',
---           security = 'severity'
---         },
---         securities = {
---           [2] = 'error',
---           [1] = 'warning'
---         }
---       },
---       markdownlint = {
---         command = 'markdownlint',
---         rootPatterns = { '.git' },
---         isStderr = true,
---         debounce = 100,
---         args = { '--stdin' },
---         offsetLine = 0,
---         offsetColumn = 0,
---         sourceName = 'markdownlint',
---         securities = {
---           undefined = 'hint'
---         },
---         formatLines = 1,
---         formatPattern = {
---           '^.*:(\\d+)\\s+(.*)$',
---           {
---             line = 1,
---             column = -1,
---             message = 2,
---           }
---         }
---       }
---     },
---     filetypes = {
---       javascript = 'eslint',
---       javascriptreact = 'eslint',
---       typescript = 'tslint',
---       typescriptreact = 'tslint',
---       markdown = 'markdownlint',
---       pandoc = 'markdownlint'
---     },
---     formatters = {
---       prettierEslint = {
---         command = 'prettier-eslint',
---         args = { '--stdin' },
---         rootPatterns = { '.git' },
---       },
---       prettier = {
---         command = 'prettier',
---         args = { '--stdin-filepath', '%filename' }
---       }
---     },
---     formatFiletypes = {
---       css = 'prettier',
---       javascript = 'prettierEslint',
---       javascriptreact = 'prettierEslint',
---       json = 'prettier',
---       scss = 'prettier',
---       typescript = 'prettierEslint',
---       typescriptreact = 'prettierEslint'
---     }
---   }
--- }
---
+vim.api.nvim_command([[
+  autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
+  autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
+  autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
+  autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
+  autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+]])
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -138,9 +37,9 @@ local on_attach = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<leader><leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap("n", "<leader><leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -160,7 +59,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "tsserver", "angularls", "vimls", "jsonls", "bashls", "yamlls" }
+local servers = { "pyright", "tsserver", "angularls", "vimls", "jsonls", "bashls", "yamlls", "cssls", "html" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach
@@ -204,6 +103,7 @@ nvim_lsp.yamlls.setup {
 }
 
 local cmd = {"node", "~/.nvm/versions/node/v12.19.0/lib/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", "" , "--ngProbeLocations", ""}
+
 nvim_lsp.angularls.setup{
   cmd = cmd,
   on_new_config = function(new_config,new_root_dir)
