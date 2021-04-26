@@ -44,10 +44,10 @@ alias v=nvim
 function toggle_proxy {
   if [ -z "$http_proxy" ]; then
     echo "setting up proxy"
-    export http_proxy='http://10.11.19.40:8080'
-    export https_proxy='http://10.11.19.40:8080'
-    export HTTP_PROXY='http://10.11.19.40:8080'
-    export HTTPS_PROXY='http://10.11.19.40:8080'
+    export http_proxy='http://proxy03.corp.ryanair.com:3128'
+    export https_proxy='http://proxy03.corp.ryanair.com:3128'
+    export HTTP_PROXY='http://proxy03.corp.ryanair.com:3128'
+    export HTTPS_PROXY='http://proxy03.corp.ryanair.com:3128'
   else
     echo "removing up proxy"
     export http_proxy=''
@@ -90,3 +90,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# zscaler
+export NODE_EXTRA_CA_CERTS=~/zscaler.pem
+export AWS_CA_BUNDLE=~/zscaler.pem

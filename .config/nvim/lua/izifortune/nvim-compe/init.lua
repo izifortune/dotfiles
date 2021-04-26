@@ -26,7 +26,7 @@ require "compe".setup {
         snippets_nvim = true,
         treesitter = true,
         ultisnips = true,
-        tabnine = true
+        -- tabnine = true
     }
 }
 

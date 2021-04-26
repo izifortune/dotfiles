@@ -35,7 +35,7 @@ endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
 
-command FullPath :echo @% 
+command FullPath :echo @%
 
 " Save a image from the clipboard to markdown
 command MarkdownClipboardImage :call MarkdownClipboardImage()
@@ -144,7 +144,7 @@ function GetURLTitle(url)
   let test = matchstr(title, '\ca <title>.*</title>')
   echo test
 
-  
+
 
   " Echo the error if getting title failed.
   if v:shell_error != 0
@@ -259,3 +259,13 @@ inoremap <C-L> <C-G>u<Esc>[s1z=`]a<C-G>u
 nnoremap <C-K> <Esc>[sve<C-G>
 inoremap <C-K> <Esc>[sve<C-G>
 snoremap <C-K> <Esc>b[sviw<C-G>
+
+" Create a docx document from markdown in the same folder
+function! MarkdownToDoc() abort
+  let file = @%
+  let directory = expand('%:p:h')
+  let filename = expand('%:r')
+  call system('pandoc ' .. file .. ' -o ' .. directory .. '/'.. filename .. '.docx')
+endfunction
+
+command! MarkdownToDoc call MarkdownToDoc()

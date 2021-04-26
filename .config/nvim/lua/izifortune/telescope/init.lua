@@ -77,8 +77,9 @@ require('telescope').setup {
     },
 
     fzf_writer = {
-      use_highlighter = false,
-      minimum_grep_characters = 4,
+      minimum_grep_characters = 2,
+      minimum_files_characters = 2,
+      use_highlighter = true,
     }
   },
 }
@@ -87,6 +88,7 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzy_native')
 pcall(require('telescope').load_extension, 'frecency')
 pcall(require('telescope').load_extension, 'octo')
+pcall(require('telescope').load_extension, 'ultisnips')
 
 local M = {}
 

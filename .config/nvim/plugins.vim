@@ -7,7 +7,6 @@ Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'alvan/vim-closetag'
 Plug 'liuchengxu/vim-which-key'
-Plug 'jbgutierrez/vim-better-comments'
 
 " Theme
 Plug 'gruvbox-community/gruvbox'
@@ -54,6 +53,8 @@ Plug 'puremourning/vimspector'
 Plug 'unblevable/quick-scope'
 Plug 'sbdchd/neoformat'
 
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
 "LSP
 Plug 'neovim/nvim-lspconfig'
 
@@ -64,7 +65,8 @@ Plug 'neovim/nvim-lspconfig'
 " Plug 'nvim-treesitter/completion-treesitter'
 
 Plug 'hrsh7th/nvim-compe'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
+" Too intensive on CPU
+" Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 
 
 Plug 'RishabhRD/popfix'
@@ -75,6 +77,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'dense-analysis/ale'
 " Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -110,8 +113,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
 Plug 'lambdalisue/gina.vim'
 Plug 'izifortune/weblink.vim'
-" Fancy gutters display
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
+" Fancy gutters display issue with performance
+" Plug 'airblade/vim-gitgutter'
 
 ""Focus ""
 Plug 'junegunn/limelight.vim'
@@ -161,7 +165,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Plug '~/code/rich-markdown.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'jbyuki/instant.nvim'
+" Plug 'jbyuki/instant.nvim'
+
+" tesing"
+
+Plug 'dhruvasagar/vim-dotoo'
 
 " All of your Plugins must be added before the following line
 call plug#end()

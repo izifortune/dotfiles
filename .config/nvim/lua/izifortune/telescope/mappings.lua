@@ -50,6 +50,8 @@ map_tele('<space>fh', 'help_tags')
 map_tele('<space>so', 'vim_options')
 map_tele('<space>gp', 'grep_prompt')
 map_tele('<space>fc', 'command_history')
+map_tele('<space>fs', 'symbols')
+map_tele('<space>fu', 'ultisnips')
 
 
 -- Telescope Meta
