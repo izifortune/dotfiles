@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/fortunatof/code/common.ryanair.com/libs/newrelic/src'
+let g:netrw_dirhist_1='/Users/fortunatof/code/customer-enquiries.ryanair.com/packages/frontend/src/app/+enquiry/components/formly-field-types/stepper'
+let g:netrw_dirhist_0='/Users/fortunatof/code/flights.ryanair.com/src/app-mobile/+trip-list/components/trip'
+let g:netrw_dirhist_9='/Users/fortunatof/code/landing-pages.ryanair.com/apps/desktop/src/app/header/components/header'
+let g:netrw_dirhist_8='/Users/fortunatof/.config/nvim/plug-config'
+let g:netrw_dirhist_7='/Users/fortunatof/.config/nvim'
+let g:netrw_dirhist_6='/Users/fortunatof/.config/nvim/lua'
+let g:netrw_dirhist_5='/Users/fortunatof/.config/nvim/lua/izifortune'
+let g:netrw_dirhist_4='/Users/fortunatof/.config/nvim/lua/izifortune/lsp'
+let g:netrw_dirhist_3='/Users/fortunatof/.config/nvim/lua'

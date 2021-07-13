@@ -1,0 +1,77 @@
+set iskeyword+=-                      	" treat dash separated words as a word text object"
+set formatoptions-=cro                  " Stop newline continution of comments
+
+syntax enable                           " Enables syntax highlighing
+set hidden                              " Required to keep multiple buffers open multiple buffers
+set nowrap                              " Display long lines as just one line
+set encoding=utf-8                      " The encoding displayed 
+set pumheight=10                        " Makes popup menu smaller
+set fileencoding=utf-8                  " The encoding written to file
+set ruler              			            " Show the cursor position all the time
+set cmdheight=2                         " More space for displaying messages
+set mouse=a                             " Enable your mouse
+set splitbelow                          " Horizontal splits will automatically be below
+set splitright                          " Vertical splits will automatically be to the right
+set t_Co=256                            " Support 256 colors
+set conceallevel=0                      " So that I can see `` in markdown files
+set tabstop=2                           " Insert 2 spaces for a tab
+set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
+set expandtab                           " Converts tabs to spaces
+set smartindent                         " Makes indenting smart
+set autoindent                          " Good auto indent
+set laststatus=2                        " Always display the status line
+set number                              " Line numbers
+set relativenumber                      " Numbers relative to current cursor
+set colorcolumn=80
+set cursorline                          " Enable highlighting of the current line
+set background=dark                     " tell vim what the background color looks like
+set showtabline=2                       " Always show tabs 
+set noshowmode                          " We don't need to see things like -- INSERT -- anymore
+set nobackup                            " This is recommended by coc
+set nowritebackup                       " This is recommended by coc
+set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+set updatetime=50                      " Faster completion
+set timeoutlen=100                      " By default timeoutlen is 1000 ms
+set clipboard=unnamedplus               " Copy paste between vim and everything else
+set incsearch
+" set guifont=Fira\ Mono\ for\ Powerline
+set title                               " Set title of the window
+set lazyredraw                          " Screen does not redraw when executing macros/registers"
+set autoread                            " Detect file changes outside vim
+set noswapfile                          " Do not create swap file for buffers
+set hlsearch
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+set diffopt+=vertical
+set ignorecase
+set smartcase                           " Override the 'ignorecase' option if the search pattern contains upper case characters.
+set mmp=5000 " Issue with E363 pattern uses more memory than maxmempattern
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set mmp=1300
+" set autochdir                           " Your working directory will always be the same as your working directory
+" set foldcolumn=2                        " Folding abilities
+set termguicolors
+
+set backspace=indent,eol,start           " make backspaces delete sensibly
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=eol:¬
+
+set undodir=~/.vim/undodir
+set undofile
+
+" au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" absolute width of netrw window
+let g:netrw_winsize = -28
+" tree-view
+let g:netrw_liststyle = 3
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+set inccommand=nosplit " Live substitution
+" let g:node_host_prog = expand('~/.nvm/versions/node/v12.18.3/bin/neovim-node-host')

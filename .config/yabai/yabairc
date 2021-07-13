@@ -1,0 +1,101 @@
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+source ~/.cache/wal/colors.sh # pywal scheme - update if needed
+
+# yabai template colours
+CBACK=$(echo $background | sed 's/#//')
+CFORE=$(echo $foreground | sed 's/#//')
+CACTV=$(echo $color3 | sed 's/#//')
+CNORM=$(echo $color1 | sed 's/#//')
+CINSE=$(echo $foreground | sed 's/#//')
+
+yabai -m config status_bar                   on
+yabai -m config status_bar_background_color  0xff$CBACK
+yabai -m config status_bar_foreground_color  0xff$CFORE
+
+yabai -m config window_border                on
+yabai -m config window_border_width          8
+yabai -m config active_window_border_color   0xff$CACTV
+yabai -m config normal_window_border_color   0xff$CNORM
+yabai -m config insert_window_border_color   0xff$CINSE
+
+# global settings
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autoraise
+# yabai -m config window_placement             second_child
+yabai -m config window_topmost               on
+yabai -m config window_opacity               on
+yabai -m config window_opacity_duration      0.0
+yabai -m config window_shadow                off
+yabai -m config active_window_opacity        0.98
+yabai -m config normal_window_opacity        0.93
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 on
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+
+# Boarders
+# yabai -m config window_border on
+# yabai -m config window_border_width 10
+# yabai -m config active_window_border_color 0xff$c4
+# yabai -m config normal_window_border_color 0xff$p1
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config external_bar                 all:28:0
+yabai -m config top_padding                  5   #30
+yabai -m config bottom_padding               5   #30
+yabai -m config left_padding                 5   #30
+yabai -m config right_padding                5   #30
+yabai -m config window_gap                   5   #30
+
+# mission-control desktop labels
+yabai -m space 1 --label code
+yabai -m space 2 --label web
+yabai -m space 3 --label teams
+yabai -m space 4 --label notes
+yabai -m space 5 --label re
+yabai -m space 6 --label media
+
+# window rules
+# yabai -m rule --add app="^Mail$" space=mail
+# yabai -m rule --add app="^Safari$" space=web
+# yabai -m rule --add app="^Notes$" space=notes
+# yabai -m rule --add app="^ida64$" space=re
+# yabai -m rule --add app="^Transmission$" space=media
+# yabai -m rule --add app="^Spotify$" space=media
+# yabai -m rule --add app="^Discord$" space=social grid=1:1:0:0:1:1 manage=off
+# yabai -m rule --add app="^Steam$" space=games manage=off
+# yabai -m rule --add app="^System Preferences$" manage=off
+# yabai -m rule --add title="^[.*]$" manage=off
+
+# Running through float windows
+
+# yabai -m config --space 5 layout             float
+# yabai -m config --space 6 layout             float
+
+# App rules
+# yabai -m rule --add app=Alacritty space=1
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^MI 9$" manage=off
+yabai -m rule --add app=Dashlane manage=off
+yabai -m rule --add app=Übersicht manage=off
+# yabai -m rule --add app=Firefox space=2
+# yabai -m rule --add app="Microsoft Teams" space=3
+yabai -m rule --add app="^BIG-IP" manage=off
+
+yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=display_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '."irst-window"')"
+# yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '."irst-window"')"
+
+
+# focus window after active space changes
+# yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --windows --space | jq -r '.[] | select (.sticky == 0) | .id')"
+# # focus window after active display changes
+# yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --windows --space | jq -r '.[] | select (.sticky == 0) | .id')"
+
+echo "yabai configuration loaded.."

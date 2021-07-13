@@ -1,0 +1,3 @@
+scripts/notebooks/.ip*
+~/.tmux/plugins
+~/.tmux/resurrect
