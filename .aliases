@@ -1,0 +1,4 @@
+alias t="todolist"
+alias v="nvim"
+
+#dig +recurse +trace www.example.com any

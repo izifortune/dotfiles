@@ -1,0 +1,16 @@
+{
+  "fields": {
+    "assignee": {
+      "name": "fortunatof"
+    },
+    "description": "tseting",
+    "issuetype": {
+      "name": "Improvement"
+    },
+    "project": {
+      "key": "TP"
+    },
+    "summary": "testing",
+    "labels": ["technical-fe"]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "searchParams": {
+    "adults": 2,
+    "bookingConstraint": "INTERNATIONAL",
+    "checkinConstraint": "NONE",
+    "children": 0,
+    "disc": 0,
+    "fareType": null,
+    "infants": 0,
+    "teens": 0,
+    "tripType": "SINGLE",
+    "fillPaxInformation": true,
+    "login": {
+      "logUser": false,
+      "user": "dragonfliesteamryanair@gmail.com",
+      "password": "Ryanair01!"
+    },
+    "completeBooking": true,
+    "payment": {
+      "useStoredCreditCard": false,
+      "ccNumber": "4910020011111118",
+      "cardType": "VI"
+    },
+    "route": {
+      "destination": "DUB",
+      "origin": "MAD"
+    }
+  },
+  "environment": "DEV"
+}

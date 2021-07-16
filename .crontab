@@ -1,0 +1,5 @@
+# vim:filetype=crontab
+# To activate on OSX  $ crontab ~/.crontab
+#min    hour    mday    month   wday    command
+0 9 * * 1-5 nvim -c PlugUpdate
+0 9 * * 1-5 brew update && brew upgrade
