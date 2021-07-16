@@ -46,6 +46,7 @@ source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
 source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
 source $HOME/.config/nvim/plug-config/nvim-tree.vim
 source $HOME/.config/nvim/plug-config/trouble.vim
+source $HOME/.config/nvim/plug-config/vim-table-mode.vim
 " source $HOME/.config/nvim/plug-config/neuron.vim
 " source $HOME/.config/nvim/plug-config/nerdtree.vim
 " source $HOME/.config/nvim/plug-config/nvim-compe.vim
