@@ -67,6 +67,7 @@ vnoremap > ><CR>gv
 vnoremap < <<CR>gv
 
 " remap paste in visual mode to send the deleted lines to void
+
 vnoremap <leader>p "_dP
 
 "TAB in general mode will move to text buffer
@@ -99,3 +100,20 @@ noremap <leader>kk :cd ~/code/knowledge<cr>
 " nmap <leader>f :.!toilet -w 200 -f small<CR>
 " makes Ascii border
 nmap <leader>1 :.!toilet -w 200 -f term -F border<CR>
+
+" Primeagen
+" Number 5: behave vim"
+nnoremap Y y$
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==

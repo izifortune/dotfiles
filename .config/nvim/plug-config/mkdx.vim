@@ -2,7 +2,7 @@ let g:mkdx#settings = { 'highlight': { 'enable': 0 },
       \ 'map': { 'prefix': '<leader>' },
       \ 'enter': { 'shift': 1 },
       \ 'links': { 'external': { 'enable': 1 } },
-      \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+      \ 'toc': { 'text': 'Table of Contents' },
       \ 'fold': { 'enable': 1 },
       \ 'tab': { 'enable': 0 }}
 

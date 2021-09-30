@@ -3,14 +3,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Comment easy
 " Have the file system follow you around
 Plug 'airblade/vim-rooter'
-Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'alvan/vim-closetag'
-Plug 'liuchengxu/vim-which-key'
+Plug 'folke/which-key.nvim'
 
 " Theme
 Plug 'gruvbox-community/gruvbox'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
+" Plug 'lifepillar/vim-gruvbox8'
+
 
 " tabline
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
@@ -21,7 +23,7 @@ Plug 'windwp/nvim-autopairs'
 " Buffer bar in LUA
 Plug 'romgrk/barbar.nvim'
 " Buffer commands
-Plug 'moll/vim-bbye'
+" Plug 'moll/vim-bbye'
 " Split resie
 Plug 'simeji/winresizer'
 " Syntax highlight
@@ -50,8 +52,11 @@ Plug 'ryanoasis/vim-devicons'
 " Icons on complention
 Plug 'onsails/lspkind-nvim'
 Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'unblevable/quick-scope'
 Plug 'sbdchd/neoformat'
+Plug 'kosayoda/nvim-lightbulb'
 
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
@@ -107,7 +112,9 @@ Plug 'romainl/vim-qf'
 " gS or gJ
 Plug 'AndrewRadev/splitjoin.vim'
 
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
+Plug 'akinsho/toggleterm.nvim'
+" Plug 'mhartington/formatter.nvim'
 
 ""GIT STUFF""
 " :G goodies
@@ -120,6 +127,7 @@ Plug 'izifortune/weblink.vim'
 Plug 'lewis6991/gitsigns.nvim'
 " Fancy gutters display issue with performance
 " Plug 'airblade/vim-gitgutter'
+Plug 'sindrets/diffview.nvim'
 
 ""Focus ""
 Plug 'junegunn/limelight.vim'
@@ -130,7 +138,6 @@ Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
 Plug 'junegunn/vim-easy-align'
 Plug 'jreybert/vimagit'
-Plug 'junegunn/gv.vim'
 "" Relax
 " :VimGameCodeBreak
 Plug 'johngrib/vim-game-code-break'
@@ -159,7 +166,7 @@ Plug 'kristijanhusak/orgmode.nvim'
 " Smooth scrolling
 "Plug 'psliwka/vim-smoothie'
 Plug 'tyru/caw.vim'  " Better documentation
-" Plug 'kkoomen/vim-doge' " Documentation generator
+" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'wellle/context.vim' " Add context base inline
 " Plug 'romgrk/nvim-treesitter-context'
 "Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
@@ -174,7 +181,11 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Adding command :Trouble
 Plug 'folke/trouble.nvim'
-Plug 'ggandor/lightspeed.nvim'
+" Plug 'ggandor/lightspeed.nvim'
+Plug 'vhyrro/neorg'
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'nvim-treesitter/playground'
 
 " All of your Plugins must be added before the following line
 call plug#end()

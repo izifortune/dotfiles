@@ -1,1 +1,1 @@
-npm install -g neovim typescript eslint tslint http-server postcss-syntax bash-language-server speed-test
+npm install -g neovim typescript eslint tslint http-server postcss-syntax bash-language-server speed-test vscode-langservers-extracted vscode-langservers-extracted stylelint-lsp typescript-language-server vim-language-server yaml-language-server @angular/language-server vscode-langservers-extracted

@@ -24,6 +24,7 @@ let g:compe.source.spell = v:true
 let g:compe.source.tags = v:true
 let g:compe.source.snippets_nvim = v:true
 let g:compe.source.treesitter = v:true
+let g:compe.source.emoji = v:true
 
 inoremap <silent><expr> <C-i> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')

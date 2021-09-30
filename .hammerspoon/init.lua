@@ -4,7 +4,10 @@
 
 -- require 'modules'
 --
-local hyper = {"cmd", "alt", "ctrl"}
+local hyper = {'cmd', 'alt', 'ctrl'}
+local ctrlShift = 'ctrl shift'
+local altShift = 'alt shift'
+local cmdShift = {'cmd', 'shift'}
 local cmd = {'cmd'}
 
 -- Create a new hotkey
@@ -29,9 +32,29 @@ hs.hotkey.bind("alt", "2", function() yabai({"-m", "space", "--focus", "2"}) end
 hs.hotkey.bind("alt", "3", function() yabai({"-m", "space", "--focus", "3"}) end)
 hs.hotkey.bind("alt", "4", function() yabai({"-m", "space", "--focus", "4"}) end)
 hs.hotkey.bind("alt", "5", function() yabai({"-m", "space", "--focus", "5"}) end)
-hs.hotkey.bind(hyper, "down", function() yabai({"-m", "window", "--focus", "south"}) end)
-hs.hotkey.bind(hyper, "left", function() yabai({"-m", "window", "--focus", "west"}) end)
-hs.hotkey.bind(hyper, "right", function() yabai({"-m", "window", "--focus", "east"}) end)
+
+hs.hotkey.bind(altShift, "1", function() yabai({"-m", "window", "--space", "1"}) yabai({"-m", "space", "--focus", "1"}) end)
+hs.hotkey.bind(altShift, "2", function() yabai({"-m", "window", "--space", "2"}) yabai({"-m", "space", "--focus", "2"}) end)
+hs.hotkey.bind(altShift, "3", function() yabai({"-m", "window", "--space", "3"}) yabai({"-m", "space", "--focus", "3"}) end)
+hs.hotkey.bind(altShift, "4", function() yabai({"-m", "window", "--space", "4"}) yabai({"-m", "space", "--focus", "4"}) end)
+hs.hotkey.bind(altShift, "5", function() yabai({"-m", "window", "--space", "5"}) yabai({"-m", "space", "--focus", "5"}) end)
+
+hs.hotkey.bind(ctrlShift, "j", function() yabai({"-m", "window", "--focus", "south"}) end)
+hs.hotkey.bind(ctrlShift, "k", function() yabai({"-m", "window", "--focus", "north"}) end)
+hs.hotkey.bind(ctrlShift, "h", function() yabai({"-m", "window", "--focus", "west"}) end)
+hs.hotkey.bind(ctrlShift, "l", function() yabai({"-m", "window", "--focus", "east"}) end)
+
+--- fullscreen
+hs.hotkey.bind(ctrlShift, "f", function() yabai({"-m", "window", "--toggle", "zoom-fullscreen"}) end)
+
+-- Warp windows
+
+hs.hotkey.bind(cmdShift, "j", function() yabai({"-m", "window", "--warp", "south"}) end)
+hs.hotkey.bind(cmdShift, "k", function() yabai({"-m", "window", "--warp", "north"}) end)
+hs.hotkey.bind(cmdShift, "h", function() yabai({"-m", "window", "--warp", "west"}) end)
+hs.hotkey.bind(cmdShift, "l", function() yabai({"-m", "window", "--warp", "east"}) end)
+
+hs.hotkey.bind({"ctrl", "shift"}, 'a', function () hs.application.launchOrFocus("Alfred 4") end)
 
 -- hs.hotkey.bind("alt", "1", function ()
 --   -- local t = os.execute('/usr/local/bin/yabai -m space --focus 1 | yabai -m query --spaces --space 1 | jq -r \'."last-window"\' | xargs yabai -m window --focus')
@@ -82,20 +105,20 @@ hs.hotkey.bind(hyper, "right", function() yabai({"-m", "window", "--focus", "eas
 
 -- hs.window.animationDuration = 0
 
---
--- Auto-reload config on change.
---
 
--- function reloadConfig(files)
---   for _, file in pairs(files) do
---     if file:sub(-4) == '.lua' then
---       tearDownEventHandling()
---       hs.reload()
---     end
---   end
--- end
---
--- hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
+-- Auto-reload config on change.
+
+
+function reloadConfig(files)
+  for _, file in pairs(files) do
+    if file:sub(-4) == '.lua' then
+      tearDownEventHandling()
+      hs.reload()
+    end
+  end
+end
+
+hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
 -- stackline = require "stackline.stackline.stackline"
 -- stackline:init()
 

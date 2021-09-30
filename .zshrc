@@ -109,3 +109,5 @@ alias find='fd'
 
 alias du='dust'
 alias df='duf'
+
+export CODEARTIFACT_AUTH_TOKEN=''

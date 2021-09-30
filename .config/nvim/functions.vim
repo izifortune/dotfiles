@@ -271,3 +271,17 @@ function! MarkdownToDoc() abort
 endfunction
 
 command! MarkdownToDoc call MarkdownToDoc()
+
+function Testing() abort
+  let message = '^@Creating ticket^@{"id":"1390702","key":"TP-26453","self":"https://jira.ryanair.com/rest/api/2/issue/1390702"}'
+  echom split(message, '"')[7]
+endfunction
+
+function CreateJiraTicket(title) abort
+  let pass = inputsecret('Enter password: ')
+  let commandStdout = system('rcli jira -u fortunatof -a fortunatof -s "' .. a:title ..'"' .. ' -p TP <<< "'.. pass .. '"')
+  echom commandStdout
+  let ticketList =  split(commandStdout, '"')
+  let ticket = ticketList[7]
+  let @+ = ticket
+endfunction

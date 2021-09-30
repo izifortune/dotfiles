@@ -35,6 +35,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>lo', '<cmd> lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -58,9 +59,29 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports"
+    }
+  }
+}
+
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "tsserver", "angularls", "vimls", "jsonls", "bashls", "yamlls", "cssls", "html" }
+local servers = { "pyright", "angularls", "vimls", "jsonls", "bashls", "yamlls", "cssls", "html", "graphql", "stylelint_lsp" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach
@@ -93,6 +114,7 @@ nvim_lsp.yamlls.setup {
         "!Or scalar",
         "!Ref scalar",
         "!Sub scalar",
+        "!Not scalar"
       },
       format = {
         enable = true,

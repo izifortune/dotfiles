@@ -15,3 +15,5 @@ let g:gruvbox_invert_selection='0'
 
 " Transparency background for vim session
 hi Normal guibg=NONE ctermbg=NONE
+set background=dark
+set t_Co=256
