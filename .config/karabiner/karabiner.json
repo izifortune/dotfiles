@@ -41,6 +41,16 @@
                         },
                         {
                             "from": {
+                                "key_code": "left_control"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "left_option"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
                                 "key_code": "left_option"
                             },
                             "to": [
@@ -51,11 +61,11 @@
                         },
                         {
                             "from": {
-                                "key_code": "left_control"
+                                "key_code": "non_us_backslash"
                             },
                             "to": [
                                 {
-                                    "key_code": "left_option"
+                                    "key_code": "escape"
                                 }
                             ]
                         }

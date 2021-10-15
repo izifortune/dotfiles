@@ -6,7 +6,7 @@ if input volume of (get volume settings) is 0 then
   -- display notification "ON" with title "Mic"
   set volume input volume 100
 else
--- display notification "OFF" with title "Mic"
+  -- display notification "OFF" with title "Mic"
   set volume input volume 0
 end if
 

@@ -58,10 +58,12 @@ Plug 'unblevable/quick-scope'
 Plug 'sbdchd/neoformat'
 Plug 'kosayoda/nvim-lightbulb'
 
-Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'numToStr/Comment.nvim'
 
 "LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/lsp_signature.nvim'
 
 " complention nvim
 " Plug 'nvim-lua/completion-nvim'

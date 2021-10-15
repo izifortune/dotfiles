@@ -3,6 +3,7 @@
 --- move to config
 
 -- require 'modules'
+hs.loadSpoon("MicMute")
 --
 local hyper = {'cmd', 'alt', 'ctrl'}
 local ctrlShift = 'ctrl shift'
@@ -11,9 +12,13 @@ local cmdShift = {'cmd', 'shift'}
 local cmd = {'cmd'}
 
 -- Create a new hotkey
-hs.hotkey.bind(hyper, "j", "Toggle mic", function ()
-  hs.osascript.applescriptFromFile("/Users/fortunatof/scripts/toggle-mic.scpt")
+-- spoon.MicMute:bindHotkeys({
+--   toggle = {hyper, 'j'},
+-- })
+hs.hotkey.bind(hyper, "j", function ()
+  spoon.MicMute:toggleMicMute();
 end)
+
 
 function yabai(args)
 
@@ -53,6 +58,8 @@ hs.hotkey.bind(cmdShift, "j", function() yabai({"-m", "window", "--warp", "south
 hs.hotkey.bind(cmdShift, "k", function() yabai({"-m", "window", "--warp", "north"}) end)
 hs.hotkey.bind(cmdShift, "h", function() yabai({"-m", "window", "--warp", "west"}) end)
 hs.hotkey.bind(cmdShift, "l", function() yabai({"-m", "window", "--warp", "east"}) end)
+
+hs.hotkey.bind(ctrlShift, "r", function() yabai({"-m", "space", "--rotate", "90"}) end)
 
 hs.hotkey.bind({"ctrl", "shift"}, 'a', function () hs.application.launchOrFocus("Alfred 4") end)
 
@@ -125,8 +132,10 @@ hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
 --------------------------------
 -- START VIM CONFIG
 --------------------------------
--- local VimMode = hs.loadSpoon("VimMode")
--- local vim = VimMode:new()
+local VimMode = hs.loadSpoon("VimMode")
+local vim = VimMode:new()
+
+vim:enterWithSequence('jk')
 
 -- Configure apps you do *not* want Vim mode enabled in
 -- For example, you don't want this plugin overriding your control of Terminal
@@ -134,7 +143,7 @@ hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
 -- vim:disableForApp('Code')
 -- vim:disableForApp('zoom.us')
 -- vim:disableForApp('iTerm')
--- vim:disableForApp('iTerm2')
+vim:disableForApp('iTerm2')
 -- vim:disableForApp('Terminal')
 -- vim:disableForApp('com.googlecode.iterm2')
 
@@ -153,11 +162,20 @@ hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', reloadConfig):start()
 -- -- Enter normal mode by typing a key sequence
 -- vim:enterWithSequence('jk')
 
--- if you want to bind a single key to entering vim, remove the
--- :enterWithSequence('jk') line above and uncomment the bindHotKeys line
--- below:
---
 -- To customize the hot key you want, see the mods and key parameters at:
 --   https://www.hammerspoon.org/docs/hs.hotkey.html#bind
 --
 -- vim:bindHotKeys({ enter = { {'ctrl'}, ';' } })
+
+function reloadConfig(files)
+  doReload = false
+  for _,file in pairs(files) do
+    if file:sub(-4) == ".lua" then
+      doReload = true
+    end
+  end
+  if doReload then
+    hs.reload()
+  end
+end
+myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()

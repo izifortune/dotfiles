@@ -111,3 +111,9 @@ alias du='dust'
 alias df='duf'
 
 export CODEARTIFACT_AUTH_TOKEN=''
+
+alias yarnlogin='aws codeartifact login --tool npm --repository ryanair_npm_registry --domain ryanair-com --domain-owner 346350922581'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+alias watch="fswatch -o ./ | xargs -n1 -I{} plantuml ${1}"
+alias mdrender='pandoc --from markdown --to html | textutil -convert rtf -stdin -stdout -format html | pbcopy -Prefer rtf'

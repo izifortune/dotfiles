@@ -23,7 +23,6 @@ yabai -m config insert_window_border_color   0xff$CINSE
 # global settings
 # yabai -m config mouse_follows_focus          on
 yabai -m config focus_follows_mouse          autoraise
-# yabai -m config window_placement             second_child
 yabai -m config window_topmost               on
 yabai -m config window_opacity               on
 yabai -m config window_opacity_duration      0.0
@@ -44,7 +43,6 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config external_bar                 all:28:0
 yabai -m config top_padding                  5   #30
 yabai -m config bottom_padding               5   #30
 yabai -m config left_padding                 5   #30
@@ -59,40 +57,14 @@ yabai -m space 4 --label notes
 yabai -m space 5 --label re
 yabai -m space 6 --label media
 
-# window rules
-# yabai -m rule --add app="^Mail$" space=mail
-# yabai -m rule --add app="^Safari$" space=web
-# yabai -m rule --add app="^Notes$" space=notes
-# yabai -m rule --add app="^ida64$" space=re
-# yabai -m rule --add app="^Transmission$" space=media
-# yabai -m rule --add app="^Spotify$" space=media
-# yabai -m rule --add app="^Discord$" space=social grid=1:1:0:0:1:1 manage=off
-# yabai -m rule --add app="^Steam$" space=games manage=off
-# yabai -m rule --add app="^System Preferences$" manage=off
-# yabai -m rule --add title="^[.*]$" manage=off
-
-# Running through float windows
-
-# yabai -m config --space 5 layout             float
-# yabai -m config --space 6 layout             float
-
 # App rules
-# yabai -m rule --add app=Alacritty space=1
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^MI 9$" manage=off
 yabai -m rule --add app=Dashlane manage=off
 yabai -m rule --add app=Übersicht manage=off
-# yabai -m rule --add app=Firefox space=2
-# yabai -m rule --add app="Microsoft Teams" space=3
 yabai -m rule --add app="^BIG-IP" manage=off
 yabai -m rule --add app="^(Opening)" manage=off layer=above
 yabai -m rule --add title='Library' manage=off layer=above
-
-yabai -m signal --add event=space_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
-yabai -m signal --add event=display_changed action="osascript -e 'tell application \"/Applications/Übersicht.app\" to refresh widget id \"simple-bar-spaces-jsx\"'"
-
-# yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '."irst-window"')"
-# yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --spaces --space | jq '."irst-window"')"
 
 yabai -m rule --add title="Microsoft Teams Notification" window_border=off
 yabai -m rule --add title="Microsoft Teams Notification" manage=off
@@ -104,23 +76,4 @@ yabai -m signal --add \
     action='yabai -m window --focus mouse > /dev/null 2>&1'
 
 
-# focus window after active space changes
-# yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --windows --space | jq -r '.[] | select (.sticky == 0) | .id')"
-# # focus window after active display changes
-# yabai -m signal --add event=display_changed action="yabai -m window --focus $(yabai -m query --windows --space | jq -r '.[] | select (.sticky == 0) | .id')"
-
 echo "yabai configuration loaded.."
-
-#yabai -m signal --add \
-#      event=application_activated \
-#      app="^Microsoft Teams$" \
-#      action='${HOME}/.config/yabai/defeat-teams'
-#
-# yabai -m signal --add event=space_changed \
-#       action='${HOME}/.config/yabai/defeat-teams'
-#
-#yabai -m signal --add \
-#      event=window_focused \
-#      app="^Microsoft Teams$" \
-#      title="^Microsoft Teams Notification$" \
-#      action='${HOME}/.config/yabai/defeat-teams'
