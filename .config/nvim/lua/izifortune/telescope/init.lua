@@ -448,15 +448,16 @@ function M.lsp_code_actions()
   require('telescope.builtin').lsp_code_actions(opts)
 end
 
-function M.live_grep()
- require('telescope').extensions.fzf_writer.staged_grep {
-    path_display = {
-      'shorten'
-    },
-   previewer = false,
-   fzf_separator = "|>",
- }
-end
+-- not working now
+-- function M.live_grep()
+--  require('telescope').extensions.fzf_writer.staged_grep {
+--     path_display = {
+--       'shorten'
+--     },
+--    previewer = false,
+--    fzf_separator = "|>",
+--  }
+-- end
 
 function M.grep_prompt()
   require('telescope.builtin').grep_string {

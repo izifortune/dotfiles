@@ -14,33 +14,20 @@ source $HOME/.config/nvim/zettel.vim
 
 " source $HOME/.config/nvim/plug-config/nvim-lsputils.vim
 
-source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/ale.vim
-" source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/context.vim
 source $HOME/.config/nvim/plug-config/easy-align.vim
 source $HOME/.config/nvim/plug-config/fugitive.vim
-" source $HOME/.config/nvim/plug-config/fzf.vim
-" source $HOME/.config/nvim/plug-config/fzf-checkout.vim
 source $HOME/.config/nvim/plug-config/git-gutter.vim
 source $HOME/.config/nvim/plug-config/goyo.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
-" source $HOME/.config/nvim/plug-config/rainbow.vim
 source $HOME/.config/nvim/plug-config/tabularize.vim
-" source $HOME/.config/nvim/plug-config/vim-markdow-preview.vim
-" source $HOME/.config/nvim/plug-config/vim-markdown.vim
 source $HOME/.config/nvim/plug-config/markdown-preview.nvim.vim
 source $HOME/.config/nvim/plug-config/vim-rooter.vim
-source $HOME/.config/nvim/plug-config/vimwiki.vim
-" source $HOME/.config/nvim/plug-config/which-key.vim
-" source $HOME/.config/nvim/plug-config/completion-nvim.vim
 source $HOME/.config/nvim/plug-config/vim-floaterm.vim
 source $HOME/.config/nvim/plug-config/weblink.vim
-source $HOME/.config/nvim/plug-config/gina.vim
-source $HOME/.config/nvim/plug-config/barbar.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/vim-indent-guides.vim
-source $HOME/.config/nvim/plug-config/vim-bbye.vim
 source $HOME/.config/nvim/plug-config/vim-languagetool.vim
 source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
 source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
@@ -109,9 +96,7 @@ lua require('izifortune.nvim-dap')
 lua require('izifortune.nvim-dap-ui')
 lua require('izifortune.orgmode')
 lua require('izifortune.trouble')
-lua require('lspkind').init()
-lua require('statusline')
-lua require('izifortune.nvim-compe')
+lua require('izifortune.nvim-cmp')
 lua require('izifortune.nvim-autopairs')
 lua require('gitsigns').setup()
 lua require('nvim-treesitter.configs').setup({ context_commentstring = { enable = true } })
@@ -122,3 +107,6 @@ lua require('izifortune.which-key')
 lua require('nvim-tree').setup({ disable_netrw = false })
 lua require('Comment').setup()
 lua require('lsp_signature').setup({ toggle_key = '<C-x>' })
+
+" lua require('package-info').setup()
+" lua require('izifortune.null-ls').config()

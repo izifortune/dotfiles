@@ -80,6 +80,9 @@ vnoremap <leader>p "_dP
 " Close the current buffer
 " noremap <leader>dd :bdelete<cr>
 
+" TODO Check where they are coming from
+noremap <Tab> :BufferNext<cr>
+noremap <S-Tab> :BufferPrevious<cr>
 " Close all the buffers
 noremap <leader>da :%bd\|e#<cr>
 noremap <leader>bo :%bd\|e#<cr>

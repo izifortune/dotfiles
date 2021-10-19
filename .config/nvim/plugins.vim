@@ -3,19 +3,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Comment easy
 " Have the file system follow you around
 Plug 'airblade/vim-rooter'
-" Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'alvan/vim-closetag'
 Plug 'folke/which-key.nvim'
 
 " Theme
 Plug 'gruvbox-community/gruvbox'
-" Plug 'sainnhe/gruvbox-material'
-" Plug 'lifepillar/vim-gruvbox8'
 
 
 " tabline
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'itchyny/lightline.vim'
 
 " autopairs
 Plug 'windwp/nvim-autopairs'
@@ -23,7 +20,6 @@ Plug 'windwp/nvim-autopairs'
 " Buffer bar in LUA
 Plug 'romgrk/barbar.nvim'
 " Buffer commands
-" Plug 'moll/vim-bbye'
 " Split resie
 Plug 'simeji/winresizer'
 " Syntax highlight
@@ -34,27 +30,30 @@ Plug 'szw/vim-maximizer'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
-" Plug 'Raimondi/delimitMate'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
 Plug 'skwp/greplace.vim'
-" Testing telescope
+
+" Testing telescope should be removed for telescope
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " alt-enter to track remote branch
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'szymonmaszke/vimpyter' "vim-plug
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'jparise/vim-graphql'
 Plug 'ryanoasis/vim-devicons'
 " Icons on complention
 Plug 'onsails/lspkind-nvim'
+" Debugging
 Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+
 Plug 'unblevable/quick-scope'
+" Formatting on save
 Plug 'sbdchd/neoformat'
 Plug 'kosayoda/nvim-lightbulb'
 
@@ -62,23 +61,16 @@ Plug 'kosayoda/nvim-lightbulb'
 Plug 'numToStr/Comment.nvim'
 
 "LSP
+Plug 'RishabhRD/nvim-lsputils'
 Plug 'neovim/nvim-lspconfig'
+
+" To be configured yet
+Plug 'jose-elias-alvarez/null-ls.nvim'
+" Display signature when typing hiding with C-x
 Plug 'ray-x/lsp_signature.nvim'
-
-" complention nvim
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'aca/completion-tabnine', { 'do': './install.sh' }
-" Plug 'steelsojka/completion-buffers'
-" Plug 'nvim-treesitter/completion-treesitter'
-
-Plug 'hrsh7th/nvim-compe'
-" Too intensive on CPU
-" Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
-
 
 Plug 'RishabhRD/popfix'
 " Plug 'anott03/nvim-lspinstall'
-Plug 'RishabhRD/nvim-lsputils'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -86,20 +78,23 @@ Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
+" To remove once null-ls
 Plug 'dense-analysis/ale'
-Plug 'sudormrfbin/cheatsheet.nvim'
-" Plug 'kyazdani42/nvim-web-devicons' " for file icons
-" Plug 'kyazdani42/nvim-tree.lua'
-" Need to figure out how to work
-" Plug 'kosayoda/nvim-lightbulb'
-" Plug 'fiatjaf/neuron.vim' " FZF
 Plug 'izifortune/neuron.nvim', {'branch': 'feat/fix-mappings'} " (telescope)
 
 " autocomplete
-" Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-calc'
+Plug 'f3fora/cmp-spell'
+" For ultisnips user.
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" Icons
+Plug 'onsails/lspkind-nvim'
 
 " COC related plugins
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mhinz/vim-startify'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chrisbra/csv.vim'
@@ -135,6 +130,7 @@ Plug 'sindrets/diffview.nvim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
+" Writing
 Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
@@ -155,7 +151,6 @@ Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'izifortune/follow-markdown-links'
 Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
 Plug 'dpelle/vim-LanguageTool'
-Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 
 ""Tasks and notes""
@@ -167,27 +162,25 @@ Plug 'kristijanhusak/orgmode.nvim'
 ""Misc
 " Smooth scrolling
 "Plug 'psliwka/vim-smoothie'
+
 Plug 'tyru/caw.vim'  " Better documentation
-" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'wellle/context.vim' " Add context base inline
-" Plug 'romgrk/nvim-treesitter-context'
 "Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-scriptease'
 Plug 'kyazdani42/nvim-web-devicons'
-" Plug 'nathanaelkane/vim-indent-guides'
-" Plug '~/code/rich-markdown.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Plug 'jbyuki/instant.nvim'
 
 " Adding command :Trouble
 Plug 'folke/trouble.nvim'
-" Plug 'ggandor/lightspeed.nvim'
 Plug 'vhyrro/neorg'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'nvim-treesitter/playground'
+
+" Plug 'vuki656/package-info.nvim'
 
 " All of your Plugins must be added before the following line
 call plug#end()

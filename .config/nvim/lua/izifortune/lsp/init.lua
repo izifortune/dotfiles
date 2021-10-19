@@ -1,5 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 vim.api.nvim_command([[
   autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
   autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
@@ -84,7 +86,8 @@ nvim_lsp.tsserver.setup {
 local servers = { "pyright", "angularls", "vimls", "jsonls", "bashls", "yamlls", "cssls", "html", "graphql", "stylelint_lsp", "eslint" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities
   }
 end
 
@@ -104,6 +107,7 @@ end
 -- }
 
 nvim_lsp.yamlls.setup {
+  capabilities = capabilities,
   settings = {
     yaml = {
       customTags = {
@@ -128,6 +132,7 @@ nvim_lsp.yamlls.setup {
 local cmd = {"node", "~/.nvm/versions/node/v12.19.0/lib/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", "" , "--ngProbeLocations", ""}
 
 nvim_lsp.angularls.setup{
+  capabilities = capabilities,
   cmd = cmd,
   on_new_config = function(new_config,new_root_dir)
     new_config.cmd = cmd
