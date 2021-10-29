@@ -1,12 +1,39 @@
 local M = {}
 
+local nullls = require("null-ls")
+
+local prettierd_filetypes = { unpack(nullls.builtins.formatting.prettierd.filetypes) }
+table.insert(prettierd_filetypes, "graphql")
+table.insert(prettierd_filetypes, "jsonc")
+
 M.sources = {
-  -- require("null-ls").builtins.formatting.stylua,
-  require("null-ls").builtins.formatting.prettier,
-  -- require("null-ls").builtins.formatting.autopep8,
-  -- require("null-ls").builtins.formatting.shellcheck,
-  -- require("null-ls").builtins.formatting.shfmt,
-  -- require("null-ls").builtins.formatting.json_tool,
+  nullls.builtins.formatting.stylua,
+  nullls.builtins.formatting.prettierd.with({
+    filetypes = prettierd_filetypes,
+  }),
+  nullls.builtins.formatting.trim_whitespace.with({
+    filetypes = { "plantuml" },
+  }),
+  nullls.builtins.formatting.autopep8,
+  nullls.builtins.formatting.shellcheck,
+  nullls.builtins.formatting.shfmt,
+  nullls.builtins.formatting.json_tool,
+  nullls.builtins.diagnostics.write_good,
+  nullls.builtins.code_actions.gitsigns,
+  nullls.builtins.formatting.sqlformat,
+  nullls.builtins.formatting.markdownlint,
+  nullls.builtins.formatting.lua_format,
+  nullls.builtins.formatting.stylelint,
+  nullls.builtins.diagnostics.write_good.with({
+    filetypes = { "markdown", "txt" }
+  }),
+  -- nullls.builtins.diagnostics.proselint,
+  -- nullls.builtins.code_actions.proselint,
+  nullls.builtins.diagnostics.misspell,
+  -- curl -L -o ./install-misspell.sh https://git.io/misspell && sh ./install-misspell.sh -b /usr/local/bin
+
+  -- nullls.builtins.diagnostics.yamllint
+  -- pip install --user yamllint
 }
 
 function M.on_attach(client)

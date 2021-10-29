@@ -84,8 +84,8 @@ require('telescope').setup {
 
       ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
       ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-      -- ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-      ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+      ["<A-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
       ["<C-l>"] = actions.complete_tag
     },
 
@@ -146,7 +146,9 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzy_native')
 pcall(require('telescope').load_extension, 'frecency')
 pcall(require('telescope').load_extension, 'octo')
-pcall(require('telescope').load_extension, 'ultisnips')
+pcall(require('telescope').load_extension, 'projects')
+-- pcall(require('telescope').load_extension, 'ultisnips')
+require"telescope".load_extension("frecency")
 
 local M = {}
 
@@ -522,6 +524,12 @@ function M.search_all_files()
   require('telescope.builtin').find_files {
     find_command = { 'rg', '--no-ignore', '--files', },
   }
+end
+
+M.project_files = function()
+  local opts = {} -- define here if you want to define something
+  local ok = pcall(require'telescope.builtin'.git_files, opts)
+  if not ok then require'telescope.builtin'.find_files(opts) end
 end
 
 return setmetatable({}, {

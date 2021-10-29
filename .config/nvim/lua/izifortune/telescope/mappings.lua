@@ -32,7 +32,7 @@ map_tele('<leader>fw', 'grep_string', {
 
 -- Files
 map_tele('<C-g>', 'git_files')
-map_tele('<C-p>', 'find_files')
+map_tele('<C-p>', 'project_files')
 map_tele('<leader>fg', 'live_grep')
 map_tele('<leader>sz', 'search_zettel')
 map_tele('<leader>lz', 'link_zettel')

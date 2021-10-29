@@ -41,8 +41,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " alt-enter to track remote branch
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 Plug 'jparise/vim-graphql'
 Plug 'ryanoasis/vim-devicons'
 " Icons on complention
@@ -73,14 +73,21 @@ Plug 'RishabhRD/popfix'
 " Plug 'anott03/nvim-lspinstall'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+
+" Frecency dep
+Plug 'tami5/sqlite.lua'
+
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'fhill2/telescope-ultisnips.nvim'
+" Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 " To remove once null-ls
-Plug 'dense-analysis/ale'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+" Plug 'dense-analysis/ale'
+" Plug 'mfussenegger/nvim-lint'
 Plug 'izifortune/neuron.nvim', {'branch': 'feat/fix-mappings'} " (telescope)
+Plug 'nvim-telescope/telescope-frecency.nvim'
 
 " autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -88,9 +95,13 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-calc'
-Plug 'f3fora/cmp-spell'
+
+" snips integration
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
 " For ultisnips user.
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 " Icons
 Plug 'onsails/lspkind-nvim'
 
@@ -179,6 +190,10 @@ Plug 'vhyrro/neorg'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ThePrimeagen/refactoring.nvim'
 Plug 'nvim-treesitter/playground'
+
+" Plug 'github/copilot.vim'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'ahmedkhalf/project.nvim'
 
 " Plug 'vuki656/package-info.nvim'
 

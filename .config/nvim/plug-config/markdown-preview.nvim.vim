@@ -1,1 +1,1 @@
-let g:mkdp_browser = 'Safari'
+let g:mkdp_browser = 'Firefox'

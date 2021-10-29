@@ -13,6 +13,14 @@ parser_configs.norg = {
     },
   }
 
+parser_configs.org = {
+  install_info = {
+    url = 'https://github.com/milisims/tree-sitter-org/tree-sitter-org',
+    files = {'src/parser.c', 'src/scanner.cc'},
+    },
+  filetype = 'org',
+}
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
   enable = true,

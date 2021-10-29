@@ -7,3 +7,4 @@ npm install -g @angular/language-server
 npm install -g prettier
 npm install -g prettier-eslint-cli
 npm install -g vscode-html-languageserver-bin vscode-css-languageserver-bin
+npm install -g proselint

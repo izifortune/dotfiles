@@ -36,6 +36,7 @@ source $HOME/.config/nvim/plug-config/trouble.vim
 source $HOME/.config/nvim/plug-config/vim-table-mode.vim
 source $HOME/.config/nvim/plug-config/lightbulb.vim
 source $HOME/.config/nvim/plug-config/wilder.vim
+source $HOME/.config/nvim/plug-config/vim-vsnips.vim
 " source $HOME/.config/nvim/plug-config/neuron.vim
 " source $HOME/.config/nvim/plug-config/nerdtree.vim
 " source $HOME/.config/nvim/plug-config/nvim-compe.vim
@@ -107,6 +108,7 @@ lua require('izifortune.which-key')
 lua require('nvim-tree').setup({ disable_netrw = false })
 lua require('Comment').setup()
 lua require('lsp_signature').setup({ toggle_key = '<C-x>' })
+lua require('izifortune.null-ls').config()
+" lua require("project_nvim").setup { }
 
 " lua require('package-info').setup()
-" lua require('izifortune.null-ls').config()
