@@ -78,7 +78,7 @@ vnoremap <leader>p "_dP
 
 "" Buffers
 " Close the current buffer
-" noremap <leader>dd :bdelete<cr>
+noremap <leader>bd :Bdelete<cr>
 
 " TODO Check where they are coming from
 noremap <Tab> :BufferNext<cr>
@@ -119,4 +119,4 @@ inoremap ? ?<c-g>u
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 " inoremap <C-j> <esc>:m .+1<CR>==
-" inoremap <C-k> <esc>:m .-2<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==

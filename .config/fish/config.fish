@@ -26,7 +26,6 @@ contains $fish_user_paths "~/.gem/ruby/2.6.0/bin"; or set -Ua fish_user_paths "~
 #pyenv
 status --is-interactive; and source (pyenv init -|psub)
 
-
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 #[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.fish
@@ -81,6 +80,5 @@ if status --is-interactive
 
   thefuck --alias | source
 end
-
 
 contains $fish_user_paths "/usr/local/opt/libxslt/bin"; or set -Ua fish_user_paths "/usr/local/opt/libxslt/bin"

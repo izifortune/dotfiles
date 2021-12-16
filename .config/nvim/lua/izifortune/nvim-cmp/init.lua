@@ -35,17 +35,28 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<A-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
+    -- Testing
+    ["<C-j>"] = cmp.mapping(function(fallback)
+      if (vim.fn["vsnip#available"](1) == 1 and vim.fn["vsnip#jumpable"](1) == 1)  then
+        feedkey("<Plug>(vsnip-jump-next)", "")
+      end
+    end, {"i", "s"}),
+    ["<C-k>"] = cmp.mapping(function(fallback)
+      if vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, {"i", "s"}),
+    -- Testing
     ["<C-y>"] = cmp.mapping(function(fallback)
       if (vim.fn["vsnip#available"](1) == 1 and vim.fn["vsnip#jumpable"](1) ~= 1)  then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
       elseif (vim.fn["vsnip#available"](1) == 1 and vim.fn["vsnip#jumpable"](1) == 1)  then
         feedkey("<Plug>(vsnip-jump-next)", "")
-      elseif cmp.visible() then
-        cmp.select_next_item()
-      elseif has_words_before() then
-        cmp.complete()
+      -- elseif has_words_before() then
+      --   cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        cmp.confirm({ behavior = cmp.SelectBehavior.ReplaceInsert })
+        -- fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
 
@@ -66,6 +77,7 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'spell' },
 
     -- For vsnip user.
     { name = 'vsnip' },
@@ -80,9 +92,37 @@ cmp.setup({
     { name = 'path' },
 
     { name = 'buffer' },
+    { name = 'cmdline' },
+    -- other sources
     -- { name = 'calc' }
   },
   formatting = {
     format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+  }
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  },
+  mapping = {
+    ["<C-y>"] = cmp.mapping(function(fallback)
+      cmp.confirm({ behavior = cmp.SelectBehavior.ReplaceInsert })
+    end, {'i', 'c'})
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  }),
+  mapping = {
+    ["<C-y>"] = cmp.mapping(function(fallback)
+      cmp.confirm({ behavior = cmp.SelectBehavior.ReplaceInsert })
+    end, {'i', 'c'})
   }
 })

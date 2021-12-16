@@ -1,7 +1,7 @@
+call plug#begin('~/.local/share/nvim/plugged')
+
 source $HOME/.config/nvim/plug-config/csv.vim
 
-" source $HOME/.config/nvim/plug-config/polyglot.vim
-source $HOME/.config/nvim/plug-config/mkdx.vim
 
 source $HOME/.config/nvim/plugins.vim
 
@@ -12,22 +12,17 @@ source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/colors.vim
 source $HOME/.config/nvim/zettel.vim
 
-" source $HOME/.config/nvim/plug-config/nvim-lsputils.vim
 
-source $HOME/.config/nvim/plug-config/ale.vim
+source $HOME/.config/nvim/plug-config/nvim-cmp.vim
+source $HOME/.config/nvim/plug-config/mkdx.vim
 source $HOME/.config/nvim/plug-config/context.vim
 source $HOME/.config/nvim/plug-config/easy-align.vim
 source $HOME/.config/nvim/plug-config/fugitive.vim
-source $HOME/.config/nvim/plug-config/git-gutter.vim
 source $HOME/.config/nvim/plug-config/goyo.vim
-source $HOME/.config/nvim/plug-config/quickscope.vim
-source $HOME/.config/nvim/plug-config/tabularize.vim
 source $HOME/.config/nvim/plug-config/markdown-preview.nvim.vim
 source $HOME/.config/nvim/plug-config/vim-rooter.vim
-source $HOME/.config/nvim/plug-config/vim-floaterm.vim
 source $HOME/.config/nvim/plug-config/weblink.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
-source $HOME/.config/nvim/plug-config/vim-indent-guides.vim
 source $HOME/.config/nvim/plug-config/vim-languagetool.vim
 source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
 source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
@@ -35,14 +30,23 @@ source $HOME/.config/nvim/plug-config/nvim-tree.vim
 source $HOME/.config/nvim/plug-config/trouble.vim
 source $HOME/.config/nvim/plug-config/vim-table-mode.vim
 source $HOME/.config/nvim/plug-config/lightbulb.vim
-source $HOME/.config/nvim/plug-config/wilder.vim
-source $HOME/.config/nvim/plug-config/vim-vsnips.vim
+source $HOME/.config/nvim/plug-config/lightspeed.vim
+source $HOME/.config/nvim/plug-config/focus.vim
+" source $HOME/.config/nvim/plug-config/hop.vim
+" source $HOME/.config/nvim/plug-config/wilder.vim
 " source $HOME/.config/nvim/plug-config/neuron.vim
 " source $HOME/.config/nvim/plug-config/nerdtree.vim
 " source $HOME/.config/nvim/plug-config/nvim-compe.vim
 " source $HOME/.config/nvim/plug-config/nvim-lightbulb.vim
 
+" All of your Plugins must be added before the following line
+call plug#end()
 
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+      \|   PlugInstall --sync | q
+      \| endif
 
 
 
@@ -88,27 +92,4 @@ set formatlistpat+=\\s\\+                   " One or more spaces
 set formatlistpat+=\\\|                     " or
 set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
 
-lua require('globals')
-lua require('izifortune.telescope')
-lua require('izifortune.telescope.mappings')
-lua require('izifortune.neuron')
-lua require('izifortune.lsp')
-lua require('izifortune.nvim-dap')
-lua require('izifortune.nvim-dap-ui')
-lua require('izifortune.orgmode')
-lua require('izifortune.trouble')
-lua require('izifortune.nvim-cmp')
-lua require('izifortune.nvim-autopairs')
-lua require('gitsigns').setup()
-lua require('nvim-treesitter.configs').setup({ context_commentstring = { enable = true } })
-lua require('izifortune.neorg')
-lua require('izifortune.refactoring')
-lua require('izifortune.toggleterm')
-lua require('izifortune.which-key')
-lua require('nvim-tree').setup({ disable_netrw = false })
-lua require('Comment').setup()
-lua require('lsp_signature').setup({ toggle_key = '<C-x>' })
-lua require('izifortune.null-ls').config()
-" lua require("project_nvim").setup { }
-
-" lua require('package-info').setup()
+lua require('izifortune.myinit')

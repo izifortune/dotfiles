@@ -20,7 +20,8 @@ require('orgmode').setup({
     },
     org = {
       org_cycle = '<Leader>cf',
-      org_global_cycle = '<Leader>ca'
+      org_global_cycle = '<Leader>ca',
+      org_toggle_checkbox = '<leader>ct'
     }
   }
 })

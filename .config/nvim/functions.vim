@@ -285,3 +285,7 @@ function CreateJiraTicket(title) abort
   let ticket = ticketList[7]
   let @+ = ticket
 endfunction
+
+function MacroMode() abort
+  set nowrapscan
+endfunction

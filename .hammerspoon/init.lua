@@ -4,6 +4,9 @@
 
 -- require 'modules'
 hs.loadSpoon("MicMute")
+require 'teams'
+-- require 'wm'
+
 --
 local hyper = {'cmd', 'alt', 'ctrl'}
 local ctrlShift = 'ctrl shift'
@@ -18,6 +21,9 @@ local cmd = {'cmd'}
 hs.hotkey.bind(hyper, "j", function ()
   spoon.MicMute:toggleMicMute();
 end)
+
+-- window hints
+hs.hotkey.bind(hyper, 'h', hs.hints.windowHints)
 
 
 function yabai(args)
@@ -48,20 +54,23 @@ hs.hotkey.bind(ctrlShift, "j", function() yabai({"-m", "window", "--focus", "sou
 hs.hotkey.bind(ctrlShift, "k", function() yabai({"-m", "window", "--focus", "north"}) end)
 hs.hotkey.bind(ctrlShift, "h", function() yabai({"-m", "window", "--focus", "west"}) end)
 hs.hotkey.bind(ctrlShift, "l", function() yabai({"-m", "window", "--focus", "east"}) end)
-
---- fullscreen
+--
+-- --- fullscreen
 hs.hotkey.bind(ctrlShift, "f", function() yabai({"-m", "window", "--toggle", "zoom-fullscreen"}) end)
-
--- Warp windows
-
+--
+-- -- Warp windows
+--
 hs.hotkey.bind(cmdShift, "j", function() yabai({"-m", "window", "--warp", "south"}) end)
 hs.hotkey.bind(cmdShift, "k", function() yabai({"-m", "window", "--warp", "north"}) end)
 hs.hotkey.bind(cmdShift, "h", function() yabai({"-m", "window", "--warp", "west"}) end)
 hs.hotkey.bind(cmdShift, "l", function() yabai({"-m", "window", "--warp", "east"}) end)
+--
+-- hs.hotkey.bind(ctrlShift, "r", function() yabai({"-m", "space", "--rotate", "90"}) end)
 
-hs.hotkey.bind(ctrlShift, "r", function() yabai({"-m", "space", "--rotate", "90"}) end)
-
+hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
 hs.hotkey.bind({"ctrl", "shift"}, 'a', function () hs.application.launchOrFocus("Alfred 4") end)
+hs.hotkey.bind({"ctrl", "shift"}, 'b', function () hs.application.launchOrFocus("Firefox") end)
+hs.hotkey.bind({"ctrl", "shift"}, 'm', function () hs.application.launchOrFocus("Microsoft Teams") end)
 
 -- hs.hotkey.bind("alt", "1", function ()
 --   -- local t = os.execute('/usr/local/bin/yabai -m space --focus 1 | yabai -m query --spaces --space 1 | jq -r \'."last-window"\' | xargs yabai -m window --focus')
@@ -144,28 +153,9 @@ vim:enterWithSequence('jk')
 -- vim:disableForApp('zoom.us')
 -- vim:disableForApp('iTerm')
 vim:disableForApp('iTerm2')
+vim:disableForApp('Alacritty')
 -- vim:disableForApp('Terminal')
 -- vim:disableForApp('com.googlecode.iterm2')
-
-
--- If you want the screen to dim (a la Flux) when you enter normal mode
--- flip this to true.
--- vim:shouldDimScreenInNormalMode(false)
---
--- -- If you want to show an on-screen alert when you enter normal mode, set
--- -- this to true
--- vim:shouldShowAlertInNormalMode(true)
---
--- -- You can configure your on-screen alert font
--- vim:setAlertFont("Courier New")
---
--- -- Enter normal mode by typing a key sequence
--- vim:enterWithSequence('jk')
-
--- To customize the hot key you want, see the mods and key parameters at:
---   https://www.hammerspoon.org/docs/hs.hotkey.html#bind
---
--- vim:bindHotKeys({ enter = { {'ctrl'}, ';' } })
 
 function reloadConfig(files)
   doReload = false

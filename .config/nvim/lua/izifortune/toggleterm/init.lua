@@ -1,21 +1,26 @@
 require("toggleterm").setup{}
 
 local Terminal = require('toggleterm.terminal').Terminal
+local tmlen = vim.api.nvim_command_output('set timeoutlen?')
 
 local lazygit = Terminal:new({
   cmd = "lazygit",
   dir = "git_dir",
   direction = "float",
+  start_in_insert = true,
   float_opts = {
     border = "double",
   },
+  insert_mappings = false, -- whether or not the open mapping applies in insert mode
   -- function to run on opening the terminal
   on_open = function(term)
-    vim.cmd("startinsert!")
+    vim.api.nvim_command('set timeoutlen=1')
     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
   end,
+  close_on_exit = true, -- close the terminal window when the process exits
   -- function to run on closing the terminal
   on_close = function(term)
+    vim.api.nvim_command('set ' .. tmlen)
     -- vim.cmd("Closing terminal")
   end,
 })
@@ -29,7 +34,8 @@ vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>ToggleTerm<CR>", {noremap = tru
 
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}
-  vim.api.nvim_buf_set_keymap(0, 't', 'jj', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)

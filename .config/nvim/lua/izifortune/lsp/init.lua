@@ -1,3 +1,4 @@
+local uv = vim.loop
 local nvim_lsp = require('lspconfig')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -83,13 +84,68 @@ nvim_lsp.tsserver.setup {
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "angularls", "vimls", "jsonls", "bashls", "yamlls", "cssls", "html", "graphql", "stylelint_lsp", "eslint" }
+local servers = { "pyright", "vimls", "bashls", "yamlls", "cssls", "html", "graphql", "stylelint_lsp", "eslint" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities
   }
 end
+
+
+nvim_lsp.jsonls.setup {
+  cmd = {"vscode-json-language-server", "--stdio"},
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"json", "jsonc"},
+  settings = {
+    json = {
+      -- Schemas https://www.schemastore.org
+      schemas = {
+        {
+          fileMatch = {"package.json"},
+          url = "https://json.schemastore.org/package.json"
+        },
+        {
+          fileMatch = {"tsconfig*.json"},
+          url = "https://json.schemastore.org/tsconfig.json"
+        },
+        {
+          fileMatch = {
+            ".prettierrc",
+            ".prettierrc.json",
+            "prettier.config.json"
+          },
+          url = "https://json.schemastore.org/prettierrc.json"
+        },
+        {
+          fileMatch = {".eslintrc", ".eslintrc.json"},
+          url = "https://json.schemastore.org/eslintrc.json"
+        },
+        {
+          fileMatch = {".babelrc", ".babelrc.json", "babel.config.json"},
+          url = "https://json.schemastore.org/babelrc.json"
+        },
+        {
+          fileMatch = {"lerna.json"},
+          url = "https://json.schemastore.org/lerna.json"
+        },
+        {
+          fileMatch = {"now.json", "vercel.json"},
+          url = "https://json.schemastore.org/now.json"
+        },
+        {
+          fileMatch = {
+            ".stylelintrc",
+            ".stylelintrc.json",
+            "stylelint.config.json"
+          },
+          url = "http://json.schemastore.org/stylelintrc.json"
+        }
+      }
+    }
+  }
+}
 
 -- nvim_lsp.tsserver.setup {
 --     on_attach = on_attach,
@@ -129,12 +185,48 @@ nvim_lsp.yamlls.setup {
   }
 }
 
-local cmd = {"node", "~/.nvm/versions/node/v12.19.0/lib/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", "" , "--ngProbeLocations", ""}
+local function get_node_modules(root_dir)
+  -- util.find_node_modules_ancestor()
+  local root_node = root_dir .. "/node_modules"
+  local stats = uv.fs_stat(root_node)
+  if stats == nil then
+    return nil
+  else
+    return root_node
+  end
+end
 
-nvim_lsp.angularls.setup{
-  capabilities = capabilities,
-  cmd = cmd,
-  on_new_config = function(new_config,new_root_dir)
-    new_config.cmd = cmd
-  end,
+local default_node_modules = get_node_modules(vim.fn.getcwd())
+
+local ngls_cmd = {
+  "ngserver",
+  "--stdio",
+  "--tsProbeLocations",
+  default_node_modules,
+  "--ngProbeLocations",
+  default_node_modules,
+  "--experimental-ivy"
 }
+
+
+-- local cmd = {"node",
+-- "~/.nvm/versions/node/v12.19.0/lib/node_modules/@angular/language-server/index.js",
+-- "--stdio", "--tsProbeLocations", "" , "--ngProbeLocations", ""}
+
+-- nvim_lsp.angularls.setup{
+  --   capabilities = capabilities,
+  --   cmd = cmd,
+  --   on_new_config = function(new_config,new_root_dir)
+    --     new_config.cmd = cmd
+    --   end,
+    -- }
+
+nvim_lsp.angularls.setup {
+  cmd = ngls_cmd,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  on_new_config = function(new_config)
+    new_config.cmd = ngls_cmd
+  end
+}
+

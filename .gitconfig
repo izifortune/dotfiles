@@ -1,0 +1,11 @@
+[core]
+	editor = nvim
+[push]
+	default = current
+[user]
+	email = fortunatof@ryanair.com
+	name = Fabrizio Fortunato
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = true

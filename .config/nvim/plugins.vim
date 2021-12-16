@@ -1,9 +1,5 @@
-call plug#begin('~/.local/share/nvim/plugged')
-
 " Comment easy
 " Have the file system follow you around
-Plug 'airblade/vim-rooter'
-
 Plug 'alvan/vim-closetag'
 Plug 'folke/which-key.nvim'
 
@@ -12,18 +8,21 @@ Plug 'gruvbox-community/gruvbox'
 
 
 " tabline
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'windwp/windline.nvim'
 
 " autopairs
 Plug 'windwp/nvim-autopairs'
 
-" Buffer bar in LUA
+" Buffer bar (TOP) in LUA
 Plug 'romgrk/barbar.nvim'
 " Buffer commands
 " Split resie
 Plug 'simeji/winresizer'
 " Syntax highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" SymbolsOutline
+Plug 'simrat39/symbols-outline.nvim'
 " MaximazeToggle
 Plug 'szw/vim-maximizer'
 " Respect editorconfig
@@ -32,13 +31,12 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'mattn/emmet-vim', { 'for': 'html'  } " Zen coding at it's best"
 Plug 'othree/html5.vim', { 'for': 'html'  }
-Plug 'skwp/greplace.vim'
 
 " Testing telescope should be removed for telescope
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " alt-enter to track remote branch
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Plug 'SirVer/ultisnips'
@@ -48,13 +46,14 @@ Plug 'ryanoasis/vim-devicons'
 " Icons on complention
 Plug 'onsails/lspkind-nvim'
 " Debugging
-Plug 'puremourning/vimspector'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
+" Plug 'puremourning/vimspector', { 'on': 'VimspectorLoadSession' }
+" Plug 'mfussenegger/nvim-dap'
+" Plug 'rcarriga/nvim-dap-ui'
+
+" ISSUE ABOVE"
 
 Plug 'unblevable/quick-scope'
 " Formatting on save
-Plug 'sbdchd/neoformat'
 Plug 'kosayoda/nvim-lightbulb'
 
 " Plug 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -64,8 +63,6 @@ Plug 'numToStr/Comment.nvim'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'neovim/nvim-lspconfig'
 
-" To be configured yet
-Plug 'jose-elias-alvarez/null-ls.nvim'
 " Display signature when typing hiding with C-x
 Plug 'ray-x/lsp_signature.nvim'
 
@@ -86,29 +83,13 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 " Plug 'dense-analysis/ale'
 " Plug 'mfussenegger/nvim-lint'
-Plug 'izifortune/neuron.nvim', {'branch': 'feat/fix-mappings'} " (telescope)
-Plug 'nvim-telescope/telescope-frecency.nvim'
+Plug 'izifortune/neuron.nvim'
+" Plug 'nvim-telescope/telescope-frecency.nvim'
 
-" autocomplete
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-calc'
-
-" snips integration
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
-" For ultisnips user.
-" Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-" Icons
-Plug 'onsails/lspkind-nvim'
-
-" COC related plugins
+" :Startify
 Plug 'mhinz/vim-startify'
+" || 
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'chrisbra/csv.vim'
 Plug 'tpope/vim-repeat'
 
 " Quickfix helpers
@@ -120,7 +101,6 @@ Plug 'romainl/vim-qf'
 " gS or gJ
 Plug 'AndrewRadev/splitjoin.vim'
 
-" Plug 'voldikss/vim-floaterm'
 Plug 'akinsho/toggleterm.nvim'
 " Plug 'mhartington/formatter.nvim'
 
@@ -130,12 +110,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'TimUntersberger/neogit'
 " Git branch viewer :Flog :FlogSplit
 Plug 'rbong/vim-flog'
-" Plug 'lambdalisue/gina.vim'
-Plug 'izifortune/weblink.vim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'izifortune/weblink.vim'
+Plug 'sindrets/diffview.nvim'
 " Fancy gutters display issue with performance
 " Plug 'airblade/vim-gitgutter'
-Plug 'sindrets/diffview.nvim'
 
 ""Focus ""
 Plug 'junegunn/limelight.vim'
@@ -146,7 +125,6 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
 Plug 'junegunn/vim-easy-align'
-Plug 'jreybert/vimagit'
 "" Relax
 " :VimGameCodeBreak
 Plug 'johngrib/vim-game-code-break'
@@ -158,7 +136,6 @@ Plug 'chrisbra/Colorizer'
 
 ""Language utils
 Plug 'lervag/vimtex', { 'for': 'latex' }
-Plug 'SidOfc/mkdx', { 'for': 'markdown' }
 Plug 'izifortune/follow-markdown-links'
 Plug 'reedes/vim-wordy' " Verify quality of writting (see :Wordy)
 Plug 'dpelle/vim-LanguageTool'
@@ -167,15 +144,9 @@ Plug 'RishabhRD/nvim-cheat.sh'
 ""Tasks and notes""
 Plug 'mattn/calendar-vim'
 Plug 'kristijanhusak/orgmode.nvim'
-" :TW
-" Plug 'blindFS/vim-taskwarrior'
-
-""Misc
-" Smooth scrolling
-"Plug 'psliwka/vim-smoothie'
 
 Plug 'tyru/caw.vim'  " Better documentation
-Plug 'wellle/context.vim' " Add context base inline
+Plug 'wellle/context.vim' " Add context base inline :Context
 "Plug 'wellle/targets.vim' " Extends targets for ci, vi etc
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'tpope/vim-scriptease'
@@ -186,22 +157,13 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Adding command :Trouble
 Plug 'folke/trouble.nvim'
-Plug 'vhyrro/neorg'
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ThePrimeagen/refactoring.nvim'
-Plug 'nvim-treesitter/playground'
+" :WinShift :direction
+" :WinShift :swap
+Plug 'sindrets/winshift.nvim'
+Plug 'famiu/bufdelete.nvim'
+Plug 'dstein64/vim-startuptime'
+" Plug 'ThePrimeagen/refactoring.nvim'
+" Plug 'nvim-treesitter/playground'
 
 " Plug 'github/copilot.vim'
 " Plug 'vim-pandoc/vim-pandoc'
-" Plug 'ahmedkhalf/project.nvim'
-
-" Plug 'vuki656/package-info.nvim'
-
-" All of your Plugins must be added before the following line
-call plug#end()
-
-" Automatically install missing plugins on startup
-autocmd VimEnter *
-      \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-      \|   PlugInstall --sync | q
-      \| endif

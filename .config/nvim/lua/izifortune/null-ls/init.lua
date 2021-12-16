@@ -14,22 +14,22 @@ M.sources = {
   nullls.builtins.formatting.trim_whitespace.with({
     filetypes = { "plantuml" },
   }),
-  nullls.builtins.formatting.autopep8,
-  nullls.builtins.formatting.shellcheck,
-  nullls.builtins.formatting.shfmt,
-  nullls.builtins.formatting.json_tool,
-  nullls.builtins.diagnostics.write_good,
-  nullls.builtins.code_actions.gitsigns,
-  nullls.builtins.formatting.sqlformat,
+  -- nullls.builtins.formatting.autopep8,
+  -- nullls.builtins.formatting.shellcheck,
+  -- nullls.builtins.formatting.shfmt,
+  -- nullls.builtins.formatting.json_tool,
+  -- nullls.builtins.diagnostics.write_good,
+  -- nullls.builtins.code_actions.gitsigns,
+  -- nullls.builtins.formatting.sqlformat,
   nullls.builtins.formatting.markdownlint,
   nullls.builtins.formatting.lua_format,
   nullls.builtins.formatting.stylelint,
   nullls.builtins.diagnostics.write_good.with({
     filetypes = { "markdown", "txt" }
   }),
-  -- nullls.builtins.diagnostics.proselint,
-  -- nullls.builtins.code_actions.proselint,
-  nullls.builtins.diagnostics.misspell,
+  -- -- nullls.builtins.diagnostics.proselint,
+  -- -- nullls.builtins.code_actions.proselint,
+  -- nullls.builtins.diagnostics.misspell,
   -- curl -L -o ./install-misspell.sh https://git.io/misspell && sh ./install-misspell.sh -b /usr/local/bin
 
   -- nullls.builtins.diagnostics.yamllint

@@ -38,7 +38,7 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set incsearch
 " set guifont=Fira\ Mono\ for\ Powerline
 set title                               " Set title of the window
-set lazyredraw                          " Screen does not redraw when executing macros/registers"
+" set lazyredraw                          " Screen does not redraw when executing macros/registers"
 set autoread                            " Detect file changes outside vim
 set noswapfile                          " Do not create swap file for buffers
 set hlsearch

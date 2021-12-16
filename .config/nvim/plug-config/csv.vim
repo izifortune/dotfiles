@@ -11,3 +11,5 @@ augroup END
 
 let g:csv_bind_B = 1
 let g:csv_highlight_column = 'y'
+
+Plug 'chrisbra/csv.vim'
