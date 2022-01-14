@@ -62,6 +62,7 @@ Plug 'numToStr/Comment.nvim'
 "LSP
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'neovim/nvim-lspconfig'
+Plug 'b0o/schemastore.nvim'
 
 " Display signature when typing hiding with C-x
 Plug 'ray-x/lsp_signature.nvim'
@@ -77,6 +78,7 @@ Plug 'tami5/sqlite.lua'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'rudism/telescope-dict.nvim'
 " Plug 'fhill2/telescope-ultisnips.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 " To remove once null-ls
@@ -85,6 +87,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 " Plug 'mfussenegger/nvim-lint'
 Plug 'izifortune/neuron.nvim'
 " Plug 'nvim-telescope/telescope-frecency.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " :Startify
 Plug 'mhinz/vim-startify'
@@ -162,8 +165,10 @@ Plug 'folke/trouble.nvim'
 Plug 'sindrets/winshift.nvim'
 Plug 'famiu/bufdelete.nvim'
 Plug 'dstein64/vim-startuptime'
+Plug 'rebelot/kanagawa.nvim'
 " Plug 'ThePrimeagen/refactoring.nvim'
 " Plug 'nvim-treesitter/playground'
 
 " Plug 'github/copilot.vim'
 " Plug 'vim-pandoc/vim-pandoc'
+Plug 'Einenlum/yaml-revealer'

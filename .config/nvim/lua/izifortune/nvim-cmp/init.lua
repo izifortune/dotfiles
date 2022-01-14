@@ -93,6 +93,10 @@ cmp.setup({
 
     { name = 'buffer' },
     { name = 'cmdline' },
+    {
+      name = "dictionary",
+      keyword_length = 2,
+    },
     -- other sources
     -- { name = 'calc' }
   },

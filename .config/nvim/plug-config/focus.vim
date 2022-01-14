@@ -1,0 +1,1 @@
+Plug 'beauwilliams/focus.nvim'

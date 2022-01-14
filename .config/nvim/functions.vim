@@ -35,7 +35,7 @@ endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
 
-command FullPath :echo @%
+command FullPath :echo @% | pbcopy
 
 " Save a image from the clipboard to markdown
 command MarkdownClipboardImage :call MarkdownClipboardImage()
@@ -272,6 +272,12 @@ endfunction
 
 command! MarkdownToDoc call MarkdownToDoc()
 
+function! MarkdownToFirefox() abort
+  let path = expand('%:p')
+  call system('/Applications/Firefox.app/Contents/MacOS/firefox ' .. path)
+endfunction
+
+
 function Testing() abort
   let message = '^@Creating ticket^@{"id":"1390702","key":"TP-26453","self":"https://jira.ryanair.com/rest/api/2/issue/1390702"}'
   echom split(message, '"')[7]
@@ -289,3 +295,12 @@ endfunction
 function MacroMode() abort
   set nowrapscan
 endfunction
+
+
+command! -nargs=1 Silent
+      \   execute 'silent !' . <q-args>
+      \ | execute 'redraw!'
+
+command! MarkdownToClipboard w ! pandoc -s | ~/scripts/pbcopyhtml
+
+command! CreatePR ! ~/scripts/create-pr.js

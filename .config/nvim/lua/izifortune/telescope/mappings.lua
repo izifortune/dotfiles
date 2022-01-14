@@ -39,7 +39,7 @@ map_tele('<leader>lz', 'link_zettel')
 map_tele('<leader>st', 'search_todos')
 map_tele('<leader>ss', 'search_tags')
 map_tele('<leader>fo', 'oldfiles')
-map_tele('<leader>fd', 'fd')
+map_tele('<leader>fd', 'file_browser')
 -- map_tele('<leader>pp', 'project_search')
 
 -- Nvim

@@ -9,7 +9,7 @@ require('orgmode').setup({
   },
   org_default_notes_file = '~/code/org/todos.org',
   org_todo_keywords = {
-    'TODO','WAITING', '|', 'DONE', 'DELEGATED'
+    'TODO','WAITING', 'PENDING', '|', 'DONE', 'DELEGATED'
   },
   org_agenda_min_height = 60,
   mappings = {

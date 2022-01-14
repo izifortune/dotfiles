@@ -149,6 +149,7 @@ pcall(require('telescope').load_extension, 'octo')
 pcall(require('telescope').load_extension, 'projects')
 -- pcall(require('telescope').load_extension, 'ultisnips')
 require"telescope".load_extension("frecency")
+require("telescope").load_extension("file_browser")
 
 local M = {}
 

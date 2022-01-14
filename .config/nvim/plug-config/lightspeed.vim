@@ -1,0 +1,1 @@
+Plug 'ggandor/lightspeed.nvim'

@@ -8,9 +8,11 @@ table.insert(prettierd_filetypes, "jsonc")
 
 M.sources = {
   nullls.builtins.formatting.stylua,
-  nullls.builtins.formatting.prettierd.with({
-    filetypes = prettierd_filetypes,
-  }),
+  -- nullls.builtins.formatting.prettierd.with({
+  --   prefer_local = "node_modules/.bin",
+  --   filetypes = prettierd_filetypes,
+  -- }),
+  nullls.builtins.formatting.prettier,
   nullls.builtins.formatting.trim_whitespace.with({
     filetypes = { "plantuml" },
   }),
@@ -29,8 +31,7 @@ M.sources = {
   }),
   -- -- nullls.builtins.diagnostics.proselint,
   -- -- nullls.builtins.code_actions.proselint,
-  -- nullls.builtins.diagnostics.misspell,
-  -- curl -L -o ./install-misspell.sh https://git.io/misspell && sh ./install-misspell.sh -b /usr/local/bin
+  nullls.builtins.diagnostics.misspell,
 
   -- nullls.builtins.diagnostics.yamllint
   -- pip install --user yamllint
@@ -39,7 +40,12 @@ M.sources = {
 function M.on_attach(client)
   -- Format on save
   if client.resolved_capabilities.document_formatting then
-    -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    vim.cmd([[
+    augroup LspFormatting
+    autocmd! * <buffer>
+    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+    augroup END
+    ]])
   end
 end
 
