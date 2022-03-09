@@ -117,3 +117,7 @@ alias yarnlogin='aws codeartifact login --tool npm --repository ryanair_npm_regi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 alias watch="fswatch -o ./ | xargs -n1 -I{} plantuml ${1}"
 alias mdrender='pandoc --from markdown --to html | textutil -convert rtf -stdin -stdout -format html | pbcopy -Prefer rtf'
+function squashcommits() {
+  GIT_SEQUENCE_EDITOR=: git rebase $1 --autosquash --interactive;
+  GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)";
+}

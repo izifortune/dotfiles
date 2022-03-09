@@ -3,14 +3,14 @@ local nvim_lsp = require('lspconfig')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-vim.api.nvim_command([[
-  autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
-  autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
-  autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
-  autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
-  autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
-  autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 100)
-]])
+-- vim.api.nvim_command([[
+--   autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
+--   autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
+--   autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
+--   autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
+--   autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+--   autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 100)
+-- ]])
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -40,12 +40,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>lo', '<cmd> lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})<CR>', opts)
 
+  -- disable server's document_formatting
+  client.resolved_capabilities.document_formatting = false
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader><leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<leader><leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+  -- if client.resolved_capabilities.document_formatting then
+  --   buf_set_keymap("n", "<leader><leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  -- elseif client.resolved_capabilities.document_range_formatting then
+  --   buf_set_keymap("n", "<leader><leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  -- end
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then

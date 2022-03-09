@@ -145,8 +145,8 @@ Plug 'dpelle/vim-LanguageTool'
 Plug 'RishabhRD/nvim-cheat.sh'
 
 ""Tasks and notes""
-Plug 'mattn/calendar-vim'
-Plug 'kristijanhusak/orgmode.nvim'
+" Plug 'mattn/calendar-vim'
+Plug 'nvim-orgmode/orgmode'
 
 Plug 'tyru/caw.vim'  " Better documentation
 Plug 'wellle/context.vim' " Add context base inline :Context
@@ -172,3 +172,9 @@ Plug 'rebelot/kanagawa.nvim'
 " Plug 'github/copilot.vim'
 " Plug 'vim-pandoc/vim-pandoc'
 Plug 'Einenlum/yaml-revealer'
+Plug 'elihunter173/dirbuf.nvim'
+Plug 'renerocksai/telekasten.nvim'
+Plug 'renerocksai/calendar-vim'
+Plug 'danymat/neogen'
+Plug 'windwp/nvim-spectre'
+Plug 'mzlogin/vim-markdown-toc'

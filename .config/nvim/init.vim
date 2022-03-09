@@ -24,7 +24,6 @@ source $HOME/.config/nvim/plug-config/vim-rooter.vim
 source $HOME/.config/nvim/plug-config/weblink.vim
 source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/vim-languagetool.vim
-source $HOME/.config/nvim/plug-config/nvim-treesitter.vim
 source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
 source $HOME/.config/nvim/plug-config/nvim-tree.vim
 source $HOME/.config/nvim/plug-config/trouble.vim
@@ -38,6 +37,7 @@ source $HOME/.config/nvim/plug-config/focus.vim
 " source $HOME/.config/nvim/plug-config/nerdtree.vim
 " source $HOME/.config/nvim/plug-config/nvim-compe.vim
 " source $HOME/.config/nvim/plug-config/nvim-lightbulb.vim
+source $HOME/.config/nvim/plug-config/nvim-spectre.vim
 
 " All of your Plugins must be added before the following line
 call plug#end()

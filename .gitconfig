@@ -7,5 +7,6 @@
 	name = Fabrizio Fortunato
 [branch]
 	autosetuprebase = always
+  autosquash = true
 [pull]
 	rebase = true

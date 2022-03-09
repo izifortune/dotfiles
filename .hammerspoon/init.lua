@@ -65,10 +65,13 @@ hs.hotkey.bind(cmdShift, "k", function() yabai({"-m", "window", "--warp", "north
 hs.hotkey.bind(cmdShift, "h", function() yabai({"-m", "window", "--warp", "west"}) end)
 hs.hotkey.bind(cmdShift, "l", function() yabai({"-m", "window", "--warp", "east"}) end)
 --
--- hs.hotkey.bind(ctrlShift, "r", function() yabai({"-m", "space", "--rotate", "90"}) end)
+hs.hotkey.bind(ctrlShift, "r", function() yabai({"-m", "space", "--rotate", "90"}) end)
 
 hs.hotkey.bind({"ctrl", "shift"}, 't', function () hs.application.launchOrFocus("Alacritty") end)
 hs.hotkey.bind({"ctrl", "shift"}, 'a', function () hs.application.launchOrFocus("Alfred 4") end)
+hs.hotkey.bind({"ctrl", "shift"}, 'y', function () 
+  hs.task.new("/usr/local/bin/brew",nil, function() end,{"services", "restart", "yabai"}):start()
+end)
 hs.hotkey.bind({"ctrl", "shift"}, 'b', function () hs.application.launchOrFocus("Firefox") end)
 hs.hotkey.bind({"ctrl", "shift"}, 'm', function () hs.application.launchOrFocus("Microsoft Teams") end)
 
@@ -156,16 +159,3 @@ vim:disableForApp('iTerm2')
 vim:disableForApp('Alacritty')
 -- vim:disableForApp('Terminal')
 -- vim:disableForApp('com.googlecode.iterm2')
-
-function reloadConfig(files)
-  doReload = false
-  for _,file in pairs(files) do
-    if file:sub(-4) == ".lua" then
-      doReload = true
-    end
-  end
-  if doReload then
-    hs.reload()
-  end
-end
-myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()

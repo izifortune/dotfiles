@@ -36,110 +36,110 @@ function custom_actions.fzf_multi_select(prompt_bufnr)
 end
 
 require('telescope').setup {
-  defaults = {
-    prompt_prefix = ' >',
-
-    winblend = 0,
-
-    layout_strategy = 'flex',
-
-    layout_config = {
-      prompt_position = "top",
-      preview_cutoff = 120,
-      -- horizontal = {
-      --   width_padding = 0.1,
-      --   height_padding = 0.1,
-      --   preview_width = 0.6,
-      -- },
-      -- vertical = {
-      --   width_padding = 0.05,
-      --   height_padding = 1,
-      --   preview_height = 0.5,
-      -- }
-    },
-
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    scroll_strategy = "cycle",
-    color_devicons = true,
-
-    mappings = {
-    i = {
-      ["<C-n>"] = actions.move_selection_next,
-      ["<C-p>"] = actions.move_selection_previous,
-
-      ["<C-c>"] = actions.close,
-
-      ["<Down>"] = actions.move_selection_next,
-      ["<Up>"] = actions.move_selection_previous,
-
-      ["<CR>"] = custom_actions.fzf_multi_select,
-
-      ["<C-x>"] = actions.select_horizontal,
-      ["<C-v>"] = actions.select_vertical,
-      ["<C-t>"] = actions.select_tab,
-
-      ["<C-u>"] = actions.preview_scrolling_up,
-      ["<C-d>"] = actions.preview_scrolling_down,
-
-      ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-      ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-      ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-      ["<A-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-      ["<C-l>"] = actions.complete_tag
-    },
-
-    n = {
-      ["<esc>"] = actions.close,
-      ["<CR>"] = custom_actions.fzf_multi_select,
-      ["<C-x>"] = actions.select_horizontal,
-      ["<C-v>"] = actions.select_vertical,
-      ["<C-t>"] = actions.select_tab,
-
-      ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-      ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-      -- ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-      ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-
-      -- TODO: This would be weird if we switch the ordering.
-      ["j"] = actions.move_selection_next,
-      ["k"] = actions.move_selection_previous,
-      ["H"] = actions.move_to_top,
-      ["M"] = actions.move_to_middle,
-      ["L"] = actions.move_to_bottom,
-
-      ["<Down>"] = actions.move_selection_next,
-      ["<Up>"] = actions.move_selection_previous,
-
-      ["<C-u>"] = actions.preview_scrolling_up,
-      ["<C-d>"] = actions.preview_scrolling_down,
-    },
-    },
-
-    borderchars = {
-      { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-      preview = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
-    },
-
-    file_sorter = sorters.get_fzy_sorter,
-
-    file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-    grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-  },
-
-  extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true,
-    },
-
-    fzf_writer = {
-      minimum_grep_characters = 2,
-      minimum_files_characters = 2,
-      use_highlighter = true,
-    }
-  },
+  -- defaults = {
+  --   prompt_prefix = ' >',
+  --
+  --   winblend = 0,
+  --
+  --   layout_strategy = 'flex',
+  --
+  --   layout_config = {
+  --     prompt_position = "top",
+  --     preview_cutoff = 120,
+  --     -- horizontal = {
+  --     --   width_padding = 0.1,
+  --     --   height_padding = 0.1,
+  --     --   preview_width = 0.6,
+  --     -- },
+  --     -- vertical = {
+  --     --   width_padding = 0.05,
+  --     --   height_padding = 1,
+  --     --   preview_height = 0.5,
+  --     -- }
+  --   },
+  --
+  --   selection_strategy = "reset",
+  --   sorting_strategy = "descending",
+  --   scroll_strategy = "cycle",
+  --   color_devicons = true,
+  --
+  --   -- mappings = {
+  --   -- i = {
+  --   --   ["<C-n>"] = actions.move_selection_next,
+  --   --   ["<C-p>"] = actions.move_selection_previous,
+  --   --
+  --   --   ["<C-c>"] = actions.close,
+  --   --
+  --   --   ["<Down>"] = actions.move_selection_next,
+  --   --   ["<Up>"] = actions.move_selection_previous,
+  --   --
+  --   --   ["<CR>"] = custom_actions.fzf_multi_select,
+  --   --
+  --   --   ["<C-x>"] = actions.select_horizontal,
+  --   --   ["<C-v>"] = actions.select_vertical,
+  --   --   ["<C-t>"] = actions.select_tab,
+  --   --
+  --   --   ["<C-u>"] = actions.preview_scrolling_up,
+  --   --   ["<C-d>"] = actions.preview_scrolling_down,
+  --   --
+  --   --   ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+  --   --   ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+  --   --   ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+  --   --   ["<A-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+  --   --   ["<C-l>"] = actions.complete_tag
+  --   -- },
+  --   --
+  --   -- n = {
+  --   --   ["<esc>"] = actions.close,
+  --   --   ["<CR>"] = custom_actions.fzf_multi_select,
+  --   --   ["<C-x>"] = actions.select_horizontal,
+  --   --   ["<C-v>"] = actions.select_vertical,
+  --   --   ["<C-t>"] = actions.select_tab,
+  --   --
+  --   --   ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+  --   --   ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+  --   --   -- ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+  --   --   ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+  --   --
+  --   --   -- TODO: This would be weird if we switch the ordering.
+  --   --   ["j"] = actions.move_selection_next,
+  --   --   ["k"] = actions.move_selection_previous,
+  --   --   ["H"] = actions.move_to_top,
+  --   --   ["M"] = actions.move_to_middle,
+  --   --   ["L"] = actions.move_to_bottom,
+  --   --
+  --   --   ["<Down>"] = actions.move_selection_next,
+  --   --   ["<Up>"] = actions.move_selection_previous,
+  --   --
+  --   --   ["<C-u>"] = actions.preview_scrolling_up,
+  --   --   ["<C-d>"] = actions.preview_scrolling_down,
+  --   -- },
+  --   -- },
+  --
+  --   borderchars = {
+  --     { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+  --     preview = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+  --   },
+  --
+  --   file_sorter = sorters.get_fzy_sorter,
+  --
+  --   file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+  --   grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+  --   qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+  -- },
+  --
+  -- extensions = {
+  --   fzy_native = {
+  --     override_generic_sorter = false,
+  --     override_file_sorter = true,
+  --   },
+  --
+  --   fzf_writer = {
+  --     minimum_grep_characters = 2,
+  --     minimum_files_characters = 2,
+  --     use_highlighter = true,
+  --   }
+  -- },
 }
 
 -- Load the fzy native extension at the start.

@@ -301,6 +301,6 @@ command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
       \ | execute 'redraw!'
 
-command! MarkdownToClipboard w ! pandoc -s | ~/scripts/pbcopyhtml
+command! -range MarkdownToClipboard w ! pandoc -s | ~/scripts/pbcopyhtml
 
 command! CreatePR ! ~/scripts/create-pr.js
