@@ -4,12 +4,12 @@ require('orgmode').setup({
   {
     r = { description = 'Report', template = '* %?%<%Y-%m-%d>\n [%<%Y-%m-%d>]', target = '~/code/org/report.org' },
     -- j = { description = 'Meeting notes', template = '\n* %? [%<%Y-%m-%d>] \n\n	|What|Who|When|State|', target = '~/code/org/%<%Y-%m-%d>.org' }
-    t = { description = 'Task', template = '* TODO %?' },
+    t = { description = 'Task', template = '* TODO %?\n  DEADLINE: %t' },
     j = { description = 'Meeting notes', template = '\n* %? [%<%Y-%m-%d>] \n\n	|What|Who|When|State|', target = '~/code/org/meetings.org' }
   },
   org_default_notes_file = '~/code/org/todos.org',
   org_todo_keywords = {
-    'TODO','WAITING', 'PENDING', '|', 'DONE', 'DELEGATED'
+    'TODO','NEXT', '|', 'DONE', 'HOLD', 'WAITING', 'CANCELLED'
   },
   org_agenda_min_height = 60,
   mappings = {

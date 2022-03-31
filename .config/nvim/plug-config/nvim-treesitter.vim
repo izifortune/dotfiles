@@ -1,6 +1,6 @@
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-set foldlevelstart=20
+" set foldlevelstart=20
 
 lua << EOF
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

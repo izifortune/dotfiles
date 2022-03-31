@@ -1,5 +1,5 @@
 " Magic buffer-picking mode
-nnoremap <silent> <C-s> :BufferPick<CR>
+nnoremap <silent> <leader>bp :BufferPick<CR>
 " Sort automatically by...
 nnoremap <silent> <leader>bd :BufferOrderByDirectory<CR>
 " nnoremap <silent> <leader>bd :BufferOrderByDirectory<CR>

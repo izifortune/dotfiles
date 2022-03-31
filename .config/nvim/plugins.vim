@@ -9,7 +9,7 @@ Plug 'gruvbox-community/gruvbox'
 
 " tabline
 " Plug 'itchyny/lightline.vim'
-Plug 'windwp/windline.nvim'
+" Plug 'windwp/windline.nvim'
 
 " autopairs
 Plug 'windwp/nvim-autopairs'
@@ -76,7 +76,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'tami5/sqlite.lua'
 
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'rudism/telescope-dict.nvim'
 " Plug 'fhill2/telescope-ultisnips.nvim'
@@ -165,7 +165,7 @@ Plug 'folke/trouble.nvim'
 Plug 'sindrets/winshift.nvim'
 Plug 'famiu/bufdelete.nvim'
 Plug 'dstein64/vim-startuptime'
-Plug 'rebelot/kanagawa.nvim'
+" Plug 'rebelot/kanagawa.nvim'
 " Plug 'ThePrimeagen/refactoring.nvim'
 " Plug 'nvim-treesitter/playground'
 
@@ -178,3 +178,10 @@ Plug 'renerocksai/calendar-vim'
 Plug 'danymat/neogen'
 Plug 'windwp/nvim-spectre'
 Plug 'mzlogin/vim-markdown-toc'
+" Regex explainer
+Plug 'MunifTanjim/nui.nvim'
+Plug 'bennypowers/nvim-regexplainer'
+
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'brymer-meneses/grammar-guard.nvim'
+

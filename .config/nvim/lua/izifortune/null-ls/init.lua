@@ -5,6 +5,9 @@ require("null-ls").setup({
   sources = {
       nullls.builtins.formatting.stylua,
       nullls.builtins.formatting.prettier,
+      -- nullls.builtins.formatting.prettier.with({
+      --   filetypes = { "vue", "css", "scss", "less", "json", "jsonc", "yaml", "markdown", "graphql", "handlebars" }
+      -- }),
       nullls.builtins.formatting.trim_whitespace.with({
         filetypes = { "plantuml" },
       }),
