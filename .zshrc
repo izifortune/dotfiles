@@ -10,7 +10,7 @@ export ZSH="/Users/fortunatof/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
 
-plugins=(git fzf nvm brew httpie vi-mode z zsh-syntax-highlighting)
+plugins=(git fzf brew httpie vi-mode z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,14 +110,31 @@ alias find='fd'
 alias du='dust'
 alias df='duf'
 
-export CODEARTIFACT_AUTH_TOKEN=''
+export LG_CONFIG_FILE='/Users/fortunatof/.config/lazygit/config.yml'
 
-alias yarnlogin='aws codeartifact login --tool npm --repository ryanair_npm_registry --domain ryanair-com --domain-owner 346350922581'
+function yarnlogin() {
+  aws codeartifact login --tool npm --repository ryanair_npm_registry --domain ryanair-com --domain-owner 346350922581 --namespace @ryanair;
+  export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain ryanair-com --domain-owner 346350922581 --query authorizationToken --output text`
+}
+
+function npmReg() {
+  sed -i '' 's/\(registry=\).*/\1https:\/\/registry\.npmjs\.org/g' ~/.npmrc
+}
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 alias watch="fswatch -o ./ | xargs -n1 -I{} plantuml ${1}"
 alias mdrender='pandoc --from markdown --to html | textutil -convert rtf -stdin -stdout -format html | pbcopy -Prefer rtf'
+alias b='buku --suggest'
+alias blist='buku --colors oKlxm -p'
+export BUKU_CA_CERTS=~/zscaler.pem
 function squashcommits() {
   GIT_SEQUENCE_EDITOR=: git rebase $1 --autosquash --interactive;
   GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)";
 }
+export PATH=$PATH:~/code/ltex-ls-15.2.0/bin/
+export ZK_NOTEBOOK_DIR=~/code/knowledge/content/zettelkasten
+
+# fnm
+export PATH=/Users/fortunatof/.fnm:$PATH
+eval "`fnm env`"
+alias jest-inspect='yarn node --inspect-brk --expose-gc $(yarn bin jest) test --runInBand --silent --watch'

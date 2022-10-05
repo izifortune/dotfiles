@@ -1,17 +1,39 @@
+require('orgmode').setup_ts_grammar()
 require('orgmode').setup({
-  org_agenda_files = {'~/code/org/**/*'},
+  org_agenda_files = {'~/code/org/**/*', '~/OneDrive - Ryanair Ltd/frontend/monthly/*'},
   org_agenda_templates =
   {
-    r = { description = 'Report', template = '* %?%<%Y-%m-%d>\n [%<%Y-%m-%d>]', target = '~/code/org/report.org' },
-    -- j = { description = 'Meeting notes', template = '\n* %? [%<%Y-%m-%d>] \n\n	|What|Who|When|State|', target = '~/code/org/%<%Y-%m-%d>.org' }
+    r = { description = 'Frontend Report', template = [[
+** FE Standup %<%Y-%m-%d>
+*** Frontend report %<%Y-%m-%d>
+*** Manager Report
+*** Highlights
+*** Report
+| What | Who | Status |
+*** AT Coverage
+]], target = '~/code/org/report.org' },
+    m = { description = 'Monthly Report', template = [[
+*** %? <%Y-%m>
+*** Vitals
+*** Frontend report <%Y-%m-%d>
+*** Manager Report
+*** Highlights
+*** Report
+| What | Who | Status |
+]], target = '~/code/org/report.org' },
     t = { description = 'Task', template = '* TODO %?\n  DEADLINE: %t' },
-    j = { description = 'Meeting notes', template = '\n* %? [%<%Y-%m-%d>] \n\n	|What|Who|When|State|', target = '~/code/org/meetings.org' }
+    j = { description = 'Meeting notes', template = [[
+* %? %<%Y-%m-%d>
+** Discussion
+** Actions
+]], target = '~/code/org/meetings.org' }
   },
   org_default_notes_file = '~/code/org/todos.org',
   org_todo_keywords = {
-    'TODO','NEXT', '|', 'DONE', 'HOLD', 'WAITING', 'CANCELLED'
+    'TODO','PROGRESS', '|', 'DONE', 'HOLD', 'WAITING', 'CANCELLED'
   },
   org_agenda_min_height = 60,
+  org_indent_mode = 'noindent',
   mappings = {
     capture = {
       org_capture_finalize = '<Leader>w',
@@ -25,3 +47,18 @@ require('orgmode').setup({
     }
   }
 })
+
+vim.cmd([[
+augroup OrgMode
+autocmd!
+autocmd FileType org setlocal foldmethod=manual
+augroup END
+]])
+
+-- Covered by noindend
+-- vim.cmd([[
+-- augroup OrgMode
+-- autocmd!
+-- autocmd FileType org setlocal indentexpr=null
+-- augroup END
+-- ]])

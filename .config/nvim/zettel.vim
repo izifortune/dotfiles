@@ -7,10 +7,10 @@ nnoremap <leader>nz :NewZettel<CR>
 " command! ZettelTag lua require 'telescope'.zetteltags()
 " command! Test lua require 'telescope'.MyTscopeNotesGrep()
 
-command! ZettelTag call fzf#vim#grep(
-     \   'rg --column --line-number --no-heading --color=always --smart-case -- "^#[a-z].*"', 1,
-     \   fzf#vim#with_preview({ 'dir': zettelkasten }), <bang>0)
-
+" command! ZettelTag call fzf#vim#grep(
+"      \   'rg --column --line-number --no-heading --color=always --smart-case -- "^#[a-z].*"', 1,
+"      \   fzf#vim#with_preview({ 'dir': zettelkasten }), <bang>0)
+"
 
 
 " fu! HandleFZF(file)
@@ -48,17 +48,17 @@ endfunction
 
 " mnemonic link zettel
 " command C-l z
-inoremap <expr> <c-l>z fzf#vim#complete({
-  \ 'source':  'rg --no-heading --smart-case  "^\# "',
-  \ 'reducer': function('<sid>make_note_link'),
-  \ 'options': '--multi --reverse --margin 15%,0',
-  \ 'up':    5})
-
-func! Zg() abort
-  " cd! '' . g:zettelkasten
-  let l:tags = systemlist('rg --column --no-heading --color=always --smart-case -- "^#[a-z].*"')
-  for i in l:tags
-    echom i
-  endfor
-  echo l:tags
-endfun
+" inoremap <expr> <C-i>z fzf#vim#complete({
+"   \ 'source':  'rg --no-heading --smart-case  "^\# "',
+"   \ 'reducer': function('<sid>make_note_link'),
+"   \ 'options': '--multi --reverse --margin 15%,0',
+"   \ 'up':    5})
+"
+" func! Zg() abort
+"   " cd! '' . g:zettelkasten
+"   let l:tags = systemlist('rg --column --no-heading --color=always --smart-case -- "^#[a-z].*"')
+"   for i in l:tags
+"     echom i
+"   endfor
+"   echo l:tags
+" endfun

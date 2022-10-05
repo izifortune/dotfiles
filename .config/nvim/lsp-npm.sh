@@ -9,4 +9,5 @@ npm install -g prettier-eslint-cli
 npm install -g vscode-html-languageserver-bin vscode-css-languageserver-bin
 npm install -g proselint
 npm install -g write-good
+npm i -g bash-language-server
 curl -L -o ./install-misspell.sh https://git.io/misspell

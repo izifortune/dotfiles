@@ -5,19 +5,20 @@ source $HOME/.config/nvim/plug-config/csv.vim
 
 source $HOME/.config/nvim/plugins.vim
 
-source $HOME/.config/nvim/mappings.vim
-source $HOME/.config/nvim/settings.vim
+
+" source $HOME/.config/nvim/mappings.vim
+" source $HOME/.config/nvim/settings.vim
 source $HOME/.config/nvim/functions.vim
 
-source $HOME/.config/nvim/colors.vim
+" source $HOME/.config/nvim/colors.vim
 source $HOME/.config/nvim/zettel.vim
 
 
 source $HOME/.config/nvim/plug-config/nvim-cmp.vim
-source $HOME/.config/nvim/plug-config/mkdx.vim
+" source $HOME/.config/nvim/plug-config/mkdx.vim
 source $HOME/.config/nvim/plug-config/context.vim
 source $HOME/.config/nvim/plug-config/easy-align.vim
-source $HOME/.config/nvim/plug-config/fugitive.vim
+" source $HOME/.config/nvim/plug-config/fugitive.vim
 source $HOME/.config/nvim/plug-config/goyo.vim
 source $HOME/.config/nvim/plug-config/markdown-preview.nvim.vim
 source $HOME/.config/nvim/plug-config/vim-rooter.vim
@@ -25,11 +26,9 @@ source $HOME/.config/nvim/plug-config/weblink.vim
 " source $HOME/.config/nvim/plug-config/vimspector.vim
 source $HOME/.config/nvim/plug-config/vim-languagetool.vim
 source $HOME/.config/nvim/plug-config/plantuml-previewer.vim
-source $HOME/.config/nvim/plug-config/nvim-tree.vim
-source $HOME/.config/nvim/plug-config/trouble.vim
 source $HOME/.config/nvim/plug-config/vim-table-mode.vim
-source $HOME/.config/nvim/plug-config/lightbulb.vim
-source $HOME/.config/nvim/plug-config/lightspeed.vim
+" source $HOME/.config/nvim/plug-config/lightbulb.vim
+" source $HOME/.config/nvim/plug-config/lightspeed.vim
 source $HOME/.config/nvim/plug-config/focus.vim
 " source $HOME/.config/nvim/plug-config/hop.vim
 " source $HOME/.config/nvim/plug-config/wilder.vim
@@ -37,11 +36,15 @@ source $HOME/.config/nvim/plug-config/focus.vim
 " source $HOME/.config/nvim/plug-config/nerdtree.vim
 " source $HOME/.config/nvim/plug-config/nvim-compe.vim
 " source $HOME/.config/nvim/plug-config/nvim-lightbulb.vim
-source $HOME/.config/nvim/plug-config/nvim-spectre.vim
 source $HOME/.config/nvim/plug-config/vim-maximizer.vim
+source $HOME/.config/nvim/plug-config/vim-test.vim
 
 " All of your Plugins must be added before the following line
 call plug#end()
+
+lua require('impatient')
+
+
 
 " Automatically install missing plugins on startup
 autocmd VimEnter *

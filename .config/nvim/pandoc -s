@@ -1,0 +1,13 @@
+
+- 28-02 – decouple myRyanair. …. Joao
+  - Last ticket went live now its fully supported. If we toggle `my-ryanair-login-is-enforced` off
+    we support fully potential/active flows.
+    The flag will:
+    - Disable MyRyanair Login/Signup on FSP, Payment page, Payment API
+    - Disable session termination after payment
+    - Enable Redirection to Active trip 2.0 (TOV does not work without myryanair)
+    - Link to the maintanance page also added for documentation https://confluence.ryanair.com:8444/display/RYR3/Maintenance+page
+
+28-03 – look at app and website solution for downtime of website., including ability to turn off some functionality and handle rate limiting. … Fabrizio, Joao, Joaquim
+
+- Pending DE review of the designs 

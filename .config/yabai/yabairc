@@ -21,14 +21,14 @@ yabai -m config status_bar_foreground_color  0xff$CFORE
 # yabai -m config insert_window_border_color   0xff$CINSE
 
 # global settings
-# yabai -m config mouse_follows_focus          on
+yabai -m config mouse_follows_focus          on
 yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_topmost               on
-# yabai -m config window_opacity               off
-# yabai -m config window_opacity_duration      0.0
+yabai -m config window_opacity               on
+yabai -m config window_opacity_duration      0.0
 # yabai -m config window_shadow                off
-# yabai -m config active_window_opacity        0.98
-# yabai -m config normal_window_opacity        0.93
+yabai -m config active_window_opacity        0.99
+yabai -m config normal_window_opacity        0.90
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
 yabai -m config mouse_modifier               fn
@@ -43,11 +43,11 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  5   #30
-yabai -m config bottom_padding               5   #30
-yabai -m config left_padding                 5   #30
-yabai -m config right_padding                5   #30
-yabai -m config window_gap                   5   #30
+yabai -m config top_padding                  20   #30
+yabai -m config bottom_padding               20   #30
+yabai -m config left_padding                 20   #30
+yabai -m config right_padding                20   #30
+yabai -m config window_gap                   20   #30
 
 # mission-control desktop labels
 yabai -m space 1 --label code
@@ -68,6 +68,7 @@ yabai -m rule --add title='Library' manage=off layer=above
 
 yabai -m rule --add title="Microsoft Teams Notification" window_border=off
 yabai -m rule --add title="Microsoft Teams Notification" manage=off
+yabai -m rule --add title="Microsoft Remote Desktop" manage=off
 yabai -m rule --add label=ignoreTeamsNotification app="Microsoft Teams" title="Microsoft Teams Notification" manage=off
 yabai -m signal --add \
     event=window_focused \
@@ -77,3 +78,8 @@ yabai -m signal --add \
 
 
 echo "yabai configuration loaded.."
+
+# Focus closest window on close
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+

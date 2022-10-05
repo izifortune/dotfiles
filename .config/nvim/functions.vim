@@ -3,6 +3,10 @@ augroup auto_spellcheck
   autocmd BufNewFile,BufRead *.md setlocal spell
 augroup END
 
+augroup auto_spellcheck
+  autocmd BufNewFile,BufRead *.org setlocal spell
+augroup END
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -11,7 +15,7 @@ autocmd BufReadPost *
 
 " Pretty format JSON files
 function s:formatJSON()
-  execute "%!python -m json.tool"
+  execute "%!python3 -m json.tool"
   set syntax=json
 endfunction
 
@@ -296,11 +300,16 @@ function MacroMode() abort
   set nowrapscan
 endfunction
 
+" function BeutifyJS()! abort
+" ":%!js-beautify
+" endfunction
+
 
 command! -nargs=1 Silent
       \   execute 'silent !' . <q-args>
       \ | execute 'redraw!'
 
 command! -range MarkdownToClipboard w ! pandoc -s | ~/scripts/pbcopyhtml
+command! -range OrgToClipboardl w ! pandoc -f org -s | ~/scripts/pbcopyhtml
 
 command! CreatePR ! ~/scripts/create-pr.js

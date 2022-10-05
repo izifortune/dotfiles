@@ -1,3 +1,4 @@
 scripts/notebooks/.ip*
 ~/.tmux/plugins
 ~/.tmux/resurrect
+ryanair_functions.lua

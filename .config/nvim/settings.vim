@@ -75,3 +75,4 @@ let g:netrw_sort_sequence = '[\/]$,*'
 
 set inccommand=nosplit " Live substitution
 " let g:node_host_prog = expand('~/.nvm/versions/node/v12.18.3/bin/neovim-node-host')
+set laststatus=3 " Single status line

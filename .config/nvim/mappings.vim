@@ -1,12 +1,5 @@
-inoremap jj <ESC>
-nnoremap <SPACE> <Nop>
-let mapleader="\<Space>"
-
 " Disable highlight when <leader><cr> is pressed
 noremap <silent> <leader><cr> :noh<cr>
-
-noremap <leader>ss :setlocal spell!<cr>
-inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 
 " Shortcuts using <leader>
 noremap <leader>sn ]s
@@ -68,7 +61,7 @@ vnoremap < <<CR>gv
 
 " remap paste in visual mode to send the deleted lines to void
 
-vnoremap <leader>p "_dP
+" vnoremap <leader>p "_dP
 
 "TAB in general mode will move to text buffer
 " nnoremap <silent> <TAB> :bnext<CR>

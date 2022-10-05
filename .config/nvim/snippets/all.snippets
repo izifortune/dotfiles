@@ -1,0 +1,36 @@
+snippet ltodo "List TODO" bA
+ - [ ] $1
+
+snippet mlink "Markdown link" bA
+ - [$1]($2)
+
+snippet cz "Standard commitizen commit" bA
+ ${1:type}(${2:scope}): ${3:shortdescription}
+ 
+ ${4:longdescription}
+ ISSUES CLOSED: #${6:ticket}
+
+snippet cab "CAB" i
+	Application: cloudfront
+	Team: FE-Core
+	Developer contact: Fabrizio, Fortunato
+	QA contact: Fabrizio, Fortunato
+
+	Release contains:
+
+	- ${1:scope}
+
+	Rollback:
+
+	- Manual
+
+	Evidence of test:
+
+	- Attached to the ticket
+
+snippet cabcookie "CAB COOKIE" i
+
+	Adding cookies for ${1:website}
+
+	Name | Host | Description | Lifespan
+	--- | --- | --- | --- |

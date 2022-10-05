@@ -39,10 +39,15 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ["<C-Q>"] = actions.send_selected_to_qflist + actions.open_qflist
+        ["<C-a>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<C-d>"] = actions.delete_buffer
+      },
+      n = {
+        ["<C-d>"] = actions.delete_buffer
       }
     }
-  }
+  },
   -- defaults = {
   --   prompt_prefix = ' >',
   --
@@ -147,7 +152,7 @@ require('telescope').setup {
   --     use_highlighter = true,
   --   }
   -- },
-  ,
+  
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -155,7 +160,21 @@ require('telescope').setup {
       override_file_sorter = true,     -- override the file sorter
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
-    }
+    },
+    bookmarks = {
+      selected_browser = 'buku',
+      url_open_command = 'open',
+      --
+      -- -- Or provide the plugin name which is already installed
+      -- -- Available: 'vim_external', 'open_browser'
+      -- url_open_plugin = nil,
+      --
+      -- -- Show the full path to the bookmark instead of just the bookmark name
+      -- full_path = true,
+      --
+      -- -- Provide a custom profile name for Firefox
+      -- firefox_profile_name = nil,
+    },
   }
 }
 
@@ -168,6 +187,10 @@ pcall(require('telescope').load_extension, 'projects')
 -- pcall(require('telescope').load_extension, 'ultisnips')
 -- require"telescope".load_extension("frecency")
 require("telescope").load_extension("file_browser")
+require('telescope').load_extension('bookmarks')
+require('telescope').load_extension('howdoi')
+require('telescope').load_extension('dap')
+require("telescope").load_extension("yaml_schema")
 
 local M = {}
 
@@ -429,6 +452,30 @@ function M.edit_zsh()
     },
     cwd = "~/.config/zsh/",
     prompt = "~ dotfiles ~",
+
+    layout_strategy = 'flex',
+  }
+end
+
+function M.edit_org()
+  require('telescope.builtin').find_files {
+    path_display = {
+      'shorten'
+    },
+    cwd = "~/code/org/",
+    prompt = "~ org ~",
+
+    layout_strategy = 'flex',
+  }
+end
+
+function M.edit_drive()
+  require('telescope.builtin').find_files {
+    path_display = {
+      'shorten'
+    },
+    cwd = "~/OneDrive - Ryanair Ltd/frontend",
+    prompt = "~ drive ~",
 
     layout_strategy = 'flex',
   }
