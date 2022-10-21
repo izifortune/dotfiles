@@ -28,7 +28,7 @@ require "izifortune.lsp.lsp-signature"
 -- require "izifortune.lsp.lsp-installer"
 require("izifortune.lsp.mason")
 require("izifortune.lsp.handlers").setup()
--- require "izifortune.lsp.null-ls"
+require "izifortune.lsp.null-ls"
 
 local l_status_ok, lsp_lines = pcall(require, "lsp_lines")
 if not l_status_ok then

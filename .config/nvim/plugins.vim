@@ -94,6 +94,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 " Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
+" Plug 'axkirillov/easypick.nvim'
 
 " :Startify
 Plug 'mhinz/vim-startify'
@@ -238,3 +239,4 @@ Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'vigoux/ltex-ls.nvim'
 Plug 'someone-stole-my-name/yaml-companion.nvim'
 Plug 'gennaro-tedesco/nvim-jqx'
+Plug  'smjonas/live-command.nvim'

@@ -63,6 +63,7 @@ vim.keymap.set('n', '<leader>kk', ':cd ~/code/knowledge<cr>', {silent = true})
 -- vim.keymap.set('n', 'gp', ':%!prettier --stdin-filepath %<cr>', { silent = true})
 --
 vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-seach)')
+vim.keymap.set('n', '-', '-', opts)
 
 M.show_documentation = function()
   local filetype = vim.bo.filetype

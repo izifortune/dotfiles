@@ -62,3 +62,18 @@ require("izifortune.lualine")
 require("izifortune.ryanair_functions")
 require("luasnip.loaders.from_snipmate").lazy_load()
 require("luasnip.loaders.from_vscode").lazy_load()
+-- require("izifortune.easypick")
+require("live-command").setup {
+  commands = {
+    Norm = { cmd = "norm" },
+    G = { cmd = "g"},
+    Reg = {
+      cmd = "norm",
+      -- This will transform ":5Reg a" into ":norm 5@a"
+      args = function(opts)
+        return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
+      end,
+      range = "",
+    },
+  },
+}

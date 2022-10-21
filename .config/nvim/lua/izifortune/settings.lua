@@ -103,3 +103,9 @@ vim.o.pumheight = 15
 
 -- Disable netrw gx mapping
 vim.g.netrw_nogx = 1
+
+vim.cmd[[
+augroup filetypedetect
+au! BufReadPre,BufReadPost,BufRead,BufNewFile *.feature setfiletype cucumber
+augroup END
+]]

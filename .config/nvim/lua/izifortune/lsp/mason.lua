@@ -5,7 +5,6 @@ local servers = {
   "jdtls",
   "jsonls",
   "solc",
-  "solidity_ls",
   "sumneko_lua",
   "tflint",
   "terraformls",
@@ -109,8 +108,8 @@ for _, server in pairs(servers) do
   end
 
   if server == "cucumber_language_server" then
-    local cucumber = require "izifortune.lsp.settings.cucumber"
-    opts = vim.tbl_deep_extend("force", cucumber, opts)
+    -- local cucumber = require "izifortune.lsp.settings.cucumber"
+    -- opts = vim.tbl_deep_extend("force", cucumber, opts)
   end
 
   if server == "jdtls" then

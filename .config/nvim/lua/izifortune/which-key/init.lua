@@ -41,6 +41,7 @@ wk.setup({
 wk.register({
 	["<leader>f"] = {
 		name = "+find",
+		a = { "<cmd>Telescope resume<cr>", "Find Resume" },
 		b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
@@ -76,6 +77,13 @@ wk.register({
 
 wk.register({
 	-- ['gx'] = {'<Plug>(openbrowser-smart-seach)<cr>', 'Open browser', mode = "v"},
+})
+
+wk.register({
+  ['<leader>b'] = {
+    name = '+buffers',
+    o = { "<cmd>:%bd|e#<cr>", 'Close all except current'}
+  }
 })
 
 wk.register({

@@ -82,6 +82,14 @@ end)
 hs.hotkey.bind(ctrlShift, "l", function()
 	yabai({ "-m", "window", "--focus", "east" })
 end)
+
+-- Move focus display
+hs.hotkey.bind(cmdShift, "1", function()
+	yabai({ "-m", "display", "--focus", "1" })
+end)
+hs.hotkey.bind(cmdShift, "2", function()
+	yabai({ "-m", "display", "--focus", "2" })
+end)
 --
 -- --- fullscreen
 hs.hotkey.bind(ctrlShift, "f", function()
@@ -204,10 +212,10 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 --------------------------------
 -- START VIM CONFIG
 --------------------------------
-local VimMode = hs.loadSpoon("VimMode")
-local vim = VimMode:new()
+-- local VimMode = hs.loadSpoon("VimMode")
+-- local vim = VimMode:new()
 
-vim:enterWithSequence("jk")
+-- vim:enterWithSequence("jk")
 
 -- Configure apps you do *not* want Vim mode enabled in
 -- For example, you don't want this plugin overriding your control of Terminal
@@ -215,6 +223,6 @@ vim:enterWithSequence("jk")
 -- vim:disableForApp('Code')
 -- vim:disableForApp('zoom.us')
 -- vim:disableForApp('iTerm')
-vim:disableForApp("iTerm2")
-vim:disableForApp("Alacritty")
+-- vim:disableForApp("iTerm2")
+-- vim:disableForApp("Alacritty")
 -- vim:disableForApp('Terminal')
