@@ -55,7 +55,7 @@ Plug 'mxsdev/nvim-dap-vscode-js'
 
 " ISSUE ABOVE"
 
-Plug 'unblevable/quick-scope'
+Plug 'jinh0/eyeliner.nvim'
 " Formatting on save
 " Plug 'kosayoda/nvim-lightbulb'
 
@@ -71,7 +71,7 @@ Plug 'b0o/schemastore.nvim'
 Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
 " Display signature when typing hiding with C-x
-Plug 'ray-x/lsp_signature.nvim'
+" Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'RishabhRD/popfix'
 " Plug 'anott03/nvim-lspinstall'
@@ -134,7 +134,12 @@ Plug 'junegunn/goyo.vim'
 " Writing
 Plug 'reedes/vim-colors-pencil'
 Plug 'rhysd/vim-grammarous'
+
 Plug 'Ron89/thesaurus_query.vim', { 'for': 'markdown' }
+
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+
 Plug 'junegunn/vim-easy-align'
 "" Relax
 " :VimGameCodeBreak
@@ -171,7 +176,7 @@ Plug 'folke/trouble.nvim'
 " :WinShift :direction
 " :WinShift :swap
 Plug 'sindrets/winshift.nvim'
-Plug 'famiu/bufdelete.nvim'
+" Plug 'famiu/bufdelete.nvim'
 " Plug 'rebelot/kanagawa.nvim'
 " Plug 'ThePrimeagen/refactoring.nvim'
 " Plug 'nvim-treesitter/playground'
@@ -240,3 +245,10 @@ Plug 'vigoux/ltex-ls.nvim'
 Plug 'someone-stole-my-name/yaml-companion.nvim'
 Plug 'gennaro-tedesco/nvim-jqx'
 Plug  'smjonas/live-command.nvim'
+" Not working properly but interesting
+" Plug 'cbochs/portal.nvim'
+Plug 'folke/noice.nvim'
+Plug 'rcarriga/nvim-notify'
+
+Plug 'savq/melange'
+Plug 'ThePrimeagen/harpoon'

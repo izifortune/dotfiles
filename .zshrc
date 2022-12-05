@@ -160,3 +160,14 @@ function awsall {
   done
   trap "break" INT TERM
 }
+
+export NO_PROXY=.amazon.com,.amazonaws.com
+export SSL_CERT_FILE=~/zscaler.pem
+export ca_certificate=~/zscaler.pem
+export CURL_CA_BUNDLE=~/zscaler.pem
+export http_proxy='http://proxy03.corp.ryanair.com:3128'
+export https_proxy='http://proxy03.corp.ryanair.com:3128'
+export HTTP_PROXY='http://proxy03.corp.ryanair.com:3128'
+export HTTPS_PROXY='http://proxy03.corp.ryanair.com:3128'
+
+source ~/.jira

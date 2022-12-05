@@ -11,3 +11,4 @@ npm install -g proselint
 npm install -g write-good
 npm i -g bash-language-server
 curl -L -o ./install-misspell.sh https://git.io/misspell
+git clone https://github.com/johnpapa/vscode-angular-snippets.git ~/.local/share/nvim/plugged/vscode-angular-snippets

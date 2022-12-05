@@ -36,10 +36,10 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
 # Boarders
-yabai -m config window_border on
-yabai -m config window_border_width 5
-yabai -m config active_window_border_color 0xff$c4
-yabai -m config normal_window_border_color 0xff$p1
+# yabai -m config window_border on
+# yabai -m config window_border_width 5
+# yabai -m config active_window_border_color 0xff$c4
+# yabai -m config normal_window_border_color 0xff$p1
 
 # general space settings
 yabai -m config layout                       bsp
@@ -69,19 +69,19 @@ yabai -m rule --add title='Library' manage=off layer=above
 yabai -m rule --add title="Microsoft Teams Notification" window_border=off
 yabai -m rule --add title="Microsoft Teams Notification" manage=off
 yabai -m rule --add title="Microsoft Remote Desktop" manage=off
-yabai -m rule --add label=ignoreTeamsNotification app="Microsoft Teams" title="Microsoft Teams Notification" manage=off
-yabai -m signal --add \
-    event=window_focused \
-    app='^Microsoft Teams$' \
-    title='^Microsoft Teams Notification$' \
-    action='yabai -m window --focus mouse > /dev/null 2>&1'
+#yabai -m rule --add label=ignoreTeamsNotification app="Microsoft Teams" title="Microsoft Teams Notification" manage=off
+#yabai -m signal --add \
+#    event=window_focused \
+#    app='^Microsoft Teams$' \
+#    title='^Microsoft Teams Notification$' \
+#    action='yabai -m window --focus mouse > /dev/null 2>&1'
 
 
 echo "yabai configuration loaded.."
 
 # Focus closest window on close
-yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+# yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 
 # FOcus window on display change
-yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+#yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"

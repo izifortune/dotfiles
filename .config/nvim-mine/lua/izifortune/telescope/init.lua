@@ -191,6 +191,7 @@ require('telescope').load_extension('bookmarks')
 require('telescope').load_extension('howdoi')
 require('telescope').load_extension('dap')
 require("telescope").load_extension("yaml_schema")
+require("telescope").load_extension('harpoon')
 
 local M = {}
 

@@ -90,7 +90,7 @@ cmp.setup({
 	},
 	sources = {
 		{ name = "nvim_lsp" },
-		{ name = "spell" }, -- For vsnip user.
+		-- { name = "spell" },
 		{ name = "nvim_lua" },
 		-- {name = 'vsnip'},
 		{ name = "orgmode" }, -- For luasnip user.
@@ -104,9 +104,9 @@ cmp.setup({
 		-- other sources
 		-- { name = 'calc' }
 	},
-	formatting = {
-		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
-	},
+  formatting = {
+    format = lspkind.cmp_format(),
+  },
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

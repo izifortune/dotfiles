@@ -17,7 +17,7 @@ local servers = {
   "clangd",
   "taplo",
   "zk@v0.10.1",
-  "ltex",
+  -- "ltex",
   "angularls",
   "cucumber_language_server"
 }

@@ -27,7 +27,7 @@ dap.adapters.node2 = {
 dap.adapters.chrome = {
     type = "executable",
     command = "node",
-    args = {os.getenv("HOME") .. "/dev/vscode-chrome-debug/out/src/chromeDebug.js"} -- TODO adjust
+    args = {os.getenv("HOME") .. "/code/vscode-chrome-debug/out/src/chromeDebug.js"} -- TODO adjust
 }
 
 -- Add lua
@@ -105,19 +105,26 @@ for _, language in ipairs({ "typescript", "javascript" }) do
 		type = "node2",
 		request = "attach",
 		processId = require("dap.utils").pick_process,
-	},
-  -- {
-  --   type = "chrome",
-  --   name = "Chrome",
-  --   request = "attach",
-  --   program = "${file}",
-  --   cwd = vim.fn.getcwd(),
-  --   sourceMaps = true,
-  --   protocol = "inspector",
-  --   port = 9222,
-  --   webRoot = "${workspaceFolder}"
-  -- }
+  },
+  {
+    type = "chrome",
+    name = "Chrome VSCODE",
+    request = "attach",
+    program = "${file}",
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = "inspector",
+    port = 9222,
+    webRoot = "${workspaceRoot}/apps/scotch",
+    -- sourceMapPathOverrides = {
+    --   'webpack:/*' = "${webRoot}/projects/apps/editor/*",
+    --   "webpack:///./src/*" = "${webRoot}/projects/apps/editor/src/*",
+    --   "/*" = "*",
+    --   "/./~/*" = "${webRoot}/node_modules/*"
+    -- },
+    -- outFiles= "${workspaceFolder}/dist/**/*.js"
   }
+}
 end
 
 -- dap.configurations.javascript = {
@@ -241,11 +248,6 @@ end
 --   args = {os.getenv('HOME') .. '/code/vscode-node-debug2/out/src/nodeDebug.js'},
 -- }
 --
-dap.adapters.chrome = {
-	type = "executable",
-	command = "node",
-	args = { os.getenv("HOME") .. "/code/vscode-chrome-debug/out/src/chromeDebug.js" },
-}
 
 dap.configurations.lua = {
 	{

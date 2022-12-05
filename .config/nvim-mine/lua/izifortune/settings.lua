@@ -109,3 +109,9 @@ augroup filetypedetect
 au! BufReadPre,BufReadPost,BufRead,BufNewFile *.feature setfiletype cucumber
 augroup END
 ]]
+
+vim.cmd[[
+augroup filetypedetect
+au! BufReadPre,BufReadPost,BufRead,BufNewFile *.md set syntax=markdown
+augroup END
+]]

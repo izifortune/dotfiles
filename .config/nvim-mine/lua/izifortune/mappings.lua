@@ -50,18 +50,12 @@ vim.keymap.set('n', '<C-k>', '<C-W>k', {silent = true})
 vim.keymap.set('n', '<C-h>', '<C-W>h', {silent = true})
 vim.keymap.set('n', '<C-l>', '<C-W>l', {silent = true})
 
--- Buffers delete
-vim.keymap.set('n', '<leader>bd', ':Bdelete<cr>', {silent = true})
--- Delete all buffers except current
--- vim.keymap.set('n', '<leader>ba', ':%bd\|e#<cr>', {silent = true})
-
 -- Tab buffer moving
 vim.keymap.set('n', '<Tab>', ':BufferNext<cr>', {silent = true})
 vim.keymap.set('n', '<S-Tab>', ':BufferPrevious<cr>', {silent = true})
 
 vim.keymap.set('n', '<leader>kk', ':cd ~/code/knowledge<cr>', {silent = true})
--- vim.keymap.set('n', 'gp', ':%!prettier --stdin-filepath %<cr>', { silent = true})
---
+
 vim.keymap.set('n', 'gx', '<Plug>(openbrowser-smart-seach)')
 vim.keymap.set('n', '-', '-', opts)
 

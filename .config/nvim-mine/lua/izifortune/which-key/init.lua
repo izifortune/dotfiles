@@ -82,7 +82,8 @@ wk.register({
 wk.register({
   ['<leader>b'] = {
     name = '+buffers',
-    o = { "<cmd>:%bd|e#<cr>", 'Close all except current'}
+    o = { "<cmd>:%bd|e#<cr>", 'Close all except current'},
+    d =  { "<cmd>:BufferClose<cr>", "Close current buffer" }
   }
 })
 
@@ -96,6 +97,14 @@ wk.register({
 	},
 })
 
+wk.register({
+	["<leader>h"] = {
+		name = "+edit",
+		a = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add mark" },
+		t = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Toggle menu" },
+	},
+})
+
 -- ZK
 wk.register({
 	["<leader>n"] = {
@@ -105,6 +114,11 @@ wk.register({
 		-- o = { "<cmd>lua R('izifortune.telescope').edit_org()<cr>", "Edit Org" },
 		-- z = { "<cmd>lua R('izifortune.telescope').edit_zsh()<cr>", "Edit Zsh" },
 	},
+})
+
+wk.register({
+	["<leader>jb"] = { "<cmd>lua require('portal').jump_backward()<cr>, {}", "Jump backward" },
+	["<leader>jf"] = { "<cmd>lua require('portal').jump_forward()<cr>, {}", "Jump forward" }
 })
 
 wk.register({

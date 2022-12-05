@@ -17,5 +17,15 @@ url = url.trim();
 project = project.trim();
 repo = repo.trim();
 
+// Open PR in browser
 const command = `open "https://${url}/projects/${project}/repos/${repo}/pull-requests?create&targetBranch=refs/heads/master&sourceBranch=refs/heads/${branch}"`;
 execSync(command);
+
+// Change jira ticket status
+const message = execSync('git log -1 --pretty=%B').toString();
+try {
+  const ticket = message.match(/#(.*)/)[1];
+  execSync(`jira issue move ${ticket} "In Progress"`)
+} catch (e) {
+  console.log('no ticket found');
+}

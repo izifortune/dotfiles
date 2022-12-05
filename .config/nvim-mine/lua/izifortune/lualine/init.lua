@@ -2,6 +2,7 @@
 -- Author: shadmansaleh
 -- Credit: glepnir
 local lualine = require('lualine')
+local navic = require("nvim-navic")
 
 -- Color table for highlights
 -- stylua: ignore
@@ -134,6 +135,7 @@ ins_left {
 
 ins_left { 'location' }
 
+
 ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 ins_left {
@@ -146,6 +148,8 @@ ins_left {
     color_info = { fg = colors.cyan },
   },
 }
+
+ins_left { navic.get_location, cond = navic.is_available }
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
@@ -175,6 +179,7 @@ ins_left {
   icon = ' LSP:',
   color = { fg = '#ffffff', gui = 'bold' },
 }
+
 
 -- Add components to right sections
 ins_right {

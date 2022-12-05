@@ -28,7 +28,7 @@ require("nvim-tree").setup({
 	},
 })
 require("Comment").setup()
-require("lsp_signature").setup({ toggle_key = "<C-x>" })
+-- require("lsp_signature").setup({ toggle_key = "<C-x>" })
 require("izifortune.null-ls")
 -- require("focus").setup()
 -- require('wlsample.evil_line')
@@ -61,6 +61,7 @@ require("izifortune.nvim-ufo")
 require("izifortune.lualine")
 require("izifortune.ryanair_functions")
 require("luasnip.loaders.from_snipmate").lazy_load()
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = {"~/.local/share/nvim/plugged/vscode-angular-snippets"}})
 require("luasnip.loaders.from_vscode").lazy_load()
 -- require("izifortune.easypick")
 require("live-command").setup {
@@ -77,3 +78,4 @@ require("live-command").setup {
     },
   },
 }
+require("izifortune.noice")

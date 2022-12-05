@@ -1,1 +1,1 @@
-/Users/fortunatof/.local/share/nvim/plugged/fzf/shell/key-bindings.fish
+/usr/local/opt/fzf/shell/key-bindings.fish
