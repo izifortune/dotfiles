@@ -247,6 +247,7 @@ local config = {
       { "dhruvasagar/vim-table-mode" },
       -- { "kevinhwang91/nvim-bqf" },
       { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end },
+      { "mechatroner/rainbow_csv" },
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`

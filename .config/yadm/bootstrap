@@ -4,13 +4,6 @@
 # be run from within $HOME (assuming this is the root of your dotfiles)
 cd "$HOME"
 
-echo "Init antigen"
-git clone https://github.com/zsh-users/antigen.git
-
-echo "Install Plug"
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 echo "Setup nvim for git"
 git config --global core.editor "nvim"
 
@@ -28,18 +21,8 @@ brew bundle
 sh ~/brew.sh
 sh ~/npm.sh
 
-if command -v nvim >/dev/null 2>&1; then
-  echo "Bootstraping NeoVim"
-  nvim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
-fi
-
-if "test ! -d ~/.tmux/plugins/tpm"; then
-  echo "Installing tpm"
-  "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
-fi
-
 # intall simple menubar
-git clone https://github.com/izifortune/simple-bar.git $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
+# git clone https://github.com/izifortune/simple-bar.git $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
 # wal colors alacritty
 git clone https://github.com/egeesin/alacritty-color-export $HOME/code/alacritty-color-export
 chmod +x $HOME/code/alacritty-color-export/script.sh
