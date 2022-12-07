@@ -10,7 +10,7 @@ export ZSH="/Users/fortunatof/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="agnoster"
 
-plugins=(git fzf brew httpie vi-mode z zsh-syntax-highlighting)
+plugins=(git brew httpie vi-mode fzf z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,6 +91,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+sh .config/base16-shell/scripts/base16-gruvbox-dark-medium.sh
+
 # zscaler
 export NODE_EXTRA_CA_CERTS=~/zscaler.pem
 export AWS_CA_BUNDLE=~/zscaler.pem
@@ -170,4 +172,4 @@ export https_proxy='http://proxy03.corp.ryanair.com:3128'
 export HTTP_PROXY='http://proxy03.corp.ryanair.com:3128'
 export HTTPS_PROXY='http://proxy03.corp.ryanair.com:3128'
 
-source ~/.jira
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -4,7 +4,7 @@
 
 -- require 'modules'
 hs.loadSpoon("MicMute")
-require("teams")
+-- require("teams")
 -- require 'wm'
 
 --
@@ -29,11 +29,11 @@ hs.hotkey.bind(hyper, "h", hs.hints.windowHints)
 function yabai(args)
 	-- Runs in background very fast
 	hs.task
-		.new("/usr/local/bin/yabai", nil, function(ud, ...)
-			print("stream", hs.inspect(table.pack(...)))
-			return true
-		end, args)
-		:start()
+			.new("/opt/homebrew/bin/yabai", nil, function(ud, ...)
+				print("stream", hs.inspect(table.pack(...)))
+				return true
+			end, args)
+			:start()
 end
 
 -- Cursor Keys
