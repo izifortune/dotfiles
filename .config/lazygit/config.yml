@@ -1,0 +1,19 @@
+startuppopupversion: 1
+gui:
+  theme:
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - reverse
+keybinding:
+  branches:
+    createPullRequest: "o"
+customCommands:
+  - key: "O"
+    command: "/Users/fortunatof/scripts/create-pr.js"
+    context: "localBranches"
+    description: "pull request in stash"
+git:
+  paging:
+    colorArg: never
+    pager: delta --dark --paging=never
