@@ -4,7 +4,7 @@
 
 -- require 'modules'
 hs.loadSpoon("MicMute")
--- require("teams")
+require("teams")
 -- require 'wm'
 
 --

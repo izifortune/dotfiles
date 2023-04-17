@@ -159,6 +159,11 @@ autocmd DocLoad ^https://fr-sso.awsapps.com/start/user-consent/authorize.html.* 
 setpref browser.autofocus true
 set allowautofocus true
 
+command sendToBoard js | exclaim_quiet echo '"TODO: [[' + document.getElementById("key-val").text + ']] - ' + document.title + '"  > ~/code/org/test.org"'
+bind ;o composite js "\"" + "org-protocol://store-link?url=" + encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title) + "\"" | exclaim_quiet  $HOME/scripts/link-to-org.sh
+command sendTo composite js "\"" + "org-protocol://store-link?url=" + encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title) + "\"" | exclaim_quiet  $HOME/scripts/link-to-org.sh
+
+
 " Isolate Facebook in its own container
 " set auconcreatecontainer true
 " autocontain facebook\.com facebook

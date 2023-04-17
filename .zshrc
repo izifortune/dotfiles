@@ -172,4 +172,15 @@ export https_proxy='http://proxy03.corp.ryanair.com:3128'
 export HTTP_PROXY='http://proxy03.corp.ryanair.com:3128'
 export HTTPS_PROXY='http://proxy03.corp.ryanair.com:3128'
 
+export AWS_PAGER=""
+
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+source ~/.zshrc_local
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/fortunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/fortunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/slss.zsh
