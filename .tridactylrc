@@ -88,7 +88,7 @@ bind --mode=ex          <C-g>   composite text.beginning_of_line ; text.forward_
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "st vim" : "auto"; tri.config.set("editorcmd", editorcmd)})
-set editorcmd /usr/local/bin/neovide %f
+set editorcmd neovide %f
 
 " set profile dir on Windows
 jsb browser.runtime.getPlatformInfo().then(os=>{const profiledir = os.os=="win" ? "C:\\Users\\olie\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\gwm76nmk.default" : "auto"; tri.config.set("profiledir", profiledir)})

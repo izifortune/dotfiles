@@ -29,11 +29,11 @@ hs.hotkey.bind(hyper, "h", hs.hints.windowHints)
 function yabai(args)
 	-- Runs in background very fast
 	hs.task
-			.new("/opt/homebrew/bin/yabai", nil, function(ud, ...)
-				print("stream", hs.inspect(table.pack(...)))
-				return true
-			end, args)
-			:start()
+		.new("/opt/homebrew/bin/yabai", nil, function(ud, ...)
+			print("stream", hs.inspect(table.pack(...)))
+			return true
+		end, args)
+		:start()
 end
 
 -- Cursor Keys
@@ -114,8 +114,12 @@ hs.hotkey.bind(cmdShift, "l", function()
 	yabai({ "-m", "window", "--warp", "east" })
 end)
 --
+-- hs.hotkey.bind(ctrlShift, "r", function()
+-- 	yabai({ "-m", "space", "--rotate", "90" })
+-- end)
+
 hs.hotkey.bind(ctrlShift, "r", function()
-	yabai({ "-m", "space", "--rotate", "90" })
+	yabai({ "-m", "window", "--toggle", "split" })
 end)
 
 hs.hotkey.bind({ "ctrl", "shift" }, "t", function()
