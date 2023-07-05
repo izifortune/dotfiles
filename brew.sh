@@ -12,6 +12,11 @@ mkdir -p $HOME/.hammerspoon/hs
 # Added TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+#fnm
+curl -fsSL https://fnm.vercel.app/install | bash
+fnm use 18
+fnm default 18
+
 # Fonts
 cp /usr/local/etc/fonts/fonts.conf.bak /usr/local/etc/fonts/fonts.conf
 git clone https://github.com/powerline/fonts.git
@@ -21,31 +26,29 @@ git clone https://github.com/powerline/fonts.git
 # echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /bin/zsh
 
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+# curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+#
+# fisher add z
+# fisher add edc/bass
+# fisher add cprintf
+# fisher add patrickf3139/fzf.fish
+# fisher add grc
+# fisher add jorgebucaran/nvm.fish
 
-fisher add z
-fisher add edc/bass
-fisher add cprintf
-fisher add patrickf3139/fzf.fish
-fisher add grc
-fisher add jorgebucaran/nvm.fish
-
-curl -L https://get.oh-my.fish | fish
-set -g theme_powerline_fonts no
-set -g theme_nerd_fonts yes
-omf install bobthefish
-omf install pyenv
+# curl -L https://get.oh-my.fish | fish
+# set -g theme_powerline_fonts no
+# set -g theme_nerd_fonts yes
+# omf install bobthefish
+# omf install pyenv
 
 git config --global push.default current
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-brew link imagemagick 
+brew link imagemagick
 # pywal
 git clone https://github.com/robwaz/pywal ~/code/pywal
 cd pywal
 sudo pip3 install -e ./
 brew cleanup
-
-
