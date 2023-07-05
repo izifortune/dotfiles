@@ -5,6 +5,10 @@ return {
     lazy = false,
     -- event = "InsertEnter",
     -- cmd = "Copilot",
+    keys = {
+      ["<C-q>"] = { "<Plug>(copilot-next)", desc = "Copilot next", silent = true },
+      ["<C-a>"] = { "<Plug>(copilot-previous)", desc = "Copilot previous", silent = true },
+    },
     opts = {
       suggestion = {
         enabled = true,

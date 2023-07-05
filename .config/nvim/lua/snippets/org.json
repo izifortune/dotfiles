@@ -1,0 +1,6 @@
+{
+  "deadline": {
+    "prefix": "DEADLINE",
+    "body": "DEADLINE: <${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}>"
+  }
+}
