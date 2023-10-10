@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/fortunatof/.oh-my-zsh"
+export ZSH="/Users/forunatof/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -11,7 +11,7 @@ export ZSH="/Users/fortunatof/.oh-my-zsh"
 ZSH_THEME="agnoster"
 
 
-plugins=(git brew httpie vi-mode fzf z)
+plugins=(git brew httpie vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,11 +59,15 @@ function toggle_proxy {
 }
 
 function lambdaVersion {
-  aws lambda list-versions-by-function --function-name $1 --region us-east-1 --query 'Versions[-1].Version' --output text
+  aws lambda list-versions-by-function --function-name $1 --region us-east-1 --query 'Versions[-1]' --output json | jq
 }
 
 function stackStatus {
   aws cloudformation describe-stacks --stack-name $1 --query 'Stacks[0].StackStatus' --output text
+}
+
+function stackStatusDetail {
+  aws cloudformation describe-stacks --stack-name $1 --query 'Stacks' --output text
 }
 
 function stackOutputs {
@@ -82,12 +86,6 @@ prompt_dir() {
 
 prompt_context() {}
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/fortunatof/code/homepage.ryanair.com/node_modules/tabtab/.completions/sls.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -97,6 +95,8 @@ alias lg='lazygit'
 
 autoload -U compinit; compinit
 
+eval "$(zoxide init zsh)"
+
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -104,7 +104,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-sh .config/base16-shell/scripts/base16-gruvbox-dark-medium.sh
+sh "$HOME/.config/base16-shell/scripts/base16-gruvbox-dark-medium.sh"
 
 # zscaler
 export NODE_EXTRA_CA_CERTS=~/zscaler.pem
@@ -125,12 +125,13 @@ alias find='fd'
 alias du='dust'
 alias df='duf'
 
-export LG_CONFIG_FILE='/Users/fortunatof/.config/lazygit/config.yml'
+export LG_CONFIG_FILE='/Users/forunatof/.config/lazygit/config.yml'
 
 function yarnlogin() {
   aws codeartifact login --tool npm --repository ryanair_npm_registry --domain ryanair-com --domain-owner 346350922581 --namespace @ryanair;
   export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain ryanair-com --domain-owner 346350922581 --query authorizationToken --output text`
   yarn config set --home npmScopes.ryanair.npmAuthToken $CODEARTIFACT_AUTH_TOKEN
+  npm config set //ryanair-com-346350922581.d.codeartifact.eu-west-1.amazonaws.com/npm/ryanair_npm_registry/:_authToken=$CODEARTIFACT_AUTH_TOKEN
 }
 
 function npmReg() {
@@ -151,9 +152,9 @@ export PATH=$PATH:~/code/ltex-ls-15.2.0/bin/
 export ZK_NOTEBOOK_DIR=~/code/knowledge/content/zettelkasten
 
 # fnm
-export PATH=/Users/fortunatof/.fnm:$PATH
+export PATH=/Users/forunatof/.fnm:$PATH
 eval "`fnm env`"
-alias jest-inspect='yarn node --inspect $(yarn bin jest) --runInBand --silent --watch'
+alias jest-inspect='node --inspect $(yarn bin jest) --runInBand --silent --watch'
 # eval "$(fnm env --use-on-cd)"
 alias cdk='cdk --profile $AWS_PROFILE'
 
@@ -176,7 +177,7 @@ function awsall {
   trap "break" INT TERM
 }
 
-export NO_PROXY=.amazon.com,.amazonaws.com,.ryanair.com
+export NO_PROXY=.amazon.com,.amazonaws.com,jira.ryanair.com,stash.ryanair.com
 export SSL_CERT_FILE=~/zscaler.pem
 export ca_certificate=~/zscaler.pem
 export CURL_CA_BUNDLE=~/zscaler.pem
@@ -193,11 +194,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 source ~/.zshrc_local
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/fortunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/fortunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/slss.zsh
-
 
 alias start="rcli start"
 alias commit="rcli commit"
@@ -378,3 +374,14 @@ _turbo()
 if [ "$funcstack[1]" = "_turbo" ]; then
     _turbo
 fi
+export PATH="/usr/local/sbin:$PATH"
+
+eval "$(fnm env --use-on-cd)"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/forunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/forunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/forunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/forunatof/code/polyfill.ryanair.com/node_modules/tabtab/.completions/sls.zsh
+alias imageCompress="magick -strip -interlace Plane -gaussian-blur 0.05 -quality 85%"

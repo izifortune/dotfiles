@@ -24,11 +24,11 @@ yabai -m config status_bar_foreground_color  0xff$CFORE
 yabai -m config mouse_follows_focus          on
 yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_topmost               on
-yabai -m config window_opacity               on
+yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
-# yabai -m config window_shadow                off
+yabai -m config window_shadow                off
 yabai -m config active_window_opacity        1.0
-yabai -m config normal_window_opacity        0.85
+yabai -m config normal_window_opacity        0.80
 yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 on
 yabai -m config mouse_modifier               fn
@@ -70,10 +70,9 @@ yabai -m rule --add app='Firefox Developer Edition' space=2
 yabai -m rule --add app='Microsoft Teams' space=3
 yabai -m rule --add app='Microsoft Outlook' space=4
 yabai -m rule --add app='Microsoft Word' space=5
-yabai -m rule --add app='Google Chrome' space=3
+yabai -m rule --add app='Google Chrome' space=4
 
-yabai -m rule --add title="Microsoft Teams Notification" window_border=off
-yabai -m rule --add title="Microsoft Teams Notification" manage=off
+yabai -m rule --add title="Microsoft Teams Notification" window_border=off manage=off display=2
 yabai -m rule --add title="Microsoft Remote Desktop" manage=off
 #yabai -m rule --add label=ignoreTeamsNotification app="Microsoft Teams" title="Microsoft Teams Notification" manage=off
 #yabai -m signal --add \
@@ -91,4 +90,4 @@ echo "yabai configuration loaded.."
 
 # FOcus window on display change
 #yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
-yabai -m signal --add event=application_front_switched action="~/scripts/yabai-border"
+# yabai -m signal --add event=application_front_switched action="~/scripts/yabai-border"

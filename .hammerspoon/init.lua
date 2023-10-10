@@ -4,6 +4,8 @@
 
 -- require 'modules'
 hs.loadSpoon("MicMute")
+-- hs.loadSpoon("AppBindings")
+require("appbindings")
 require("teams")
 -- require 'wm'
 
@@ -15,21 +17,35 @@ local ctrlAlt = "ctrl alt"
 local cmdShift = { "cmd", "shift" }
 local cmd = { "cmd" }
 
+function toggleMute()
+	local zoom = hs.application.find("us.zoom.xos")
+	local teams = hs.application.find("Microsoft Teams")
+	local teamsNotification = hs.application.find("Microsoft Teams Notification")
+	if teams ~= null or teamsNotification ~= null then
+		hs.eventtap.keyStroke({ "cmd", "shift" }, "m", 0, teams)
+	end
+	if not (zoom == nil) then
+		hs.eventtap.keyStroke({ "cmd", "shift" }, "a", 0, zoom)
+	end
+end
+
 -- Create a new hotkey
 -- spoon.MicMute:bindHotkeys({
 --   toggle = {hyper, 'j'},
 -- })
 hs.hotkey.bind(hyper, "j", function()
-	spoon.MicMute:toggleMicMute()
+	-- spoon.MicMute:toggleMicMute()
+	toggleMute()
 end)
 
 -- window hints
 hs.hotkey.bind(hyper, "h", hs.hints.windowHints)
 
 function yabai(args)
-	-- Runs in background very fast
-	hs.task
-		.new("/opt/homebrew/bin/yabai", nil, function(ud, ...)
+	hs
+		.task
+		-- Runs in background very fast
+		.new("/usr/local/bin/yabai", nil, function(ud, ...)
 			print("stream", hs.inspect(table.pack(...)))
 			return true
 		end, args)
@@ -90,6 +106,14 @@ end)
 hs.hotkey.bind(cmdShift, "2", function()
 	yabai({ "-m", "display", "--focus", "2" })
 end)
+
+-- Move focus window to display
+hs.hotkey.bind(ctrlShift, "1", function()
+	yabai({ "-m", "window", "--display", "1" })
+end)
+hs.hotkey.bind(ctrlShift, "2", function()
+	yabai({ "-m", "window", "--display", "2" })
+end)
 --
 -- --- fullscreen
 hs.hotkey.bind(ctrlShift, "f", function()
@@ -126,7 +150,19 @@ hs.hotkey.bind({ "ctrl", "shift" }, "t", function()
 	hs.application.launchOrFocus("Alacritty")
 end)
 hs.hotkey.bind({ "ctrl", "shift" }, "a", function()
-	hs.application.launchOrFocus("Alfred 5")
+	-- print(hs.inspect.inspect(hs.window.allWindows()[5]))
+	for i, win in ipairs(hs.window.allWindows()) do
+		print(hs.inspect(win))
+		print(win:application():title())
+		print(hs.inspect(win:subrole()))
+		print(i, win:isMaximizable())
+		if win:application():name() == "Microsoft Teams" and not win:isMaximizable() then
+			win:minimize()
+			break
+		end
+	end
+	-- print(hs.inspect.inspect(hs.window.allWindows()[6]))
+	-- hs.application.launchOrFocus("Alfred 5")
 end)
 hs.hotkey.bind({ "ctrl", "shift" }, "y", function()
 	hs.task.new("/usr/local/bin/brew", nil, function() end, { "services", "restart", "yabai" }):start()
@@ -230,3 +266,16 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 -- vim:disableForApp("iTerm2")
 -- vim:disableForApp("Alacritty")
 -- vim:disableForApp('Terminal')
+
+-- local wf = hs.window.filter
+-- -- alter the default windowfilter
+-- wf_notif = wf.new() -- notification center alerts
+-- wf_notif:subscribe(wf.windowCreated, function()
+-- 	hs
+-- 		.task
+-- 		-- Runs in background very fast
+-- 		.new("/usr/local/bin/yabai", nil, function()
+-- 			return true
+-- 		end, { "--start-service" })
+-- 		:start()
+-- end)

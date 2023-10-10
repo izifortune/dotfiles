@@ -31,17 +31,6 @@ return {
   -- change some telescope options and a keymap to browse plugin files
 
   -- add telescope-fzf-native
-  {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
-  },
-
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
     "neovim/nvim-lspconfig",
@@ -93,6 +82,7 @@ return {
         "query",
         "regex",
         "tsx",
+        "http",
         "typescript",
         "vim",
         "yaml",
