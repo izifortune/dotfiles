@@ -3,7 +3,7 @@
 --- move to config
 
 -- require 'modules'
-hs.loadSpoon("MicMute")
+-- hs.loadSpoon("MicMute")
 -- hs.loadSpoon("AppBindings")
 require("appbindings")
 require("teams")
@@ -17,15 +17,28 @@ local ctrlAlt = "ctrl alt"
 local cmdShift = { "cmd", "shift" }
 local cmd = { "cmd" }
 
+-- function toggleMute()
+-- 	local zoom = hs.application.find("us.zoom.xos")
+-- 	local teams = hs.application.find("Microsoft Teams")
+-- 	local teamsNotification = hs.application.find("Microsoft Teams Notification")
+-- 	if teams ~= null or teamsNotification ~= null then
+-- 		hs.eventtap.keyStroke({ "cmd", "shift" }, "m", 0, teams)
+-- 	end
+-- 	if not (zoom == nil) then
+-- 		hs.eventtap.keyStroke({ "cmd", "shift" }, "a", 0, zoom)
+-- 	end
+-- end
+
 function toggleMute()
-	local zoom = hs.application.find("us.zoom.xos")
-	local teams = hs.application.find("Microsoft Teams")
-	local teamsNotification = hs.application.find("Microsoft Teams Notification")
-	if teams ~= null or teamsNotification ~= null then
-		hs.eventtap.keyStroke({ "cmd", "shift" }, "m", 0, teams)
-	end
-	if not (zoom == nil) then
-		hs.eventtap.keyStroke({ "cmd", "shift" }, "a", 0, zoom)
+	local mic = hs.audiodevice.defaultInputDevice()
+	local state = not mic:muted()
+	hs.fnutils.each(hs.audiodevice.allInputDevices(), function(device)
+		device:setInputMuted(state)
+	end)
+	if mic:muted() then
+		-- hs.alert("Muted")
+	else
+		-- hs.alert("Unmuted")
 	end
 end
 
