@@ -21,3 +21,11 @@ vim.keymap.set("n", "<C-h>", tmux.move_left)
 vim.keymap.set("n", "<C-j>", tmux.move_bottom)
 vim.keymap.set("n", "<C-k>", tmux.move_top)
 vim.keymap.set("n", "<C-l>", tmux.move_right)
+
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)
+-- save file
+vim.keymap.del({ "i", "x", "n", "s" }, "<C-s>")
+
+vim.keymap.set("n", "<C-s>", require("auto-session.session-lens").search_session, {
+  noremap = true,
+})

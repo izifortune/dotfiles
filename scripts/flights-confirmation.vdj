@@ -1,0 +1,13 @@
+#!vd -p
+{"longname": "open-file", "input": "data.csv", "keystrokes": "o"}
+{"sheet": "data", "col": "total", "row": "", "longname": "type-int", "input": "", "keystrokes": "#", "comment": "set type of current column to int"}
+{"sheet": "data", "col": "total", "row": "", "longname": "aggregate-col", "input": "sum", "keystrokes": "+", "comment": "Add aggregator to current column"}
+{"sheet": "data", "col": "message", "row": "", "longname": "freq-col", "input": "", "keystrokes": "Shift+F", "comment": "open Frequency Table grouped on current column, with aggregations of other columns"}
+{"sheet": "data_message_freq", "col": "count", "row": "", "longname": "hide-col", "input": "", "keystrokes": "-", "comment": "Hide current column"}
+{"sheet": "data_message_freq", "col": "total_sum", "row": "", "longname": "sort-asc", "input": "", "keystrokes": "[", "comment": "sort ascending by current column; replace any existing sort criteria"}
+{"sheet": "data_message_freq", "col": "total_sum", "row": "", "longname": "sort-asc", "input": "", "keystrokes": "[", "comment": "sort ascending by current column; replace any existing sort criteria"}
+{"sheet": "data_message_freq", "col": "total_sum", "row": "", "longname": "sort-desc", "input": "", "keystrokes": "]", "comment": "sort descending by current column; replace any existing sort criteria "}
+{"sheet": "data_message_freq", "col": "total_sum", "row": "", "longname": "addcol-new", "input": "funnel", "keystrokes": "za", "comment": "append an empty column"}
+{"sheet": "data_message_freq", "col": "funnel", "row": "", "longname": "hide-col", "input": "", "keystrokes": "-", "comment": "Hide current column"}
+{"sheet": "data_message_freq", "col": "total_sum", "row": "", "longname": "addcol-expr", "input": "math.floor(curcol/27671*100)", "keystrokes": "=", "comment": "create new column from Python expression, with column names as variables"}
+{"sheet": "data_message_freq", "col": "math.floor(curcol/27671*100)", "row": "", "longname": "rename-col", "input": "funnel", "keystrokes": "^", "comment": "rename current column"}

@@ -19,6 +19,7 @@ return {
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
+        { name = "orgmode" },
       })
 
       opts.sorting = {

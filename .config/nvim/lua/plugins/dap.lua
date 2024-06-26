@@ -3,6 +3,7 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = {
       "mxsdev/nvim-dap-vscode-js",
+      "nvim-neotest/nvim-nio",
       {
         "microsoft/vscode-js-debug",
         version = "1.x",
@@ -114,9 +115,9 @@ return {
           return path:sub(1, -5)
         end,
         args = {
-          "${file}",
           "--runInBand",
           "--coverage=false",
+          "${file}",
         },
         cwd = vim.fn.getcwd(),
         sourceMaps = true,

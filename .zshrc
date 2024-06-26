@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-zmodload zsh/zprof # top of your .zshrc file
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/forunatof/.oh-my-zsh"
@@ -15,6 +14,8 @@ ZSH_THEME="agnoster"
 plugins=(git brew vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
+source "$HOME/.cargo/env"
+
 
 # User configuration
 
@@ -159,7 +160,8 @@ export ZK_NOTEBOOK_DIR=~/code/knowledge/content/zettelkasten
 # fnm
 export PATH=/Users/forunatof/.fnm:$PATH
 # eval "`fnm env`"
-alias jest-inspect='node --inspect $(yarn bin jest) --runInBand --silent --watch'
+# alias jest-inspect='node --inspect $(yarn bin jest) --runInBand --silent --watchAll --watchIgnorePathPatterns=node_modules'
+alias jest-inspect='yarn run --inspect jest --debug --runInBand --silent --detectOpenHandles --forceExit --watchIgnorePathPatterns=node_modules'
 # eval "$(fnm env --use-on-cd)"
 alias cdk='cdk --profile $AWS_PROFILE'
 
@@ -191,6 +193,7 @@ export http_proxy='http://internalproxy.corp.ryanair.com:3128'
 export https_proxy='http://internalproxy.corp.ryanair.com:3128'
 export HTTP_PROXY='http://internalproxy.corp.ryanair.com:3128'
 export HTTPS_PROXY='http://internalproxy.corp.ryanair.com:3128'
+export REQUESTS_CA_BUNDLE=~/zscaler.pem
 
 export AWS_PAGER=""
 
@@ -210,4 +213,30 @@ eval "$(fnm env --use-on-cd)"
 
 alias imageCompress="magick -strip -interlace Plane -gaussian-blur 0.05 -quality 85%"
 
-zprof > /tmp/foo
+alias jme="jira issue list --jql 'project in (\"Email Template\",\"Trip Planner\") and assignee = 70121:55b4d03b-c17d-48e0-b6ec-b9003a5e6d50 and status not in (Closed, Rejected, Done, Live)'"
+alias jtechDebt="jira issue list -q\"project IS NOT EMPTY AND (labels in ('dev-tech') OR type='Technical Debt')\""
+alias jtechDebtOpen="jira issue list -q\"project IS NOT EMPTY AND (labels in ('dev-tech') OR type='Technical Debt') AND status ~ 'Rejected' AND status ~ 'Closed'\""
+alias jtechDebtNew="jira issue create -t\"Technical Debt\" -l\"dev-tech\""
+alias jreportLastWeek="jira issue list -r\$(jira me) --created -7d"
+alias jreportLastMonth="jira issue list -r\$(jira me) --created -30d"
+alias ftc="~/scripts/ftc"
+
+#!/usr/bin/env zsh
+
+#
+# You will need the `jq` and `fzf` commands installed in order for these
+# functions to work:
+#
+#   - https://stedolan.github.io/jq/
+#   - https://github.com/junegunn/fzf
+#
+# You will also need to define $JIRA_TEAM, $JIRA_USER, and $JIRA_TOKEN
+# environment variables. See the following for information on setting
+# machine-private environment variables:
+#
+#   - https://github.com/knpwrs/dotfiles#private-environment-variables
+#
+# See the following for information on creating a JIRA access token:
+#
+#  - https://confluence.atlassian.com/cloud/api-tokens-938839638.html ( https://archive.is/vjoEZ )
+#

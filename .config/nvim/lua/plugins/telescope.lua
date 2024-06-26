@@ -4,6 +4,7 @@ return {
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
+      "jvgrootveld/telescope-zoxide",
       {
         "Marskey/telescope-sg",
         build = "npm install --global @ast-grep/cli",
@@ -25,6 +26,8 @@ return {
         require("telescope").load_extension("advanced_git_search")
         require("telescope").load_extension("menufacture")
         require("telescope").load_extension("session-lens")
+        require("telescope").load_extension("rest")
+        require("telescope").load_extension("zoxide")
       end,
     },
     keys = {
@@ -95,10 +98,17 @@ return {
         "<leader>fh",
         function()
           require("telescope.builtin").find_files({
-            cwd = "~/code/knowledge/content/http-collections/",
+            cwd = "~/code/vault/http-collections/",
           })
         end,
         desc = "Find http collections",
+      },
+      {
+        "<leader>fz",
+        function()
+          require("telescope").extensions.zoxide.list()
+        end,
+        desc = "Find zoxide directories",
       },
     },
     -- change some options
@@ -154,7 +164,7 @@ return {
             ["<C-k>"] = function(arg)
               return require("telescope.actions").move_selection_previous(arg)
             end,
-            ["<C-a>"] = function(arg)
+            ["<C-z>"] = function(arg)
               return require("telescope.actions").select_all(arg)
             end,
             ["<C-d>"] = function(arg)

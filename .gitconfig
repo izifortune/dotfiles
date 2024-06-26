@@ -20,3 +20,5 @@
   conflictstyle = diff3
 [diff]
   colorMoved = default
+[http]
+	proxy = http://internalproxy.corp.ryanair.com:3128

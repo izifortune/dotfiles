@@ -1,0 +1,13 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.11"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.5",
+    "csv-stringify": "^6.4.6"
+  }
+}

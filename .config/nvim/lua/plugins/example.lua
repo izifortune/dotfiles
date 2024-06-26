@@ -76,6 +76,8 @@ return {
         "javascript",
         "json",
         "lua",
+        "http",
+        "graphql",
         "markdown",
         "markdown_inline",
         "python",

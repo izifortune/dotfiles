@@ -13,5 +13,10 @@ return {
       "<cmd>:ToggleTerm direction=float<cr>",
       desc = "Toggle float terminal",
     },
+    {
+      "<leader>fJ",
+      '<cmd>:TermExec cmd="jira issue create" direction=float<cr>',
+      desc = "Toggle jira create",
+    },
   },
 }

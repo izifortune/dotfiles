@@ -1,0 +1,2 @@
+#!vd -p
+{"sheet": "", "col": "", "row": "", "longname": "save-sheet", "input": "out.md", "keystrokes": "Ctrl+S", "comment": "save current sheet to filename in format determined by extension (default .tsv)"}
