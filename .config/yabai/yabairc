@@ -59,23 +59,32 @@ yabai -m space 6 --label media
 
 # App rules
 yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^MI 9$" manage=off
-yabai -m rule --add app=Dashlane manage=off
-yabai -m rule --add app=Übersicht manage=off
+# yabai -m rule --add app="^MI 9$" manage=off
+# yabai -m rule --add app=Dashlane manage=off
+# yabai -m rule --add app=Übersicht manage=off
 yabai -m rule --add app="^BIG-IP" manage=off
 yabai -m rule --add app="^(Opening)" manage=off layer=above
 yabai -m rule --add title='Library' manage=off layer=above
-yabai -m rule --add app='Alacritty' space=1
-yabai -m rule --add app='^Firefox Developer Edition' space=2
-yabai -m rule --add app='^Microsoft Teams' space=3
-yabai -m rule --add app='^Microsoft Outlook' space=4
-yabai -m rule --add app='^Microsoft Word' space=5
-yabai -m rule --add app='^Google Chrome' space=4
-yabai -m rule --add app='^Obsidian' space=5
+yabai -m rule --add app='Alacritty' space=code
+yabai -m rule --add app='Kitty' space=code
+yabai -m rule --add app='Firefox Developer Edition' space=web
+yabai -m rule --add app='Microsoft Teams' space=teams
+yabai -m rule --add app='Microsoft Outlook' space=mail
+yabai -m rule --add app='Microsoft Word' space=docs
+yabai -m rule --add app='Google Chrome' space=mail
+yabai -m rule --add app='Obsidian' space=docs
+
+yabai -m rule --apply app='Kitty' space=code
+yabai -m rule --apply app='Firefox Developer Edition' space=web
+yabai -m rule --apply app='Microsoft Teams' space=teams
+yabai -m rule --apply app='Microsoft Outlook' space=mail
+yabai -m rule --apply app='Microsoft Word' space=docs
+yabai -m rule --apply app='Google Chrome' space=mail
+yabai -m rule --apply app='Obsidian' space=docs
 
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 
-yabai -m rule --add title="Microsoft Teams Notification" window_border=off manage=off display=2
+# yabai -m rule --add title="Microsoft Teams Notification" window_border=off manage=off display=2
 yabai -m rule --add title="Microsoft Remote Desktop" manage=off
 #yabai -m rule --add label=ignoreTeamsNotification app="Microsoft Teams" title="Microsoft Teams Notification" manage=off
 #yabai -m signal --add \

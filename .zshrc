@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/fortunatof/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -131,7 +131,7 @@ alias find='fd'
 alias du='dust'
 alias df='duf'
 
-export LG_CONFIG_FILE='/Users/forunatof/.config/lazygit/config.yml'
+export XDG_CONFIG_HOME="$HOME/.config"
 
 function yarnlogin() {
   aws codeartifact login --tool npm --repository ryanair_npm_registry --domain ryanair-com --domain-owner 346350922581 --namespace @ryanair;
@@ -242,10 +242,9 @@ alias ftc="~/scripts/ftc"
 #
 
 # fnm
-FNM_PATH="/Users/fortunatof/Library/Application Support/fnm"
+FNM_PATH="$HOME/Library/Application Support/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/Users/fortunatof/Library/Application Support/fnm:$PATH"
+  export PATH="$HOME/Library/Application Support/fnm:$PATH"
   eval "`fnm env`"
 fi
 
-export XDG_CONFIG_HOME="$HOME/.config"
