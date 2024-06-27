@@ -240,3 +240,12 @@ alias ftc="~/scripts/ftc"
 #
 #  - https://confluence.atlassian.com/cloud/api-tokens-938839638.html ( https://archive.is/vjoEZ )
 #
+
+# fnm
+FNM_PATH="/Users/fortunatof/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/fortunatof/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+export XDG_CONFIG_HOME="$HOME/.config"
