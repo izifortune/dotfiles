@@ -58,7 +58,7 @@ function yabai(args)
 	hs
 		.task
 		-- Runs in background very fast
-		.new("/usr/local/bin/yabai", nil, function(ud, ...)
+		.new("/opt/homebrew/bin/yabai", nil, function(ud, ...)
 			print("stream", hs.inspect(table.pack(...)))
 			return true
 		end, args)

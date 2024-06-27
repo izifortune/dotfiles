@@ -10,7 +10,7 @@ keybinding:
     createPullRequest: "o"
 customCommands:
   - key: "O"
-    command: "/Users/forunatof/scripts/create-pr.js"
+    command: "/Users/fortunatof/scripts/create-pr.js"
     context: "localBranches"
     description: "pull request in stash"
 git:
