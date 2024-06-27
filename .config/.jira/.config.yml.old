@@ -1,0 +1,1142 @@
+board:
+  id: 1061
+  name: 3.0 Board
+  type: kanban
+epic:
+  name: customfield_10007
+  link: customfield_10006
+installation: Local
+issue:
+  fields:
+    custom:
+      - name: Asset
+        key: customfield_13100
+        schema:
+          datatype: array
+          items: string
+      - name: Customer Service Desc.
+        key: customfield_15400
+        schema:
+          datatype: string
+      - name: URL/Domain
+        key: customfield_13102
+        schema:
+          datatype: string
+      - name: PORT
+        key: customfield_13101
+        schema:
+          datatype: array
+          items: string
+      - name: Vulnerability Inherent Risk
+        key: customfield_13103
+        schema:
+          datatype: array
+          items: option
+      - name: Deadline
+        key: customfield_11711
+        schema:
+          datatype: date
+      - name: Reason for Pending?
+        key: customfield_12800
+        schema:
+          datatype: string
+      - name: Request Type
+        key: customfield_12007
+        schema:
+          datatype: array
+          items: option
+      - name: Source System
+        key: customfield_11710
+        schema:
+          datatype: string
+      - name: Date Range
+        key: customfield_11713
+        schema:
+          datatype: string
+      - name: CAB Required?
+        key: customfield_11712
+        schema:
+          datatype: option
+      - name: Pending exit date
+        key: customfield_12801
+        schema:
+          datatype: date
+      - name: Project?
+        key: customfield_12009
+        schema:
+          datatype: option
+      - name: Filters
+        key: customfield_11715
+        schema:
+          datatype: string
+      - name: Report Columns
+        key: customfield_11714
+        schema:
+          datatype: string
+      - name: Scrum Team
+        key: customfield_11716
+        schema:
+          datatype: option
+      - name: Title
+        key: customfield_12000
+        schema:
+          datatype: option
+      - name: Surname
+        key: customfield_12002
+        schema:
+          datatype: string
+      - name: First Name
+        key: customfield_12001
+        schema:
+          datatype: string
+      - name: Address
+        key: customfield_12004
+        schema:
+          datatype: string
+      - name: Information Security Remediation issue
+        key: customfield_14304
+        schema:
+          datatype: issue
+      - name: Phone Number
+        key: customfield_12003
+        schema:
+          datatype: string
+      - name: Document Number
+        key: customfield_12006
+        schema:
+          datatype: string
+      - name: Security factor
+        key: customfield_14302
+        schema:
+          datatype: option
+      - name: PNR
+        key: customfield_12005
+        schema:
+          datatype: string
+      - name: Vulnerability type
+        key: customfield_14303
+        schema:
+          datatype: option
+      - name: Report Notes
+        key: customfield_11702
+        schema:
+          datatype: string
+      - name: Business Case
+        key: customfield_11704
+        schema:
+          datatype: string
+      - name: New or Maintenance
+        key: customfield_11703
+        schema:
+          datatype: option
+      - name: Purpose
+        key: customfield_11706
+        schema:
+          datatype: string
+      - name: Report Owner
+        key: customfield_11705
+        schema:
+          datatype: user
+      - name: Frequency
+        key: customfield_11708
+        schema:
+          datatype: array
+          items: option
+      - name: Does a similar report exist...?
+        key: customfield_11707
+        schema:
+          datatype: option
+      - name: Audience
+        key: customfield_11709
+        schema:
+          datatype: option
+      - name: Risk Acceptance Approvers
+        key: customfield_15500
+        schema:
+          datatype: array
+          items: user
+      - name: VULTRK Env. List
+        key: customfield_13201
+        schema:
+          datatype: array
+          items: option
+      - name: Project participients
+        key: customfield_14407
+        schema:
+          datatype: array
+          items: user
+      - name: AL Environment
+        key: customfield_12900
+        schema:
+          datatype: array
+          items: option
+      - name: Collaboration Status
+        key: customfield_12101
+        schema:
+          datatype: option
+      - name: ProjType
+        key: customfield_12100
+        schema:
+          datatype: option
+      - name: Create ticket in ServiceNow
+        key: customfield_14403
+        schema:
+          datatype: option
+      - name: Request Type
+        key: customfield_12103
+        schema:
+          datatype: option
+      - name: Request Area
+        key: customfield_12102
+        schema:
+          datatype: option
+      - name: ServiceNowLink
+        key: customfield_14401
+        schema:
+          datatype: string
+      - name: Original story points
+        key: customfield_15604
+        schema:
+          datatype: number
+      - name: ResourceType
+        key: customfield_11803
+        schema:
+          datatype: array
+          items: string
+      - name: PCI Impacting?
+        key: customfield_11802
+        schema:
+          datatype: option
+      - name: ROCS Milestone Due Date
+        key: customfield_11804
+        schema:
+          datatype: date
+      - name: Likelihood
+        key: customfield_13300
+        schema:
+          datatype: option
+      - name: Change Classification
+        key: customfield_11001
+        schema:
+          datatype: option
+      - name: Target start
+        key: customfield_15602
+        schema:
+          datatype: date
+      - name: Risk Score
+        key: customfield_13301
+        schema:
+          datatype: option
+      - name: SOX Class
+        key: customfield_11003
+        schema:
+          datatype: option
+      - name: Target end
+        key: customfield_15603
+        schema:
+          datatype: date
+      - name: Team
+        key: customfield_15600
+        schema:
+          datatype: any
+      - name: Parent Link
+        key: customfield_15601
+        schema:
+          datatype: any
+      - name: Preferred Delivery Date
+        key: customfield_10700
+        schema:
+          datatype: date
+      - name: Risk Acceptance Signed Off by
+        key: customfield_15714
+        schema:
+          datatype: user
+      - name: Delivery Date Justification
+        key: customfield_10701
+        schema:
+          datatype: string
+      - name: Risk Acceptance extended till
+        key: customfield_15715
+        schema:
+          datatype: date
+      - name: Priority Justification
+        key: customfield_10702
+        schema:
+          datatype: string
+      - name: Account
+        key: customfield_10703
+        schema:
+          datatype: account
+      - name: Team
+        key: customfield_10704
+        schema:
+          datatype: string
+      - name: Iteration
+        key: customfield_10705
+        schema:
+          datatype: string
+      - name: Department
+        key: customfield_10706
+        schema:
+          datatype: array
+          items: option
+      - name: Business Rank
+        key: customfield_16000
+        schema:
+          datatype: option
+      - name: Have you linked your issue?
+        key: customfield_12200
+        schema:
+          datatype: option
+      - name: Acknowledgement and approval
+        key: customfield_15712
+        schema:
+          datatype: array
+          items: option
+      - name: Risk Acceptance Approver
+        key: customfield_15713
+        schema:
+          datatype: group
+      - name: Share with
+        key: customfield_12201
+        schema:
+          datatype: array
+          items: user
+      - name: Acknowledgement
+        key: customfield_14500
+        schema:
+          datatype: option
+      - name: Information System Security Categorization
+        key: customfield_15710
+        schema:
+          datatype: string
+      - name: InfoSec Senior Management - additional review
+        key: customfield_15711
+        schema:
+          datatype: string
+      - name: Priority
+        key: customfield_14501
+        schema:
+          datatype: option
+      - name: Overview of service impacted
+        key: customfield_15705
+        schema:
+          datatype: string
+      - name: Benefits of accepting the risk
+        key: customfield_15706
+        schema:
+          datatype: string
+      - name: Business Justification for the Risk Acceptance
+        key: customfield_15703
+        schema:
+          datatype: string
+      - name: Compensating Controls
+        key: customfield_15709
+        schema:
+          datatype: string
+      - name: ROCS Product
+        key: customfield_11902
+        schema:
+          datatype: option
+      - name: Confirmed by QA
+        key: customfield_11901
+        schema:
+          datatype: array
+          items: option
+      - name: Alternatives Evaluated
+        key: customfield_15707
+        schema:
+          datatype: string
+      - name: Expiration date of the Risk Acceptance
+        key: customfield_15708
+        schema:
+          datatype: date
+      - name: issueFunction
+        key: customfield_11903
+        schema:
+          datatype: any
+      - name: Release Version History
+        key: customfield_10010
+        schema:
+          datatype: version
+      - name: Issue Range
+        key: customfield_11100
+        schema:
+          datatype: array
+          items: option
+      - name: Department Origin
+        key: customfield_11101
+        schema:
+          datatype: option
+      - name: Start Date
+        key: customfield_15701
+        schema:
+          datatype: date
+      - name: Estimation
+        key: customfield_15702
+        schema:
+          datatype: string
+      - name: Touchpoint
+        key: customfield_13400
+        schema:
+          datatype: array
+          items: option
+      - name: Assigned Pod
+        key: customfield_15700
+        schema:
+          datatype: option
+      - name: Pipeline Name
+        key: customfield_14605
+        schema:
+          datatype: string
+      - name: Sprint
+        key: customfield_10005
+        schema:
+          datatype: array
+          items: string
+      - name: Close Jira ticket?
+        key: customfield_14606
+        schema:
+          datatype: option
+      - name: Account ID
+        key: customfield_14603
+        schema:
+          datatype: string
+      - name: BREQ Estimation
+        key: customfield_10800
+        schema:
+          datatype: option
+      - name: Epic Status
+        key: customfield_10008
+        schema:
+          datatype: option
+      - name: Project
+        key: customfield_14604
+        schema:
+          datatype: string
+      - name: Epic Color
+        key: customfield_10009
+        schema:
+          datatype: string
+      - name: Tags
+        key: customfield_10801
+        schema:
+          datatype: string
+      - name: Automation Status
+        key: customfield_10802
+        schema:
+          datatype: option
+      - name: Flagged
+        key: customfield_10000
+        schema:
+          datatype: array
+          items: option
+      - name: Epic/Theme
+        key: customfield_10001
+        schema:
+          datatype: array
+          items: string
+      - name: Team Role
+        key: customfield_12301
+        schema:
+          datatype: string
+      - name: Version
+        key: customfield_14601
+        schema:
+          datatype: string
+      - name: Development
+        key: customfield_12300
+        schema:
+          datatype: any
+      - name: GitRepo
+        key: customfield_14602
+        schema:
+          datatype: string
+      - name: Story Points
+        key: customfield_10002
+        schema:
+          datatype: number
+      - name: Framework/Technology
+        key: customfield_14600
+        schema:
+          datatype: string
+      - name: Rank (Obsolete)
+        key: customfield_10004
+        schema:
+          datatype: any
+      - name: Support Ticket?
+        key: customfield_15802
+        schema:
+          datatype: option
+      - name: Infra Product/Component
+        key: customfield_15803
+        schema:
+          datatype: option
+      - name: UX Value
+        key: customfield_15001
+        schema:
+          datatype: option
+      - name: INOV Idea Description
+        key: customfield_15004
+        schema:
+          datatype: string
+      - name: Business Value
+        key: customfield_15002
+        schema:
+          datatype: option
+      - name: Aha! Reference
+        key: customfield_11200
+        schema:
+          datatype: string
+      - name: Project Lead
+        key: customfield_13500
+        schema:
+          datatype: user
+      - name: Old Support Ticket?
+        key: customfield_15801
+        schema:
+          datatype: option-with-child
+      - name: Severity
+        key: customfield_11201
+        schema:
+          datatype: option
+      - name: T-Shirt Size
+        key: customfield_11202
+        schema:
+          datatype: option
+      - name: Vendor contact
+        key: customfield_15006
+        schema:
+          datatype: string
+      - name: Pull Request
+        key: customfield_11203
+        schema:
+          datatype: string
+      - name: Dept
+        key: customfield_14704
+        schema:
+          datatype: option
+      - name: Live Date
+        key: customfield_14705
+        schema:
+          datatype: date
+      - name: InfoSec project update
+        key: customfield_14702
+        schema:
+          datatype: string
+      - name: Risk ID
+        key: customfield_14703
+        schema:
+          datatype: string
+      - name: Device ID
+        key: customfield_10900
+        schema:
+          datatype: string
+      - name: Device SN
+        key: customfield_10902
+        schema:
+          datatype: string
+      - name: Z-Request Date
+        key: customfield_14706
+        schema:
+          datatype: date
+      - name: Size Estimate
+        key: customfield_14707
+        schema:
+          datatype: string
+      - name: Documentation Link
+        key: customfield_16200
+        schema:
+          datatype: string
+      - name: Environment
+        key: customfield_16204
+        schema:
+          datatype: option
+      - name: Copy approved by
+        key: customfield_16203
+        schema:
+          datatype: user
+      - name: Channel
+        key: customfield_16202
+        schema:
+          datatype: option
+      - name: Type of Request
+        key: customfield_16201
+        schema:
+          datatype: option
+      - name: Estimation date
+        key: customfield_14700
+        schema:
+          datatype: date
+      - name: SOX System?
+        key: customfield_12400
+        schema:
+          datatype: option-with-child
+      - name: Culture
+        key: customfield_16207
+        schema:
+          datatype: string
+      - name: Estimation date
+        key: customfield_14701
+        schema:
+          datatype: date
+      - name: GDPR Impact
+        key: customfield_12401
+        schema:
+          datatype: option
+      - name: Raised By Department
+        key: customfield_11303
+        schema:
+          datatype: array
+          items: option
+      - name: Area of site affected
+        key: customfield_11304
+        schema:
+          datatype: array
+          items: option
+      - name: SAP Trans. ID
+        key: customfield_11305
+        schema:
+          datatype: string
+      - name: Recurring Issue (yes/no)
+        key: customfield_14252
+        schema:
+          datatype: option
+      - name: Knowledge Base Link
+        key: customfield_14253
+        schema:
+          datatype: string
+      - name: Requested by?
+        key: customfield_15100
+        schema:
+          datatype: string
+      - name: HLE
+        key: customfield_14250
+        schema:
+          datatype: string
+      - name: Protocol
+        key: customfield_14251
+        schema:
+          datatype: string
+      - name: Vulnerability Residual Risk
+        key: customfield_14254
+        schema:
+          datatype: option
+      - name: Actual Story Points
+        key: customfield_15900
+        schema:
+          datatype: number
+      - name: BOPriority
+        key: customfield_11300
+        schema:
+          datatype: option
+      - name: Risk/Impact
+        key: customfield_11301
+        schema:
+          datatype: option-with-child
+      - name: Implementation Date
+        key: customfield_11302
+        schema:
+          datatype: date
+      - name: Risk Register
+        key: customfield_13600
+        schema:
+          datatype: option
+      - name: Due into Prod.
+        key: customfield_12503
+        schema:
+          datatype: date
+      - name: Due into OAT
+        key: customfield_12502
+        schema:
+          datatype: date
+      - name: Reported at
+        key: customfield_14801
+        schema:
+          datatype: datetime
+      - name: Action
+        key: customfield_14241
+        schema:
+          datatype: string
+      - name: WAF Group
+        key: customfield_14242
+        schema:
+          datatype: option
+      - name: Issue Category
+        key: customfield_14240
+        schema:
+          datatype: option
+      - name: Connectivity required to 3rd party resources over Internet?
+        key: customfield_14245
+        schema:
+          datatype: option
+      - name: Connectivity required FROM/TO Ryanair offices?
+        key: customfield_14246
+        schema:
+          datatype: string
+      - name: Account name
+        key: customfield_14243
+        schema:
+          datatype: string
+      - name: Translations
+        key: customfield_16301
+        schema:
+          datatype: option
+      - name: CIDR
+        key: customfield_14244
+        schema:
+          datatype: option
+      - name: Connectivity required FROM/TO Ryanair offices?
+        key: customfield_14247
+        schema:
+          datatype: array
+          items: option
+      - name: Due into SIT
+        key: customfield_12501
+        schema:
+          datatype: date
+      - name: Connectivity required FROM VPN?
+        key: customfield_14248
+        schema:
+          datatype: string
+      - name: Due into Dev
+        key: customfield_12500
+        schema:
+          datatype: date
+      - name: Security Assessment Completed?
+        key: customfield_13701
+        schema:
+          datatype: option
+      - name: Assignment Group
+        key: customfield_16411
+        schema:
+          datatype: group
+      - name: Service Now INC#
+        key: customfield_15200
+        schema:
+          datatype: string
+      - name: Security Solution
+        key: customfield_16410
+        schema:
+          datatype: option
+      - name: AWS Resource Type
+        key: customfield_14239
+        schema:
+          datatype: option
+      - name: Inherent Risk
+        key: customfield_13700
+        schema:
+          datatype: option
+      - name: Rank
+        key: customfield_11400
+        schema:
+          datatype: any
+      - name: InfoSec Vulnerability update
+        key: customfield_14902
+        schema:
+          datatype: string
+      - name: ScrumMaster
+        key: customfield_12602
+        schema:
+          datatype: user
+      - name: Requires App Check?
+        key: customfield_16409
+        schema:
+          datatype: option
+      - name: OPS (Netline-Newskies) Notification
+        key: customfield_16408
+        schema:
+          datatype: option
+      - name: Version
+        key: customfield_14108
+        schema:
+          datatype: array
+          items: version
+      - name: "Vuln # Medium"
+        key: customfield_12604
+        schema:
+          datatype: option
+      - name: Other ROCS notification
+        key: customfield_16407
+        schema:
+          datatype: option
+      - name: "Vuln # High"
+        key: customfield_12603
+        schema:
+          datatype: option
+      - name: Word Count
+        key: customfield_14901
+        schema:
+          datatype: string
+      - name: "Pen. Test # Info"
+        key: customfield_12606
+        schema:
+          datatype: option
+      - name: "Vuln # Low"
+        key: customfield_12605
+        schema:
+          datatype: option
+      - name: CVSS String
+        key: customfield_16402
+        schema:
+          datatype: string
+      - name: Textarea
+        key: customfield_14102
+        schema:
+          datatype: string
+      - name: Version
+        key: customfield_14223
+        schema:
+          datatype: string
+      - name: Environment
+        key: customfield_14224
+        schema:
+          datatype: option
+      - name: Number
+        key: customfield_14103
+        schema:
+          datatype: number
+      - name: STN Bug Description
+        key: customfield_16401
+        schema:
+          datatype: string
+      - name: Approvals
+        key: customfield_14221
+        schema:
+          datatype: sd-approvals
+      - name: Remediation Teams
+        key: customfield_14100
+        schema:
+          datatype: option
+      - name: STN Requirement Description
+        key: customfield_16400
+        schema:
+          datatype: string
+      - name: Organizations
+        key: customfield_14222
+        schema:
+          datatype: array
+          items: sd-customerorganization
+      - name: BI Team notification
+        key: customfield_16406
+        schema:
+          datatype: option
+      - name: Multi Select,
+        key: customfield_14106
+        schema:
+          datatype: array
+          items: option
+      - name: User
+        key: customfield_14107
+        schema:
+          datatype: user
+      - name: Date
+        key: customfield_14104
+        schema:
+          datatype: date
+      - name: Release Date
+        key: customfield_16403
+        schema:
+          datatype: date
+      - name: Select
+        key: customfield_14105
+        schema:
+          datatype: date
+      - name: Residual Risk
+        key: customfield_13922
+        schema:
+          datatype: option
+      - name: Satisfaction
+        key: customfield_11502
+        schema:
+          datatype: any
+      - name: Estimated Risk
+        key: customfield_13921
+        schema:
+          datatype: option
+      - name: Priority
+        key: customfield_13800
+        schema:
+          datatype: option
+      - name: Request participants
+        key: customfield_11501
+        schema:
+          datatype: array
+          items: user
+      - name: Risk Signed Off on
+        key: customfield_15307
+        schema:
+          datatype: date
+      - name: Time to resolution
+        key: customfield_11504
+        schema:
+          datatype: sd-servicelevelagreement
+      - name: Domain/subdomain you want to able
+        key: customfield_14219
+        schema:
+          datatype: string
+      - name: Risk Acceptance Reviewed on
+        key: customfield_15308
+        schema:
+          datatype: date
+      - name: Satisfaction date
+        key: customfield_11503
+        schema:
+          datatype: datetime
+      - name: Time to first response
+        key: customfield_11505
+        schema:
+          datatype: sd-servicelevelagreement
+      - name: Contingency plan
+        key: customfield_13809
+        schema:
+          datatype: string
+      - name: Treatment plan
+        key: customfield_13808
+        schema:
+          datatype: string
+      - name: AWS Project name
+        key: customfield_14212
+        schema:
+          datatype: string
+      - name: Rate the overall risk score
+        key: customfield_15301
+        schema:
+          datatype: option
+      - name: AWS Component Name
+        key: customfield_14213
+        schema:
+          datatype: string
+      - name: BTS Environment
+        key: customfield_13000
+        schema:
+          datatype: array
+          items: option
+      - name: Summary of the result of the accepted risk will affect Ryanair Information Resources
+        key: customfield_15302
+        schema:
+          datatype: string
+      - name: Identify the origin
+        key: customfield_15300
+        schema:
+          datatype: option
+      - name: Reason for opening
+        key: customfield_14211
+        schema:
+          datatype: string
+      - name: AWS ID Account
+        key: customfield_14216
+        schema:
+          datatype: string
+      - name: Description of the compensating control or remediation plan to be put in place for replacement or correction
+        key: customfield_15305
+        schema:
+          datatype: string
+      - name: Risk Acceptance End Date
+        key: customfield_15306
+        schema:
+          datatype: date
+      - name: AWS Resource Name
+        key: customfield_14214
+        schema:
+          datatype: string
+      - name: Component
+        key: customfield_13920
+        schema:
+          datatype: string
+      - name: Customer Request Type
+        key: customfield_11500
+        schema:
+          datatype: sd-customerrequesttype
+      - name: Recommendation
+        key: customfield_15303
+        schema:
+          datatype: string
+      - name: AWS Account
+        key: customfield_14215
+        schema:
+          datatype: string
+      - name: Justification for Risk Acceptance
+        key: customfield_15304
+        schema:
+          datatype: string
+      - name: Existing detection / design controls
+        key: customfield_13911
+        schema:
+          datatype: string
+      - name: Jenkins Release Num.
+        key: customfield_12701
+        schema:
+          datatype: number
+      - name: Technical Owner Details
+        key: customfield_14209
+        schema:
+          datatype: user
+      - name: Detectability (Final)
+        key: customfield_13910
+        schema:
+          datatype: option
+      - name: QA Lead
+        key: customfield_12700
+        schema:
+          datatype: user
+      - name: Probability (Final)
+        key: customfield_13913
+        schema:
+          datatype: option
+      - name: Risk Estimation
+        key: customfield_12703
+        schema:
+          datatype: option
+      - name: Product Owner Details
+        key: customfield_14208
+        schema:
+          datatype: user
+      - name: RAG Status
+        key: customfield_12702
+        schema:
+          datatype: option
+      - name: Severity (Final)
+        key: customfield_13912
+        schema:
+          datatype: option
+      - name: Severity
+        key: customfield_13915
+        schema:
+          datatype: option
+      - name: Hazardous Situation
+        key: customfield_13914
+        schema:
+          datatype: string
+      - name: "Vuln # Critical"
+        key: customfield_12704
+        schema:
+          datatype: option
+      - name: Post Control Final Hazard
+        key: customfield_13917
+        schema:
+          datatype: string
+      - name: Hazard
+        key: customfield_13916
+        schema:
+          datatype: string
+      - name: Probability
+        key: customfield_13919
+        schema:
+          datatype: option
+      - name: Verification
+        key: customfield_13918
+        schema:
+          datatype: string
+      - name: Risk Acceptance
+        key: customfield_14200
+        schema:
+          datatype: array
+          items: option
+      - name: Security Assessment required?
+        key: customfield_13900
+        schema:
+          datatype: option
+      - name: UAT Date
+        key: customfield_11601
+        schema:
+          datatype: date
+      - name: Project Summary
+        key: customfield_11600
+        schema:
+          datatype: string
+      - name: RPN
+        key: customfield_13902
+        schema:
+          datatype: string
+      - name: Detectability
+        key: customfield_13901
+        schema:
+          datatype: option
+      - name: Dev Date
+        key: customfield_11602
+        schema:
+          datatype: date
+      - name: Failure Mode
+        key: customfield_13904
+        schema:
+          datatype: string
+      - name: Cause
+        key: customfield_13903
+        schema:
+          datatype: string
+      - name: Software
+        key: customfield_11604
+        schema:
+          datatype: array
+          items: option
+      - name: Component Function Description
+        key: customfield_13906
+        schema:
+          datatype: string
+      - name: ID#
+        key: customfield_13905
+        schema:
+          datatype: string
+      - name: Mitigation Action
+        key: customfield_13908
+        schema:
+          datatype: string
+      - name: Harm
+        key: customfield_13907
+        schema:
+          datatype: string
+      - name: RPN (Final)
+        key: customfield_13909
+        schema:
+          datatype: string
+  types:
+    - id: "1"
+      name: Bug
+      handle: ""
+      subtask: false
+    - id: "10100"
+      name: Story Bug
+      handle: ""
+      subtask: false
+    - id: "10201"
+      name: Test Bug
+      handle: ""
+      subtask: true
+    - id: "11701"
+      name: POC
+      handle: ""
+      subtask: false
+    - id: "11902"
+      name: Technical Debt
+      handle: ""
+      subtask: false
+    - id: "3"
+      name: Task
+      handle: ""
+      subtask: false
+    - id: "4"
+      name: Improvement
+      handle: ""
+      subtask: false
+    - id: "5"
+      name: Sub-task
+      handle: ""
+      subtask: true
+    - id: "6"
+      name: Epic
+      handle: ""
+      subtask: false
+    - id: "7"
+      name: Story
+      handle: ""
+      subtask: false
+login: fortunatof@ryanair.com
+project:
+  key: TP
+  type: ""
+server: https://jira.ryanair.com
+version:
+  major: 8
+  minor: 22
+  patch: 6
