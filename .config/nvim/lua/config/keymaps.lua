@@ -6,6 +6,12 @@ vim.keymap.set({ "n" }, "<tab>", "<cmd>BufferLineCycleNext<cr>")
 vim.keymap.set({ "n" }, "<S-tab>", "<cmd>BufferLineCyclePrev<cr>")
 vim.keymap.set({ "n" }, "<C-o>", "<cmd>close<cr>")
 vim.keymap.set({ "n" }, "<leader>fd", ":cd %:p:h<cr>", { desc = "CD to current dir of file" })
+vim.keymap.set(
+  { "n" },
+  "<leader>hr",
+  ':lua name = vim.fn.input("plugin"); require("lazy.core.loader").reload(name)<cr>',
+  { desc = "Plugin reload" }
+)
 vim.keymap.del("n", "<C-o>", { desc = "Reenable jumps" })
 
 -- local nvim_tmux_nav = require("nvim-tmux-navigation")
@@ -29,3 +35,37 @@ vim.keymap.del({ "i", "x", "n", "s" }, "<C-s>")
 vim.keymap.set("n", "<C-s>", require("auto-session.session-lens").search_session, {
   noremap = true,
 })
+
+local function execute(opts)
+  local params = {
+    command = opts.command,
+    arguments = opts.arguments,
+  }
+  if opts.open then
+    require("trouble").open({
+      mode = "lsp_command",
+      params = params,
+    })
+  else
+    return vim.lsp.buf_request(0, "workspace/executeCommand", params, opts.handler)
+  end
+end
+
+vim.keymap.set("n", "<leader>cp", function()
+  for _, client in ipairs(vim.lsp.get_clients({ name = "vtsls" })) do
+    print(vim.inspect(client.config.settings))
+    local settings = {
+      vtsls = {
+        init_options = { hostInfo = "neovim" },
+        autoUseWorkspaceTsdk = false,
+        typescript = {
+          tsdk = ".yarn/sdks/typescript/lib",
+        },
+      },
+    }
+    client.config.settings = vim.tbl_deep_extend("force", client.config.settings, settings)
+    print(vim.inspect(settings))
+    client.notify("workspace/didChangeConfiguration", { settings = settings })
+  end
+  -- execute({ command = "typescript.selectTypeScriptVersion" })
+end)

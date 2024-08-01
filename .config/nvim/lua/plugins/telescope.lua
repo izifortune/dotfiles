@@ -14,6 +14,7 @@ return {
       {
         "rmagatti/session-lens",
         config = function()
+          vim.keymap.del("n", "<leader>,")
           require("session-lens").setup({
             path_display = { "shorten" },
           })
@@ -39,9 +40,9 @@ return {
         desc = "Find files",
       },
       {
-        "\\",
+        "<leader>ft",
         "<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
-        desc = "Telescope menu",
+        desc = "Resume Telescope",
       },
       {
         "<leader>fp",
@@ -57,6 +58,7 @@ return {
         function()
           require("telescope").extensions.live_grep_args.live_grep_args()
         end,
+        desc = "Live Grep Args",
       },
       {
         "<leader>fc",

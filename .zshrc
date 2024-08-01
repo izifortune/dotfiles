@@ -248,3 +248,6 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+
+# Created by `pipx` on 2024-07-15 07:27:57
+export PATH="$PATH:/Users/fortunatof/.local/bin"

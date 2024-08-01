@@ -28,4 +28,8 @@ M.getTicketsList = function()
   return module.getTicketsList()
 end
 
+M.getReportedTicketList = function()
+  return module.getReportedTicketList()
+end
+
 return M

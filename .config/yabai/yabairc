@@ -43,11 +43,11 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  20   #30
-yabai -m config bottom_padding               20   #30
-yabai -m config left_padding                 20   #30
-yabai -m config right_padding                20   #30
-yabai -m config window_gap                   20   #30
+yabai -m config top_padding                  0   #30
+yabai -m config bottom_padding               0   #30
+yabai -m config left_padding                 0   #30
+yabai -m config right_padding                0   #30
+yabai -m config window_gap                   5   #30
 
 # mission-control desktop labels
 yabai -m space 1 --label code
@@ -70,22 +70,35 @@ yabai -m rule --add app='Kitty' space=code
 yabai -m rule --add app='Firefox Developer Edition' space=web
 yabai -m rule --add app='Microsoft Teams' space=teams
 yabai -m rule --add app='Microsoft Outlook' space=mail
+yabai -m rule --add title='Mail - Fabrizio, Fortunato - Outlook' space=mail
 yabai -m rule --add app='Microsoft Word' space=docs
 yabai -m rule --add app='Google Chrome' space=mail
 yabai -m rule --add app='Obsidian' space=docs
+
+# notification
+yabai -m rule --add title="Microsoft Teams Notification" window_border=off manage=off display=2
+yabai -m rule --add app="Microsoft Teams" can-resize="false" window_border=off manage=off display=2
+yabai -m rule --add title="| Microsoft Teams$" can-resize="false" window_border=off manage=off display=2
+yabai -m rule --add title="Sharing indicator" manage=off
+yabai -m rule --add title="Microsoft Remote Desktop" manage=off
+
+yabai -m rule --apply title="Microsoft Teams Notification" window_border=off manage=off display=2
+yabai -m rule --apply app="Microsoft Teams" can-resize="false" window_border=off manage=off display=2
+yabai -m rule --apply title="| Microsoft Teams$" can-resize="false" window_border=off manage=off display=2
+yabai -m rule --apply title="Sharing indicator" manage=off
+yabai -m rule --apply title="Microsoft Remote Desktop" manage=off
 
 yabai -m rule --apply app='Kitty' space=code
 yabai -m rule --apply app='Firefox Developer Edition' space=web
 yabai -m rule --apply app='Microsoft Teams' space=teams
 yabai -m rule --apply app='Microsoft Outlook' space=mail
+yabai -m rule --apply title='Mail - Fabrizio, Fortunato - Outlook' space=mail
 yabai -m rule --apply app='Microsoft Word' space=docs
 yabai -m rule --apply app='Google Chrome' space=mail
 yabai -m rule --apply app='Obsidian' space=docs
 
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 
-# yabai -m rule --add title="Microsoft Teams Notification" window_border=off manage=off display=2
-yabai -m rule --add title="Microsoft Remote Desktop" manage=off
 #yabai -m rule --add label=ignoreTeamsNotification app="Microsoft Teams" title="Microsoft Teams Notification" manage=off
 #yabai -m signal --add \
 #    event=window_focused \
@@ -103,3 +116,13 @@ echo "yabai configuration loaded.."
 # FOcus window on display change
 #yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
 # yabai -m signal --add event=application_front_switched action="~/scripts/yabai-border"
+yabai -m signal --add \
+      event=application_activated \
+      app="^Microsoft Teams$" \
+      action='${HOME}/.config/yabai/scripts/defeat-teams'
+
+yabai -m signal --add \
+      event=window_focused \
+      app="^Microsoft Teams$" \
+      title="^Microsoft Teams Notification$" \
+      action='${HOME}/.config/yabai/scripts/defeat-teams'

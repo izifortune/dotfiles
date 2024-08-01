@@ -38,3 +38,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 --     vim.b.autoformat = false
 --   end,
 -- })
+vim.api.nvim_create_autocmd("BufReadCmd", {
+  pattern = "zipfile:/[^/]*",
+  callback = function(args)
+    -- the uri is like zipfile:/a/b/c
+    local uri = args.match --[[@as string]]
+    -- transform it to be zipfile:///a/b/c
+    vim.fn["zip#Read"](uri:gsub("^zipfile:", "zipfile://"), 1)
+  end,
+})

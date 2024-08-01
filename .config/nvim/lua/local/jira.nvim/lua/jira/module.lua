@@ -67,11 +67,11 @@ end
 M.getTicketsList = function()
   return nio.run(function()
     local process, err = nio.process.run({
-      cmd = "/usr/local/bin/jira",
+      cmd = "/opt/homebrew/bin/jira",
       args = {
         "issue",
         "list",
-        "-q project in (Email\\ Template,Trip\\ Planner) and assignee = 70121:55b4d03b-c17d-48e0-b6ec-b9003a5e6d50 and status not in (Closed, Rejected, Done, Live)",
+        "-q project in (Trip\\ Planner) and assignee = 70121:55b4d03b-c17d-48e0-b6ec-b9003a5e6d50 and status not in (Closed, Rejected, Done, Live)",
         "--plain",
         "--no-headers",
       },
@@ -79,7 +79,27 @@ M.getTicketsList = function()
 
     local output = process.stdout.read()
     local errout = process.stderr.read()
-    print(errout)
+    print(output)
+    createPicker(output)
+  end)
+end
+
+M.getReportedTicketList = function()
+  return nio.run(function()
+    local process, err = nio.process.run({
+      cmd = "/opt/homebrew/bin/jira",
+      args = {
+        "issue",
+        "list",
+        "-q reporter = 70121:55b4d03b-c17d-48e0-b6ec-b9003a5e6d50 and status not in (Closed, Rejected, Done, Live)",
+        "--plain",
+        "--no-headers",
+      },
+    })
+
+    local output = process.stdout.read()
+    local errout = process.stderr.read()
+    print(output)
     createPicker(output)
   end)
 end

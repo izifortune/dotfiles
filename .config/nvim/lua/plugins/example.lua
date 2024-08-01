@@ -32,38 +32,82 @@ return {
 
   -- add telescope-fzf-native
   -- add tsserver and setup with typescript.nvim instead of lspconfig
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   dependencies = {
+  --     "jose-elias-alvarez/typescript.nvim",
+  --     init = function()
+  --       require("lazyvim.util").lsp.on_attach(function(_, buffer)
+  --         -- stylua: ignore
+  --         vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+  --         vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+  --       end)
+  --     end,
+  --   },
+  --   opts = function(_, opts)
+  --     opts.servers.vtsls.settings.vtsls.autoUseWorkspaceTsdk = true
+  --     opts.servers.vtsls.init_options = {hostInfo = 'neovim' }
+  --     return opts
+  --   end,
+  -- },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "jose-elias-alvarez/typescript.nvim",
-      init = function()
-        require("lazyvim.util").lsp.on_attach(function(_, buffer)
-          -- stylua: ignore
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
-        end)
-      end,
-    },
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      servers = {
-        -- tsserver will be automatically installed with mason and loaded with lspconfig
-        tsserver = {},
-      },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        tsserver = function(_, opts)
-          require("typescript").setup({ server = opts })
-          return true
-        end,
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
-      },
-    },
+    opts = function(_, opts)
+      function file_exists(name)
+        local f=io.open(name,"r")
+        if f~=nil then io.close(f) return true else return false end
+      end
+
+      -- opts.servers.typescript.init_options = {
+      --   hostInfo = "neovim",
+      --   maxTsServerMemory = 18432,
+      --   preferences = {
+      --     importModuleSpecifierPreference = "relative"
+      --   }
+      -- }
+      opts.servers.vtsls.init_options = { hostInfo = "neovim" }
+      opts.servers.vtsls.autoUseWorkspaceTsdk = true
+      opts.servers.vtsls.root_dir = function()
+        local lazyvimRoot = require("lazyvim.util.root")
+        return lazyvimRoot.git()
+      end
+      if file_exists(opts.servers.vtsls.root_dir() .. "/.yarn/sdks/typescript/lib") then
+        opts.servers.vtsls.settings.typescript.tsdk = ".yarn/sdks/typescript/lib"
+      end
+      -- opts.servers.vtsls.settings.typescript.tsdk = '.yarn/sdks/typescript/lib'
+      return opts
+    end,
+    -- opts = {
+    --   inlay_hints = { enabled = false },
+    --   servers = {
+    --     vtsls = {
+    --       init_options = { hostInfo = "neovim" },
+    --       settings = {
+    --         typescript = {
+    --           -- tsdk = "../../.yarn/sdks/typescript/lib",
+    --         },
+    --       },
+    --     },
+    --   },
+    --   setup = {
+    --     vtsls = function(_, _opts)
+    --       require("lazyvim.util").lsp.on_attach(function(client)
+    --         if client.name == "vtsls" then
+    --           client.server_capabilities.documentFormattingProvider = false
+    --         end
+    --       end)
+    --     end,
+    --   },
+    -- },
+    -- keys = {
+    --   {
+    --     '<leader>tt',
+    --     function()
+    --       require('plugins.lsp.utils').execute({command = 'typescript.selectTypeScriptVersion'})
+    --     end,
+    --     desc = 'Select typescript version',
+    --   },
+    -- },
   },
 
   -- add more treesitter parsers
