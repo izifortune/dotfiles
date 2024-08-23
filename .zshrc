@@ -248,6 +248,11 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+alias icat="kitten icat"
+
+export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+
+source $HOME/".my_zsh_functions/fzf.zsh"
 
 # Created by `pipx` on 2024-07-15 07:27:57
 export PATH="$PATH:/Users/fortunatof/.local/bin"

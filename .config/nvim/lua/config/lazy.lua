@@ -41,6 +41,9 @@ require("lazy").setup({
   diff = {
     cmd = "diffview.nvim",
   },
+  rocks = {
+    hererocks = true,
+  },
   -- checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {

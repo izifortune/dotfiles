@@ -65,6 +65,7 @@ return {
       --     importModuleSpecifierPreference = "relative"
       --   }
       -- }
+      opts.inlay_hints = { enabled = false }
       opts.servers.vtsls.init_options = { hostInfo = "neovim" }
       opts.servers.vtsls.autoUseWorkspaceTsdk = true
       opts.servers.vtsls.root_dir = function()

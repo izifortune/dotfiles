@@ -67,11 +67,27 @@ end
 
 -- Cursor Keys
 -- Handled by hotkeys in keymaps
--- hs.hotkey.bind("alt", "1", function() yabai({"-m", "space", "--focus", "1"}) end)
--- hs.hotkey.bind("alt", "2", function() yabai({"-m", "space", "--focus", "2"}) end)
--- hs.hotkey.bind("alt", "3", function() yabai({"-m", "space", "--focus", "3"}) end)
--- hs.hotkey.bind("alt", "4", function() yabai({"-m", "space", "--focus", "4"}) end)
--- hs.hotkey.bind("alt", "5", function() yabai({"-m", "space", "--focus", "5"}) end)
+hs.hotkey.bind("cmd", "1", function()
+	yabai({ "-m", "space", "--focus", "1" })
+end)
+hs.hotkey.bind("cmd", "2", function()
+	yabai({ "-m", "space", "--focus", "2" })
+end)
+hs.hotkey.bind("cmd", "3", function()
+	yabai({ "-m", "space", "--focus", "3" })
+end)
+hs.hotkey.bind("cmd", "4", function()
+	yabai({ "-m", "space", "--focus", "4" })
+end)
+hs.hotkey.bind("cmd", "5", function()
+	yabai({ "-m", "space", "--focus", "5" })
+end)
+hs.hotkey.bind("cmd", "6", function()
+	yabai({ "-m", "space", "--focus", "6" })
+end)
+hs.hotkey.bind("cmd", "7", function()
+	yabai({ "-m", "space", "--focus", "7" })
+end)
 -- Move window to space
 hs.hotkey.bind(altShift, "1", function()
 	yabai({ "-m", "window", "--space", "1" })
@@ -160,8 +176,9 @@ hs.hotkey.bind(ctrlShift, "r", function()
 end)
 
 hs.hotkey.bind({ "ctrl", "shift" }, "t", function()
-	hs.application.launchOrFocus("Alacritty")
+	hs.application.launchOrFocus("WezTerm")
 end)
+
 hs.hotkey.bind({ "ctrl", "shift" }, "a", function()
 	-- print(hs.inspect.inspect(hs.window.allWindows()[5]))
 	for i, win in ipairs(hs.window.allWindows()) do
@@ -177,12 +194,15 @@ hs.hotkey.bind({ "ctrl", "shift" }, "a", function()
 	-- print(hs.inspect.inspect(hs.window.allWindows()[6]))
 	-- hs.application.launchOrFocus("Alfred 5")
 end)
+
 hs.hotkey.bind({ "ctrl", "shift" }, "y", function()
-	hs.task.new("/usr/local/bin/brew", nil, function() end, { "services", "restart", "yabai" }):start()
+	hs.task.new("/opt/homebrew/bin/yabai", nil, function() end, { "--restart-service" }):start()
 end)
+
 hs.hotkey.bind({ "ctrl", "shift" }, "b", function()
-	hs.application.launchOrFocus("Firefox")
+	hs.application.launchOrFocus("Firefox Developer Edition")
 end)
+
 hs.hotkey.bind({ "ctrl", "shift" }, "m", function()
 	hs.application.launchOrFocus("Microsoft Teams")
 end)
@@ -257,6 +277,39 @@ function reloadConfig(files)
 		end
 	end
 end
+
+-- -- Function to minimize Microsoft Teams notification window
+function minimizeTeamsNotification()
+	-- Get all windows
+	local windows = hs.window.allWindows()
+
+	for _, window in ipairs(windows) do
+		print(window:application():title())
+		-- Check if the window belongs to Microsoft Teams
+		-- if window:application():name() == "Microsoft Teams" then
+		--     -- Check if the window title matches the notification window pattern
+		--     -- Adjust the pattern as needed to match your Teams notification window
+		--     if window:title():match("Incoming call from") then
+		--         -- Minimize the window
+		--         window:minimize()
+		--     end
+		-- end
+	end
+end
+
+-- Watch for window creation events
+windowFilter = hs.window.filter.new()
+windowFilter:subscribe(hs.window.filter.default, function(window)
+	-- Check if the window belongs to Microsoft Teams
+	print(window:title())
+	if window:title():match("| Microsoft Teams") then
+		window:minimize()
+		-- window:minimize()
+	end
+end)
+--
+-- Optionally, set up a hotkey to manually trigger the minimize function
+-- hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "M", minimizeTeamsNotification)
 
 hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 -- stackline = require "stackline.stackline.stackline"

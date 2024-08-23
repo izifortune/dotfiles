@@ -12,14 +12,12 @@ local function split(str, sep)
   local fields = {}
   local pattern = string.format("([^%s]+)", sep)
   str:gsub(pattern, function(c)
-    print(c)
     fields[#fields + 1] = c
   end)
   return fields
 end
 
 local parseResults = function(list)
-  print(vim.inspect(list))
   local results = split(list, "\n")
   table.remove(results, 1)
   local parsedResults = {}
@@ -31,7 +29,6 @@ end
 
 local createPicker = function(list)
   local results = parseResults(list)
-  print(vim.inspect(results))
   opts = opts or {}
   vim.schedule(function()
     pickers
@@ -43,7 +40,7 @@ local createPicker = function(list)
             print(vim.inspect(entry))
             return {
               value = entry[2],
-              display = entry[3] .. " [" .. entry[4] .. "]",
+              display = entry[3] .. " [" .. entry[4] .. "] - " .. entry[2],
               ordinal = entry[2],
             }
           end,
@@ -79,7 +76,6 @@ M.getTicketsList = function()
 
     local output = process.stdout.read()
     local errout = process.stderr.read()
-    print(output)
     createPicker(output)
   end)
 end
@@ -99,7 +95,6 @@ M.getReportedTicketList = function()
 
     local output = process.stdout.read()
     local errout = process.stderr.read()
-    print(output)
     createPicker(output)
   end)
 end
@@ -116,7 +111,6 @@ M.createTicket = function(args)
       args = { "issue", "create", "-tTask", "-s" .. summary, "--no-input" },
     })
     local output = process.stdout.read()
-    print(output)
   end)
 end
 

@@ -16,6 +16,7 @@ return {
         debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
         adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
       })
+
       dap.adapters.firefox = {
         type = "executable",
         command = "node",
@@ -25,7 +26,7 @@ return {
       -- dap.adapters["pwa-node"] = {
       --   type = "executable",
       --   command = "node",
-      --   args = { os.getenv "HOME" .. "/.local/share/nvim/lazy/vscode-js-debug/dist/src/build/generateDap.js" },
+      --   args = { os.getenv("HOME") .. "/.local/share/nvim/lazy/vscode-js-debug/dist/src/build/generateDap.js" },
       -- }
       -- dap.adapters["pwa-node"] = {
       --           type = "server",
@@ -86,9 +87,11 @@ return {
         skipFiles = { "<node_internals>/**", "node_modules/**", "../../node_modules/**" },
       })
 
+      table.remove(dap.configurations.typescript, 9)
+
       table.insert(dap.configurations.typescript, {
         name = "Better Node Launch",
-        type = "node2",
+        type = "pwa-node",
         request = "launch",
         program = "${file}",
         cwd = vim.fn.getcwd(),
@@ -106,9 +109,27 @@ return {
         skipFiles = { "<node_internals>/**", "node_modules/**", "../../node_modules/**" },
       })
 
+      --       {
+      --   {
+      --     type = "pwa-node",
+      --     request = "launch",
+      --     name = "Debug Jest Tests",
+      --     -- trace = true, -- include debugger info
+      --     runtimeExecutable = "node",
+      --     runtimeArgs = {
+      --       "./node_modules/jest/bin/jest.js",
+      --       "--runInBand",
+      --     },
+      --     rootPath = "${workspaceFolder}",
+      --     cwd = "${workspaceFolder}",
+      --     console = "integratedTerminal",
+      --     internalConsoleOptions = "neverOpen",
+      --   }
+      -- }
+
       table.insert(dap.configurations.typescript, {
         name = "Jest Launch",
-        type = "node2",
+        type = "pwa-node",
         request = "launch",
         program = function()
           local path = vim.fn.system("yarn bin jest")
@@ -122,6 +143,8 @@ return {
         cwd = vim.fn.getcwd(),
         sourceMaps = true,
         protocol = "inspector",
+        runtimeExecutable = "node",
+        internalConsoleOptions = "neverOpen",
         console = "integratedTerminal",
         -- cwd = "${workspaceFolder}",
         -- -- skipFiles = {
@@ -304,6 +327,11 @@ return {
       --   processId = require('dap.utils').pick_process,
       --   skipFiles = { '<node_internals>/**' },
       -- },
+      for i, v in ipairs(dap.configurations.typescript) do
+        if v.name == "Firefox: Debug" then
+          dap.configurations.typescript[i] = nil
+        end
+      end
     end,
   },
 }
